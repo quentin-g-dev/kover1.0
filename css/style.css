@@ -1,0 +1,20 @@
+a:hover,
+a:active {
+    text-decoration: none;
+}
+
+.full-container {
+    max-width: 100% !important;
+}
+
+.deleteSection {
+    cursor: pointer;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+select {
+    border: none !important;
+}
