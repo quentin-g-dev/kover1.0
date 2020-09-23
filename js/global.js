@@ -144,7 +144,8 @@ function editionView() {
         document.getElementById('accordion').innerHTML += '<div id="version' + (i + 2) + '" class="versionBlock my-3 card d-flex flex-row justify-content-around align-items-center bg-info text-white"><div><h3 class="d-inline card-header" id="heading' + i + '">Version ' + (i + 2) + '</h3><button class="text-white btn btn-link btn-info border-light" data-toggle="collapse" data-target="#collapse' + i + '">&darr;</button></div></div><div id="collapse' + i + '" class="collapse" data-parent="#accordion" aria-labelledby="heading' + i + '"><div class="card-body p-5  border border-info rounded-bottom" data-content="' + i + '">' + originalText + '</div></div>';
         let editZones = document.querySelectorAll('div#collapse' + i + ' span.toEdit');
         for (let j = 0; j < editZones.length; j++) {
-            editZones[j].innerHTML = '<input data-version="' + (i + 2) + '" data-edit="' + j + '" type="text" placeholder = "' + editZones[j].innerHTML + '">';
+            let placeholder = editZones[j].innerHTML;
+            editZones[j].innerHTML = '<input data-version="' + (i + 2) + '" data-edit="' + j + '" type="text" placeholder = "' + placeholder + '">';
         }
     }
     return;
