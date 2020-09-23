@@ -9,7 +9,7 @@
 }
 
 body {
-    font-family: 'open-sans';
+    font-family: 'raleway', Helvetica;
 }
 
 main {
@@ -22,7 +22,12 @@ a:active {
 }
 
 div#userText {
-    height: 50vh;
+    height: max-content;
+    padding: 10px;
+}
+
+#getUserText {
+    line-height: initial;
 }
 
 .full-container {
@@ -39,4 +44,12 @@ div#userText {
 
 select {
     border: none !important;
+}
+
+span.toEdit {
+    background-color: yellowgreen;
+}
+
+.card-body {
+    text-align: initial;
 }
