@@ -10,7 +10,6 @@ if (isset ($_SESSION['userName'])){
         header ('sign_up.php');
     } else {
         include './modules/db_connect.php';
-        $db = dbConnect();
         require './classes/User.php';
         require './classes/UsersManager.php';
         require "./modules/form_checker.php";
@@ -30,7 +29,8 @@ if (isset ($_SESSION['userName'])){
 </main>
 
 <?
-        } else {
+        include './modules/db_disconnect.php';
+    } else {
         
             $pageTitle = 'Kover - Bienvenue '.htmlspecialchars($_POST['userName']);
 
@@ -40,7 +40,6 @@ if (isset ($_SESSION['userName'])){
 
             include './modules/db_connect.php';
             
-            $db = db_connect();
             $currentUser = new User($db);
             $currentManager = new UsersManager($db);
             $currentUser->setUserName($_POST['userName']);
@@ -48,7 +47,7 @@ if (isset ($_SESSION['userName'])){
             $currentUser->setUserCreationDate(date('Y-m-d H:i:s'));
             $currentUser->setUserStatus('user');
             $currentManager -> addUser ($currentUser);
-            $db=null;
+            include './modules/db_disconnect.php';
             
 ?>
 

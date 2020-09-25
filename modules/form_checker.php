@@ -7,8 +7,10 @@ function checkUserName($name){
     $testUserManager = new UsersManager($db);
     $result = $testUserManager->doesUserExist($testUser);
     if ($result === true){
+        include 'db_disconnect.php';
         return false;
     }
+    include 'db_disconnect.php';
     return true;
 }
 
