@@ -9,9 +9,9 @@ if (isset ($_SESSION['userName'])){
 
 $pageTitle = 'Kover - Inscription';
 
-include './parts/head.php';
+include './php/parts/head.php';
 
-include './parts/header.php';
+include './php/parts/header.php';
 
 ?>
 
@@ -36,7 +36,7 @@ include './parts/header.php';
 
 <? 
 
-include './parts/footer.php'; 
+include './php/parts/footer.php'; 
 
 ?>
 

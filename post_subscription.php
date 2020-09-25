@@ -9,8 +9,10 @@ if (isset ($_SESSION['userName'])){
     if (!isset($_POST['userName']) || !isset($_POST['userPassword']) || !isset($_POST['userPasswordTwice'])){
         header ('sign_up.php');
     } else {
-        require './class/User.php';
-        require './class/UsersManager.php';
+        include './modules/db_connect.php';
+        $db = dbConnect();
+        require './classes/User.php';
+        require './classes/UsersManager.php';
         require "./modules/form_checker.php";
 
         if (checkUserName(htmlspecialchars($_POST['userName']))=== false||checkUserPassword(htmlspecialchars($_POST['userPassword']))=== false||htmlspecialchars($_POST['userPassword']) !== htmlspecialchars($_POST['userPasswordTwice'])){
@@ -38,25 +40,22 @@ if (isset ($_SESSION['userName'])){
 
             include './modules/db_connect.php';
             
+            $db = db_connect();
             $currentUser = new User($db);
             $currentManager = new UsersManager($db);
             $currentUser->setUserName($_POST['userName']);
             $currentUser->setUserHashedPassword($_POST['userPassword']);
             $currentUser->setUserCreationDate(date('Y-m-d H:i:s'));
             $currentUser->setUserStatus('user');
-            $currentManager -> add ($currentUser);
+            $currentManager -> addUser ($currentUser);
+            $db=null;
             
-            echo $currentUser->userName();
-            echo $currentUser->userHashedPassword();
-
-
-
 ?>
 
 <main>
 
 <h2>
-    <? echo 'Bienvenue '.htmlspecialchars($_POST['userName']); ?>
+    Bienvenue <? echo $currentUser -> userName(); ?>
 </h2>
 
 
