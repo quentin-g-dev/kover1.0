@@ -18,7 +18,6 @@ class UsersManager {
         $query -> bindValue(':userStatus', $user-> userStatus());
         $query -> bindValue(':userCreationDate', $user-> userCreationDate());
         $query -> execute();
-        echo 'Enregistrement terminé !';
     }
 
     public function countUsers(){
@@ -62,10 +61,26 @@ class UsersManager {
         while ($result = $query -> fetch(PDO::FETCH_ASSOC)){
             if ($user -> userName() === $result){
                 echo 'Ce nom d\'utilisateur est déjà utilisé : veuillez en choisir un autre. <a href="sign_up.php">Cliquez ici</a> pour renouveler votre demande d\'inscription.';
-                return false;
+                return true;
             }        
             return false;
         }
+    }
+
+    public function isUserConnected (User $user){
+        $manager = new UsersManager($db);
+        if ($manager->doesUserExist($user)){
+            $request = $this -> _db -> query ('SELECT userName, userHashedPassword FROM users');
+            while ($data = $request ->fetch()){
+                if ($user->userName()=== $data['userName'] && $user->userHashedPassword()=== $data['userHashedPassword']){
+                    $result = true ;
+                } else {
+                    $result = false;
+                }
+            }
+            $data->closeCursor();
+        }
+    return $result;
     }
 }
 

@@ -1,7 +1,12 @@
 <?
 $pageTitle = 'Kover - Accueil';
-include './php/parts/head.php';
-include './php/parts/header.php';
+include './parts/head.php';
+include './parts/header.php';
+
+if(isset($_GET['disc'])){
+    $_SESSION=[];
+    session_destroy;
+}
 ?>
 
 <body>
@@ -194,7 +199,7 @@ include './php/parts/header.php';
 
     </main>
 
-<? include './php/parts/footer.php'; ?>
+<? include './parts/footer.php'; ?>
 <script src="./js/jquery-3.5.1.js"></script>
 
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
@@ -202,6 +207,7 @@ include './php/parts/header.php';
 </script>
         
 <script src="./js/global.js"></script>
+<script src="./js/nav_menu.js"></script>
 </body>
 
 </html>

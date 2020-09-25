@@ -54,3 +54,12 @@ span.toEdit {
 .card-body {
     text-align: initial;
 }
+
+.hamburger {
+    font-size: 5rem;
+    cursor: pointer;
+}
+
+.hidden {
+    visibility: hidden;
+}

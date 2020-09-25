@@ -12,14 +12,17 @@ if (isset ($_SESSION['userName'])){
         include './modules/db_connect.php';
         require './classes/User.php';
         require './classes/UsersManager.php';
-        require "./modules/form_checker.php";
+        require "./modules/user_checker.php";
+
+//ECHEC DE L'INSCRIPTION :
 
         if (checkUserName(htmlspecialchars($_POST['userName']))=== false||checkUserPassword(htmlspecialchars($_POST['userPassword']))=== false||htmlspecialchars($_POST['userPassword']) !== htmlspecialchars($_POST['userPasswordTwice'])){
             $pageTitle = 'Kover - Echec de l\'inscription';
 
             include './parts/head.php';
-            
             include './parts/header.php';
+            include './parts/nav_menu.php';
+
         
 ?>
 
@@ -31,8 +34,10 @@ if (isset ($_SESSION['userName'])){
 <?
         include './modules/db_disconnect.php';
     } else {
+
+// SUCCES DE L'INSCRIPTION :
         
-            $pageTitle = 'Kover - Bienvenue '.htmlspecialchars($_POST['userName']);
+            $pageTitle = 'Kover - Bienvenue '. htmlspecialchars($_POST['userName']);
 
             include './parts/head.php';
             
@@ -47,18 +52,22 @@ if (isset ($_SESSION['userName'])){
             $currentUser->setUserCreationDate(date('Y-m-d H:i:s'));
             $currentUser->setUserStatus('user');
             $currentManager -> addUser ($currentUser);
+            $_SESSION['userName'] = $currentUser->userName();
+            $_SESSION['userHashedPassword'] = $currentUser->userHashedPassword();
             include './modules/db_disconnect.php';
             
 ?>
 
-<main>
+<main class="my-5">
 
-<h2>
+<h2 class="text-center mb-3">
     Bienvenue <? echo $currentUser -> userName(); ?>
 </h2>
+<p class="text-center">Votre enregistrement est terminé, merci pour votre confiance.</p>
+<p class="text-center">Visitez votre espace personnel <a href="profile.php">en cliquant ici</a>.</p>
+<p class="text-center">Pour réaliser dès maintenant un publipostage, <a href="index.php">c'est par là</a>.</p>
 
-
-<main>
+<main class="text-center">
 
 <?
         }
@@ -66,11 +75,10 @@ if (isset ($_SESSION['userName'])){
         include './parts/footer.php'; 
 ?>
 
-
-
 <script src="./js/jquery-3.5.1.js"></script>
 <script src="./js/bootstrap.min.js"></script>
-<script src="./js/sign_up.js"></script>
+<script src="./js/nav_menu.js"></script>
+
         
 </body>
 
