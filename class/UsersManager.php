@@ -1,16 +1,24 @@
 <?
 
 class UsersManager {
+    
+    //Attributes
     private $_db;
+
+    //Constructor
     public function __construct($db){
         $this-> _db = $db;
     }
+
+    //Méthodes de gestion des utilisateurs
     public function add (User $user){
-        $query = $this -> _db -> prepare('INSERT INTO users (userId, userName, userHashedPassword, userStatus) VALUES (:userId, :userName, :userHashedPassword, :userStatus)');
-        $query -> bindValue(':userName', $user->userName());
-        $query -> bindValue(':userHashedPassword', $user->userHashedPassword());
-        $query -> bindValue(':userStatus', $user->userStatus());
+        $query = $this -> _db -> prepare('INSERT INTO users (userName, userHashedPassword, userStatus, userCreationDate) VALUES (:userName, :userHashedPassword, :userStatus, :userCreationDate)');
+        $query -> bindValue(':userName', $user-> userName());
+        $query -> bindValue(':userHashedPassword', $user-> userHashedPassword());
+        $query -> bindValue(':userStatus', $user-> userStatus());
+        $query -> bindValue(':userCreationDate', $user-> userCreationDate());
         $query -> execute();
+        echo 'Enregistrement terminé !';
     }
 
     public function count(){
@@ -54,8 +62,9 @@ class UsersManager {
         while ($result = $query -> fetch(PDO::FETCH_ASSOC)){
             if ($user -> userName() === $result){
                 echo 'Ce nom d\'utilisateur est déjà utilisé : veuillez en choisir un autre. <a href="sign_up.php">Cliquez ici</a> pour renouveler votre demande d\'inscription.';
-                return true;
-            }
+                return false;
+            }        
+            return false;
         }
     }
 }

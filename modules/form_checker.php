@@ -1,8 +1,5 @@
 <?
 
-require './class/User.php';
-require './class/UsersManager.php';
-
 function checkUserName($name){
     // Voir expressions régulières
     include 'db_connect.php';
@@ -12,10 +9,12 @@ function checkUserName($name){
     if ($result === true){
         return false;
     }
+    return true;
 }
 
-function checkPassword(){
+function checkUserPassword(){
     // voir expressions régulières
+    return true;
 }
 
 ?>

@@ -9,16 +9,17 @@ if (isset ($_SESSION['userName'])){
     if (!isset($_POST['userName']) || !isset($_POST['userPassword']) || !isset($_POST['userPasswordTwice'])){
         header ('sign_up.php');
     } else {
-
+        require './class/User.php';
+        require './class/UsersManager.php';
         require "./modules/form_checker.php";
 
-        if (!checkUserName(htmlspecialchars($_POST['userName']))||!checkUserPassword(htmlspecialchars($_POST['userPassword']))||htmlspecialchars($_POST['userPassword']) !== htmlspecialchars($_POST['userPasswordTwice'])){
+        if (checkUserName(htmlspecialchars($_POST['userName']))=== false||checkUserPassword(htmlspecialchars($_POST['userPassword']))=== false||htmlspecialchars($_POST['userPassword']) !== htmlspecialchars($_POST['userPasswordTwice'])){
             $pageTitle = 'Kover - Echec de l\'inscription';
 
             include './parts/head.php';
             
             include './parts/header.php';
-
+        
 ?>
 
 <main>
@@ -28,13 +29,25 @@ if (isset ($_SESSION['userName'])){
 
 <?
         } else {
-            
-
+        
             $pageTitle = 'Kover - Bienvenue '.htmlspecialchars($_POST['userName']);
 
             include './parts/head.php';
             
             include './parts/header.php';
+
+            include './modules/db_connect.php';
+            
+            $currentUser = new User($db);
+            $currentManager = new UsersManager($db);
+            $currentUser->setUserName($_POST['userName']);
+            $currentUser->setUserHashedPassword($_POST['userPassword']);
+            $currentUser->setUserCreationDate(date('Y-m-d H:i:s'));
+            $currentUser->setUserStatus('user');
+            $currentManager -> add ($currentUser);
+            
+            echo $currentUser->userName();
+            echo $currentUser->userHashedPassword();
 
 
 
@@ -42,7 +55,9 @@ if (isset ($_SESSION['userName'])){
 
 <main>
 
-
+<h2>
+    <? echo 'Bienvenue '.htmlspecialchars($_POST['userName']); ?>
+</h2>
 
 
 <main>
