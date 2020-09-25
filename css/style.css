@@ -28,6 +28,7 @@ div#userText {
 
 #getUserText {
     line-height: initial;
+    min-height: 40vh;
 }
 
 .full-container {
