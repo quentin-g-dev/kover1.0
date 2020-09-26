@@ -1,5 +1,6 @@
-<main class="signUp my-5">
-    <h2 class="mb-3 text-center">Inscription</h2>
+<main
+        class="signUp container full-container d-flex flex-column p-3 mx-auto mt-3 mb-2 text-center w-100 w-lg-75 justify-content-around align-items-baseline h-100 rounded"
+        id="signUp">    <h2 class="mb-3 text-center">Inscription</h2>
     <form action="post_subscription.php" method="post" id="signUpForm" class="d-flex flex-column justify-content-between align-items-center w-75 mw-100 mx-auto my-5" onsubmit="return evalSignUpForm();">
         <fieldset class="my-2 d-flex mw-75 w-50 justify-content-between">
             <label for="userName" class="mr-3">Choisissez un nom d'utilisateur</label>

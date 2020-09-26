@@ -16,15 +16,16 @@ if (isset ($_SESSION['user'])){
         include './modules/db_connect.php';
         require './classes/User.php';
         require './classes/UsersManager.php';
+        include './modules/db_disconnect.php';
 
     //ECHEC DE L'INSCRIPTION :
 
-            if (!checkUserName(htmlspecialchars($_POST['userName']))||!checkUserPassword(htmlspecialchars($_POST['userPassword']))||htmlspecialchars($_POST['userPassword']) !== htmlspecialchars($_POST['userPasswordTwice'])){
-                $pageTitle = 'Kover - Echec de l\'inscription';
+        if (!checkUserName(htmlspecialchars($_POST['userName']))||!checkUserPassword(htmlspecialchars($_POST['userPassword']))||htmlspecialchars($_POST['userPassword']) !== htmlspecialchars($_POST['userPasswordTwice'])){
+            $pageTitle = 'Kover - Echec de l\'inscription';
 
-                include './parts/head.php';
-                include './parts/header.php';
-                include './parts/nav_menu.php';
+            include './parts/head.php';
+            include './parts/header.php';
+            include './parts/nav_menu.php';
 ?>
 
 <main>
@@ -33,11 +34,10 @@ if (isset ($_SESSION['user'])){
 </main>
 
 <?
-        include './modules/db_disconnect.php';
-    } else {
+        } else {
 
 // SUCCES DE L'INSCRIPTION :
-                   
+            include './modules/db_connect.php';
             $currentUser = new User($db);
             $currentManager = new UsersManager($db);
             $currentUser->setUserName(htmlspecialchars($_POST['userName']));
@@ -50,7 +50,7 @@ if (isset ($_SESSION['user'])){
             setUserSession($_POST['userName'],$_POST['userPassword']);
             include './modules/db_disconnect.php';
 
-            $pageTitle = 'Kover - Bienvenue '. htmlspecialchars($_POST['userName']);
+            $pageTitle = 'Kover - Bienvenue '. $currentUser -> userName();
             include './parts/head.php';
             include './parts/header.php';
             include './modules/db_connect.php';
@@ -63,7 +63,7 @@ if (isset ($_SESSION['user'])){
     Bienvenue <? echo $currentUser -> userName(); ?>
 </h2>
 <p class="text-center">Votre enregistrement est terminé, merci pour votre confiance.</p>
-<p class="text-center">Visitez votre espace personnel <a href="profile.php">en cliquant ici</a>.</p>
+<p class="text-center">Découvrez votre espace personnel <a href="profile.php">en cliquant ici</a>.</p>
 <p class="text-center">Pour réaliser dès maintenant un publipostage, <a href="index.php">c'est par là</a>.</p>
 
 <main class="text-center">

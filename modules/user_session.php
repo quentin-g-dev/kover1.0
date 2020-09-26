@@ -13,8 +13,6 @@ function setUserSession($name, $password){
     
     $_SESSION['user'] = $userTable;
     require './modules/db_disconnect.php';
-
 }
-
 
 ?>

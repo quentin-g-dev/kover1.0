@@ -29,7 +29,7 @@ class UsersManager {
     }
 
     public function getUserInfo($id){
-        if (is_int($id)){
+        if (!is_int($id)){
             $query = $this -> _db -> query('SELECT userId, userName, userHashedPassword, userStatus, userCreationDate FROM users WHERE userId ='. $user -> id());
             $user = $query -> fetch(PDO::FETCH_ASSOC);    
             return new User ($user);

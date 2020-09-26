@@ -9,7 +9,7 @@
 ?>
 
     <a href="./index.php" class="mx-5 my-3">Nouveau projet</a>
-    <a href="./profile.php" class="mx-5 my-3">Mon Profil</a>
+    <a href="./profile.php?vip=<?echo $user['id'];?>" class="mx-5 my-3">Mon Profil</a>
     <a href="./myLetters.php" class="mx-5 my-3">Mes Lettres</a>
     <a href="./config.php" class="mx-5 my-3">Mes Paramètres</a>
     <a href="./index.php?disc=1" class="disconnect mx-5 my-3">Déconnexion</a>
