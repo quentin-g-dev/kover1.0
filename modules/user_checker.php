@@ -20,13 +20,15 @@ function checkUserPassword(){
 }
 
 function checkUserConnection($name, $hashedPassword){
-    include 'db_connect.php';
+    require './modules/db_connect.php';
+    require_once './classes/User.php';
+    require_once './classes/UsersManager.php';
     $currentUser = new User($db);
     $currentManager = new UsersManager($db);
     $currentUser -> setUserName($name);
     $currentUser -> setUserHashedPassword($hashedPassword);
     $result = $currentManager->isUserConnected($currentUser);
-    include 'db_disconnect.php';
+    require './modules/db_disconnect.php';
     return $result;
 }
 

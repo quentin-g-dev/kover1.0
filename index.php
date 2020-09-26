@@ -1,12 +1,15 @@
-<?
+<?php
+session_start();
+
+
+if(isset($_GET['disc']) && isset($_SESSION)){
+    $_SESSION=[];
+    session_destroy();
+}
 $pageTitle = 'Kover - Accueil';
+
 include './parts/head.php';
 include './parts/header.php';
-
-if(isset($_GET['disc'])){
-    $_SESSION=[];
-    session_destroy;
-}
 ?>
 
 <body>
@@ -199,7 +202,7 @@ if(isset($_GET['disc'])){
 
     </main>
 
-<? include './parts/footer.php'; ?>
+<?php include './parts/footer.php'; ?>
 <script src="./js/jquery-3.5.1.js"></script>
 
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"

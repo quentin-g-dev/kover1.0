@@ -68,19 +68,17 @@ class UsersManager {
     }
 
     public function isUserConnected (User $user){
-        $manager = new UsersManager($db);
-        if ($manager->doesUserExist($user)){
-            $request = $this -> _db -> query ('SELECT userName, userHashedPassword FROM users');
-            while ($data = $request ->fetch()){
-                if ($user->userName()=== $data['userName'] && $user->userHashedPassword()=== $data['userHashedPassword']){
-                    $result = true ;
-                } else {
-                    $result = false;
-                }
+        $result=0;
+        $request = $this -> _db -> query ('SELECT userName, userHashedPassword FROM users');
+        while ($data = $request ->fetch()){
+            if ($user->userName() === $data['userName'] && $user->userHashedPassword() === $data['userHashedPassword']){
+                $result ++;
             }
-            $data->closeCursor();
         }
-    return $result;
+        if ($result>0) {
+            return true;
+        }
+        return false;
     }
 }
 

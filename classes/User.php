@@ -36,14 +36,21 @@ class User {
             $this-> _userName = htmlspecialchars($name);
         }
     }
-    public function setUserHashedPassword($password){
-        $this-> _userHashedPassword = hash('whirlpool',htmlspecialchars($password));
+    public function setUserHashedPassword($hashedPassword){
+        $this-> _userHashedPassword = $hashedPassword;
    }
     public function setUserStatus($status){
          $this-> _userStatus = $status;
     }
     public function setUserCreationDate(string $date){
         $this-> _userCreationDate = $date;
+   }
+   public function hydrateUser($id, $name, $password, $status, $date){
+       $this -> setUserCreationDate($date);
+       $this -> setUserHashedPassword($password);
+       $this ->setUserId($id);
+       $this ->setUserName($name);
+       $this ->setUserStatus($status);
    }
 }
 

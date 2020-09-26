@@ -1,9 +1,13 @@
 <?
-
 session_start();
-if (isset ($_SESSION['userName'])){
-    if (isConnected($_SESSION['userName'])){
-        header ('index.php');
+require './modules/user_checker.php';
+if (isset ($_SESSION['user'])){
+    $user=$_SESSION['user'];
+    if (checkUserConnection($user['name'], $user["hashedPassword"])){
+        header ('Location:index.php');
+    } else {
+        session_destroy();
+        header ('Location:sign_up.php');
     }
 } else {
     if (!isset($_POST['userName']) || !isset($_POST['userPassword']) || !isset($_POST['userPasswordTwice'])){
@@ -12,18 +16,15 @@ if (isset ($_SESSION['userName'])){
         include './modules/db_connect.php';
         require './classes/User.php';
         require './classes/UsersManager.php';
-        require "./modules/user_checker.php";
 
-//ECHEC DE L'INSCRIPTION :
+    //ECHEC DE L'INSCRIPTION :
 
-        if (checkUserName(htmlspecialchars($_POST['userName']))=== false||checkUserPassword(htmlspecialchars($_POST['userPassword']))=== false||htmlspecialchars($_POST['userPassword']) !== htmlspecialchars($_POST['userPasswordTwice'])){
-            $pageTitle = 'Kover - Echec de l\'inscription';
+            if (!checkUserName(htmlspecialchars($_POST['userName']))||!checkUserPassword(htmlspecialchars($_POST['userPassword']))||htmlspecialchars($_POST['userPassword']) !== htmlspecialchars($_POST['userPasswordTwice'])){
+                $pageTitle = 'Kover - Echec de l\'inscription';
 
-            include './parts/head.php';
-            include './parts/header.php';
-            include './parts/nav_menu.php';
-
-        
+                include './parts/head.php';
+                include './parts/header.php';
+                include './parts/nav_menu.php';
 ?>
 
 <main>
@@ -36,31 +37,29 @@ if (isset ($_SESSION['userName'])){
     } else {
 
 // SUCCES DE L'INSCRIPTION :
-        
-            $pageTitle = 'Kover - Bienvenue '. htmlspecialchars($_POST['userName']);
-
-            include './parts/head.php';
-            
-            include './parts/header.php';
-
-            include './modules/db_connect.php';
-            
+                   
             $currentUser = new User($db);
             $currentManager = new UsersManager($db);
-            $currentUser->setUserName($_POST['userName']);
-            $currentUser->setUserHashedPassword($_POST['userPassword']);
+            $currentUser->setUserName(htmlspecialchars($_POST['userName']));
+            $currentUser->setUserHashedPassword(hash("whirlpool", htmlspecialchars($_POST['userPassword'])));
             $currentUser->setUserCreationDate(date('Y-m-d H:i:s'));
             $currentUser->setUserStatus('user');
-            $currentManager -> addUser ($currentUser);
-            $_SESSION['userName'] = $currentUser->userName();
-            $_SESSION['userHashedPassword'] = $currentUser->userHashedPassword();
+            $currentManager -> addUser($currentUser);
+            
+            require './modules/user_session.php';
+            setUserSession($_POST['userName'],$_POST['userPassword']);
             include './modules/db_disconnect.php';
+
+            $pageTitle = 'Kover - Bienvenue '. htmlspecialchars($_POST['userName']);
+            include './parts/head.php';
+            include './parts/header.php';
+            include './modules/db_connect.php';
             
 ?>
 
 <main class="my-5">
 
-<h2 class="text-center mb-3">
+<h2 class="text-center mb-5">
     Bienvenue <? echo $currentUser -> userName(); ?>
 </h2>
 <p class="text-center">Votre enregistrement est terminé, merci pour votre confiance.</p>

@@ -60,6 +60,17 @@ span.toEdit {
     cursor: pointer;
 }
 
+.conditions-container {
+    height: 40vh;
+}
+
+p.conditions {
+    overflow: auto;
+    z-index: -1;
+    height: 30vh;
+
+}
+
 .hidden {
     visibility: hidden;
 }

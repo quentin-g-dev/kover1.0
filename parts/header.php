@@ -1,5 +1,4 @@
-<? session_start();?>
-
+<body>
 <header class="container full-container bg-info text-white d-flex justify-content-around align-items-baseline">
         <a href="./index.php">
             <h1 class=" d-inline text-white display-4 font-weight-bold">
