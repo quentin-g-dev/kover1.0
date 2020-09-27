@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-
 if(isset($_GET['disc']) && isset($_SESSION)){
     $_SESSION=[];
     session_destroy();

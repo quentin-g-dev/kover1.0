@@ -57,8 +57,9 @@ if (isset ($_SESSION['user'])){
             
 ?>
 
-<main class="my-5">
-
+<main
+        class="container full-container d-flex flex-column p-3 mx-auto mt-3 mb-2 text-center w-100 w-lg-75 justify-content-around align-items-baseline h-100 rounded"
+        id="post_subscruption">
 <h2 class="text-center mb-5">
     Bienvenue <? echo $currentUser -> userName(); ?>
 </h2>
