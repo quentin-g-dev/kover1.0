@@ -28,6 +28,7 @@ div#userText {
 
 #getUserText {
     line-height: initial;
+    min-height: 40vh;
 }
 
 .full-container {
@@ -36,10 +37,6 @@ div#userText {
 
 .deleteSection {
     cursor: pointer;
-}
-
-.bold {
-    font-weight: bold;
 }
 
 select {
@@ -52,4 +49,23 @@ span.toEdit {
 
 .card-body {
     text-align: initial;
+}
+
+.hamburger {
+    font-size: 5rem;
+    cursor: pointer;
+}
+
+.conditions-container {
+    height: 40vh;
+}
+
+p.conditions {
+    overflow: auto;
+    z-index: -1;
+    height: 30vh;
+}
+
+.hidden {
+    visibility: hidden;
 }
