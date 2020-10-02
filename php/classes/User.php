@@ -30,18 +30,18 @@ class User {
     }
     
     //Setters
-    public function setUserId($id){
+    public function setUserId(int $id){
         $this-> _userId = $id;
     }
-    public function setUserName($name){
+    public function setUserName(string $name){
         if(isset($name) && strlen(htmlspecialchars($name))>0 && strlen(htmlspecialchars($name))<=30){
             $this-> _userName = htmlspecialchars($name);
         }
     }
-    public function setUserHashedPassword($hashedPassword){
+    public function setUserHashedPassword(string $hashedPassword){
         $this-> _userHashedPassword = $hashedPassword;
    }
-    public function setUserStatus($status){
+    public function setUserStatus(string $status){
          $this-> _userStatus = $status;
     }
     public function setUserCreationDate(string $date){
