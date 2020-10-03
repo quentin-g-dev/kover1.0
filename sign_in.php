@@ -21,8 +21,11 @@ if (isset ($vip)){
         require './php/modules/db_disconnect.php';
 
         if ($controler->checkUserConnection($newUser)){
+            $controler->hydrateUser($newUser);
+
             $controler->setUserSession($newUser);
             $controler->setUserFromSession($newUser, $_SESSION['vip']);
+
             header ("Location:./profile.php?vip=".$newUser->userId());
         } else {
             session_destroy();

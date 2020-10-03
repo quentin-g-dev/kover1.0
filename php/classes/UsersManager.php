@@ -25,7 +25,7 @@ class UsersManager {
         $query->bindValue(':userName', $user->userName(), PDO::PARAM_STR);
         $query->bindValue(':userHashedPassword', $user->userHashedPassword(), PDO::PARAM_STR);
         $query->execute();
-        $result = $query->fetchAll(PDO::FETCH_ASSOC);
+        $result = $query->fetch();
         $user->setUserStatus($result['userStatus']);
         $user->setUserId($result['userId']);
         $user->setUserCreationDate($result['userCreationDate']);
@@ -44,8 +44,8 @@ class UsersManager {
         $user-> setUserId (intval($sessionArray["userId"]));
         $user-> setUserName ($sessionArray['userName']);
         $user-> setUserHashedPassword ($sessionArray['userHashedPassword']);
-        $user-> setUserStatus (print($sessionArray['userStatus']));
-        $user-> setUserCreationDate (print($sessionArray['userCreationDate']));
+        $user-> setUserStatus ($sessionArray['userStatus']);
+        $user-> setUserCreationDate ($sessionArray['userCreationDate']);
     }
 
     public function checkUserConnection(User $user){
@@ -64,17 +64,15 @@ class UsersManager {
             $_SESSION['vip']['userHashedPassword']= $user->userHashedPassword();
             $_SESSION['vip']['userStatus']= $user->userStatus();
             $_SESSION['vip']['userCreationDate']= $user->userCreationDate();
-            return;
+            return $_SESSION['vip'];
         }
     }
 
-
-    
     public function doesUserNameAlreadyExist (User $user){
         $request = $this->_db->prepare ('SELECT userName FROM users WHERE userName=:userName');
         $request ->bindValue(':userName', $user->userName(), PDO::PARAM_STR);
         $request->execute();
-        $result=$request->fetch();
+        $result =$request->fetch();
         return isset($result["userName"]);
     }
 
