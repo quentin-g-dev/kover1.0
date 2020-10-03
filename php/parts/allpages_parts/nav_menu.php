@@ -11,7 +11,7 @@
     <a href="./profile.php?vip=<?echo $vip->userId();?>" class="mx-2 my-3">
         Mon Profil
     </a>
-    <a href="./letters.php?vip=<?echo $vip->userId();?>" class="mx-2 my-3">
+    <a href="./profile.php?vip=<?echo $vip->userId();?>&sect=letters" class="mx-2 my-3">
         Mes Lettres
     </a>
     <a href="./profile.php?vip=<?echo $vip->userId();?>&sect=param" class="mx-2 my-3">
