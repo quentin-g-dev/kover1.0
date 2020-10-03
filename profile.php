@@ -2,9 +2,9 @@
     session_start();
     
     
-    /*$user = $_SESSION["user"];
+    $user = $_SESSION["user"];
 
-    if (!isset ($_GET['vip'])||!isset($_SESSION["user"])){
+    if (!isset ($_GET['vip'])||!isset($_SESSION["vip"])){
         header('Location:index.php');
     } else {
 
@@ -33,7 +33,7 @@
 // Préparation de la page Profil //////////////////////////////////////////////////////////
                 include './modules/db_connect.php';
                 
-                $pageTitle = 'Profil de '. $currentUser->userName();*/
+                $pageTitle = 'Profil de '. $currentUser->userName();
                 include './php/parts/allpages_parts/head.php';
                 include './php/parts/allpages_parts/header.php';
                 //include './modules/db_disconnect.php';
@@ -54,7 +54,7 @@ id="home">
         </div>
 
 <?php
-/*                    if (!isset($_GET['sect'])){ 
+                    if (!isset($_GET['sect'])){ 
 
 ///Traitement du formulaire de changement de nom //////////////////////////////////////////
                         if (isset ($_POST['changeNameSubmit']) && isset ($_POST['newName']) && isset ($_POST['confirmPass'])){
@@ -76,7 +76,7 @@ id="home">
         </div>
 
 <?php
-/*                        } else {
+                        } else {
                         if($_GET['sect'] === 'letters'){  
 
                         /* MES LETTRES */
@@ -84,13 +84,13 @@ id="home">
                    
 
 <?php 
-/*                        } elseif ($_GET['sect']==='param'){
+                        } elseif ($_GET['sect']==='param'){
 
                         // GERER MON COMPTE 
                             if (!isset($_GET['opt'])){
 
                             // Gérer mon compte : affichage du sous-menu 
-*/
+
 ?>
                             
         <div class="profile-options">
@@ -103,7 +103,7 @@ id="home">
         </div>
 
 <?php 
-/*                    } else {
+                    } else {
                         if ($_GET['opt']==='change_name'){
                             
                             /* Changer le nom d'utilisateur */
@@ -112,20 +112,20 @@ id="home">
           
 
 <?php
- /*                       } elseif ($_GET['opt']==='change_password'){
+                       } elseif ($_GET['opt']==='change_password'){
 
                             // Changer le mot de passe 
 
 
                         }
                     }
-*/
+
 ?>
 
 
                     </div>
 <?php
-  //              } 
+                } 
 ?>
                 </main>
 <?php
@@ -137,12 +137,12 @@ id="home">
             </body>
 
 <?php   
-                //include './modules/db_disconnect.php';
+                include './modules/db_disconnect.php';
                 
                 
-/*               }
+               }
             }
         }
-    }*/
+    }
 ?>
 

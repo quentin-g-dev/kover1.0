@@ -7,7 +7,9 @@ include './php/modules/check_vip_session.php';
 /////////////////////////////////////////// REDIRECTION VERS INDEX.PHP SI SESSION EN COURS
 if (isset ($vip)){
     header ('Location:index.php');
+
 } else {
+    
     if (!isset($_POST['userName']) || !isset($_POST['userPassword']) || !isset($_POST['userPasswordTwice'])){
 ///////////////////////// Rechargement du formulaire d'inscription s'il est envoyé incomplet
         header ('sign_up.php');

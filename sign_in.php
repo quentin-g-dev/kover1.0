@@ -20,13 +20,13 @@ if (isset ($vip)){
         $controler->checkUserConnection($newUser);
         require './php/modules/db_disconnect.php';
 
-        return;
         if ($controler->checkUserConnection($newUser)){
             $controler->setUserSession($newUser);
-            header ("Location:profile.php");
+            $controler->setUserFromSession($newUser, $_SESSION['vip']);
+            header ("Location:./profile.php?vip=".$newUser->userId());
         } else {
             session_destroy();
-            header ("Location:profile.php");
+            header ("Location:./profile.php?vip=".$newUser->userId());
         }
     } 
 
