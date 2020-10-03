@@ -1,18 +1,14 @@
 <?
-
 class User {
-
-    //Attributes
+////////////////////////////////////////////////////////////////////////////////// Attributes
     private $_userId, $_userName, $_userHashedPassword, $_userStatus, $_db, $_userCreationDate;
 
-    //Constructor
+////////////////////////////////////////////////////////////////////////////////// Constructor
     public function __construct($db){
         $this-> _db = $db;
     }
 
-    
-
-    //Getters
+////////////////////////////////////////////////////////////////////////////////// Getters
     public function userId(){
         return $this-> _userId;
     }
@@ -29,7 +25,7 @@ class User {
         return $this-> _userCreationDate;
     }
     
-    //Setters
+////////////////////////////////////////////////////////////////////////////////////// Setters
     public function setUserId(int $id){
         $this-> _userId = $id;
     }
@@ -47,7 +43,5 @@ class User {
     public function setUserCreationDate(string $date){
         $this-> _userCreationDate = $date;
    }
-   
 }
-
 ?>

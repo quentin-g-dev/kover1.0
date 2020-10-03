@@ -1,5 +1,10 @@
-<nav class="hidden d-flex flex-row flex-wrap border-white justify-content-center align-items-center">
 
+<nav class="hidden d-flex flex-row flex-wrap border-white justify-content-center align-items-center">
+    <select name="selectLang" id="selectLang" class="selectLang">
+        <option value="ES">ESPANOL</option>
+        <option value="EN">ENGLISH</option>
+        <option value="FR">FRANCAIS</option>
+    </select>
 <?php
     if (isset ($vip)){
             // FOR CONNECTED USERS :
