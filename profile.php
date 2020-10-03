@@ -37,9 +37,9 @@ if (!isset ($_GET['vip'])||!isset($_SESSION["vip"])){
             include './php/parts/allpages_parts/header.php';
             include './php/modules/db_disconnect.php';
 
-
             if (!isset($_GET['sect'])){ 
 ////////////////////////////////////// Si aucune section spécifique du profil n'est demandée en URL
+                
                 if (isset ($_POST['changeNameSubmit']) && isset ($_POST['newName']) && isset ($_POST['confirmPass'])){
 ////////////////////////////////////////Si le formulaire de changement de nom est envoyé : traitement
                     if(hash('whirlpool', htmlspecialchars($_POST['confirmPass'])) === $vip->userHashedPassword()){
@@ -49,12 +49,30 @@ if (!isset ($_GET['vip'])||!isset($_SESSION["vip"])){
                             $manager->updateUser($vip);
                             $manager->setUserSession($vip);
                             require './php/modules/db_disconnect.php';
-                            echo 'Vos données ont été mises à jour !';
+                            echo 'Votre nom d\'utilisateur a été mis à jour !';
                         } else {
                             echo 'Le changement de nom est impossible';
                         }
                     }
                 }
+
+                if (isset ($_POST['changePassSubmit']) && isset ($_POST['newPass']) && isset ($_POST['confirmPass'])){
+//////////////////////////////Si le formulaire de changement de mot de passe est envoyé : traitement
+                    if(hash('whirlpool', htmlspecialchars($_POST['confirmPass'])) === $vip->userHashedPassword()){
+                        require './php/modules/db_connect.php';
+                        $vip->setUserHashedPassword(hash('whirlpool', htmlspecialchars($_POST['newPass'])));
+                        $manager->updateUser($vip);
+                        $manager->setUserSession($vip);
+                        require './php/modules/db_disconnect.php';
+                        echo 'Votre mot de passe a été mis à jour !';
+                    } else {
+                        echo "Echec du changement de mot de passe";
+
+                    }
+                }
+
+               
+
 ?>
 <main
 class="container  full-container d-flex flex-column p-3 mx-auto mt-3 mb-2 text-center  justify-content-around align-items-center h-100 rounded"
