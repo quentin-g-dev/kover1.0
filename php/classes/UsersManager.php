@@ -2,10 +2,10 @@
 
 class UsersManager {
 
-    //Attributes
+///////////////////////////////////////////////////////////////////////// ATTRIBUTES
     private $_db;
 
-    //Constructor
+////////////////////////////////////////////////////////////////////////  CONSTRUCTOR
     public function __construct($db){
         $this-> _db = $db;
     }
@@ -69,7 +69,7 @@ class UsersManager {
         $this -> _db -> exec('DELETE FROM users WHERE userId = '.$user ->id());
     }
 
-////////////////////////////////////////////////////////////////////// NOT-CRUD FUNCTIONS
+////////////////////////////////////////////////////////////////////// NO-CRUD FUNCTIONS
 
     public function setUserSession(User $user){
         if ($this->checkUserConnection($user)){
