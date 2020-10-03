@@ -1,15 +1,15 @@
 <?php
     session_start();
-   /* if (isset ($_SESSION['user'])){
-        require './modules/user_checker.php';
-        $user = $_SESSION['user'];
-        if (checkUserConnection($user["name"],$user["hashedPassword"])) {
-            header('Location:index.php');
-        } else {
-            session_destroy();
-            header ('Location:sign_up.php');
-        }
-     } else {*/
+
+/////////////////////////////////////////// REDIRECTION VERS INDEX.PHP SI SESSION EN COURS
+if (isset ($vip)){
+    header ('Location:index.php');
+} else {
+    if (!isset($_POST['userName']) || !isset($_POST['userPassword']) || !isset($_POST['userPasswordTwice'])){
+///////////////////////// Rechargement du formulaire d'inscription s'il est envoyé incomplet
+        header ('sign_up.php');
+        
+    } else {
             $pageTitle = 'Kover - Inscription';
 
             include './php/parts/allpages_parts/head.php';
@@ -34,7 +34,8 @@
 
 
 <?php
-        //}
+    }
+}
     
 
 

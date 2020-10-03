@@ -66,10 +66,7 @@ class UsersManager {
         $query -> bindValue(':userHashedPassword', $user->userHashedPassword(), PDO::PARAM_STR);
         $query-> execute();
         $result = $query->fetch();  
-        if ( $user->userName() == $result['userHashedPassword']){
-            return true;
-        }
-        die ("utilisateur non reconnu");
+        echo isset($result["userName"]);
     }
 
     public function doesUserNameAlreadyExist (User $user){

@@ -40,6 +40,7 @@ if (isset ($vip)){
             $vip->setUserCreationDate(date('Y-m-d H:i:s'));
             $vip->setUserStatus('user');
             $vipManager -> addUser($vip);
+            $vipManager -> setUserSession($vip);
             include './php/modules/db_disconnect.php';
 
             $pageTitle = 'Kover - Bienvenue '. $vip->userName();

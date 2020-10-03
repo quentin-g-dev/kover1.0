@@ -1,48 +1,57 @@
 <?php
 session_start();
-require './modules/user_checker.php';
 
-if (isset($_POST['signInSubmit'])&& isset($_POST['signInName']) && isset($_POST['signInPass'])){
-    
-    if (checkUserConnection(htmlspecialchars($_POST['signInName']), hash('whirlpool', htmlspecialchars($_POST['signInPass'])))){
-        require './modules/user_session.php';
-        setUserSession($_POST['signInName'],$_POST['signInPass']);
-        header ("Location:profile.php");
-    } else {
-        session_destroy();
-        header ("Location:profile.php");
-    }
-} 
+/////////////////////////////////////////// VERIFICATION DE SESSION EN COURS EVENTUELLE
+include './php/modules/check_vip_session.php';
 
-if (isset ($_SESSION['user'])){
-    $user = $_SESSION['user'];
-    if (checkUserConnection($user['name'], $user['hashedPassword'])){
-        header ('Location:index.php');
-    } else {
-        session_destroy();
-        header ('Location:sign_in.php');
-    }
+/////////////////////////////////////////// REDIRECTION VERS INDEX.PHP SI SESSION EN COURS
+if (isset ($vip)){
+    header ('Location:index.php');
 } else {
 
-$pageTitle = 'Kover - Connexion';
+    if (isset($_POST['signInSubmit'])&& isset($_POST['signInName']) && isset($_POST['signInPass'])){
+        require './php/modules/db_connect.php';
+        require './php/classes/User.php';
+        require './php/classes/UsersManager.php';
+        $newUser = new User ($db);
+        $controler = new UsersManager ($db);
+        $newUser->setUserName(htmlspecialchars(($_POST['signInName'])));
+        $newUser->setUserHashedPassword(hash('whirlpool',htmlspecialchars($_POST['signInPass'])));
+        $controler->checkUserConnection($newUser);
+        require './php/modules/db_disconnect.php';
 
-include './parts/head.php';
+        return;
+        if ($controler->checkUserConnection($newUser)){
+            $controler->setUserSession($newUser);
+            header ("Location:profile.php");
+        } else {
+            session_destroy();
+            header ("Location:profile.php");
+        }
+    } 
 
-include './parts/header.php';
+    $pageTitle = 'Kover - Connexion';
 
-include './parts/connection_form.php';
+    include './php/parts/allpages_parts/head.php';
 
-include './parts/footer.php'; 
+    include './php/parts/allpages_parts/header.php';
+
+    include './php/parts/forms/connection_form.php';
+
+    include './php/parts/allpages_parts/footer.php'; 
 
 ?>
 
-<script src="./js/jquery-3.5.1.js"></script>
-<script src="./js/bootstrap.min.js"></script>
-<script src="./js/sign_in.js"></script>
-<script src="./js/nav_menu.js"></script>
+<script src="./assets/js/jquery-3.5.1.js"></script>
+<script src="./assets/js/bootstrap.min.js"></script>
+<script src="./assets/js/sign_in.js"></script>
+<script src="./assets/js/nav_menu.js"></script>
         
 </body>
 
 </html>
 <?php
-}?>
+        
+    
+}
+?>
