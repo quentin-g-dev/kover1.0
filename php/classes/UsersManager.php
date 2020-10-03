@@ -10,16 +10,17 @@ class UsersManager {
         $this-> _db = $db;
     }
 
-    //Méthodes de gestion des utilisateurs
+////////////////////////////////////////////////////////////////////CRUD FUNCTIONS
+////////////////////////////////////////////////////////////////////CRUD : CREATE
     public function addUser (User $user){
         $query = $this -> _db -> prepare('INSERT INTO users (userName, userHashedPassword, userStatus, userCreationDate) VALUES (:userName, :userHashedPassword, :userStatus, :userCreationDate)');
         $query -> bindValue(':userName', $user-> userName());
         $query -> bindValue(':userHashedPassword', $user-> userHashedPassword());
-        $query -> bindValue(':userStatus', $user-> userStatus());
         $query -> bindValue(':userCreationDate', $user-> userCreationDate());
         $query -> execute();
     }
 
+//////////////////////////////////////////////////////////////////// CRUD : READ
     public function hydrateUser($user){
         $query=$this->_db->prepare('SELECT * FROM users WHERE userName=:userName AND userHashedPassword=:userHashedPassword');
         $query->bindValue(':userName', $user->userName(), PDO::PARAM_STR);
@@ -36,18 +37,6 @@ class UsersManager {
         return $this -> _db -> query ('SELECT COUNT(*) FROM users') -> fetchColumn();
     }
 
-    public function deleteUser (User $user){
-        $this -> _db -> exec('DELETE FROM users WHERE userId = '.$user ->id());
-    }
-
-    public function setUserFromSession (User $user, array $sessionArray) {
-        $user-> setUserId (intval($sessionArray["userId"]));
-        $user-> setUserName ($sessionArray['userName']);
-        $user-> setUserHashedPassword ($sessionArray['userHashedPassword']);
-        $user-> setUserStatus ($sessionArray['userStatus']);
-        $user-> setUserCreationDate ($sessionArray['userCreationDate']);
-    }
-
     public function checkUserConnection(User $user){
         $query = $this->_db->prepare('SELECT userName, userHashedPassword FROM users WHERE userName=:userName AND userHashedPassword=:userHashedPassword');
         $query -> bindValue(':userName', $user->userName(), PDO::PARAM_STR);
@@ -56,6 +45,31 @@ class UsersManager {
         $result = $query->fetch();  
         return isset($result["userName"]);
     }
+
+    public function doesUserNameAlreadyExist (string $userName){
+        $request = $this->_db->prepare ('SELECT userName FROM users WHERE userName=:userName');
+        $request ->bindValue(':userName', $userName, PDO::PARAM_STR);
+        $request->execute();
+        $result =$request->fetch();
+        return isset($result["userName"]);
+    }
+
+////////////////////////////////////////////////////////////////////CRUD : UPDATE
+
+    public function updateUser(User $user) {
+        $query = $this->_db-> prepare('UPDATE users SET userName=:userName, userHashedPassword=:userHashedPassword WHERE userId=:userId');
+        $query->bindValue(':userName', $user->userName());
+        $query -> bindValue(':userHashedPassword', $user-> userHashedPassword());
+        $query -> bindValue(':userId', $user-> userId());
+        $query->execute();
+    }
+//////////////////////////////////////////////////////////////////// CRUD : DELETE
+
+    public function deleteUser (User $user){
+        $this -> _db -> exec('DELETE FROM users WHERE userId = '.$user ->id());
+    }
+
+////////////////////////////////////////////////////////////////////// NOT-CRUD FUNCTIONS
 
     public function setUserSession(User $user){
         if ($this->checkUserConnection($user)){
@@ -68,12 +82,12 @@ class UsersManager {
         }
     }
 
-    public function doesUserNameAlreadyExist (User $user){
-        $request = $this->_db->prepare ('SELECT userName FROM users WHERE userName=:userName');
-        $request ->bindValue(':userName', $user->userName(), PDO::PARAM_STR);
-        $request->execute();
-        $result =$request->fetch();
-        return isset($result["userName"]);
+    public function setUserFromSession (User $user, array $sessionArray) {
+        $user-> setUserId (intval($sessionArray["userId"]));
+        $user-> setUserName ($sessionArray['userName']);
+        $user-> setUserHashedPassword ($sessionArray['userHashedPassword']);
+        $user-> setUserStatus ($sessionArray['userStatus']);
+        $user-> setUserCreationDate ($sessionArray['userCreationDate']);
     }
 
 }
