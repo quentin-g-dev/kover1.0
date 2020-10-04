@@ -1,7 +1,8 @@
 <?php
 
-session_start();
+session_start();?>
 
+<?
 /////////////////////////////////////////////////////////////// SI DECONNEXION DEMANDEE
 if(isset($_GET['disc']) && isset($_SESSION)){
     $_SESSION=null;
@@ -21,10 +22,7 @@ include './php/parts/allpages_parts/header.php';
 ?>
 
     <body>
-<?php
-    echo $_SESSION['vip']['langCode'];
 
-?>
 
         <!-- kover_steps -->
 <?php

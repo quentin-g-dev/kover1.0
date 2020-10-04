@@ -46,7 +46,7 @@ class User {
     public function setUserCreationDate(string $date){
         $this-> _userCreationDate = $date;
     }
-    public function setUserLangCode(string $langCode){
+    public function setLangCode(string $langCode){
         $this-> _userLangCode = $langCode;
     }
 }

@@ -1,8 +1,8 @@
 <?php
 session_start();
-
 /////////////////////////////////////////// VERIFICATION DE SESSION EN COURS EVENTUELLE
 include './php/modules/check_vip_session.php';
+echo $_SESSION['langCode'];
 
 /////////////////////////////////////////// REDIRECTION VERS INDEX.PHP SI SESSION EN COURS
 if (isset ($vip)){

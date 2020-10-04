@@ -37,10 +37,15 @@ let translations = [
         english: "Disconnect",
         spanish: "Disconnecto"
     },
+    {
+        french: "Langue",
+        english: "Language",
+        spanish: "Lengua"
+    },
 
     /*************************************** INDEX.PHP ************************************/
 
-    ///////////////////////////   START STEP /////////////////////////////////////////////
+    ///////////////////////////   START STEP //////////////
     {
         french: "Votre lettre de motivation pourrait toucher plusieurs cibles&nbsp;?",
         english: "Could your cover letter target more than one recruiter&nbsp;?",
@@ -62,7 +67,7 @@ let translations = [
         spanish: "START"
     },
 
-    ///////////////////////////   CHOICE STEP /////////////////////////////////////////////
+    ///////////////////////////   CHOICE STEP //////////////
     {
         french: "Sélectionnez une option",
         english: "Select an option",
@@ -79,7 +84,7 @@ let translations = [
         spanish: "ES text"
     },
 
-    /////////////////////////// TEXT EDIT STEP /////////////////////////////////////////////
+    /////////////////////////// TEXT EDIT STEP ///////////////
     {
         french: "Saisir/coller un texte",
         english: "Type/paste a text",
@@ -126,7 +131,7 @@ let translations = [
         spanish: "<span class=\"font-weight-bold\"><u>S</u></span>"
     },
 
-    /////////////////////////// SELECTION STEP /////////////////////////////////////////////
+    /////////////////////////// SELECTION STEP ////////////
     {
         french: "Choisissez les éléments à adapter",
         english: "Choose which elements you want to adapt",
@@ -153,7 +158,7 @@ let translations = [
         spanish: "es?"
     },
 
-    /////////////////////////// HOW MANY STEP /////////////////////////////////////////////
+    /////////////////////////// HOW MANY STEP ///////////////
     {
         french: "Combien de versions différentes souhaitez-vous générer ?",
         english: "How many new versions do you want to create ?",
@@ -165,7 +170,7 @@ let translations = [
         spanish: "( max. 5 )"
     },
 
-    /////////////////////////// SET VERSIONS STEP /////////////////////////////////////////////
+    /////////////////////////// SET VERSIONS STEP ///////////
     {
         french: "Adaptez",
         english: "Set",
@@ -182,7 +187,7 @@ let translations = [
         english: "Original version",
         spanish: "Version Original"
     },
-    /////////////////////////// FINAL STEP /////////////////////////////////////////////
+    /////////////////////////// FINAL STEP //////////////////
     {
         french: "Terminé !",
         english: "Done !",

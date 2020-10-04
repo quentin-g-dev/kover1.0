@@ -1,46 +1,15 @@
-var langCode;
-
-function getSessionLang() {
-
-    var xmlhttp = new XMLHttpRequest();
-    xmlhttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-            langCode = this.responseText;
-        }
-    };
-    xmlhttp.open("GET", "./ajax/session_lang.php?getlangCode=1", true);
-    xmlhttp.send();
-    console.log("get");
-    console.log(langCode);
-    console.log(this.responseText);
-    return langCode;
-}
-
-langCode = getSessionLang();
-//langCode = ajaxFunction(){//Get $_SESSION['lang'];}
-
-function cleanString(str) {
-    let strArr = str.split('');
-    for (i in strArr) {
-        if (strArr[i] === ' ') {
-            strArr[i] === '';
-        }
-    }
-    return strArr.join('');
-}
-
 // Avalaible for langCode : 'EN', 'FR'(default), 'ES'
 
-function translate(langCode) {
+function translateTo(langCode) {
     var elements = document.querySelectorAll('html *');
+
     for (let i = 0; i < elements.length; i++) {
+
         if (elements[i].innerHTML != "" && elements[i].innerHTML != " ") {
             let elementToTest = elements[i].innerHTML;
+
             for (let j = 0; j < translations.length; j++) {
-
-                /*if (cleanString(elementToTest) === cleanString(translations[j].french) || elementToTest === translations[j].english || elementToTest === translations[j].spanish) {*/
                 if (elementToTest.trim() === translations[j].french.trim() || elementToTest.trim() === translations[j].english.trim() || elementToTest.trim() === translations[j].spanish.trim()) {
-
                     switch (langCode) {
                         case 'EN':
                             elements[i].innerHTML = translations[j].english;
@@ -61,27 +30,37 @@ function translate(langCode) {
     }
 }
 
-
-
-function setSessionLang(langCode) {
-
+function getSessionLang() {
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            langCode = this.responseText;
+            console.log('lang to mermorize is :', this.responseText);
+            return this.response;
         }
     };
-    xmlhttp.open("GET", "./ajax/session_lang.php?setlangCode=" + langCode, true);
-    xmlhttp.send();
-    console.log("set");
-    console.log(this.responseText);
+    xmlhttp.open("GET", "./ajax/session_lang.php?whichlang=1", true);
+    xmlhttp.send("whichlang=1");
 }
 
 
-translate(document.querySelector(".selectLang").value);
+function setSessionLang(url, langCode) {
+    var call = new XMLHttpRequest();
+    call.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            console.log('session lang set to :', this.responseText);
+        }
+    };
+    call.open('GET', url, true);
+    call.send("lang=" + langCode);
+}
 
+//////////////////////////////////////////////////////////// EXECUTION
+var lang = document.querySelector('#langInput').value;
+translateTo(lang);
 document.querySelector(".selectLang").addEventListener("change", function () {
-    langCode = document.querySelector(".selectLang").value;
-    translate(langCode);
-    setSessionLang(langCode);
+    lang = document.querySelector(".selectLang").value;
+    console.log(lang);
+    translateTo(lang);
+    setSessionLang("./ajax/session_lang.php?lang=" + lang + "", lang);
+    getSessionLang();
 });

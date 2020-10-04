@@ -1,17 +1,33 @@
 <?php
+    session_start();
 
-    if (isset($_GET['setLangCode'])){
-        $_SESSION['langCode'] = $_GET['setLangCode'];
-        if (isset($_SESSION['vip'])){
-            $_SESSION['vip']['langCode'] = $_GET['setLangCode'];
-        }
+ ///////////////////////////////////////////////////////////////////////// getLangCode
+ if(isset($_GET['whichlang'])){
+    if(isset($_SESSION['langCode'])){
+        $code = $_SESSION['langCode'];
+        echo $code;
+        return $code;
+        
+    } else {
+        $_SESSION['langCode'] = 'FR';
+        $code = $_SESSION['langCode'];
+        echo $code;
+        return $code;
     }
+}
 
-    if (isset($_GET['getLangCode'])){
+
+//////////////////////////////////////////////////////////////////////// setLangCode
+
+    if(isset($_GET['lang'])){
+        $lang=$_GET['lang'];
+        $_SESSION['langCode'] = $lang;
         if (isset($_SESSION['vip'])){
-            $_SESSION['langCode'] = $_SESSION['vip']['langCode'];
+            $_SESSION['vip']['langCode'] = $lang;
         }
+        $code = $_SESSION['langCode'];
+        echo $code;
+        return $code;
     }
-
-
+   
 ?>
