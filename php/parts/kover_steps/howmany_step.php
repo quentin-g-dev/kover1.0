@@ -4,7 +4,7 @@
         id="howMany">
     <h2 class="text-info mx-auto  my-3 font-weight-bold">
         <span class="text-info p-1  w-3" data-to-step="choice">&larr;</span>
-        Combien de versions différentes souhaitez-vous générer ?
+        <span>Combien de versions différentes souhaitez-vous générer ?</span>
     </h2>
     <p>
         <span class="text-info">( maximum 5 )</span>

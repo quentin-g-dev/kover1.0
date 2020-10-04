@@ -13,10 +13,11 @@ class UsersManager {
 ////////////////////////////////////////////////////////////////////CRUD FUNCTIONS
 ////////////////////////////////////////////////////////////////////CRUD : CREATE
     public function addUser (User $user){
-        $query = $this -> _db -> prepare('INSERT INTO users (userName, userHashedPassword, userStatus, userCreationDate) VALUES (:userName, :userHashedPassword, :userStatus, :userCreationDate)');
+        $query = $this -> _db -> prepare('INSERT INTO users (userName, userHashedPassword, userStatus, userCreationDate, userLangCode) VALUES (:userName, :userHashedPassword, :userStatus, :userCreationDate, :userLangCode)');
         $query -> bindValue(':userName', $user-> userName());
         $query -> bindValue(':userHashedPassword', $user-> userHashedPassword());
         $query -> bindValue(':userCreationDate', $user-> userCreationDate());
+        $query -> bindValue(':userLangCode', $user-> userLangCode());
         $query -> execute();
     }
 
@@ -57,10 +58,11 @@ class UsersManager {
 ////////////////////////////////////////////////////////////////////CRUD : UPDATE
 
     public function updateUser(User $user) {
-        $query = $this->_db-> prepare('UPDATE users SET userName=:userName, userHashedPassword=:userHashedPassword WHERE userId=:userId');
+        $query = $this->_db-> prepare('UPDATE users SET userName=:userName, userHashedPassword=:userHashedPassword, userLangCode=:userLangCode WHERE userId=:userId');
         $query->bindValue(':userName', $user->userName());
         $query -> bindValue(':userHashedPassword', $user-> userHashedPassword());
         $query -> bindValue(':userId', $user-> userId());
+        $query -> bindValue(':userLangCode', $user-> userLangCode());
         $query->execute();
     }
 //////////////////////////////////////////////////////////////////// CRUD : DELETE
@@ -78,6 +80,7 @@ class UsersManager {
             $_SESSION['vip']['userHashedPassword']= $user->userHashedPassword();
             $_SESSION['vip']['userStatus']= $user->userStatus();
             $_SESSION['vip']['userCreationDate']= $user->userCreationDate();
+            $_SESSION['vip']['langCode']= $user->userLangCode();
             return $_SESSION['vip'];
         }
     }
@@ -88,6 +91,11 @@ class UsersManager {
         $user-> setUserHashedPassword ($sessionArray['userHashedPassword']);
         $user-> setUserStatus ($sessionArray['userStatus']);
         $user-> setUserCreationDate ($sessionArray['userCreationDate']);
+        if (isset($sessionArray['langCode'])){        
+            $user-> setLangCode ($sessionArray['langCode']);
+        } else {
+            $user-> setLangCode ('FR');
+        }
     }
 
 }

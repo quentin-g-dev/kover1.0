@@ -2,6 +2,10 @@
 
 session_start();
 
+if(isset($_COOKIE['LangCookie'])){
+    car_dump($_COOKIE['LangCookie']);
+}
+
 /////////////////////////////////////////// VERIFICATION DE SESSION EN COURS EVENTUELLE
 include './php/modules/check_vip_session.php';
 
@@ -82,9 +86,10 @@ id="home">
         <h2><a href="./profile.php?vip=<?php echo $vip->userId();?>"><?echo $vip->userName();?></a></h2>
         <div class="profile-top">
             <div class="border mw-75 mb-5">
-            Inscrit(e) depuis le <?php echo $vip->userCreationDate();?>
-            <br>
-            Statut : <?php echo $vip->userStatus();?>
+                <span>Inscrit(e) depuis le </span> <?php echo $vip->userCreationDate();?>
+                <br>
+                <span>Statut : </span><?php echo $vip->userStatus();?>
+                <span>Langue : </span><?php var_dump ($_SESSION['vip']['langCode']);?>
             </div>
         </div>
 <!------------------------------------------------------------------------- MENU DU PROFIL -->
@@ -147,6 +152,8 @@ id="home">
                 <script src="./assets/js/jquery-3.5.1.js"></script>
                 <script src="./assets/js/bootstrap.min.js"></script>
                 <script src="./assets/js/nav_menu.js"></script>
+                <script src="./assets/js/translations.js"></script>
+                <script src="./assets/js/languages.js"></script>
             </body>
 
 <?php   

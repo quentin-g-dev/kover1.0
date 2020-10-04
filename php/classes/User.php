@@ -1,7 +1,7 @@
 <?
 class User {
 ////////////////////////////////////////////////////////////////////////////////// Attributes
-    private $_userId, $_userName, $_userHashedPassword, $_userStatus, $_db, $_userCreationDate;
+    private $_userId, $_userName, $_userHashedPassword, $_userStatus, $_db, $_userCreationDate, $_userLangCode;
 
 ////////////////////////////////////////////////////////////////////////////////// Constructor
     public function __construct($db){
@@ -24,6 +24,9 @@ class User {
     public function userCreationDate(){
         return $this-> _userCreationDate;
     }
+    public function userLangCode(){
+        return $this-> _userLangCode;
+    }
     
 ////////////////////////////////////////////////////////////////////////////////////// Setters
     public function setUserId(int $id){
@@ -36,12 +39,15 @@ class User {
     }
     public function setUserHashedPassword(string $hashedPassword){
         $this-> _userHashedPassword = $hashedPassword;
-   }
+    }
     public function setUserStatus(string $status){
          $this-> _userStatus = $status;
     }
     public function setUserCreationDate(string $date){
         $this-> _userCreationDate = $date;
-   }
+    }
+    public function setLangCode(string $langCode){
+        $this-> _userLangCode = $langCode;
+    }
 }
 ?>

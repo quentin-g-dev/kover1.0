@@ -1,10 +1,12 @@
 
 <nav class="hidden d-flex flex-row flex-wrap border-white justify-content-center align-items-center">
     <select name="selectLang" id="selectLang" class="selectLang">
+        <option value="">Langue</option>
+        <option value="FR">FRANCAIS</option>
         <option value="ES">ESPANOL</option>
         <option value="EN">ENGLISH</option>
-        <option value="FR">FRANCAIS</option>
     </select>
+    <input type="hidden" name="langInput" id="langInput" value="<?php echo $_SESSION['langCode'];?>">
 <?php
     if (isset ($vip)){
             // FOR CONNECTED USERS :

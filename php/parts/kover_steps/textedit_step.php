@@ -4,7 +4,7 @@
     id="textarea">
     <h2 class="text-info mx-auto  my-3 font-weight-bold">
         <span class="text-info p-1  w-3" data-to-step="choice">&larr;</span>
-        Saisir/coller un texte
+        <span>Saisir/coller un texte</span>
     </h2>
     <!--Outils d'édition de texte-->
     <div
