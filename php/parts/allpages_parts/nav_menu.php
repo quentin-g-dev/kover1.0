@@ -1,7 +1,7 @@
 
 <nav class="hidden d-flex flex-row flex-wrap border-white justify-content-center align-items-center">
     <select name="selectLang" id="selectLang" class="selectLang">
-        <option value="">Langue</option>
+        <option value=""><?echo $_SESSION['langCode']?></option>
         <option value="FR">Français</option>
         <option value="ES">Espagnol</option>
         <option value="EN">Anglais</option>
