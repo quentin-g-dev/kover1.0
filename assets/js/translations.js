@@ -42,6 +42,21 @@ let translations = [
         english: "Language",
         spanish: "Lengua"
     },
+    {
+        french: "Français",
+        english: "French",
+        spanish: "Frances"
+    },
+    {
+        french: "Espagnol",
+        english: "Spanish",
+        spanish: "Español"
+    },
+    {
+        french: "Anglais",
+        english: "English",
+        spanish: "Ingles"
+    },
 
     /*************************************** INDEX.PHP ************************************/
 
