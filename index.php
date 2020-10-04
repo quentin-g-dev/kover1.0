@@ -21,6 +21,11 @@ include './php/parts/allpages_parts/header.php';
 ?>
 
     <body>
+<?php
+    echo $_SESSION['vip']['langCode'];
+
+?>
+
         <!-- kover_steps -->
 <?php
 

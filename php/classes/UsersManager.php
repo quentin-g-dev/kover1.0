@@ -78,6 +78,7 @@ class UsersManager {
             $_SESSION['vip']['userHashedPassword']= $user->userHashedPassword();
             $_SESSION['vip']['userStatus']= $user->userStatus();
             $_SESSION['vip']['userCreationDate']= $user->userCreationDate();
+            $_SESSION['vip']['langCode']= $user->userLangCode();
             return $_SESSION['vip'];
         }
     }
@@ -88,6 +89,11 @@ class UsersManager {
         $user-> setUserHashedPassword ($sessionArray['userHashedPassword']);
         $user-> setUserStatus ($sessionArray['userStatus']);
         $user-> setUserCreationDate ($sessionArray['userCreationDate']);
+        if (isset($sessionArray['langCode'])){        
+            $user-> setUserLangCode ($sessionArray['langCode']);
+        } else {
+            $user-> setUserLangCode ('EN');
+        }
     }
 
 }

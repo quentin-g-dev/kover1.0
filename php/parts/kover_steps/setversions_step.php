@@ -4,8 +4,8 @@
     id="edition">
     <h2 class="text-info mx-auto  my-3 font-weight-bold" id="lastTitle">
         <span class="text-info p-1  w-3" data-to-step="choice">&larr;</span>
-        Adaptez <span id="numberOfVersions"></span>
-        nouvelles versions
+        <span>Adaptez</span> <span id="numberOfVersions"></span>
+        <span>nouvelle(s) version(s)</span>
     </h2>
     <div class="w-100 d-flex flex-column  justify-content-center align-items-center">
         <div id="letterVersions" class="d-flex flex-column flex-wrap w-100 w-lg-75 mx-auto my-3">

@@ -4,7 +4,7 @@
     id="done">
     <h2 class="text-info mx-auto  my-3 font-weight-bold">
         <span class="text-info p-1  w-3" data-to-step="choice">&larr;</span>
-        Terminé !
+        <span>Terminé !</span>
     </h2>
 
 </main>

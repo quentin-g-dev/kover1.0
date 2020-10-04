@@ -45,11 +45,10 @@ if (isset ($vip)){
             $vipManager -> setUserSession($vip);
             include './php/modules/db_disconnect.php';
 
-            $pageTitle = 'Kover - Bienvenue '. $vip->userName();
+            $pageTitle = 'Kover - '. $vip->userName();
             include './php/parts/allpages_parts/head.php';
             include './php/parts/allpages_parts/header.php';
             include './php/parts/subscription/subscription_success.php';
-            //include './modules/db_connect.php';
 ?>
 
 
@@ -62,8 +61,10 @@ if (isset ($vip)){
 <script src="./assets/js/jquery-3.5.1.js"></script>
 <script src="./assets/js/bootstrap.min.js"></script>
 <script src="./assets/js/nav_menu.js"></script>
+<script src="./assets/js/translations.js"></script>
+<script src="./assets/js/languages.js"></script>
 
-        
+ 
 </body>
 
 </html>

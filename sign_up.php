@@ -25,6 +25,8 @@ if (isset ($vip)){
         <script src="./assets/js/bootstrap.min.js"></script>
         <script src="./assets/js/sign_up.js"></script>
         <script src="./assets/js/nav_menu.js"></script>
+        <script src="./assets/js/translations.js"></script>
+        <script src="./assets/js/languages.js"></script>
         
     </body>
 

@@ -8,7 +8,7 @@
         <p class="border-info text-info m-auto p-2 h3 rounded font-weight-bold mr-4">Votre lettre de motivation pourrait toucher plusieurs cibles&nbsp;?</p>
         <p class="text-dark h4 my-5 mx-4 mx-lg-auto mxtext-center">
             <span class="font-weight-bold">Adaptez votre texte à vos différents destinataires</span><br>
-            et exportez-le au format DOC ou PDF.
+            <span>et exportez-le au format DOC ou PDF.</span>
         </p>
     </div>
     <button class="btn btn-info w-50 h-100 rounded mx-auto mt-4 h1" id="startButton">

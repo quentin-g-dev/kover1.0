@@ -1,5 +1,22 @@
 var langCode;
 
+function getSessionLang() {
+
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            langCode = this.responseText;
+        }
+    };
+    xmlhttp.open("GET", "./ajax/session_lang.php?getlangCode=1", true);
+    xmlhttp.send();
+    console.log("get");
+    console.log(langCode);
+    console.log(this.responseText);
+    return langCode;
+}
+
+langCode = getSessionLang();
 //langCode = ajaxFunction(){//Get $_SESSION['lang'];}
 
 function cleanString(str) {
@@ -22,7 +39,7 @@ function translate(langCode) {
             for (let j = 0; j < translations.length; j++) {
 
                 /*if (cleanString(elementToTest) === cleanString(translations[j].french) || elementToTest === translations[j].english || elementToTest === translations[j].spanish) {*/
-                if (elementToTest.trim() === translations[j].french.trim() || elementToTest === translations[j].english || elementToTest === translations[j].spanish) {
+                if (elementToTest.trim() === translations[j].french.trim() || elementToTest.trim() === translations[j].english.trim() || elementToTest.trim() === translations[j].spanish.trim()) {
 
                     switch (langCode) {
                         case 'EN':
@@ -44,11 +61,27 @@ function translate(langCode) {
     }
 }
 
+
+
+function setSessionLang(langCode) {
+
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            langCode = this.responseText;
+        }
+    };
+    xmlhttp.open("GET", "./ajax/session_lang.php?setlangCode=" + langCode, true);
+    xmlhttp.send();
+    console.log("set");
+    console.log(this.responseText);
+}
+
+
 translate(document.querySelector(".selectLang").value);
 
 document.querySelector(".selectLang").addEventListener("change", function () {
     langCode = document.querySelector(".selectLang").value;
     translate(langCode);
-    //ajaxFunction(){//Set $_SESSION['lang'] => langCode;}
-
+    setSessionLang(langCode);
 });

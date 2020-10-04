@@ -1,7 +1,6 @@
 <?php
 
 if (isset($_SESSION['vip'])){
-    $_SESSION['vip'];
 
     //Connexion à la BDD
     include './php/modules/db_connect.php';
