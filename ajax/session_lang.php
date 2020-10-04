@@ -3,17 +3,10 @@
 
  ///////////////////////////////////////////////////////////////////////// getLangCode
  if(isset($_GET['whichlang'])){
-    if(isset($_SESSION['langCode'])){
         $code = $_SESSION['langCode'];
         echo $code;
         return $code;
-        
-    } else {
-        $_SESSION['langCode'] = 'FR';
-        $code = $_SESSION['langCode'];
-        echo $code;
-        return $code;
-    }
+    
 }
 
 

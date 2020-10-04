@@ -6,7 +6,7 @@
         <option value="ES">ESPANOL</option>
         <option value="EN">ENGLISH</option>
     </select>
-    <input type="hidden" name="langInput" id="langInput" value="<?php $_SESSION['langCode'];?>">
+    <input type="hidden" name="langInput" id="langInput" value="<?php echo $_SESSION['langCode'];?>">
 <?php
     if (isset ($vip)){
             // FOR CONNECTED USERS :
