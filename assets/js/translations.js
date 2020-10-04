@@ -5,17 +5,17 @@ let translations = [
 
         french: "Nouveau projet",
         english: "New project",
-        spanish: "Nueva propuesta"
+        spanish: "Nuevo proyecto"
     },
     {
         french: "Connexion",
         english: "Connection",
-        spanish: "Connexion"
+        spanish: "Conexión"
     },
     {
         french: "Inscription",
-        english: "Subscription",
-        spanish: "Inscription"
+        english: "Registration",
+        spanish: "Inscribirme"
     },
     {
         french: "Mon Profil",
@@ -25,17 +25,17 @@ let translations = [
     {
         french: "Mes Lettres",
         english: "My Letters",
-        spanish: "Mis Letras"
+        spanish: "Mis Cartas"
     },
     {
         french: "Mes Paramètres",
-        english: "My Configuration",
-        spanish: "Mis Parametros"
+        english: "My Settings",
+        spanish: "Mi Configuración "
     },
     {
         french: "Déconnexion",
-        english: "Disconnect",
-        spanish: "Disconnecto"
+        english: "Disconnection",
+        spanish: "Desconectarme"
     },
     {
         french: "Langue",
@@ -47,58 +47,58 @@ let translations = [
 
     ///////////////////////////   START STEP //////////////
     {
-        french: "Votre lettre de motivation pourrait toucher plusieurs cibles&nbsp;?",
-        english: "Could your cover letter target more than one recruiter&nbsp;?",
-        spanish: "Si"
+        french: "Touchez plus de cibles avec votre lettre de motivation&nbsp;!",
+        english: "Hit more targets with your cover letter&nbsp;!",
+        spanish: "Hace mas con su carta de presentación&nbsp;!"
     },
     {
-        french: "Adaptez votre texte à vos différents destinataires",
-        english: "Could your cover letter target more than one recruiter&nbsp;?",
-        spanish: "spanish?"
+        french: "Adaptez-là à vos destinataires",
+        english: "Make it fit to your recipients",
+        spanish: "Adáptela a sus destinatarios"
     },
     {
-        french: "et exportez-le au format DOC ou PDF.",
-        english: "then export it as a DOC or PDF file",
-        spanish: "?export?"
+        french: "et exportez-la en quelques clics",
+        english: "then export it in a few clicks",
+        spanish: "y exportela con unos pocos clics"
     },
     {
         french: "COMMENCER",
         english: "START",
-        spanish: "START"
+        spanish: "COMENZAR"
     },
 
     ///////////////////////////   CHOICE STEP //////////////
     {
         french: "Sélectionnez une option",
         english: "Select an option",
-        spanish: "spanish"
+        spanish: "Seleccione una opción"
     },
     {
         french: "Saisir/coller une lettre de motivation",
         english: "Type/paste a cover letter",
-        spanish: "ES text"
+        spanish: "Escribir/pegar una carta de presentación"
     },
     {
         french: "Utiliser un fichier existant",
         english: "Use an existing file",
-        spanish: "ES text"
+        spanish: "Usar un archivo existente"
     },
 
     /////////////////////////// TEXT EDIT STEP ///////////////
     {
         french: "Saisir/coller un texte",
         english: "Type/paste a text",
-        spanish: "ES text"
+        spanish: "Escribir/pegar uno texto"
     },
     {
         french: "COLLER",
         english: "PASTE",
-        spanish: "ES text"
+        spanish: "PEGAR"
     },
     {
         french: "Gauche",
         english: "Left",
-        spanish: "ES text"
+        spanish: "Izquierda"
     },
     {
         french: "Centre",
@@ -108,22 +108,22 @@ let translations = [
     {
         french: "Droite",
         english: "Right",
-        spanish: "Recto"
+        spanish: "Derecha"
     },
     {
         french: "Justifié",
         english: "Justify",
-        spanish: "ES text"
+        spanish: "Justificado"
     },
     {
         french: "<span class=\"font-weight-bold\">G</span>",
         english: "<span class=\"font-weight-bold\">B</span>",
-        spanish: "<span class=\"font-weight-bold\">ES?</span>"
+        spanish: "<span class=\"font-weight-bold\">N</span>"
     },
     {
         french: "<span class=\"font-italic\">I</span>",
         english: "<span class=\"font-italic\">I</span>",
-        spanish: "<span class=\"font-italic\">I</span>"
+        spanish: "<span class=\"font-italic\">C</span>"
     },
     {
         french: "<span class=\"font-weight-bold\"><u>S</u></span>",
@@ -133,70 +133,70 @@ let translations = [
 
     /////////////////////////// SELECTION STEP ////////////
     {
-        french: "Choisissez les éléments à adapter",
-        english: "Choose which elements you want to adapt",
-        spanish: "ES?"
+        french: "Choisissez les portions de texte à adapter",
+        english: "Choose which parts of text you want to adapt",
+        spanish: "Elige qué pasajes del texto desea cambiar"
     },
     {
         french: "Sélectionnez une portion de texte à modifier puis cliquez ci-dessous",
-        english: "Select a part of the text you want to set, then click beyond",
-        spanish: "ES text"
+        english: "Select a part of the text you want to set, then click below",
+        spanish: "Seleccione uno pasaje del texto y haga clic abajo"
     },
     {
         french: "AJOUTER",
-        english: "ADD THE SELECTION",
-        spanish: "en ES?"
+        english: "ADD THIS SELECTION",
+        spanish: "AGREGAR"
     },
     {
         french: "Lorsque chaque élément à adapter figure dans la liste, cliquez ci-dessous",
-        english: "When all elements you want to set appear in the list, click beyond",
-        spanish: "en ES"
+        english: "When all elements you want to set appear in the list, click below",
+        spanish: "Cuando se encuentra cada elemento en la lista, haga clic abajo"
     },
     {
         french: "EDITER LES SELECTIONS",
         english: "EDIT SELECTIONS",
-        spanish: "es?"
+        spanish: "EDITAR LAS ZONAS ELEGIDAS"
     },
 
     /////////////////////////// HOW MANY STEP ///////////////
     {
         french: "Combien de versions différentes souhaitez-vous générer ?",
         english: "How many new versions do you want to create ?",
-        spanish: "ok?"
+        spanish: "¿Cuántas variaciones desea generar?"
     },
     {
         french: "( maximum 5 )",
         english: "( max. 5 )",
-        spanish: "( max. 5 )"
+        spanish: "(máximo, 5)"
     },
 
     /////////////////////////// SET VERSIONS STEP ///////////
     {
         french: "Adaptez",
         english: "Set",
-        spanish: "ES?"
+        spanish: "Edit"
     },
     {
         french: "nouvelle(s) version(s)",
         english: "new version(s)",
-        spanish: "es"
+        spanish: "nueva(s) versione(s)"
     },
 
     {
         french: "Version Originale",
         english: "Original version",
-        spanish: "Version Original"
+        spanish: "Versión Original"
     },
     /////////////////////////// FINAL STEP //////////////////
     {
         french: "Terminé !",
         english: "Done !",
-        spanish: "ES?"
+        spanish: "Terminado !"
     },
     {
         french: "IMPRIMER",
         english: "PRINT",
-        spanish: "es"
+        spanish: "IMPRIMIR"
     },
 
     {
@@ -209,48 +209,48 @@ let translations = [
     {
         french: "Votre nom d'utilisateur",
         english: "Your username",
-        spanish: "es??"
+        spanish: "Su nombre de usuario"
     },
     {
         french: "Votre mot de passe",
         english: "Your password",
-        spanish: "spanish?"
+        spanish: "Su contraseña"
     },
     {
         french: "CONNEXION",
         english: "CONNECT",
-        spanish: "CONNEXION"
+        spanish: "Conexión"
     },
     /*************************************** SIGN UP ************************************/
     {
         french: "Choisissez un nom d'utilisateur",
         english: "Choose a username",
-        spanish: "es??"
+        spanish: "Elige un nombre de usuario"
     },
     {
         french: "Choisissez un mot de passe",
         english: "Choose a password",
-        spanish: "spanish?"
+        spanish: "Elige una contraseña"
     },
     {
         french: "Confirmez le mot de passe",
         english: "Confirm the password",
-        spanish: "confirm"
+        spanish: "Confirme la contraseña"
     },
     {
         french: "CONDITIONS D'UTILISATION",
         english: "CONDITIONS OF USE",
-        spanish: "CONDITIONS ES"
+        spanish: "Términos de uso"
     },
     {
         french: "J'ai pris connaissance des conditions d'utilisation et m'engage à les respecter.",
         english: "I have read the conditions of use and I accept all of them.",
-        spanish: "Conditions accept"
+        spanish: "He leído los términos y condiciones de uso y los acepto."
     },
     {
         french: "CONFIRMER L'INSCRIPTION",
-        english: "SUBSCRIBE",
-        spanish: "CONFIRM ES"
+        english: "REGISTER",
+        spanish: "Confirmar la inscripción"
     },
 
     /*************************************** PROFILE ************************************/
@@ -259,58 +259,53 @@ let translations = [
     {
         french: "Inscrit(e) depuis le ",
         english: "Member since ",
-        spanish: "es?? "
+        spanish: "Registrado desde el"
     },
     {
         french: "Statut : ",
         english: "Status : ",
-        spanish: "spanish? "
+        spanish: "Estatuto : "
     },
     {
         french: "Mes lettres",
         english: "My letters",
-        spanish: "Mi letras"
+        spanish: "Mi cartas"
     },
     {
         french: "Gérer mon compte",
         english: "Manage my account",
-        spanish: "account"
+        spanish: "Administrar mi cuenta"
     },
 
     //////////////////// PARAM SECTION //////////
     {
         french: "Changer mon nom d'utilisateur",
         english: "Change my username",
-        spanish: "Cambiar mi nombre"
+        spanish: "Cambiar mi nombre de usuario "
     },
     {
         french: "Changer mon mot de passe",
         english: "Change my password",
-        spanish: "Cambiar"
+        spanish: "Cambiar mi contraseña"
     },
     {
         french: "Votre nouveau nom d'utilisateur",
         english: "Your new username",
-        spanish: "Tu nuevo nombre"
-    },
-    {
-        french: "Votre nouveau nom d'utilisateur",
-        english: "Your new username",
-        spanish: "Tu nuevo nombre"
+        spanish: "Su nuevo nombre de usario"
     },
     {
         french: "Votre mot de passe actuel",
         english: "Your current password",
-        spanish: "Tu pass"
+        spanish: "Su contraseña actual"
     },
     {
         french: "Votre nouveau mot de passe",
         english: "Your new password",
-        spanish: "Tu nuevo pass"
+        spanish: "Su nueva contraseña"
     },
     {
         french: "CONFIRMER",
         english: "CONFIRM",
-        spanish: "CONFIRMAR"
+        spanish: "CONFIRMIR"
     },
 ];

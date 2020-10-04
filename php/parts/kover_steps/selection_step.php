@@ -4,7 +4,7 @@
     id="sections">
     <h2 class="text-info mx-auto  my-3 font-weight-bold">
         <span class="text-info p-1  w-3" data-to-step="choice">&larr;</span>
-        <span>Choisissez les éléments à adapter</span>
+        <span>Choisissez les portions de texte à adapter</span>
     </h2>
     <div class="container full-container  d-flex my-3  align-items-start">
         <div class="px-2  bg-light w-75 w-lg-50 mr-3 border text-left" id="getUserText"></div>
