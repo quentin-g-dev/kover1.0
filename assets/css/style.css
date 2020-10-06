@@ -15,7 +15,7 @@ body {
 }
 
 main {
-    min-height: 50vh;
+    min-height: 75vh;
     background-color: #f4f4f4;
 }
 
@@ -24,13 +24,13 @@ main {
     background: -moz-radial-gradient(circle, rgba(2, 63, 98, 1) 0%, rgba(3, 105, 163, 1) 78%);
     background: -webkit-radial-gradient(circle, rgba(2, 63, 98, 1) 0%, rgba(3, 105, 163, 1) 78%);
     background: radial-gradient(circle, rgba(2, 63, 98, 1) 0%, rgba(3, 105, 163, 1) 78%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#023f62", endColorstr="#0369a3", GradientType=1);
 }
 
 .text-kover {
     color: rgba(2, 63, 98, 1);
 }
 
+a,
 a:hover,
 a:active {
     text-decoration: none;
@@ -59,7 +59,8 @@ select {
 }
 
 span.toEdit {
-    background-color: yellowgreen;
+    background-color: rgb(2, 63, 98);
+    color: white;
 }
 
 .card-body {
@@ -69,6 +70,7 @@ span.toEdit {
 .hamburger {
     font-size: 5rem;
     cursor: pointer;
+    display: none;
 }
 
 .conditions-container {

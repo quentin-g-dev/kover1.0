@@ -2,10 +2,6 @@
 <main
     class="container full-container  d-flex flex-column flex-no-wrap flex-lg-wrap p-3 mx-auto mt-3 mb-2  w-100  justify-content-around align-items-center h-100 rounded"
     id="textarea">
-    <h2 class="text-kover mx-auto  my-3 font-weight-bold">
-        <span class="text-kover p-1  w-3" data-to-step="choice">&larr;</span>
-        <span>Saisir/coller un texte</span>
-    </h2>
     <!--Outils d'édition de texte-->
     <div
         class="w-100 rounded-top textControls bg-kover d-flex justify-content-center align-items-baseline flex-wrap center mx-auto my-3">

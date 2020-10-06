@@ -2,10 +2,6 @@
 <main
     class="container full-container  d-flex flex-column flex-no-wrap flex-lg-wrap p-3 mx-auto mt-3 mb-2 text-center w-100 w-lg-75 justify-content-around align-items-center h-100 rounded"
     id="sections">
-    <h2 class="text-kover mx-auto  my-3 font-weight-bold">
-        <span class="text-kover p-1  w-3" data-to-step="choice">&larr;</span>
-        <span>Choisissez les portions de texte à adapter</span>
-    </h2>
     <div class="container full-container  d-flex my-3  align-items-start">
         <div class="px-2 bg-light w-50 mr-3 border text-left" id="getUserText"></div>
         <div
