@@ -10,10 +10,25 @@
 
 body {
     font-family: 'raleway', Helvetica;
+
+    padding: 0px 2vw;
 }
 
 main {
     min-height: 50vh;
+    background-color: #f4f4f4;
+}
+
+.bg-kover {
+    background: rgb(2, 63, 98);
+    background: -moz-radial-gradient(circle, rgba(2, 63, 98, 1) 0%, rgba(3, 105, 163, 1) 78%);
+    background: -webkit-radial-gradient(circle, rgba(2, 63, 98, 1) 0%, rgba(3, 105, 163, 1) 78%);
+    background: radial-gradient(circle, rgba(2, 63, 98, 1) 0%, rgba(3, 105, 163, 1) 78%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#023f62", endColorstr="#0369a3", GradientType=1);
+}
+
+.text-kover {
+    color: rgba(2, 63, 98, 1);
 }
 
 a:hover,

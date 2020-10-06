@@ -2,28 +2,25 @@
 <main
     class="container full-container  d-flex flex-column flex-no-wrap flex-lg-wrap p-3 mx-auto mt-3 mb-2 text-center w-100 w-lg-75 justify-content-around align-items-center h-100 rounded"
     id="sections">
-    <h2 class="text-info mx-auto  my-3 font-weight-bold">
-        <span class="text-info p-1  w-3" data-to-step="choice">&larr;</span>
+    <h2 class="text-kover mx-auto  my-3 font-weight-bold">
+        <span class="text-kover p-1  w-3" data-to-step="choice">&larr;</span>
         <span>Choisissez les portions de texte à adapter</span>
     </h2>
     <div class="container full-container  d-flex my-3  align-items-start">
-        <div class="px-2  bg-light w-75 w-lg-50 mr-3 border text-left" id="getUserText"></div>
+        <div class="px-2 bg-light w-50 mr-3 border text-left" id="getUserText"></div>
         <div
-            class="w-25 w-lg-50 d-flex flex-column flex-wrap justify-content-center align-items-start align-items-center">
-            <p class="text-dark">
-                <span class="font-italic">
-                    Sélectionnez une portion de texte à modifier puis cliquez ci-dessous
-                </span></p>
-            <button class="btn btn-info rounded mx-auto mt-4 h1 " disabled id="addSectionButton">
+            class="d-flex flex-column flex-wrap justify-content-center align-items-start w-50 mx-3 h-100">
+            <p class="font-weight-bold mx-auto">
+                Sélectionnez une portion de texte à modifier puis cliquez ci-dessous
+            </p>
+            <button class="btn bg-kover rounded mx-3 w-100 mt-4 h1 text-white font-weight-bold" disabled id="addSectionButton">
                 AJOUTER
             </button>
-            <ul class="p-2 list-unstyled" id="toModify"></ul>
-            <p class="text-dark">
-                <span class="font-italic">
-                    Lorsque chaque élément à adapter figure dans la liste, cliquez ci-dessous
-                </span>
+            <ul class="m-3 p-2 list-unstyled w-100 h-25" id="toModify"></ul>
+            <p class="font-weight-bold mx-auto">
+                Lorsque chaque élément à adapter figure dans la liste, cliquez ci-dessous
             </p>
-            <button class="btn btn-success rounded mx-auto mt-4 h1" disabled id="goToEditionButton">
+            <button class="btn text-kover align-self-end font-weight-bold border rounded mx-3 mt-4 h1 w-100" disabled id="goToEditionButton">
                 EDITER LES SELECTIONS
             </button>
         </div>
