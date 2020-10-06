@@ -75,35 +75,10 @@ if (!isset ($_GET['vip'])||!isset($_SESSION["vip"])){
                     }
                 }
 
-               
+                include './php/parts/profile_parts/profile_head.php';
+                include './php/parts/profile_parts/profile_main_menu.php';
 
-?>
-<main
-class="container  full-container d-flex flex-column p-3 mx-auto mt-3 mb-2 text-center  justify-content-around align-items-center h-100 rounded"
-id="home">
 
-<!------------------------------------------------------------------------- EN-TÊTE DU PROFIL -->
-        <h2><a href="./profile.php?vip=<?php echo $vip->userId();?>"><?echo $vip->userName();?></a></h2>
-        <div class="profile-top">
-            <div class="border mw-75 mb-5">
-                <span>Inscrit(e) depuis le </span> <?php echo $vip->userCreationDate();?>
-                <br>
-                <span>Statut : </span><?php echo $vip->userStatus();?>
-                <span>Langue : </span><?php var_dump ($_SESSION['vip']['langCode']);?>
-            </div>
-        </div>
-<!------------------------------------------------------------------------- MENU DU PROFIL -->
-
-        <div class="profile-menu">
-            <a href="./profile.php?vip=<?echo $vip->userId();?>&sect=letters">
-                <h3>Mes lettres</h3>
-            </a>
-            <a href="./profile.php?vip=<?echo $vip->userId();?>&sect=param">
-                <h3>Gérer mon compte</h3>
-            </a>
-        </div>
-
-<?php
             } else {
 ////////////////////////////////////////////////////////////// Si section spécifique du profil demandée 
                 if($_GET['sect'] === 'letters'){  
@@ -115,27 +90,14 @@ id="home">
 <?php 
                 } elseif ($_GET['sect']==='param'){
                     if (!isset($_GET['opt'])){
-?>
-<!------------------------------------------------------- SECTION Gérer mon compte : MENU ----------->
 
-        <div class="profile-options">
-            <a href="profile.php?vip=<?echo $vip->userId();?>&sect=param&opt=change_name">
-                <h3>Changer mon nom d'utilisateur</h3>
-            </a>
-            <a href="profile.php?vip=<?echo $vip->userId();?>&sect=param&opt=change_password">
-                <h3>Changer mon mot de passe</h3>
-            </a>
-        </div>
-
-<?php 
+                        include './php/parts/profile_parts/profile_opt_menu.php';
+ 
                     } else {
                         if ($_GET['opt']==='change_name'){
 ////////////////////////////////////////////////////////////// Formulaire  Changer le nom d'utilisateur
                             include './php/parts/forms/change_name_form.php';
-?>
-          
 
-<?php
                         } elseif ($_GET['opt']==='change_password'){
 //////////////////////////////////////////////////////////////// Formulaire Changer le mot de passe
                             include './php/parts/forms/change_password_form.php';
