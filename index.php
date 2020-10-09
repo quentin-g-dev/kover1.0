@@ -21,33 +21,31 @@ include './php/parts/allpages_parts/header.php';
 
 ?>
 
-    <body>
-
-
-        <!-- kover_steps -->
-<?php
-
-        include './php/parts/kover_steps/start_step.php';
-        include './php/parts/kover_steps/choice_step.php';
-        include './php/parts/kover_steps/textedit_step.php';
-        include './php/parts/kover_steps/selection_step.php';
-        include './php/parts/kover_steps/howmany_step.php';
-        include './php/parts/kover_steps/setversions_step.php';
-        include './php/parts/kover_steps/final_step.php';
-
+<body>
+    <main
+        class="container-fluid full-container d-flex flex-column p-3 mx-auto mt-3 mb-2 text-center w-100 w-lg-75 justify-content-start align-items-baseline h-100 rounded"
+        id="koverProj">
+    </main>
+    <!-- kover_steps -->
+    <?php
+        include './php/parts/kover_steps/start_step2.php';
+        include './php/parts/kover_steps/choice_step2.php';
+        include './php/parts/kover_steps/textedit_step2.php';
+        include './php/parts/kover_steps/selection_step2.php';
+        include './php/parts/kover_steps/setversions_step2.php';
+        include './php/parts/kover_steps/final_step2.php';
         include './php/parts/allpages_parts/footer.php';
+    ?>
 
-?>
+    <!-- jQuery - Bootstrap -->
+    <script src="./assets/js/jquery-3.5.1.js"></script>
+    <script src="./assets/js/bootstrap.min.js"></script>
 
-        <!-- jQuery - Bootstrap -->
-        <script src="./assets/js/jquery-3.5.1.js"></script>
-        <script src="./assets/js/bootstrap.min.js"></script>
-
-        <!-- Internal JavaScript -->
-        <script src="./assets/js/global.js"></script>
-        <script src="./assets/js/nav_menu.js"></script>
-        <script src="./assets/js/translations.js"></script>
-        <script src="./assets/js/languages.js"></script>
-    </body>
+    <!-- Internal JavaScript -->
+    <script src="./assets/js/global.js"></script>
+    <script src="./assets/js/nav_menu.js"></script>
+    <script src="./assets/js/translations.js"></script>
+    <script src="./assets/js/languages.js"></script>
+</body>
 
 </html>

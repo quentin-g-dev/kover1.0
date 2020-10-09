@@ -4,6 +4,105 @@ let urlDOC = "";
 let urlPDF = "";
 let text = '';
 let newText = '';
+var originalText = '';
+let fixedVersions = [];
+
+/////////////////////// REFONTE
+
+
+function startProj() {
+    document.querySelector('#koverProj').innerHTML = document.querySelector('#startStep').innerHTML;
+    document.querySelector("#startButton").addEventListener("click", sourceChoice);
+}
+
+function sourceChoice() {
+    document.querySelector('#koverProj').innerHTML = document.querySelector('#sourceChoice').innerHTML;
+    document.querySelector("#newTextButton").addEventListener("click", textEdition);
+}
+
+function textEdition() {
+    document.querySelector('#koverProj').innerHTML = document.querySelector('#textEdition').innerHTML;
+    document.querySelector("#userText").addEventListener("click", textOperate);
+    document.querySelector("#userText").focus();
+    document.querySelector("#submitText").addEventListener("click", selectZones, 1500);
+}
+
+function selectZones() {
+    text = getUserText();
+    document.querySelector("#projName").innerHTML = getProjectName();
+    document.querySelector("#originalUserText").innerHTML = text;
+    document.querySelector('#koverProj').innerHTML = document.querySelector('#selectionStep').innerHTML;
+    clickMe("originalUserText", function () { // Activation du bouton ADD SECTION 
+        if (window.getSelection().toString().length > 0) {
+            document.getElementById("addSectionButton").removeAttribute('disabled');
+        }
+    });
+    document.querySelector('#addSectionButton').addEventListener("click", selectingZone);
+    document.querySelector("#textEditSubmit").addEventListener("click", setVersions);
+
+}
+
+function setVersions() {
+    let numberOfVersions = document.querySelector('input#howManyLetters').value;
+    document.querySelector('#lastSteps').innerHTML = document.querySelector('#setVersions').innerHTML;
+    editionView(numberOfVersions);
+
+    document.querySelector("#finishButton").addEventListener("click", function () {
+        finalStep(numberOfVersions);
+    });
+
+}
+
+function finalStep(numberOfVersions) {
+    document.querySelector('#lastSteps').innerHTML = document.querySelector('#finishing').innerHTML;
+    document.querySelector('#solidOriginal h3').innerHTML = document.querySelector('#version1Title').innerHTML;
+    for (let i = 0; i < numberOfVersions; i++) {
+        document.querySelector('#versionsGroup').innerHTML += '<div id="solidVersion' + (i + 1) + '" class="row">';
+        document.querySelector('#versionsGroup').innerHTML += '<div class="col-1 rowspan-md-2">';
+        document.querySelector('#versionsGroup').innerHTML += '<input type="checkbox" name="solidVersion' + (i + 1) + 'Checker" id="solidVersion' + (i + 1) + 'Checker">';
+        document.querySelector('#versionsGroup').innerHTML += '</div>';
+        document.querySelector('#versionsGroup').innerHTML += '<h3 class ="col-11 col-md-5">' + document.querySelector('#stockVersions #version' + (i + 2) + 'Fixed > h3').innerHTML + '</h3>';
+        document.querySelector('#versionsGroup').innerHTML += '<div class = "col-11 col-md-5" >';
+        document.querySelector('#versionsGroup').innerHTML += '<button class = "bg-kover text-white" id="saveVersion' + (i + 2) + '"> Sauvegarder </button>';
+        document.querySelector('#versionsGroup').innerHTML += '<button class = "bg-kover text-white" id="exportDocVersion' + (i + 2) + '">DOC</button>';
+        document.querySelector('#versionsGroup').innerHTML += '<button class = "bg-kover text-white" id="exportPdfVersion' + (i + 2) + '">PDF</button>';
+        document.querySelector('#versionsGroup').innerHTML += '<button class = "bg-kover text-white" id="exportZipVersion' + (i + 2) + '">ZIP</button>';
+        document.querySelector('#versionsGroup').innerHTML += '</div>';
+        document.querySelector('#versionsGroup').innerHTML += '</div>';
+    }
+}
+
+
+startProj();
+
+//////////////////////
+function cleanUserInput(string) {
+    let charArray = string.split('');
+    for (let i = 0; i < charArray.length; i++) {
+        switch (charArray[i]) {
+            case "&":
+                charArray[i] = "&amp;"
+                break;
+            case '"':
+                charArray[i] = "&quot;"
+                break;
+            case "'":
+                charArray[i] = "&#039;"
+                break;
+            case "<":
+                charArray[i] = "&lt;"
+                break;
+            case ">":
+                charArray[i] = "&gt;"
+                break;
+            default:
+                charArray[i] = charArray[i]
+                break;
+        }
+    }
+    string = charArray.join('');
+    return string;
+}
 
 
 function toggleClass(id, oldClass, newClass) { // Raccourci
@@ -48,7 +147,6 @@ function previousStep() { // Retour à l'étape précédente
                     howMany();
                     break;
                 case "edition":
-                    document.getElementById('numberOfVersions').innerHTML = '';
                     document.querySelector('#tableHead').innerHTML = '';
                     document.querySelector('#tableInner').innerHTML = '';
                     document.getElementById("accordion").innerHTML = '';
@@ -86,9 +184,33 @@ function previousStep() { // Retour à l'étape précédente
  return urlPDF;
   */
 
-function selectZone() {
-    console.log('text before :', document.getElementById('getUserText').innerHTML);
+function saveVersion() {
+    console.log("save this version");
+    let inputs = document.querySelectorAll('#currentVersion input');
+    for (let i = 0; i < inputs.length; i++) {
+        let emptyInputs = 0;
+        if (inputs[i].value.length < 1) {
+            emptyInputs++;
+        }
+        console.log(emptyInputs);
+        if (emptyInputs === 1) {
+            alert('Un champ est vide. Pour le compléter, appuyez sur ESC.');
+        } else if (emptyInputs > 1) {
+            alert('' + emptyInputs + ' champs sont vides. Pour les compléter, appuyez sur <kbd>ESC</kbd>');
+
+        }
+        inputs[i].outerHTML = inputs[i].value;
+        let validVersion;
+        validVersion += document.querySelector('#currentVersion > h3').outerHTML;
+        validVersion += document.querySelector('#currentVersion > div').outerHTML;
+        return validVersion;
+    }
+}
+
+function selectingZone() {
+    console.log('text before :', document.querySelector('#originalUserText').innerHTML);
     if (window.getSelection().toString().length > 0) {
+        console.log(window.getSelection().toString().length);
         document.querySelector('#toModify').innerHTML += '<li data-id="' + editCounter + '" class="expressionToModify"><span class="expressionWords" data-id="' + editCounter + '">' + window.getSelection().toString() + '</span><span class="deleteSection ml-3 text-danger font-weight-bold" data-id="' + editCounter + '">X</span></li>'; // +1  sélection à modifier
 
         let range = window.getSelection().getRangeAt(0);
@@ -101,7 +223,6 @@ function selectZone() {
         range.detach();
         // Déselection du texte 
         newNode = undefined;
-        console.log('text after :', document.getElementById('getUserText').innerHTML);
         let cross = document.querySelectorAll(".deleteSection"); // Activation des croix rouges
         for (let i = 0; i < cross.length; i++) {
             cross[i].addEventListener("click", function () {
@@ -109,12 +230,15 @@ function selectZone() {
                 deleteFromList(index);
             });
         }
+        console.log('text after :', document.querySelector('#originalUserText').innerHTML);
+
         window.getSelection().removeAllRanges(); // Déselection du texte 
 
         document.getElementById('addSectionButton').disabled = true; // ADD A SECTION désactivé sans sélection courante
         document.getElementById('goToEditionButton').disabled = false; // Activation GO TO EDITION 
         editCounter++;
-        return;
+        originalText = document.querySelector('#originalUserText').innerHTML;
+        return originalText;
     }
 }
 
@@ -128,39 +252,63 @@ function deleteFromList(i) {
     return;
 }
 
-function editionView() {
-    let numberOfVersions = document.getElementById('howManyLetters').value;
-    // Titre dynamique :
-    document.getElementById('numberOfVersions').innerHTML = numberOfVersions;
+function editionView(numberOfVersions) {
+    console.log(numberOfVersions);
     // Injection et nettoyage de l'original
-    let originalText = document.getElementById('getUserText').innerHTML;
-    document.getElementById("accordion").innerHTML += '<div id="collapseOne" class="collapse" data-parent="#accordion" aria-labelledby="headingOne"><div class="original card-body p-5 border border-info rounded-bottom">' + originalText + '</div></div>';
-    let editions = document.querySelectorAll('div.original span.toEdit');
+    console.log(originalText);
+    document.querySelector("#version1Title").innerHTML = 'Version Originale';
+    document.querySelector("#version1Content").innerHTML = originalText;
+    document.querySelector("#versionsButtons").innerHTML = '<button data-button="1" class="text-kover col-6 py-1 col-lg-4 py-md-3 rounded">Version Originale</button>';
+    let editions = document.querySelectorAll('#version1Content span.toEdit');
     for (let i = 0; i < editions.length; i++) {
         editions[i].outerHTML = editions[i].innerHTML;
     }
+    //document.querySelector("#stockVersions").innerHTML += document.querySelector("#version0Content").outerHTML;
     // Injection de chaque nouvelle version avec des inputs texte pré-remplis par les valeurs d'origine:
-    for (i = 0; i < numberOfVersions; i++) {
-        document.getElementById('accordion').innerHTML += '<div id="version' + (i + 2) + '" class="versionBlock my-3 card d-flex flex-row justify-content-around align-items-center bg-info text-white"><div><h3 class="d-inline card-header" id="heading' + i + '">Version ' + (i + 2) + '</h3><button class="text-white btn btn-link btn-info border-light" data-toggle="collapse" data-target="#collapse' + i + '">&darr;</button></div></div><div id="collapse' + i + '" class="collapse" data-parent="#accordion" aria-labelledby="heading' + i + '"><div class="card-body p-5  border border-info rounded-bottom" data-content="' + i + '">' + originalText + '</div></div>';
-        let editZones = document.querySelectorAll('div#collapse' + i + ' span.toEdit');
-        for (let j = 0; j < editZones.length; j++) {
-            let placeholder = editZones[j].innerHTML;
-            editZones[j].innerHTML = '<input data-version="' + (i + 2) + '" data-edit="' + j + '" type="text" placeholder = "' + placeholder + '">';
+    for (let i = 1; i <= numberOfVersions; i++) {
+        document.querySelector('#stockVersions').innerHTML += '<h3 id="version' + (i + 1) + 'Title" class="mt-3">Version ' + (i + 1) + '</h3>';
+        document.querySelector('#stockVersions').innerHTML += '<div id="version' + (i + 1) + 'Content" class="version mt-2">' + originalText + '</div>';
+        document.querySelector('#stockVersions').innerHTML += '<button class="col-4 col-md-6 bg-kover text-white rounded mt-3" data-valid="' + (i + 1) + '">VALIDER CETTE VERSION</button>';
+        console.log(document.querySelector('#version' + (i + 1) + 'Content').innerHTML);
+        let editions = document.querySelectorAll('#version' + (i + 1) + 'Content span.toEdit');
+        for (let j = 0; j < editions.length; j++) {
+            console.log("to edit: ", editions.length);
+            let placeholder = editions[j].innerHTML;
+            editions[j].innerHTML = '<input data-version="' + (i + 1) + '" data-edit="' + j + '" type="text" size="' + (editions[j].innerHTML.length * 2) + '" placeholder = "' + placeholder + '">';
         }
+        document.querySelector("#versionsButtons").innerHTML += '<button data-button="' + (i + 1) + '" class="text-kover col-4 py-1 col-6 col-lg-4 py-md-3 rounded">Version ' + (i + 1) + '</button>';
+
     }
-    return;
+    for (let i = 0; i <= numberOfVersions; i++) {
+        let buttons = document.querySelectorAll("button[data-button]");
+        console.log(buttons.length);
+        console.log(buttons[i].innerHTML);
+        buttons[i].addEventListener("click", function (e) {
+            console.log(e.target);
+            document.querySelector("#currentVersion").innerHTML = '';
+            document.querySelector("#currentVersion").innerHTML += document.querySelector("#version" + (i + 1) + "Title").outerHTML;
+            document.querySelector("#currentVersion").innerHTML += document.querySelector('#version' + (i + 1) + 'Content').outerHTML;
+            if (i > 0) {
+                document.querySelector("#currentVersion").innerHTML += document.querySelector('button[data-valid="' + (i + 1) + '"]').outerHTML;
+                document.querySelector('#currentVersion button[data-valid]').addEventListener("click", function () {
+                    let fixedVersion = '';
+                    fixedVersion = saveVersion();
+                    document.querySelector("#stockVersions").innerHTML += '<div id="version"' + (i + 1) + 'Fixed>' + fixedVersion + '</div>';
+                    document.querySelector('#currentVersion button[data-valid]').removeEventListener("click", arguments.callee);
+                });
+            }
+
+        });
+    }
 }
 
-function finishTitle() {
-    document.querySelector("#lastTitle").innerHTML = 'Terminé !';
-}
 
-function generateVersions() {
+
+function generateVersions(numberOfVersions) {
     // Intégration des saisies de l'utilisateur dans les inputs (s)
-    let versions = document.querySelectorAll("div.versionBlock");
-    for (let i = 0; i < versions.length; i++) {
-        let inputs = document.querySelectorAll("div[data-content='" + i + "'] input");
-        let editZones = document.querySelectorAll('div#collapse' + i + ' span.toEdit');
+    for (let i = 0; i < numberOfVersions.length; i++) {
+        let inputs = document.querySelectorAll("#version" + (i + 1) + "Content input");
+        let editZones = document.querySelectorAll("#version" + (i + 1) + "Content span.toEdit");
         for (let j = 0; j < editZones.length; j++) {
             if (inputs[j].value.length > 0) {
                 editZones[j].innerHTML = inputs[j].value;
@@ -171,9 +319,8 @@ function generateVersions() {
             }
         }
     }
-    let cards = document.querySelectorAll(".card");
-    let allVersions = document.querySelectorAll(".card-body");
-    for (let i = 0; i < cards.length; i++) {
+    let allVersions = document.querySelectorAll(".version");
+    for (let i = 0; i < allVersions.length; i++) {
         // Génération d'URL pour télécharger DOC ET PDF
         urlDoc = generateDOC(allVersions[i].innerHTML); // BUGS : Affiche les balises insérées pendant l'édition. La fonction de copie affiche le contenu en gras.
         urlPDF = generatePDF(allVersions[i].innerHTML); // BUG : Fonction à refaire | Module externe ? 
@@ -212,6 +359,17 @@ function copyTool(event) { // Fonction appelée dans chaque bouton COPY (onclick
     });
     return;
 }
+
+function getProjectName() {
+    let projName = document.querySelector('#projectName').value;
+    if (projName.length > 0) {
+        projName = cleanUserInput(projName);
+    } else {
+        projName = document.querySelector('#projectName').getAttribute("placeholder");
+    }
+    return projName;
+}
+
 
 function textOperate() {
     let ctrlButtons = document.querySelectorAll('.controlButton');
@@ -274,10 +432,7 @@ function pasteMe() { ///////////////////// Collage depuis le presse-papier
 
 function getUserText() { ////Récupération du texte saisi 
     text = document.getElementById('userText').innerHTML;
-    //text = text.replace(/\n/g, "<br>");
-    //text = text.replace(/\r/g, "<br>");
-    document.getElementById('getUserText').innerHTML += text;
-    return;
+    return text;
 }
 
 /*
@@ -296,8 +451,6 @@ function getUserText() { ////Récupération du texte saisi
 
 -Détection automatique de la langue (Navigator.language | équivalent PHP ?)
 
-- Cahier des charges projet ++ : Optimisation PHP, Version ES ?, BDD, etc.
-
 - CSS
 
 */
@@ -305,7 +458,7 @@ function getUserText() { ////Récupération du texte saisi
 
 
 
-
+/*
 //Etapes de l'éxécution 
 
 function begin() { //  ACCUEIL
@@ -361,6 +514,7 @@ function sections() { // STEP 2 : SELECTION DE TEXTE A MODIFIER
     toggleClass("home", "d-flex", "d-none");
     toggleClass("choice", "d-flex", "d-none");
     toggleClass("textarea", "d-flex", "d-none");
+    getProjectName();
     toggleClass("sections", "d-none", "d-flex");
     toggleClass("howMany", "d-flex", "d-none");
     toggleClass("edition", "d-flex", "d-none");
@@ -378,12 +532,7 @@ function sections() { // STEP 2 : SELECTION DE TEXTE A MODIFIER
 }
 
 function howMany() {
-    toggleClass("home", "d-flex", "d-none");
-    toggleClass("choice", "d-flex", "d-none");
-    toggleClass("textarea", "d-flex", "d-none");
-    toggleClass("sections", "d-flex", "d-none");;
-    toggleClass("howMany", "d-none", "d-flex");
-    toggleClass("edition", "d-flex", "d-none");
+    toggleClass("home", "d-flex", "d-none");3");
     toggleClass("done", "d-flex", "d-none");
     clickMe("howManyButton", function () {
         if (!isNaN(document.getElementById('howManyLetters').value) && document.getElementById('howManyLetters').value < 6 && document.getElementById('howManyLetters').value > 0) {
@@ -412,7 +561,4 @@ function finish() {
     document.getElementById("finishButton").style.display = "none";
     return;
 }
-
-//  EXECUTION
-
-begin();
+*/

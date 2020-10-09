@@ -1,11 +1,12 @@
  <!--HOW MANY LETTERS-->
  <main
-        class="container full-container  d-flex flex-column flex-no-wrap flex-lg-wrap p-3 mx-auto mt-3 mb-2 text-center w-100 w-lg-75 justify-content-around align-items-center h-100 rounded"
+        class="container full-container  d-flex flex-column flex-no-wrap flex-lg-wrap p-3 mx-auto mt-3 mb-2 text-center w-100 w-lg-75 justify-content-center align-items-center h-100 rounded"
         id="howMany">
-    <h2 class="text-kover mx-auto  my-3 font-weight-bold">
+
+    <h3 class="text-kover mx-auto  my-3 font-weight-bold">
         <span class="text-kover p-1  w-3" data-to-step="choice">&larr;</span>
         <span>Combien de versions différentes souhaitez-vous générer ?</span>
-    </h2>
+    </h3>
     <p>
         <span class="text-kover">( maximum 5 )</span>
     </p>

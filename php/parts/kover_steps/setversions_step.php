@@ -12,28 +12,28 @@
     <!--VERSION A ADAPTER-->
     <div class="row">
         <div class="col-12 row">
-            <div class="row col-md-6 d-md-flex justify-content-between align-items-baseline" id="currentVersion">
-                <div class="col-md-6 d-flex align-items-baseline">
+            <div class="row col-lg-8 col-md-7 d-flex justify-content-between align-items-center" id="currentVersion">
+                <div class="col-8 col-md-6 d-flex align-items-baseline">
                     <h3>Version 2</h3>
                     <span class="badge badge-secondary mx-2 my-4">Modifier</span>
                 </div>    
-                <button class="col-md-6 bg-kover text-white rounded">VALIDER CETTE VERSION</button>
+                <button class="col-4 col-md-6 bg-kover text-white rounded">VALIDER CETTE VERSION</button>
             </div>
-            <div class="col-md-6 d-none d-md-flex"></div>
+            <div class="col-lg-4 col-md-5 d-none d-md-flex"></div>
         </div>
-        <div class="col-md-6" id="currentVersion">Current Version</div>
-        <div class="col-md-6" id="versionsMenu">
+        <div class="col-md-7 col-lg-8" id="currentVersion">Current Version</div>
+        <div class="col-md-5 col-lg-4 order-first order-md-last" id="versionsMenu">
             <p class="font-weight-bold">Cliquez sur une version pour l’afficher et l’éditer</p>
             <div class="container-fluid">
                 <div class="row no-gutters">
-                    <button class="col-md-6 col-lg-4 py-5 px-auto rounded">Version Originale</button>
-                    <button class="bg-kover text-white col-md-6 col-lg-4 py-5 px-auto rounded">Version 2</button>
-                    <button class="text-kover col-md-6 col-lg-4 py-5 px-auto rounded">Version 3</button>
-                    <button class="text-kover col-md-6 col-lg-4 py-5 px-auto rounded">Version 4</button>
-                    <button class="text-kover col-md-6 col-lg-4 py-5 px-auto rounded">Version 5</button>
-                    <button class="text-kover col-md-6 col-lg-4 py-5 px-auto rounded">Version 6</button>
+                    <button class="col-4 py-1 col-md-6 col-lg-4 py-md-5 px-auto rounded">Version Originale</button>
+                    <button class=" bg-kover text-white col-4 py-1 col-md-6 col-lg-4 py-md-5 px-auto rounded">Version 2</button>
+                    <button class="text-kover col-4 py-1 col-md-6 col-lg-4 py-md-5 rounded">Version 3</button>
+                    <button class="text-kover col-4 py-1 col-md-6 col-lg-4 py-md-5 rounded">Version 4</button>
+                    <button class="text-kover col-4 py-1 col-md-6 col-lg-4 py-md-5 rounded">Version 5</button>
+                    <button class="text-kover col-4 py-1 col-md-6 col-lg-4 py-md-5 rounded">Version 6</button>
                 </div>
-                <div class="row my-3">
+                <div class="row my-1 my-md-3">
                     <button class="bg-kover text-white col font-weight-bold">TERMINER</button>
                 </div>
             </div>

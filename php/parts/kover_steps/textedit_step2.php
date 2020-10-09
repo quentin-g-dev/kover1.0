@@ -1,8 +1,5 @@
 <!--TEXTAREA-->
-<main
-    class="container full-container  d-flex flex-column flex-no-wrap flex-lg-wrap p-3 mx-auto mt-3 mb-2  w-100  justify-content-between align-items-center h-100 rounded"
-    id="textarea">
-
+<div id="textEdition" class="d-none">
     <!--Input Nom du projet-->
     <div class="row mx-auto align-items-baseline">
         <input type="text" class="projectName col-12 col-md-6 mx-auto" name="projectName" id="projectName" size="25"
@@ -11,7 +8,7 @@
     </div>
     <!--Outils d'édition de texte-->
     <div
-        class="w-100 rounded-top textControls bg-kover d-flex justify-content-center align-items-baseline flex-wrap center mx-auto my-3">
+        class="w-100 rounded-top textControls bg-kover d-flex justify-content-center align-items-baseline flex-wrap center mx-auto mt-3">
         <button class="btn btn-light rounded  m-2 h3" id="pasteText">
             COLLER
         </button>
@@ -56,8 +53,11 @@
         </fieldset>
     </div>
     <!--Champ de texte et validation-->
-    <div class="bg-light w-100 m-auto rounded-bottom border" contenteditable="true" id="userText">
+    <div class="bg-light w-100 mx-auto my-0 text-left rounded-bottom border" contenteditable="true" id="userText">
     </div>
 
-    <button class="btn bg-kover mw-100 rounded mx-auto mt-4 h3 text-white font-weight-bold" id="submitText">OK</button>
-</main>
+    <button class="btn bg-kover mw-100 rounded mx-auto mt-4 h3 text-white font-weight-bold" id="submitText">
+        OK
+    </button>
+
+</div>

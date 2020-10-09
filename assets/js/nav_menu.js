@@ -1,8 +1,8 @@
 function toggleMenu() {
-    if (document.querySelector("nav").className === "hidden d-flex flex-row flex-wrap border-white justify-content-center align-items-center") {
-        document.querySelector("nav").className = "d-flex flex-row flex-wrap border-white justify-content-center align-items-center";
+    if (document.querySelector("nav").className === "d-none d-md-flex mt-2 mb-3 flex-column flex-md-row flex-no-wrap border-white justify-content-center align-items-center") {
+        document.querySelector("nav").className = "d-flex d-md-flex flex-column flex-md-row flex-no-wrap border-white text-white justify-content-center align-items-center";
     } else {
-        document.querySelector("nav").className = "hidden d-flex flex-row flex-wrap border-white justify-content-center align-items-center";
+        document.querySelector("nav").className = "d-none d-md-flex mt-2 mb-3 flex-column flex-md-row flex-no-wrap border-white justify-content-center align-items-center";
     }
 }
 
