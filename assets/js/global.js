@@ -5,6 +5,7 @@ let urlPDF = "";
 let text = '';
 let newText = '';
 var originalText = '';
+var originalFixedText = '';
 let fixedVersions = [];
 
 /////////////////////// REFONTE
@@ -56,21 +57,26 @@ function setVersions() {
 function finalStep(numberOfVersions) {
     document.querySelector('#lastSteps').innerHTML = document.querySelector('#finishing').innerHTML;
     document.querySelector('#solidOriginal h3').innerHTML = document.querySelector('#version1Title').innerHTML;
+    document.querySelector('#solidOriginalModalContent').innerHTML = originalFixedText;
     for (let i = 0; i < numberOfVersions; i++) {
-        document.querySelector('#versionsGroup').innerHTML += '<div id="solidVersion' + (i + 1) + '" class="row">';
-        document.querySelector('#versionsGroup').innerHTML += '<div class="col-1 rowspan-md-2">';
-        document.querySelector('#versionsGroup').innerHTML += '<input type="checkbox" name="solidVersion' + (i + 1) + 'Checker" id="solidVersion' + (i + 1) + 'Checker">';
-        document.querySelector('#versionsGroup').innerHTML += '</div>';
-        document.querySelector('#versionsGroup').innerHTML += '<h3 class ="col-11 col-md-5 cursor-pointer">' + document.querySelector('#fixedVersions #version' + (i + 2) + 'Fixed > h3').innerHTML + '</h3>';
-        document.querySelector('#versionsGroup').innerHTML += '<div class = "col-11 col-md-5" >';
-        document.querySelector('#versionsGroup').innerHTML += '<button class = "bg-kover text-white" id="saveVersion' + (i + 2) + '"> Sauvegarder </button>';
-        document.querySelector('#versionsGroup').innerHTML += '<button class = "bg-kover text-white" id="exportDocVersion' + (i + 2) + '">DOC</button>';
-        document.querySelector('#versionsGroup').innerHTML += '<button class = "bg-kover text-white" id="exportPdfVersion' + (i + 2) + '">PDF</button>';
-        document.querySelector('#versionsGroup').innerHTML += '<button class = "bg-kover text-white" id="exportZipVersion' + (i + 2) + '">ZIP</button>';
-        document.querySelector('#versionsGroup').innerHTML += '</div>';
-        document.querySelector('#versionsGroup').innerHTML += '</div>';
+        document.querySelector('#versionsGroup').innerHTML += '<div id="solidVersion' + (i + 2) + '" class="row my-2 text-center"></div>';
+        document.querySelector('#solidVersion' + (i + 2)).innerHTML = '<div class="col-1 rowspan-md-2"  id="solidVersion' + (i + 2) + 'InputCol"></div>';
+        document.querySelector('#solidVersion' + (i + 2) + 'InputCol').innerHTML += '<input type = "checkbox" name = "solidVersion' + (i + 2) + 'Checker" id = "solidVersion' + (i + 2) + 'Checker" > ';
+        document.querySelector('#solidVersion' + (i + 2)).innerHTML += '<h3 class ="col-11 col-md-5 cursor-pointer" data-toggle="modal" data-target="#solidVersion' + (i + 2) + 'Modal">' + document.querySelector('#fixedVersions #version' + (i + 2) + 'Fixed > h3').innerHTML + '</h3>';
+        document.querySelector('#solidVersion' + (i + 2)).innerHTML += '<div class = "col-11 col-md-6" id="solidVersion' + (i + 2) + 'ButtonsCol"></div>';
+        document.querySelector('#solidVersion' + (i + 2) + 'ButtonsCol').innerHTML += '<button class = "bg-kover text-white" id="saveVersion' + (i + 2) + '"> Sauvegarder </button>';
+        document.querySelector('#solidVersion' + (i + 2) + 'ButtonsCol').innerHTML += '<button class = "bg-kover text-white" id="exportDocVersion' + (i + 2) + '">DOC</button>';
+        document.querySelector('#solidVersion' + (i + 2) + 'ButtonsCol').innerHTML += '<button class = "bg-kover text-white" id="exportPdfVersion' + (i + 2) + '">PDF</button>';
+        document.querySelector('#solidVersion' + (i + 2) + 'ButtonsCol').innerHTML += '<button class = "bg-kover text-white" id="exportZipVersion' + (i + 2) + '">ZIP</button>';
+        document.querySelector('#solidVersion' + (i + 2)).innerHTML += '<div class="modal fade" id="solidVersion' + (i + 2) + 'Modal" tabindex="-1" role="dialog" aria-labelledby="solidVersion' + (i + 2) + 'Title" aria-hidden="true"></div>';
+        document.querySelector('#solidVersion' + (i + 2) + 'Modal').innerHTML += '<div class="modal-dialog modal-dialog-centered" role="document" id="solidVersion' + (i + 2) + 'ModalInner"></div>';
+        document.querySelector('#solidVersion' + (i + 2) + 'ModalInner').innerHTML += '<div  class="modal-content" id="solidVersion' + (i + 2) + 'ModalContent"></div>';
+        document.querySelector('#solidVersion' + (i + 2) + 'ModalContent').innerHTML += '<div class="modal-header"><h4 class="modal-title text-kover" id="solidVersion' + (i + 2) + 'ModalTitle">' + document.querySelector('#fixedVersions #version' + (i + 2) + 'Fixed > h3').innerHTML + '</h4></div>';
+        document.querySelector('#solidVersion' + (i + 2) + 'ModalContent').innerHTML += '<div class="modal-body" id="solidVersion' + (i + 2) + 'ModalBody" name="solidVersion' + (i + 2) + 'ModalContent">' + document.querySelector('#fixedVersions #version' + (i + 2) + 'Fixed > div').innerHTML + '</div>';
+        document.querySelector('#solidVersion' + (i + 2) + 'ModalContent').innerHTML += '<div class="modal-footer"><button type="button bg-kover" class="btn btn-primary" id="solidVersion' + (i + 2) + 'ModalButton" data-dismiss="modal">CLOSE</button></div>'
     }
 }
+
 
 
 startProj();
@@ -208,6 +214,7 @@ function saveVersion() {
 }
 
 function selectingZone() {
+    originalFixedText = document.querySelector('#originalUserText').innerHTML
     console.log('text before :', document.querySelector('#originalUserText').innerHTML);
     if (window.getSelection().toString().length > 0) {
         console.log(window.getSelection().toString().length);
@@ -237,6 +244,7 @@ function selectingZone() {
         document.getElementById('addSectionButton').disabled = true; // ADD A SECTION désactivé sans sélection courante
         document.getElementById('goToEditionButton').disabled = false; // Activation GO TO EDITION 
         editCounter++;
+
         originalText = document.querySelector('#originalUserText').innerHTML;
         return originalText;
     }
