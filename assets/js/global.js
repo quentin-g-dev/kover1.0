@@ -61,7 +61,7 @@ function finalStep(numberOfVersions) {
         document.querySelector('#versionsGroup').innerHTML += '<div class="col-1 rowspan-md-2">';
         document.querySelector('#versionsGroup').innerHTML += '<input type="checkbox" name="solidVersion' + (i + 1) + 'Checker" id="solidVersion' + (i + 1) + 'Checker">';
         document.querySelector('#versionsGroup').innerHTML += '</div>';
-        document.querySelector('#versionsGroup').innerHTML += '<h3 class ="col-11 col-md-5">' + document.querySelector('#stockVersions #version' + (i + 2) + 'Fixed > h3').innerHTML + '</h3>';
+        document.querySelector('#versionsGroup').innerHTML += '<h3 class ="col-11 col-md-5 cursor-pointer">' + document.querySelector('#fixedVersions #version' + (i + 2) + 'Fixed > h3').innerHTML + '</h3>';
         document.querySelector('#versionsGroup').innerHTML += '<div class = "col-11 col-md-5" >';
         document.querySelector('#versionsGroup').innerHTML += '<button class = "bg-kover text-white" id="saveVersion' + (i + 2) + '"> Sauvegarder </button>';
         document.querySelector('#versionsGroup').innerHTML += '<button class = "bg-kover text-white" id="exportDocVersion' + (i + 2) + '">DOC</button>';
@@ -200,9 +200,9 @@ function saveVersion() {
 
         }
         inputs[i].outerHTML = inputs[i].value;
-        let validVersion;
-        validVersion += document.querySelector('#currentVersion > h3').outerHTML;
-        validVersion += document.querySelector('#currentVersion > div').outerHTML;
+        let validVersion = '';
+        validVersion += document.querySelector('#currentVersion  h3').outerHTML;
+        validVersion += document.querySelector('#currentVersion  div').outerHTML;
         return validVersion;
     }
 }
@@ -293,7 +293,7 @@ function editionView(numberOfVersions) {
                 document.querySelector('#currentVersion button[data-valid]').addEventListener("click", function () {
                     let fixedVersion = '';
                     fixedVersion = saveVersion();
-                    document.querySelector("#stockVersions").innerHTML += '<div id="version"' + (i + 1) + 'Fixed>' + fixedVersion + '</div>';
+                    document.querySelector("#fixedVersions").innerHTML += '<div id="version' + (i + 1) + 'Fixed">' + fixedVersion + '</div>';
                     document.querySelector('#currentVersion button[data-valid]').removeEventListener("click", arguments.callee);
                 });
             }

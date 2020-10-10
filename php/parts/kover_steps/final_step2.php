@@ -25,12 +25,14 @@
 
     </div>
 
+    <div id="fixedVersions" class="d-none"></div>
+
     <div id="versionsGroup" class="container">
         <div id="solidOriginal" class="row">
             <div class="col-1 rowspan-md-2">
                 <input type="checkbox" name="solidOriginalChecker" id="solidOriginalChecker">
             </div>
-            <h3 class="col-11 col-md-5"></h3>
+            <h3 class="col-11 col-md-5 cursor-pointer"></h3>
             <div class="col-11 col-md-5">
                 <button class="bg-kover text-white">Sauvegarder</button>
                 <button class="bg-kover text-white">DOC</button>
