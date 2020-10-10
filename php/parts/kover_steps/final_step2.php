@@ -3,7 +3,7 @@
 
     <div id="groupOptions"
         class="w-100 my-2 rounded-top textControls bg-kover d-flex justify-content-center align-items-baseline flex-wrap flex-md-nowrap center mx-auto">
-        <button class="btn btn-light rounded  m-2 h3" id="selectAll">
+        <button class="btn btn-light rounded  m-2 h3" id="selectAll" data-status="selectAll">
             Tout Sélectionner
         </button>
         <button class="btn btn-light rounded  m-2 h3" id="saveSelected">
@@ -34,26 +34,28 @@
             </div>
             <h3 class="col-11 col-md-5 cursor-pointer" data-toggle="modal" data-target="#solidOriginalModal"></h3>
             <div class="col-11 col-md-6">
-                <button class="bg-kover text-white">Sauvegarder</button>
-                <button class="bg-kover text-white">DOC</button>
-                <button class="bg-kover text-white">PDF</button>
-                <button class="bg-kover text-white">ZIP</button>
+                <button class="bg-kover text-white"><a href="">Sauvegarder</a></button>
+                <button class="bg-kover text-white"><a href="">DOC</a></button>
+                <button class="bg-kover text-white"><a href="">PDF</a></button>
+                <button class="bg-kover text-white"><a href="">ZIP</a></button>
             </div>
             <!-- Modal -->
-            <div class="modal fade" id="solidOriginalModal" tabindex="-1" role="dialog"
+            <div class="modal fade bd-example-modal-lg" id="solidOriginalModal" tabindex="-1" role="dialog"
                 aria-labelledby="solidOriginalModalTitle" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title text-kover" id="solidOriginalModalTitle">
+                            <h5 class="modal-title text-kover" id="solidOriginalModalTitle">
                                 Version Originale
-                            </h4>
+                            </h5>
+                            <button type="button" aria-label="Copier">
+                                <span aria-hidden="true" onclick="copyTool(event);" data-copy="0">COPIER</span>
+                            </button>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
                         </div>
                         <div class="modal-body" id="solidOriginalModalContent" name="solidOriginalModalContent">
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button bg-kover" class="btn btn-primary" id="solidOriginalModalButton"
-                                data-dismiss="modal">CLOSE</button>
                         </div>
                     </div>
                 </div>

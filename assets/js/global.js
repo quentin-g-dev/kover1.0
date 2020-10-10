@@ -1,7 +1,6 @@
 // Variables globales
 var editCounter = 0;
-let urlDOC = "";
-let urlPDF = "";
+
 let text = '';
 let newText = '';
 var originalText = '';
@@ -54,27 +53,76 @@ function setVersions() {
 
 }
 
+
+function checkAllVersions() {
+    let checkBoxes = document.querySelectorAll('#versionsGroup input[type="checkbox"]');
+    if (document.querySelector("#selectAll").dataset.status === "selectAll") {
+        document.querySelector("#selectAll").innerHTML = "Tout Désélectionner";
+        document.querySelector("#selectAll").dataset.status = "unselectAll";
+        for (let i = 0; i < checkBoxes.length; i++) {
+            checkBoxes[i].checked = true;
+            checkBoxes[i].addEventListener('change', function () {
+                document.querySelector("#selectAll").innerHTML = "Tout Sélectionner";
+                document.querySelector("#selectAll").dataset.status = "selectAll"
+                for (let j = 0; j < checkBoxes.length; j++) {
+                    if (checkBoxes[j].checked === false) {
+                        return;
+                    }
+                    document.querySelector("#selectAll").innerHTML = "Tout Sélectionner";
+                    document.querySelector("#selectAll").dataset.status = "selectAll";
+                }
+            });
+        }
+        return;
+    } else {
+        document.querySelector("#selectAll").innerHTML = "Tout Sélectionner";
+        document.querySelector("#selectAll").dataset.status = "selectAll";
+        for (let i = 0; i < checkBoxes.length; i++) {
+            checkBoxes[i].checked = false;
+            checkBoxes[i].addEventListener('change', function () {
+                for (let j = 0; j < checkBoxes.length; j++) {
+                    if (checkBoxes[j].checked === false) {
+                        return;
+                    }
+                    document.querySelector("#selectAll").innerHTML = "Tout Désélectionner";
+                    document.querySelector("#selectAll").dataset.status = "unselectAll";
+                }
+            });
+        }
+        return;
+    }
+}
+
 function finalStep(numberOfVersions) {
     document.querySelector('#lastSteps').innerHTML = document.querySelector('#finishing').innerHTML;
     document.querySelector('#solidOriginal h3').innerHTML = document.querySelector('#version1Title').innerHTML;
     document.querySelector('#solidOriginalModalContent').innerHTML = originalFixedText;
     for (let i = 0; i < numberOfVersions; i++) {
+        let currentTitle = document.querySelector('#fixedVersions #version' + (i + 2) + 'Fixed > h3').innerHTML;
+        let currentLetter = document.querySelector('#fixedVersions #version' + (i + 2) + 'Fixed > div').innerHTML;
+        let urlDoc = generateDOC(currentLetter);
+        let urlPdf = generatePDF(currentLetter);
+        console.log('doc ', urlDoc);
+        console.log('pdf ', urlPdf);
         document.querySelector('#versionsGroup').innerHTML += '<div id="solidVersion' + (i + 2) + '" class="row my-2 text-center"></div>';
         document.querySelector('#solidVersion' + (i + 2)).innerHTML = '<div class="col-1 rowspan-md-2"  id="solidVersion' + (i + 2) + 'InputCol"></div>';
         document.querySelector('#solidVersion' + (i + 2) + 'InputCol').innerHTML += '<input type = "checkbox" name = "solidVersion' + (i + 2) + 'Checker" id = "solidVersion' + (i + 2) + 'Checker" > ';
-        document.querySelector('#solidVersion' + (i + 2)).innerHTML += '<h3 class ="col-11 col-md-5 cursor-pointer" data-toggle="modal" data-target="#solidVersion' + (i + 2) + 'Modal">' + document.querySelector('#fixedVersions #version' + (i + 2) + 'Fixed > h3').innerHTML + '</h3>';
+        document.querySelector('#solidVersion' + (i + 2)).innerHTML += '<h3 class ="col-11 col-md-5 cursor-pointer" data-toggle="modal" data-target="#solidVersion' + (i + 2) + 'Modal">' + currentTitle + '</h3>';
         document.querySelector('#solidVersion' + (i + 2)).innerHTML += '<div class = "col-11 col-md-6" id="solidVersion' + (i + 2) + 'ButtonsCol"></div>';
         document.querySelector('#solidVersion' + (i + 2) + 'ButtonsCol').innerHTML += '<button class = "bg-kover text-white" id="saveVersion' + (i + 2) + '"> Sauvegarder </button>';
-        document.querySelector('#solidVersion' + (i + 2) + 'ButtonsCol').innerHTML += '<button class = "bg-kover text-white" id="exportDocVersion' + (i + 2) + '">DOC</button>';
-        document.querySelector('#solidVersion' + (i + 2) + 'ButtonsCol').innerHTML += '<button class = "bg-kover text-white" id="exportPdfVersion' + (i + 2) + '">PDF</button>';
+        document.querySelector('#solidVersion' + (i + 2) + 'ButtonsCol').innerHTML += '<button class = "bg-kover text-white" id="exportDocVersion' + (i + 2) + '"><a href="' + urlDoc + '" class="text-white ">DOC</a></button>';
+        document.querySelector('#solidVersion' + (i + 2) + 'ButtonsCol').innerHTML += '<button class = "bg-kover text-white" id="exportPdfVersion' + (i + 2) + '"><a href="' + urlPdf + '" class="text-white ">PDF</button>';
         document.querySelector('#solidVersion' + (i + 2) + 'ButtonsCol').innerHTML += '<button class = "bg-kover text-white" id="exportZipVersion' + (i + 2) + '">ZIP</button>';
-        document.querySelector('#solidVersion' + (i + 2)).innerHTML += '<div class="modal fade" id="solidVersion' + (i + 2) + 'Modal" tabindex="-1" role="dialog" aria-labelledby="solidVersion' + (i + 2) + 'Title" aria-hidden="true"></div>';
-        document.querySelector('#solidVersion' + (i + 2) + 'Modal').innerHTML += '<div class="modal-dialog modal-dialog-centered" role="document" id="solidVersion' + (i + 2) + 'ModalInner"></div>';
+        document.querySelector('#solidVersion' + (i + 2)).innerHTML += '<div class="modal fade bd-example-modal-lg" id="solidVersion' + (i + 2) + 'Modal" tabindex="-1" role="dialog" aria-labelledby="solidVersion' + (i + 2) + 'Title" aria-hidden="true"></div>';
+        document.querySelector('#solidVersion' + (i + 2) + 'Modal').innerHTML += '<div class="modal-dialog modal-dialog-centered modal-lg" role="document" id="solidVersion' + (i + 2) + 'ModalInner"></div>';
         document.querySelector('#solidVersion' + (i + 2) + 'ModalInner').innerHTML += '<div  class="modal-content" id="solidVersion' + (i + 2) + 'ModalContent"></div>';
-        document.querySelector('#solidVersion' + (i + 2) + 'ModalContent').innerHTML += '<div class="modal-header"><h4 class="modal-title text-kover" id="solidVersion' + (i + 2) + 'ModalTitle">' + document.querySelector('#fixedVersions #version' + (i + 2) + 'Fixed > h3').innerHTML + '</h4></div>';
-        document.querySelector('#solidVersion' + (i + 2) + 'ModalContent').innerHTML += '<div class="modal-body" id="solidVersion' + (i + 2) + 'ModalBody" name="solidVersion' + (i + 2) + 'ModalContent">' + document.querySelector('#fixedVersions #version' + (i + 2) + 'Fixed > div').innerHTML + '</div>';
-        document.querySelector('#solidVersion' + (i + 2) + 'ModalContent').innerHTML += '<div class="modal-footer"><button type="button bg-kover" class="btn btn-primary" id="solidVersion' + (i + 2) + 'ModalButton" data-dismiss="modal">CLOSE</button></div>'
+        document.querySelector('#solidVersion' + (i + 2) + 'ModalContent').innerHTML += '<div class="modal-header"><h5 class="modal-title text-kover" id="solidVersion' + (i + 2) + 'ModalTitle">' + currentTitle + '</h5><button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria - hidden = "true" > & times;</span></button></div >';
+        document.querySelector('#solidVersion' + (i + 2) + 'ModalContent').innerHTML += '<button type="button" aria-label="Copier"> <span aria-hidden="true" onclick="copyTool(event);" data-copy="' + (i + 1) + '">COPIER</span></button>';
+        document.querySelector('#solidVersion' + (i + 2) + 'ModalContent').innerHTML += '<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden ="true">&times;</span></button>';
+        document.querySelector('#solidVersion' + (i + 2) + 'ModalContent').innerHTML += '<div class="modal-body" id="solidVersion' + (i + 2) + 'ModalBody" name="solidVersion' + (i + 2) + 'ModalContent">' + currentLetter + '</div>';
     }
+
+    document.querySelector('#selectAll').addEventListener("click", checkAllVersions);
 }
 
 
@@ -157,8 +205,7 @@ function previousStep() { // Retour à l'étape précédente
                     document.querySelector('#tableInner').innerHTML = '';
                     document.getElementById("accordion").innerHTML = '';
                     tableDimensions = [];
-                    urlDoc = '';
-                    urlPdF = '';
+
                     edition();
                     clickMe("finishButton", finish);
                     break;
@@ -311,7 +358,7 @@ function editionView(numberOfVersions) {
 }
 
 
-
+/*
 function generateVersions(numberOfVersions) {
     // Intégration des saisies de l'utilisateur dans les inputs (s)
     for (let i = 0; i < numberOfVersions.length; i++) {
@@ -336,7 +383,7 @@ function generateVersions(numberOfVersions) {
         cards[i].innerHTML += '<div><button class="btn btn-info border-light"><a href="' + urlPDF + '" class="text-white ">PDF</a></button><button class=" btn btn-info border-light "><a href="' + urlDOC + '" class="text-white ">DOC</a></button><button data-copy =" ' + i + '" class="btn btn-info border-light" onclick="copyTool(event);">COPY</button><button class="btn btn-info border-light " onclick="var printWindow = window.open(urlDOC, \'\');printWindow.print();">PRINT</button></div>';
     }
 }
-
+*/
 function generateDOC(text) {
     let blob = new Blob([text], {
         type: 'application/msword'
@@ -357,11 +404,19 @@ function generatePDF(text) {
 
 function copyTool(event) { // Fonction appelée dans chaque bouton COPY (onclick)
     let id = Number(event.target.dataset.copy);
-    let versions = document.querySelectorAll('.card-body');
+    let versions = document.querySelectorAll('.modal .modal-body');
     let currentVersion = versions[id].innerHTML;
     currentVersion = currentVersion.replace("<br>", "\n");
     navigator.clipboard.writeText(currentVersion).then(function () {
-        alert('Copied !');
+        event.target.innerHTML = 'Copié !';
+        event.target.style.color = "green";
+        setTimeout(function () {
+            event.target.innerHTML = 'COPIER';
+            event.target.style.color = "initial";
+        }, 2500);
+        event.target.addEventListener('click', function () {
+            copyTool(event);
+        });
     }, function () {
         alert('Problem !');
     });
