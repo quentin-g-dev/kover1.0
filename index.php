@@ -41,6 +41,8 @@ include './php/parts/allpages_parts/header.php';
     <script src="./assets/js/jquery-3.5.1.js"></script>
     <script src="./assets/js/bootstrap.min.js"></script>
 
+    <!--jsPDF-->
+    <script src="https://unpkg.com/jspdf@latest/dist/jspdf.umd.min.js"></script>
     <!-- Internal JavaScript -->
     <script src="./assets/js/global.js"></script>
     <script src="./assets/js/nav_menu.js"></script>

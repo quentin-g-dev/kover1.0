@@ -2,7 +2,7 @@
     class="d-none d-md-flex mt-2 mb-3 flex-column flex-md-row flex-no-wrap border-white justify-content-center align-items-center">
     <select name="selectLang" id="selectLang" class="selectLang my-3 my-lg-3">
         <option value="">
-            <?echo $_SESSION['langCode']?>
+            <?if(isset($_SESSION['langCode'])){echo $_SESSION['langCode'];} else {echo'FR';}?>
         </option>
         <option value="FR">Français</option>
         <option value="ES">Espagnol</option>

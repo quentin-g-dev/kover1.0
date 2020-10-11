@@ -9,9 +9,6 @@
         <button class="btn btn-light rounded  m-2 h3" id="saveSelected">
             Sauvegarder
         </button>
-        <button class="btn btn-light rounded  m-2 h3" id="printSelected">
-            Imprimer
-        </button>
         <span class="text-white font-weight-bold" for="">Exporter en :</span>
         <button class="btn btn-light rounded  m-2 h3" id="docExportSelected">
             DOC
@@ -19,10 +16,6 @@
         <button class="btn btn-light rounded  m-2 h3" id="pdfExportSelected">
             PDF
         </button>
-        <button class="btn btn-light rounded  m-2 h3" id="zipExportSelected">
-            ZIP
-        </button>
-
     </div>
 
     <div id="fixedVersions" class="d-none"></div>
@@ -32,30 +25,36 @@
             <div class="col-1 rowspan-md-2">
                 <input type="checkbox" name="solidOriginalChecker" id="solidOriginalChecker">
             </div>
-            <h3 class="col-11 col-md-5 cursor-pointer" data-toggle="modal" data-target="#solidOriginalModal"></h3>
+            <h3 class="col-11 col-md-5 cursor-pointer" data-toggle="modal" data-target="#solidVersion1Modal"></h3>
             <div class="col-11 col-md-6">
-                <button class="bg-kover text-white"><a href="">Sauvegarder</a></button>
-                <button class="bg-kover text-white"><a href="">DOC</a></button>
-                <button class="bg-kover text-white"><a href="">PDF</a></button>
-                <button class="bg-kover text-white"><a href="">ZIP</a></button>
+                <button type="button" aria-label="Copier">
+                    <span class="" aria-hidden="true" onclick="copyTool(event);" data-copy="0">COPIER</span>
+                </button>
+                <button class="bg-kover text-white"><a href="" class="text-white">Sauvegarder</a></button>
+                <button class="bg-kover text-white"><a href="" class="text-white"
+                        id="solidOriginalDocLink">DOC</a></button>
+                <button class="pdf bg-kover text-white">PDF</button>
+                <button type="button" aria-label="Imprimer">
+                    <span class="print" aria-hidden="true" data-copy="0">IMPRIMER</span>
+                </button>
             </div>
             <!-- Modal -->
-            <div class="modal fade bd-example-modal-lg" id="solidOriginalModal" tabindex="-1" role="dialog"
-                aria-labelledby="solidOriginalModalTitle" aria-hidden="true">
+            <div class="modal fade bd-example-modal-lg" id="solidVersion1Modal" tabindex="-1" role="dialog"
+                aria-labelledby="solidVersion1ModalTitle" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title text-kover" id="solidOriginalModalTitle">
+                            <h5 class="modal-title text-kover" id="solidVersion1ModalTitle">
                                 Version Originale
                             </h5>
                             <button type="button" aria-label="Copier">
-                                <span aria-hidden="true" onclick="copyTool(event);" data-copy="0">COPIER</span>
+                                <span class="" aria-hidden="true" onclick="copyTool(event);" data-copy="0">COPIER</span>
                             </button>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <div class="modal-body" id="solidOriginalModalContent" name="solidOriginalModalContent">
+                        <div class="modal-body" id="solidVersion1ModalContent" name="solidVersion1ModalContent">
                         </div>
                     </div>
                 </div>

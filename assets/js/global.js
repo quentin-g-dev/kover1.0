@@ -7,8 +7,6 @@ var originalText = '';
 var originalFixedText = '';
 let fixedVersions = [];
 
-/////////////////////// REFONTE
-
 
 function startProj() {
     document.querySelector('#koverProj').innerHTML = document.querySelector('#startStep').innerHTML;
@@ -54,6 +52,8 @@ function setVersions() {
 }
 
 
+
+
 function checkAllVersions() {
     let checkBoxes = document.querySelectorAll('#versionsGroup input[type="checkbox"]');
     if (document.querySelector("#selectAll").dataset.status === "selectAll") {
@@ -94,35 +94,74 @@ function checkAllVersions() {
 }
 
 function finalStep(numberOfVersions) {
-    document.querySelector('#lastSteps').innerHTML = document.querySelector('#finishing').innerHTML;
+    let final = document.querySelector('#finishing').innerHTML;
+    document.querySelector('#lastSteps').innerHTML = final;
+    document.querySelector('#finishing').remove();
     document.querySelector('#solidOriginal h3').innerHTML = document.querySelector('#version1Title').innerHTML;
-    document.querySelector('#solidOriginalModalContent').innerHTML = originalFixedText;
+    document.querySelector('#solidVersion1ModalContent').innerHTML = originalFixedText;
+    let originalUrlDoc = generateDOC(originalFixedText);
+    document.querySelector('#solidOriginalDocLink').href = originalUrlDoc;
     for (let i = 0; i < numberOfVersions; i++) {
         let currentTitle = document.querySelector('#fixedVersions #version' + (i + 2) + 'Fixed > h3').innerHTML;
         let currentLetter = document.querySelector('#fixedVersions #version' + (i + 2) + 'Fixed > div').innerHTML;
         let urlDoc = generateDOC(currentLetter);
-        let urlPdf = generatePDF(currentLetter);
         console.log('doc ', urlDoc);
-        console.log('pdf ', urlPdf);
+
         document.querySelector('#versionsGroup').innerHTML += '<div id="solidVersion' + (i + 2) + '" class="row my-2 text-center"></div>';
         document.querySelector('#solidVersion' + (i + 2)).innerHTML = '<div class="col-1 rowspan-md-2"  id="solidVersion' + (i + 2) + 'InputCol"></div>';
         document.querySelector('#solidVersion' + (i + 2) + 'InputCol').innerHTML += '<input type = "checkbox" name = "solidVersion' + (i + 2) + 'Checker" id = "solidVersion' + (i + 2) + 'Checker" > ';
         document.querySelector('#solidVersion' + (i + 2)).innerHTML += '<h3 class ="col-11 col-md-5 cursor-pointer" data-toggle="modal" data-target="#solidVersion' + (i + 2) + 'Modal">' + currentTitle + '</h3>';
         document.querySelector('#solidVersion' + (i + 2)).innerHTML += '<div class = "col-11 col-md-6" id="solidVersion' + (i + 2) + 'ButtonsCol"></div>';
+        document.querySelector('#solidVersion' + (i + 2) + 'ButtonsCol').innerHTML += '<button type="button" aria-label="Copier"> <span class="" aria-hidden="true" onclick="copyTool(event);" data-copy="' + (i + 1) + '">COPIER</span></button>';
         document.querySelector('#solidVersion' + (i + 2) + 'ButtonsCol').innerHTML += '<button class = "bg-kover text-white" id="saveVersion' + (i + 2) + '"> Sauvegarder </button>';
         document.querySelector('#solidVersion' + (i + 2) + 'ButtonsCol').innerHTML += '<button class = "bg-kover text-white" id="exportDocVersion' + (i + 2) + '"><a href="' + urlDoc + '" class="text-white ">DOC</a></button>';
-        document.querySelector('#solidVersion' + (i + 2) + 'ButtonsCol').innerHTML += '<button class = "bg-kover text-white" id="exportPdfVersion' + (i + 2) + '"><a href="' + urlPdf + '" class="text-white ">PDF</button>';
-        document.querySelector('#solidVersion' + (i + 2) + 'ButtonsCol').innerHTML += '<button class = "bg-kover text-white" id="exportZipVersion' + (i + 2) + '">ZIP</button>';
+        document.querySelector('#solidVersion' + (i + 2) + 'ButtonsCol').innerHTML += '<button class = "pdf bg-kover text-white" id="exportPdfVersion' + (i + 2) + '">PDF</button>';
+        document.querySelector('#solidVersion' + (i + 2) + 'ButtonsCol').innerHTML += '<button type="button" aria-label="Imprimer"><span class="print" aria-hidden="true" data-copy="0">IMPRIMER</span></button>';
         document.querySelector('#solidVersion' + (i + 2)).innerHTML += '<div class="modal fade bd-example-modal-lg" id="solidVersion' + (i + 2) + 'Modal" tabindex="-1" role="dialog" aria-labelledby="solidVersion' + (i + 2) + 'Title" aria-hidden="true"></div>';
         document.querySelector('#solidVersion' + (i + 2) + 'Modal').innerHTML += '<div class="modal-dialog modal-dialog-centered modal-lg" role="document" id="solidVersion' + (i + 2) + 'ModalInner"></div>';
         document.querySelector('#solidVersion' + (i + 2) + 'ModalInner').innerHTML += '<div  class="modal-content" id="solidVersion' + (i + 2) + 'ModalContent"></div>';
         document.querySelector('#solidVersion' + (i + 2) + 'ModalContent').innerHTML += '<div class="modal-header"><h5 class="modal-title text-kover" id="solidVersion' + (i + 2) + 'ModalTitle">' + currentTitle + '</h5><button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria - hidden = "true" > & times;</span></button></div >';
-        document.querySelector('#solidVersion' + (i + 2) + 'ModalContent').innerHTML += '<button type="button" aria-label="Copier"> <span aria-hidden="true" onclick="copyTool(event);" data-copy="' + (i + 1) + '">COPIER</span></button>';
-        document.querySelector('#solidVersion' + (i + 2) + 'ModalContent').innerHTML += '<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden ="true">&times;</span></button>';
+        document.querySelector('#solidVersion' + (i + 2) + 'ModalContent .modal-header').innerHTML += '<button type="button" aria-label="Copier"> <span class="fa fa-clipboard" aria-hidden="true" onclick="copyTool(event);" data-copy="' + (i + 1) + '">COPIER</span></button>';
+        document.querySelector('#solidVersion' + (i + 2) + 'ModalContent .modal-header').innerHTML += '<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden ="true">&times;</span></button>';
         document.querySelector('#solidVersion' + (i + 2) + 'ModalContent').innerHTML += '<div class="modal-body" id="solidVersion' + (i + 2) + 'ModalBody" name="solidVersion' + (i + 2) + 'ModalContent">' + currentLetter + '</div>';
     }
 
+    for (let i = 0; i < document.querySelectorAll('.pdf').length; i++) {
+        document.querySelectorAll('.pdf')[i].addEventListener("click", function () {
+            let myText = document.querySelector('#solidVersion' + (i + 1) + 'ModalBody').innerHTML;
+            let myTitle = document.querySelector('#solidVersion' + (i + 1) + 'ModalTitle').innerHTML;
+            generatePDF(myText, myTitle);
+        });
+        document.querySelectorAll('.print')[i].addEventListener('click', function () {
+            printVersion(document.querySelector('#solidVersion' + (i + 1) + 'ModalBody').innerHTML);
+        });
+    }
     document.querySelector('#selectAll').addEventListener("click", checkAllVersions);
+
+    document.querySelector('#docExportSelected').addEventListener("click", function () {
+        let checkBoxes = document.querySelectorAll('#versionsGroup input[type="checkbox"]');
+        let urlList = [];
+        for (let i = 0; i < checkBoxes.length; i++) {
+            if (checkBoxes[i].checked === true) {
+                let myText = document.querySelector('#solidVersion' + (i + 1) + 'ModalContent').innerHTML;
+                let myURL = generateDOC(myText);
+                urlList.push(myURL);
+            }
+        }
+        for (let i = 0; i < urlList.length; i++) {
+            window.open(urlList[i]);
+        }
+    });
+    document.querySelector('#pdfExportSelected').addEventListener("click", function () {
+        let checkBoxes = document.querySelectorAll('#versionsGroup input[type="checkbox"]');
+        for (let i = 0; i < checkBoxes.length; i++) {
+            if (checkBoxes[i].checked === true) {
+                let myText = document.querySelector('#solidVersion' + (i + 1) + 'ModalBody').innerHTML;
+                let myTitle = document.querySelector('#solidVersion' + (i + 1) + 'ModalTitle').innerHTML;
+                generatePDF(myText, myTitle);
+            }
+        }
+    });
 }
 
 
@@ -216,26 +255,6 @@ function previousStep() { // Retour à l'étape précédente
     }
     return;
 }
-
-
-/*
-    let pdfText = text;
- pdfText = pdfText.replace("<br>", "\n");
- docText = pdfText.replace("<br>", "\r");
- let textTable = text.split('');
- let newStrTable = [];
- let newStr = '';
- for (let i = 0; i < textTable.length; i++) {
-     newStrTable.push(text.charCodeAt());
- }
- newStr = newStrTable.join(' ');
-
- let blob = new Blob([pdfText], {
-     type: 'application/pdf'
- });
- urlPDF = URL.createObjectURL(blob);
- return urlPDF;
-  */
 
 function saveVersion() {
     console.log("save this version");
@@ -358,49 +377,57 @@ function editionView(numberOfVersions) {
 }
 
 
-/*
-function generateVersions(numberOfVersions) {
-    // Intégration des saisies de l'utilisateur dans les inputs (s)
-    for (let i = 0; i < numberOfVersions.length; i++) {
-        let inputs = document.querySelectorAll("#version" + (i + 1) + "Content input");
-        let editZones = document.querySelectorAll("#version" + (i + 1) + "Content span.toEdit");
-        for (let j = 0; j < editZones.length; j++) {
-            if (inputs[j].value.length > 0) {
-                editZones[j].innerHTML = inputs[j].value;
-                editZones[j].outerHTML = editZones[j].innerHTML;
-            } else {
-                editZones[j].innerHTML = inputs[j].placeholder.value;
-                editZones[j].outerHTML = editZones[j].innerHTML;
-            }
-        }
-    }
-    let allVersions = document.querySelectorAll(".version");
-    for (let i = 0; i < allVersions.length; i++) {
-        // Génération d'URL pour télécharger DOC ET PDF
-        urlDoc = generateDOC(allVersions[i].innerHTML); // BUGS : Affiche les balises insérées pendant l'édition. La fonction de copie affiche le contenu en gras.
-        urlPDF = generatePDF(allVersions[i].innerHTML); // BUG : Fonction à refaire | Module externe ? 
-        // Injection des boutons PDF, DOC, COPIER, IMPRIMER :
-        cards[i].innerHTML += '<div><button class="btn btn-info border-light"><a href="' + urlPDF + '" class="text-white ">PDF</a></button><button class=" btn btn-info border-light "><a href="' + urlDOC + '" class="text-white ">DOC</a></button><button data-copy =" ' + i + '" class="btn btn-info border-light" onclick="copyTool(event);">COPY</button><button class="btn btn-info border-light " onclick="var printWindow = window.open(urlDOC, \'\');printWindow.print();">PRINT</button></div>';
-    }
+
+function printVersion(text) {
+    var printWindow = window.open('', '', 'height=400,width=800');
+    printWindow.document.write('<html><head><title>Lettre</title>');
+    printWindow.document.write('</head><body >');
+    printWindow.document.write(text);
+    printWindow.document.write('</body></html>');
+    printWindow.document.close();
+    printWindow.print();
+    return;
 }
-*/
+
 function generateDOC(text) {
+
     let blob = new Blob([text], {
         type: 'application/msword'
     });
-    urlDOC = URL.createObjectURL(blob);
-    return urlDOC;
+    urlDoc = URL.createObjectURL(blob);
+    return urlDoc;
 }
 
-function generatePDF(text) {
-    let pdfText = "%PDF-2.0 ";
-    pdfText += text;
-    let blob = new Blob([pdfText], {
-        type: 'application/pdf'
-    });
-    urlPDF = URL.createObjectURL(blob);
-    return urlPDF;
+function generatePDF(text, title) {
+
+    var {
+        jsPDF
+    } = window.jspdf;
+
+    var doc = new jsPDF();
+    doc.text(text, 10, 10);
+    doc.save("" + title + ".pdf");
 }
+
+/*Fonction PDF => BLOB :
+var xhr=new XMLHttpRequest();
+
+xhr.open("GET","./template.pdf");
+xhr.responseType="arraybuffer";
+
+xhr.onload = function (e){
+    var blob = new Blob([xhr.response]);
+    var url = URL.createObjectURL(blob)
+
+    console.log(url);
+
+    var embed=document.getElementById("template");
+    embed.src = url;
+}
+
+xhr.send();*/
+
+
 
 function copyTool(event) { // Fonction appelée dans chaque bouton COPY (onclick)
     let id = Number(event.target.dataset.copy);
@@ -497,131 +524,3 @@ function getUserText() { ////Récupération du texte saisi
     text = document.getElementById('userText').innerHTML;
     return text;
 }
-
-/*
-
-- fonction previousStep() : encore quelques bugs
-
-- Editeur de texte : font-style, font-size (+ autres fonctionnalités ? exposant, line-height, border...)
-
-- Bouton PASTE >> seul Chrome prend en charge. Détecter le navigateur avec PHP
-
-- Export en PDF !
-
-- BUG fonction de copie : les balises insérées pendant l'édition apparaissent dans le texte
-
-- Gestion des événements au clavier / sur smartphone
-
--Détection automatique de la langue (Navigator.language | équivalent PHP ?)
-
-- CSS
-
-*/
-
-
-
-
-/*
-//Etapes de l'éxécution 
-
-function begin() { //  ACCUEIL
-    console.log("begin");
-    toggleClass("home", "d-none", "d-flex");
-    toggleClass("choice", "d-flex", "d-none");
-    toggleClass("textarea", "d-flex", "d-none");
-    toggleClass("sections", "d-flex", "d-none");
-    toggleClass("howMany", "d-flex", "d-none");
-    toggleClass("edition", "d-flex", "d-none");
-    toggleClass("done", "d-flex", "d-none");
-    clickMe("startButton", choice);
-    previousStep();
-    return;
-}
-
-function choice() { //  MAKE YOUR CHOICE
-    toggleClass("home", "d-flex", "d-none");
-    toggleClass("choice", "d-none", "d-flex");
-    toggleClass("textarea", "d-flex", "d-none");
-    toggleClass("sections", "d-flex", "d-none");
-    toggleClass("howMany", "d-flex", "d-none");
-    toggleClass("edition", "d-flex", "d-none");
-    toggleClass("done", "d-flex", "d-none");
-    clickMe("newTextButton", choiceHTML);
-    clickMe("uploadFileButton", choiceFile);
-    return;
-}
-
-function choiceHTML() { //  HTML CHOICE
-    toggleClass("home", "d-flex", "d-none");
-    toggleClass("choice", "d-flex", "d-none");
-    toggleClass("textarea", "d-none", "d-flex");
-    toggleClass("sections", "d-flex", "d-none");
-    toggleClass("howMany", "d-flex", "d-none");
-    toggleClass("edition", "d-flex", "d-none");
-    toggleClass("done", "d-flex", "d-none");
-    document.getElementById('userText').focus();
-    // Réaction au clic sur les boutons d'édition de texte :
-    clickMe("userText", textOperate);
-    document.getElementById("userText").addEventListener("select", textOperate);
-    clickMe("pasteText", pasteMe);
-    clickMe("submitText", getUserText);
-    clickMe("submitText", sections);
-    return;
-}
-
-function choiceFile() {
-    return; //  STEP1 : FILE CHOICE
-}
-
-function sections() { // STEP 2 : SELECTION DE TEXTE A MODIFIER
-    toggleClass("home", "d-flex", "d-none");
-    toggleClass("choice", "d-flex", "d-none");
-    toggleClass("textarea", "d-flex", "d-none");
-    getProjectName();
-    toggleClass("sections", "d-none", "d-flex");
-    toggleClass("howMany", "d-flex", "d-none");
-    toggleClass("edition", "d-flex", "d-none");
-    toggleClass("done", "d-flex", "d-none");
-    // Le bouton ADD SECTION s'active en cas de sélection dans le texte
-    clickMe("getUserText", function () { // Activation du bouton ADD SECTION 
-        if (window.getSelection().toString().length > 0) {
-            document.getElementById("addSectionButton").removeAttribute('disabled');
-        }
-        return;
-    });
-    clickMe("addSectionButton", selectZone);
-    clickMe("goToEditionButton", howMany);
-    return;
-}
-
-function howMany() {
-    toggleClass("home", "d-flex", "d-none");3");
-    toggleClass("done", "d-flex", "d-none");
-    clickMe("howManyButton", function () {
-        if (!isNaN(document.getElementById('howManyLetters').value) && document.getElementById('howManyLetters').value < 6 && document.getElementById('howManyLetters').value > 0) {
-            edition();
-        }
-        return;
-    });
-}
-
-function edition() {
-    editionView();
-    toggleClass("home", "d-flex", "d-none");
-    toggleClass("choice", "d-flex", "d-none");
-    toggleClass("textarea", "d-flex", "d-none");
-    toggleClass("sections", "d-flex", "d-none");;
-    toggleClass("howMany", "d-flex", "d-none");
-    toggleClass("edition", "d-none", "d-flex");
-    toggleClass("done", "d-flex", "d-none");
-    clickMe("finishButton", finish);
-    return;
-}
-
-function finish() {
-    finishTitle();
-    generateVersions();
-    document.getElementById("finishButton").style.display = "none";
-    return;
-}
-*/

@@ -9,5 +9,7 @@
 
 
 
-    <title><?echo $pageTitle;?></title>
+    <title>
+        <?echo $pageTitle;?>
+    </title>
 </head>
