@@ -9,5 +9,9 @@
             id="uploadFileButton">
             Utiliser un fichier existant
         </button>
+        <button class="btn bg-kover text-white font-weight-bold p-3 mw-75 rounded mx-auto mx-lg-5 mt-4 h3 p-2"
+            id="adaptATemplateButton">
+            Adapter un modèle
+        </button>
     </div>
 </div>

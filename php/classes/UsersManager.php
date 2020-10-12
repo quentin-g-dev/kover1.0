@@ -98,6 +98,50 @@ class UsersManager {
         }
     }
 
+    //////////////////////////////////////////////////////////////////////////////// LETTERS MANAGER
+
+    public function addProj (User $user, string $projName){
+        $counter=0;
+        $request = $this->_db->prepare ('SELECT projName FROM projects WHERE userId=:userId');
+        $request ->bindValue(':userId', $user->userId(), PDO::PARAM_STR);
+        $request->execute();
+        while($result =$request->fetch()){
+            if ($result['projName'].trim()===$projName.trim()){
+                $counter++;
+            } 
+        }
+        if ($counter===0){
+            $query = $this -> _db -> prepare('INSERT INTO projects (projName, userId) VALUES (:projName, :userId)');
+            $query -> bindValue(':projName', $projName);
+            $query -> bindValue(':userId', $user-> userId());
+            $query -> execute();
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function addLetter(User $user, string $projName, string $letterName, string $letterContent){
+        $newProj = $this->addProj($user, $projName);
+        $projId = $this->_db->query('SELECT projId FROM projects WHERE projName='.$projName.'');
+        $query = $this -> _db -> prepare('INSERT INTO letters (userId, letterStatus, letterContent, letterName, letterCreationDate, letterLastUpdate, projId) VALUES (:userId, :letterStatus, :letterContent, :letterName, :letterCreationDate, :letterLastUpdate, :projId)');
+        $query -> bindValue(':userId', $user-> userId());
+        $query -> bindValue(':letterStatus', 'version');
+        $query -> bindValue(':letterContent', $letterContent);
+        $query -> bindValue(':letterName', $letterName);
+        $query -> bindValue(':letterCreationDate', now());
+        $query -> bindValue(':letterLastUpdate', now());
+        $query -> bindValue(':projId', $projId);
+        $query -> execute();
+        $query->closeCursor();
+        //UPDATE PROJ / VERSIONS => LETTER ID
+        /*$secondQuery = $this -> _db -> prepare
+        $secondQuery -> bindValue(':projName', $projName);
+        $secondQuery -> bindValue(':userId', $user-> userId());
+        $secondQuery -> execute();*/
+            return true;
+    }
+
 }
 
 ?>

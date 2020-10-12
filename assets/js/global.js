@@ -1,6 +1,5 @@
 // Variables globales
 var editCounter = 0;
-
 let text = '';
 let newText = '';
 var originalText = '';
@@ -98,7 +97,7 @@ function finalStep(numberOfVersions) {
     document.querySelector('#lastSteps').innerHTML = final;
     document.querySelector('#finishing').remove();
     document.querySelector('#solidOriginal h3').innerHTML = document.querySelector('#version1Title').innerHTML;
-    document.querySelector('#solidVersion1ModalContent').innerHTML = originalFixedText;
+    document.querySelector('#solidVersion1ModalBody').innerHTML = originalFixedText;
     let originalUrlDoc = generateDOC(originalFixedText);
     document.querySelector('#solidOriginalDocLink').href = originalUrlDoc;
     for (let i = 0; i < numberOfVersions; i++) {
@@ -143,7 +142,7 @@ function finalStep(numberOfVersions) {
         let urlList = [];
         for (let i = 0; i < checkBoxes.length; i++) {
             if (checkBoxes[i].checked === true) {
-                let myText = document.querySelector('#solidVersion' + (i + 1) + 'ModalContent').innerHTML;
+                let myText = document.querySelector('#solidVersion' + (i + 1) + 'ModalBody').innerHTML;
                 let myURL = generateDOC(myText);
                 urlList.push(myURL);
             }
@@ -157,11 +156,38 @@ function finalStep(numberOfVersions) {
         for (let i = 0; i < checkBoxes.length; i++) {
             if (checkBoxes[i].checked === true) {
                 let myText = document.querySelector('#solidVersion' + (i + 1) + 'ModalBody').innerHTML;
-                let myTitle = document.querySelector('#solidVersion' + (i + 1) + 'ModalTitle').innerHTML;
+                let myTitle = document.querySelector('#solidVersion' + (i + 1) + 'ModalTitle').innerHTML.trim();
                 generatePDF(myText, myTitle);
             }
         }
     });
+    document.querySelector('#saveSelected').addEventListener("click", function () {
+        let checkBoxes = document.querySelectorAll('#versionsGroup input[type="checkbox"]');
+        for (let i = 0; i < checkBoxes.length; i++) {
+            if (checkBoxes[i].checked === true) {
+                let myText = document.querySelector('#solidVersion' + (i + 1) + 'ModalBody').innerHTML;
+                let myTitle = document.querySelector('#solidVersion' + (i + 1) + 'ModalTitle').innerHTML.trim();
+                let myProjName = document.querySelector('#projName').innerHTML.trim();
+
+                let xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        console.log('enregistrement dans la bdd :', this.response);
+                        if (this.response != "ok") {
+                            document.querySelector("#pleaseConnect").click();
+                        }
+                    }
+                };
+                xhr.open('POST', './ajax/letters_registration.php', true);
+                xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xhr.send("projName=" + myProjName + "&versionTitle=" + myTitle + "&version=" + myText);
+
+            }
+        }
+    });
+
+
+
 }
 
 
