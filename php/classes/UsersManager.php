@@ -135,13 +135,13 @@ class UsersManager {
         $query -> execute();
         $query->closeCursor();
         //UPDATE PROJ / VERSIONS => LETTER ID
-        /*$secondQuery = $this -> _db -> prepare
-        $secondQuery -> bindValue(':projName', $projName);
-        $secondQuery -> bindValue(':userId', $user-> userId());
-        $secondQuery -> execute();*/
-            return true;
+        $secondQuery = $this -> _db -> prepare('SELECT projVersions FROM projects WHERE userId =:userId');
+        $secondQuery -> bindValue(':userId', $user->userId());
+        $secondQuery -> execute();
+        $result =$secondQuery->fetch();
+        $secondQuery->closeCursor();
+        $thirdQuery = $this -> _db -> prepare('UPDATE projects SET projVersions = '.$projVersions.' WHERE userId='.$user->userId().'');
     }
-
 }
 
 ?>

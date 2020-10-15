@@ -6,7 +6,6 @@ var originalText = '';
 var originalFixedText = '';
 let fixedVersions = [];
 
-
 function startProj() {
     document.querySelector('#koverProj').innerHTML = document.querySelector('#startStep').innerHTML;
     document.querySelector("#startButton").addEventListener("click", sourceChoice);
@@ -19,7 +18,9 @@ function sourceChoice() {
 
 function textEdition() {
     document.querySelector('#koverProj').innerHTML = document.querySelector('#textEdition').innerHTML;
-    document.querySelector("#userText").addEventListener("click", textOperate);
+    document.querySelector("#userText").addEventListener("click", function () {
+        textOperate(document.querySelector("#userText").innerHTML);
+    });
     document.querySelector("#userText").focus();
     document.querySelector("#submitText").addEventListener("click", selectZones, 1500);
 }
@@ -487,17 +488,45 @@ function getProjectName() {
 }
 
 
-function textOperate() {
+function textOperate(text) {
     let ctrlButtons = document.querySelectorAll('.controlButton');
     if (window.getSelection().toString().length > 0) {
         for (let i = 0; i < ctrlButtons.length; i++) {
-            ctrlButtons[i].addEventListener("click", function () {
+            ctrlButtons[i].addEventListener("click", function (e) {
                 let range = window.getSelection().getRangeAt(0);
                 let newNode;
-                let target = event.currentTarget.id;
+                let target = e.currentTarget.id;
                 console.log('target ? ', target);
                 //prepareText(slctData, target);
                 switch (target) {
+                    case "raleway":
+                        newNode = document.createElement('span');
+                        newNode.style.fontFamily = 'Raleway';
+                        break;
+                    case "playfairDisplay":
+                        newNode = document.createElement('span');
+                        newNode.style.fontFamily = 'Playfair Display';
+                        break;
+                    case "josefinSans":
+                        newNode = document.createElement('span');
+                        newNode.style.fontFamily = 'Josefin Sans';
+                        break;
+                    case "crimsonPro":
+                        newNode = document.createElement('span');
+                        newNode.style.fontFamily = 'Crimson Pro';
+                        break;
+                    case "jost":
+                        newNode = document.createElement('span');
+                        newNode.style.fontFamily = 'Jost';
+                        break;
+                    case "piazzolla":
+                        newNode = document.createElement('span');
+                        newNode.style.fontFamily = 'Piazzolla';
+                        break;
+                    case "workSans":
+                        newNode = document.createElement('span');
+                        newNode.style.fontFamily = 'Work Sans';
+                        break;
                     case "bold":
                         newNode = document.createElement('strong');
                         break;
@@ -528,7 +557,8 @@ function textOperate() {
                 window.getSelection().removeAllRanges();
                 range.detach();
                 // Déselection du texte 
-                newNode = undefined;
+                //newNode = undefined;
+                //range = undefined;
                 return;
             });
         }
@@ -536,8 +566,7 @@ function textOperate() {
     return;
 }
 
-function pasteMe() { ///////////////////// Collage depuis le presse-papier
-    //////////////////// !! Ne fonctionne que sur CHROME :
+function pasteMe() { ///////////////////// Collage depuis le presse-papier - Ne fonctionne que sur CHROME 
     document.getElementById('userText').click();
     navigator.clipboard.readText().then(function (data) {
         document.getElementById("userText").innerHTML += data;

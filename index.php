@@ -1,8 +1,7 @@
 <?php
 
-session_start();?>
+session_start();
 
-<?
 /////////////////////////////////////////////////////////////// SI DECONNEXION DEMANDEE
 if(isset($_GET['disc']) && isset($_SESSION)){
     $_SESSION=null;
@@ -28,12 +27,12 @@ include './php/parts/allpages_parts/header.php';
     </main>
     <!-- kover_steps -->
     <?php
-        include './php/parts/kover_steps/start_step2.php';
-        include './php/parts/kover_steps/choice_step2.php';
-        include './php/parts/kover_steps/textedit_step2.php';
-        include './php/parts/kover_steps/selection_step2.php';
-        include './php/parts/kover_steps/setversions_step2.php';
-        include './php/parts/kover_steps/final_step2.php';
+        include './php/parts/kover_steps/start_step.php';
+        include './php/parts/kover_steps/choice_step.php';
+        include './php/parts/kover_steps/textedit_step.php';
+        include './php/parts/kover_steps/selection_step.php';
+        include './php/parts/kover_steps/setversions_step.php';
+        include './php/parts/kover_steps/final_step.php';
         include './php/parts/allpages_parts/footer.php';
     ?>
 
