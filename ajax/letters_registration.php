@@ -38,10 +38,5 @@
         echo 'draft in stock';
         return false;
     }
-    
-    
-
-
-
-   
+       
 ?>

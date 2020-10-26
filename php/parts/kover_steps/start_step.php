@@ -8,7 +8,6 @@
         <p class="text-dark h4 my-5 mx-auto mx-lg-auto mxtext-center">
             <span class="font-weight-bold">Adaptez-la à vos destinataires</span><br>
             <span>
-
                 et exportez-la en quelques clics
             </span>
         </p>

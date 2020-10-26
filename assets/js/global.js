@@ -18,9 +18,7 @@ function sourceChoice() {
 
 function textEdition() {
     document.querySelector('#koverProj').innerHTML = document.querySelector('#textEdition').innerHTML;
-    document.querySelector("#userText").addEventListener("click", function () {
-        textOperate(document.querySelector("#userText").innerHTML);
-    });
+    document.querySelector("#userText").addEventListener("click", textOperate);
     document.querySelector("#userText").focus();
     document.querySelector("#submitText").addEventListener("click", selectZones, 1500);
 }
@@ -37,7 +35,6 @@ function selectZones() {
     });
     document.querySelector('#addSectionButton').addEventListener("click", selectingZone);
     document.querySelector("#textEditSubmit").addEventListener("click", setVersions);
-
 }
 
 function setVersions() {
@@ -48,11 +45,7 @@ function setVersions() {
     document.querySelector("#finishButton").addEventListener("click", function () {
         finalStep(numberOfVersions);
     });
-
 }
-
-
-
 
 function checkAllVersions() {
     let checkBoxes = document.querySelectorAll('#versionsGroup input[type="checkbox"]');
@@ -182,16 +175,10 @@ function finalStep(numberOfVersions) {
                 xhr.open('POST', './ajax/letters_registration.php', true);
                 xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
                 xhr.send("projName=" + myProjName + "&versionTitle=" + myTitle + "&version=" + myText);
-
             }
         }
     });
-
-
-
 }
-
-
 
 startProj();
 
@@ -223,7 +210,6 @@ function cleanUserInput(string) {
     string = charArray.join('');
     return string;
 }
-
 
 function toggleClass(id, oldClass, newClass) { // Raccourci
     document.getElementById(id).classList.replace(oldClass, newClass);
@@ -404,7 +390,6 @@ function editionView(numberOfVersions) {
 }
 
 
-
 function printVersion(text) {
     var printWindow = window.open('', '', 'height=400,width=800');
     printWindow.document.write('<html><head><title>Lettre</title>');
@@ -488,85 +473,91 @@ function getProjectName() {
 }
 
 
-function textOperate(text) {
+function textOperate() {
     let ctrlButtons = document.querySelectorAll('.controlButton');
     if (window.getSelection().toString().length > 0) {
         for (let i = 0; i < ctrlButtons.length; i++) {
             ctrlButtons[i].addEventListener("click", function (e) {
-                let range = window.getSelection().getRangeAt(0);
-                let newNode;
-                let target = e.currentTarget.id;
-                console.log('target ? ', target);
-                //prepareText(slctData, target);
-                switch (target) {
-                    case "raleway":
-                        newNode = document.createElement('span');
-                        newNode.style.fontFamily = 'Raleway';
-                        break;
-                    case "playfairDisplay":
-                        newNode = document.createElement('span');
-                        newNode.style.fontFamily = 'Playfair Display';
-                        break;
-                    case "josefinSans":
-                        newNode = document.createElement('span');
-                        newNode.style.fontFamily = 'Josefin Sans';
-                        break;
-                    case "crimsonPro":
-                        newNode = document.createElement('span');
-                        newNode.style.fontFamily = 'Crimson Pro';
-                        break;
-                    case "jost":
-                        newNode = document.createElement('span');
-                        newNode.style.fontFamily = 'Jost';
-                        break;
-                    case "piazzolla":
-                        newNode = document.createElement('span');
-                        newNode.style.fontFamily = 'Piazzolla';
-                        break;
-                    case "workSans":
-                        newNode = document.createElement('span');
-                        newNode.style.fontFamily = 'Work Sans';
-                        break;
-                    case "bold":
-                        newNode = document.createElement('strong');
-                        break;
-                    case "italic":
-                        newNode = document.createElement('em');
-                        break;
-                    case "underline":
-                        newNode = document.createElement('u');
-                        break;
-                    case "left":
-                        newNode = document.createElement('div');
-                        newNode.style.textAlign = "left";
-                        break;
-                    case "center":
-                        newNode = document.createElement('div');
-                        newNode.style.textAlign = "center";
-                        break;
-                    case "right":
-                        newNode = document.createElement('div');
-                        newNode.style.textAlign = "right";
-                        break;
-                    case "justify":
-                        newNode = document.createElement('div');
-                        newNode.style.textAlign = "justify";
-                        break;
+                for (let i = 0; i < window.getSelection().rangeCount; i++) {
+                    let range = window.getSelection().getRangeAt(i);
+
+                    let newNode;
+                    let target = e.currentTarget.id;
+                    console.log('target ? ', target);
+                    //prepareText(slctData, target);
+                    switch (target) {
+                        case "raleway":
+                            newNode = document.createElement('span');
+                            newNode.style.fontFamily = 'Raleway';
+                            break;
+                        case "playfairDisplay":
+                            newNode = document.createElement('span');
+                            newNode.style.fontFamily = 'Playfair Display';
+                            break;
+                        case "josefinSans":
+                            newNode = document.createElement('span');
+                            newNode.style.fontFamily = 'Josefin Sans';
+                            break;
+                        case "crimsonPro":
+                            newNode = document.createElement('span');
+                            newNode.style.fontFamily = 'Crimson Pro';
+                            break;
+                        case "jost":
+                            newNode = document.createElement('span');
+                            newNode.style.fontFamily = 'Jost';
+                            break;
+                        case "piazzolla":
+                            newNode = document.createElement('span');
+                            newNode.style.fontFamily = 'Piazzolla';
+                            break;
+                        case "workSans":
+                            newNode = document.createElement('span');
+                            newNode.style.fontFamily = 'Work Sans';
+                            break;
+                        case "bold":
+                            newNode = document.createElement('strong');
+                            break;
+                        case "italic":
+                            newNode = document.createElement('em');
+                            break;
+                        case "underline":
+                            newNode = document.createElement('u');
+                            break;
+                        case "left":
+                            newNode = document.createElement('div');
+                            newNode.style.textAlign = "left";
+                            break;
+                        case "center":
+                            newNode = document.createElement('div');
+                            newNode.style.textAlign = "center";
+                            break;
+                        case "right":
+                            newNode = document.createElement('div');
+                            newNode.style.textAlign = "right";
+                            break;
+                        case "justify":
+                            newNode = document.createElement('div');
+                            newNode.style.textAlign = "justify";
+                            break;
+                    }
+                    console.log('range : ', range);
+                    console.log('newNode : ', newNode);
+                    range.surroundContents(newNode);
+                    console.log(range);
+
+                    // Déselection du texte 
                 }
-                range.surroundContents(newNode);
                 window.getSelection().removeAllRanges();
-                range.detach();
-                // Déselection du texte 
-                //newNode = undefined;
-                //range = undefined;
-                return;
+                range = undefined;
+
+
             });
         }
     }
     return;
 }
 
-function pasteMe() { ///////////////////// Collage depuis le presse-papier - Ne fonctionne que sur CHROME 
+function pasteMe() { ////////// Collage depuis le presse-papier - Ne fonctionne que sur CHROME 
     document.getElementById('userText').click();
     navigator.clipboard.readText().then(function (data) {
         document.getElementById("userText").innerHTML += data;

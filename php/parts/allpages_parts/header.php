@@ -10,8 +10,6 @@
         <span class="text-white  hamburger d-flex d-md-none display-4">
             &#9776;
         </span>
-
-
     </header>
     <?
     include './php/parts/allpages_parts/nav_menu.php';
