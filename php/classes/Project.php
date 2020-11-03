@@ -3,7 +3,6 @@
 class Project {
     private $_projName, $_projId, $_userId, $_projVersions;
     
-
     // GETTERS
 
     public function projName(){

@@ -19,40 +19,36 @@ if (isset ($vip)){
         require './php/modules/db_connect.php';
         require './php/classes/User.php';
         require './php/classes/UsersManager.php';
-        $newUser = new User ($db);
-        $controler = new UsersManager ($db);
+        $newUser = new User($db);
+        $controler = new UsersManager($db);
         $newUser->setUserName(htmlspecialchars(($_POST['userName'])));
-        if ($controler->doesUserNameAlreadyExist($newUser)){
-            include './php/modules/db_disconnect.php';
+        if ($controler->doesUserNameAlreadyExist($newUser->userName())){
 
 ///////////////////////////////////////////////////////////////////////ECHEC DE L'INSCRIPTION          
             $pageTitle = 'Kover - Echec de l\'inscription';
-
             include './php/parts/allpages_parts/head.php';
             include './php/parts/allpages_parts/header.php';
-            
             include './php/parts/subscription/subscription_fail.php';
-
         } else {
+            $newUser->setUserHashedPassword(hash("whirlpool", htmlspecialchars($_POST['userPassword'])));
+            $newUser->setUserCreationDate(date('Y-m-d H:i:s'));
+            $newUser->setUserStatus('user');
+            $adding=$controler -> addUser($newUser);
+            if (!$adding){
+                $pageTitle = 'Kover - Echec de l\'inscription';
+                include './php/parts/allpages_parts/head.php';
+                include './php/parts/allpages_parts/header.php';
+                include './php/parts/subscription/subscription_fail.php';
+            } else {
  ///////////////////////////////////////////////////////////////////////SUCCES DE L'INSCRIPTION
-            $vip = new User ($db);
-            $vipManager = new UsersManager ($db);
-            $vip->setUserName(htmlspecialchars($_POST['userName']));
-            $vip->setUserHashedPassword(hash("whirlpool", htmlspecialchars($_POST['userPassword'])));
-            $vip->setUserCreationDate(date('Y-m-d H:i:s'));
-            $vip->setUserStatus('user');
-            $vipManager -> addUser($vip);
-            $vipManager -> setUserSession($vip);
-            include './php/modules/db_disconnect.php';
+                $controler -> setUserSession($newUser);
+                include './php/modules/db_disconnect.php';
 
-            $pageTitle = 'Kover - '. $vip->userName();
-            include './php/parts/allpages_parts/head.php';
-            include './php/parts/allpages_parts/header.php';
-            include './php/parts/subscription/subscription_success.php';
-?>
-
-
-<?
+                $pageTitle = 'Kover - '. $newUser->userName();
+                include './php/parts/allpages_parts/head.php';
+                include './php/parts/allpages_parts/header.php';
+                include './php/parts/subscription/subscription_success.php';
+            }
         }
 
     include './php/parts/allpages_parts/footer.php'; 
@@ -64,10 +60,11 @@ if (isset ($vip)){
 <script src="./assets/js/translations.js"></script>
 <script src="./assets/js/languages.js"></script>
 
- 
+
 </body>
 
 </html>
+
 <?
 
     }

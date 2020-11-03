@@ -31,6 +31,9 @@ include './php/parts/allpages_parts/header.php';
         include './php/parts/kover_steps/choice_step.php';
         include './php/parts/kover_steps/textedit_step.php';
         include './php/parts/kover_steps/selection_step.php';
+    ?>
+    <div id="inputSetter" class="d-none"></div>
+    <?php
         include './php/parts/kover_steps/setversions_step.php';
         include './php/parts/kover_steps/final_step.php';
         include './php/parts/allpages_parts/footer.php';
@@ -43,7 +46,10 @@ include './php/parts/allpages_parts/header.php';
     <!--jsPDF-->
     <script src="https://unpkg.com/jspdf@latest/dist/jspdf.umd.min.js"></script>
     <!-- Internal JavaScript -->
-    <script src="./assets/js/global.js"></script>
+    <!-- <script src="./assets/js/global.js"></script> -->
+    <script src="./assets/js/View.js"></script>
+    <script src="./assets/js/Project.js"></script>
+    <script src="./assets/js/main.js"></script>
     <script src="./assets/js/nav_menu.js"></script>
     <script src="./assets/js/translations.js"></script>
     <script src="./assets/js/languages.js"></script>

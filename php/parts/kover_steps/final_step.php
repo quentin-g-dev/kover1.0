@@ -71,14 +71,14 @@
             <h3 class="col-11 col-md-5 cursor-pointer" data-toggle="modal" data-target="#solidVersion1Modal"></h3>
             <div class="col-11 col-md-6">
                 <button type="button" aria-label="Copier">
-                    <span class="" aria-hidden="true" onclick="copyTool(event);" data-copy="0">COPIER</span>
+                    <span class="copyButton" aria-hidden="true" data-copy="0">COPIER</span>
                 </button>
                 <button class="bg-kover text-white"><a href="" class="text-white">Sauvegarder</a></button>
                 <button class="bg-kover text-white"><a href="" class="text-white"
                         id="solidOriginalDocLink">DOC</a></button>
                 <button class="pdf bg-kover text-white">PDF</button>
                 <button type="button" aria-label="Imprimer">
-                    <span class="print" aria-hidden="true" data-copy="0">IMPRIMER</span>
+                    <span class="print" aria-hidden="true" data-print="0">IMPRIMER</span>
                 </button>
             </div>
 
@@ -92,7 +92,7 @@
                                 Version Originale
                             </h5>
                             <button type="button" aria-label="Copier">
-                                <span class="" aria-hidden="true" onclick="copyTool(event);" data-copy="0">COPIER</span>
+                                <span class="copyButton" aria-hidden="true" data-copy="0">COPIER</span>
                             </button>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>

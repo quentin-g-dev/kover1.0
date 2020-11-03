@@ -1,7 +1,7 @@
 <?php
 ?>
 <!--START_STEP-->
-<div class="d-none" id="startStep">
+<div class="d-none" id="startView">
     <div class=" d-flex  flex-column flex-no-wrap flex-lg-wrap mx-auto">
         <p class="m-auto p-2 h3 rounded font-weight-bold">Touchez plus de cibles avec votre lettre de motivation&nbsp;!
         </p>

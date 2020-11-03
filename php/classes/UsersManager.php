@@ -13,24 +13,18 @@ class UsersManager {
 ////////////////////////////////////////////////////////////////////CRUD FUNCTIONS
 ////////////////////////////////////////////////////////////////////CRUD : CREATE
     public function addUser (User $user){
-        $query = $this -> _db -> prepare('INSERT INTO users (userName, userHashedPassword, userStatus, userCreationDate, userLangCode) VALUES (:userName, :userHashedPassword, :userStatus, :userCreationDate, :userLangCode)');
-        $query -> bindValue(':userName', $user-> userName());
-        $query -> bindValue(':userHashedPassword', $user-> userHashedPassword());
-        $query -> bindValue(':userCreationDate', $user-> userCreationDate());
-        $query -> bindValue(':userLangCode', $user-> userLangCode());
-        $query -> execute();
+        $query = $this -> _db -> prepare('INSERT INTO users (user_name, passwd, creation_date) VALUES (?,?,?)');
+        $result=$query -> execute([$user-> userName(), $user-> userHashedPassword(),  $user-> userCreationDate()]);
+        return ($result);
     }
 
 //////////////////////////////////////////////////////////////////// CRUD : READ
-    public function hydrateUser($user){
-        $query=$this->_db->prepare('SELECT * FROM users WHERE userName=:userName AND userHashedPassword=:userHashedPassword');
-        $query->bindValue(':userName', $user->userName(), PDO::PARAM_STR);
-        $query->bindValue(':userHashedPassword', $user->userHashedPassword(), PDO::PARAM_STR);
-        $query->execute();
+    public function hydrateUser(User $user){
+        $query=$this->_db->prepare('SELECT * FROM users WHERE user_name=? AND passwd=?');
+        $query->execute([$user->userName(),$user->userHashedPassword()]);
         $result = $query->fetch();
-        $user->setUserStatus($result['userStatus']);
-        $user->setUserId($result['userId']);
-        $user->setUserCreationDate($result['userCreationDate']);
+        $user->setUserId($result['id']);
+        $user->setUserCreationDate($result['creation_date']);
         return $user;
     }
 
@@ -39,31 +33,24 @@ class UsersManager {
     }
 
     public function checkUserConnection(User $user){
-        $query = $this->_db->prepare('SELECT userName, userHashedPassword FROM users WHERE userName=:userName AND userHashedPassword=:userHashedPassword');
-        $query -> bindValue(':userName', $user->userName(), PDO::PARAM_STR);
-        $query -> bindValue(':userHashedPassword', $user->userHashedPassword(), PDO::PARAM_STR);
-        $query-> execute();
-        $result = $query->fetch();  
-        return isset($result["userName"]);
+        $query = $this->_db->prepare('SELECT user_name, passwd FROM users WHERE user_name=? AND passwd=?');
+        $query-> execute([$user->userName(),$user->userHashedPassword()]);
+        $result = $query->fetch(); 
+        return isset($result["user_name"]); 
     }
 
     public function doesUserNameAlreadyExist (string $userName){
-        $request = $this->_db->prepare ('SELECT userName FROM users WHERE userName=:userName');
-        $request ->bindValue(':userName', $userName, PDO::PARAM_STR);
-        $request->execute();
+        $request = $this->_db->prepare ('SELECT user_name FROM users WHERE user_name=?');
+        $request->execute([$userName]);
         $result =$request->fetch();
-        return isset($result["userName"]);
+        return isset($result["user_name"]);
     }
 
 ////////////////////////////////////////////////////////////////////CRUD : UPDATE
 
     public function updateUser(User $user) {
-        $query = $this->_db-> prepare('UPDATE users SET userName=:userName, userHashedPassword=:userHashedPassword, userLangCode=:userLangCode WHERE userId=:userId');
-        $query->bindValue(':userName', $user->userName());
-        $query -> bindValue(':userHashedPassword', $user-> userHashedPassword());
-        $query -> bindValue(':userId', $user-> userId());
-        $query -> bindValue(':userLangCode', $user-> userLangCode());
-        $query->execute();
+        $query = $this->_db-> prepare('UPDATE users SET user_name=?, passwd=? WHERE id=?');
+        $query->execute([$user->userName(),$user-> userHashedPassword(),$user-> userId()]);
     }
 //////////////////////////////////////////////////////////////////// CRUD : DELETE
 
@@ -78,7 +65,6 @@ class UsersManager {
             $_SESSION['vip']['userId']= $user->userId();
             $_SESSION['vip']['userName']= $user->userName();
             $_SESSION['vip']['userHashedPassword']= $user->userHashedPassword();
-            $_SESSION['vip']['userStatus']= $user->userStatus();
             $_SESSION['vip']['userCreationDate']= $user->userCreationDate();
             $_SESSION['vip']['langCode']= $user->userLangCode();
             return $_SESSION['vip'];
@@ -89,7 +75,6 @@ class UsersManager {
         $user-> setUserId (intval($sessionArray["userId"]));
         $user-> setUserName ($sessionArray['userName']);
         $user-> setUserHashedPassword ($sessionArray['userHashedPassword']);
-        $user-> setUserStatus ($sessionArray['userStatus']);
         $user-> setUserCreationDate ($sessionArray['userCreationDate']);
         if (isset($sessionArray['langCode'])){        
             $user-> setLangCode ($sessionArray['langCode']);
@@ -98,23 +83,20 @@ class UsersManager {
         }
     }
 
-    //////////////////////////////////////////////////////////////////////////////// LETTERS MANAGER
+//////////////////////////////////////////////////////////////////////////////// LETTERS MANAGER
 
     public function addProj (User $user, string $projName){
         $counter=0;
-        $request = $this->_db->prepare ('SELECT projName FROM projects WHERE userId=:userId');
-        $request ->bindValue(':userId', $user->userId(), PDO::PARAM_STR);
-        $request->execute();
+        $request = $this->_db->prepare ('SELECT proj_name FROM projects WHERE user_id=?');
+        $request->execute([$user->userId()]);
         while($result =$request->fetch()){
-            if ($result['projName'].trim()===$projName.trim()){
+            if ($result['proj_name'].trim()===$projName.trim()){
                 $counter++;
             } 
         }
         if ($counter===0){
-            $query = $this -> _db -> prepare('INSERT INTO projects (projName, userId) VALUES (:projName, :userId)');
-            $query -> bindValue(':projName', $projName);
-            $query -> bindValue(':userId', $user-> userId());
-            $query -> execute();
+            $query = $this -> _db -> prepare('INSERT INTO projects (proj_name, user_id) VALUES (?,?)');
+            $query -> execute([$projName, $user-> userId()]);
             return true;
         } else {
             return false;
@@ -123,21 +105,13 @@ class UsersManager {
 
     public function addLetter(User $user, string $projName, string $letterName, string $letterContent){
         $newProj = $this->addProj($user, $projName);
-        $projId = $this->_db->query('SELECT projId FROM projects WHERE projName='.$projName.'');
-        $query = $this -> _db -> prepare('INSERT INTO letters (userId, letterStatus, letterContent, letterName, letterCreationDate, letterLastUpdate, projId) VALUES (:userId, :letterStatus, :letterContent, :letterName, :letterCreationDate, :letterLastUpdate, :projId)');
-        $query -> bindValue(':userId', $user-> userId());
-        $query -> bindValue(':letterStatus', 'version');
-        $query -> bindValue(':letterContent', $letterContent);
-        $query -> bindValue(':letterName', $letterName);
-        $query -> bindValue(':letterCreationDate', now());
-        $query -> bindValue(':letterLastUpdate', now());
-        $query -> bindValue(':projId', $projId);
-        $query -> execute();
+        $projId = $this->_db->query('SELECT proj_id FROM projects WHERE proj_name='.$projName.'');
+        $query = $this -> _db -> prepare('INSERT INTO letters (user_id, letter_status, letter_content, letter_name, letter_creation_date, letter_last_update, proj_id) VALUES (?,?,?,?,?,?,?)');
+        $query -> execute([$user-> userId(), 'version', $letterContent, $letterName, now(), now(), $projId]);
         $query->closeCursor();
         //UPDATE PROJ / VERSIONS => LETTER ID
-        $secondQuery = $this -> _db -> prepare('SELECT projVersions FROM projects WHERE userId =:userId');
-        $secondQuery -> bindValue(':userId', $user->userId());
-        $secondQuery -> execute();
+        $secondQuery = $this -> _db -> prepare('SELECT proj_versions FROM projects WHERE user_id =?');
+        $secondQuery -> execute([$user->userId()]);
         $result =$secondQuery->fetch();
         $secondQuery->closeCursor();
         $thirdQuery = $this -> _db -> prepare('UPDATE projects SET projVersions = '.$projVersions.' WHERE userId='.$user->userId().'');

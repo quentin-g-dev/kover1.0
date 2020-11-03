@@ -1,10 +1,10 @@
 // Variables globales
 var editCounter = 0;
-let text = '';
-let newText = '';
 var originalText = '';
 var originalFixedText = '';
-let fixedVersions = [];
+
+
+
 
 function startProj() {
     document.querySelector('#koverProj').innerHTML = document.querySelector('#startStep').innerHTML;
@@ -180,7 +180,7 @@ function finalStep(numberOfVersions) {
     });
 }
 
-startProj();
+
 
 //////////////////////
 function cleanUserInput(string) {
@@ -343,9 +343,9 @@ function editionView(numberOfVersions) {
     console.log(numberOfVersions);
     // Injection et nettoyage de l'original
     console.log(originalText);
-    document.querySelector("#version1Title").innerHTML = 'Version Originale';
+    document.querySelector("#version1Title").innerHTML = 'Original';
     document.querySelector("#version1Content").innerHTML = originalText;
-    document.querySelector("#versionsButtons").innerHTML = '<button data-button="1" class="text-kover col-6 py-1 col-lg-4 py-md-3 rounded">Version Originale</button>';
+    document.querySelector("#versionsButtons").innerHTML = '<button data-button="1" class="text-kover col-6 py-1 col-lg-4 py-md-3 rounded">Original</button>';
     let editions = document.querySelectorAll('#version1Content span.toEdit');
     for (let i = 0; i < editions.length; i++) {
         editions[i].outerHTML = editions[i].innerHTML;
@@ -361,7 +361,7 @@ function editionView(numberOfVersions) {
         for (let j = 0; j < editions.length; j++) {
             console.log("to edit: ", editions.length);
             let placeholder = editions[j].innerHTML;
-            editions[j].innerHTML = '<input data-version="' + (i + 1) + '" data-edit="' + j + '" type="text" size="' + (editions[j].innerHTML.length * 2) + '" placeholder = "' + placeholder + '">';
+            editions[j].innerHTML = '<input data-version="' + (i + 1) + '" data-edit="' + j + '" type="text" size="' + (editions[j].innerHTML.length) + '" placeholder = "' + placeholder + '">';
         }
         document.querySelector("#versionsButtons").innerHTML += '<button data-button="' + (i + 1) + '" class="text-kover col-4 py-1 col-6 col-lg-4 py-md-3 rounded">Version ' + (i + 1) + '</button>';
 
@@ -567,6 +567,5 @@ function pasteMe() { ////////// Collage depuis le presse-papier - Ne fonctionne 
 }
 
 function getUserText() { ////Récupération du texte saisi 
-    text = document.getElementById('userText').innerHTML;
-    return text;
+    return document.getElementById('userText').innerHTML;
 }
