@@ -46,6 +46,13 @@ class UsersManager {
         return isset($result["user_name"]);
     }
 
+    public function getUserId($user){
+        $request = $this->_db->prepare ('SELECT user_id FROM users WHERE user_name=?');
+        $request->execute([$user->$userName()]);
+        $result =$request->fetch();
+        return $result["user_name"];
+    }
+
 ////////////////////////////////////////////////////////////////////CRUD : UPDATE
 
     public function updateUser(User $user) {
@@ -85,36 +92,45 @@ class UsersManager {
 
 //////////////////////////////////////////////////////////////////////////////// LETTERS MANAGER
 
-    public function addProj (User $user, string $projName){
-        $counter=0;
-        $request = $this->_db->prepare ('SELECT proj_name FROM projects WHERE user_id=?');
-        $request->execute([$user->userId()]);
-        while($result =$request->fetch()){
-            if ($result['proj_name'].trim()===$projName.trim()){
-                $counter++;
-            } 
-        }
-        if ($counter===0){
-            $query = $this -> _db -> prepare('INSERT INTO projects (proj_name, user_id) VALUES (?,?)');
-            $query -> execute([$projName, $user-> userId()]);
-            return true;
-        } else {
-            return false;
-        }
-    }
 
     public function addLetter(User $user, string $projName, string $letterName, string $letterContent){
-        $newProj = $this->addProj($user, $projName);
-        $projId = $this->_db->query('SELECT proj_id FROM projects WHERE proj_name='.$projName.'');
-        $query = $this -> _db -> prepare('INSERT INTO letters (user_id, letter_status, letter_content, letter_name, letter_creation_date, letter_last_update, proj_id) VALUES (?,?,?,?,?,?,?)');
-        $query -> execute([$user-> userId(), 'version', $letterContent, $letterName, now(), now(), $projId]);
-        $query->closeCursor();
-        //UPDATE PROJ / VERSIONS => LETTER ID
-        $secondQuery = $this -> _db -> prepare('SELECT proj_versions FROM projects WHERE user_id =?');
-        $secondQuery -> execute([$user->userId()]);
-        $result =$secondQuery->fetch();
-        $secondQuery->closeCursor();
-        $thirdQuery = $this -> _db -> prepare('UPDATE projects SET projVersions = '.$projVersions.' WHERE userId='.$user->userId().'');
+        $query = $this -> _db -> prepare('INSERT INTO letters (user_id, proj_name, letter_status, letter_title, letter_content, letter_creation, letter_lastedit) VALUES (?,?,?,?,?,?,?)');
+        $query -> execute([$user-> userId(), $projName, 'version',$letterName, $letterContent,  date("d.m.y"), date("d.m.y")]);
+        return $query;
+    }
+
+    public function countLetters(User $user){
+        $sql = 'SELECT COUNT(letter_id) AS howMany FROM letters WHERE user_id='.$user->userId().'';
+        $request = $this->_db->prepare($sql);
+        $request->execute();
+        $result = $request->fetch();
+        return $result['howMany'];
+    }
+
+    public function selectLetters(User $user){
+        $query=$this->_db->prepare('SELECT * FROM letters WHERE user_id=?');
+        $query->execute([$user->userId()]);
+        $result = $query->fetchAll();
+        return $result;
+    }
+
+    public function deleteLetter (User $user, $letterId){
+        $query=$this->_db->prepare('DELETE FROM letters WHERE user_id=? AND letter_id=?');
+        $query->execute([$user->userId(), $letterId]);
+        return $query;
+    }
+
+    public function selectProject(User $user, string $projName){
+        $query=$this->_db->prepare('SELECT * FROM letters WHERE user_id=? AND proj_name=?');
+        $query->execute([$user->userId(), $projName]);
+        $result = $query->fetchAll();
+        return $result;
+    }
+
+    public function deleteProject(User $user, string $projName){
+        $query=$this->_db->prepare('DELETE FROM letters WHERE user_id=? AND proj_name=?');
+        $query->execute([$user->userId(), $projName]);
+        return $query;
     }
 }
 

@@ -13,7 +13,7 @@
     <div class="row">
         <div class="col-12 row">
             <div id="stockVersions" class="d-none">
-                <h3 id="version1Title" class="mt-3">Version</h3>
+                <h3 id="version1Title" class="mt-3">Version Originale</h3>
                 <div id="version1Content" class="mt-2 version"></div>
             </div>
             <div class="row col-lg-8 col-md-7 d-flex justify-content-between align-items-between"></div>

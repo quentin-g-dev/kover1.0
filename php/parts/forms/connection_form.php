@@ -1,5 +1,5 @@
 <main
-    class="signIn container-fluid full-container d-flex flex-column p-3 mx-auto mt-3 mb-2 text-center w-100 w-lg-75 justify-content-around align-items-baseline h-100 rounded"
+    class="signIn container-fluid full-container d-flex flex-column p-5 mx-auto mt-3 mb-2 text-center w-100 w-lg-75 justify-content-start align-items-baseline h-100 rounded"
     id="signIn">
     <h2 class="mt-0 mb-3 mx-auto text-center">Connexion</h2>
     <form action="" method="post" id="signInForm"

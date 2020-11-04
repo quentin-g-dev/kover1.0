@@ -245,19 +245,25 @@ class Project {
             }
         });
         document.querySelector('#saveSelected').addEventListener("click", function () {
-            let checkBoxes = document.querySelectorAll('#versionsGroup input[type="checkbox"]');
+            console.log('clik');
+
+            let checkBoxes = document.querySelectorAll('#lastSteps input[type="checkbox"]');
+            console.log(checkBoxes.length);
             for (let i = 0; i < checkBoxes.length; i++) {
                 if (checkBoxes[i].checked === true) {
+                    console.log('à enregistrer');
                     let myText = document.querySelector('#solidVersion' + (i + 1) + 'ModalBody').innerHTML;
+                    console.log(myText);
                     let myTitle = document.querySelector('#solidVersion' + (i + 1) + 'ModalTitle').innerHTML.trim();
                     let myProjName = document.querySelector('#projName').innerHTML.trim();
 
                     let xhr = new XMLHttpRequest();
                     xhr.onreadystatechange = function () {
                         if (this.readyState == 4 && this.status == 200) {
-                            console.log('enregistrement dans la bdd :', this.response);
                             if (this.response != "ok") {
-                                document.querySelector("#pleaseConnect").click();
+                                document.querySelector('#pleaseConnect').click();
+                            } else {
+                                document.querySelector('#registerSuccess').click();
                             }
                         }
                     };

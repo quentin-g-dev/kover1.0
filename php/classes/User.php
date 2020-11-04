@@ -29,7 +29,8 @@ class User {
     }
     
 ////////////////////////////////////////////////////////////////////////////////////// Setters
-    public function setUserId(int $id){
+    
+public function setUserId(int $id){
         $this-> _userId = $id;
     }
     public function setUserName(string $name){

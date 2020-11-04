@@ -53,8 +53,8 @@
                         </button>
                     </div>
                     <div class="modal-body" id="registerSuccessModalBody" name="registerSuccessModalBody">
-                        Vous pouvez consulter tous vos projets dans <a href="profile.php?vip=" <? echo
-                            $_SESSION['vip']['id']?>">?votre espace personnel</a>.
+                        Vous pouvez consulter tous vos projets dans <a
+                            href="profile.php?vip=<?=$_SESSION['vip']['id']?>">votre espace personnel</a>.
                     </div>
                 </div>
             </div>
@@ -85,18 +85,33 @@
             <!-- Modal -->
             <div class="modal fade bd-example-modal-lg" id="solidVersion1Modal" tabindex="-1" role="dialog"
                 aria-labelledby="solidVersion1ModalTitle" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title text-kover" id="solidVersion1ModalTitle">
-                                Version Originale
-                            </h5>
-                            <button type="button" aria-label="Copier">
-                                <span class="copyButton" aria-hidden="true" data-copy="0">COPIER</span>
-                            </button>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
+                <div class="modal-dialog modal-dialog-centered modal-lg h-100" role="document">
+                    <div class="modal-content h-100">
+                        <div class="modal-header d-flex justify-content-between align-items-baseline">
+                            <span class="d-flex flex-row align-items-baseline">
+                                <h5 class="modal-title text-kover" id="solidVersion1ModalTitle">
+                                    Version Originale
+                                </h5>
+                                <span class="badge badge-secondary mx-2 my-4">Modifier</span>
+                            </span>
+                            <span class="d-flex flex-row align-items-baseline">
+                                <button type="button" aria-label="Copier">
+                                    <span class="copyButton" aria-hidden="true" data-copy="0">COPIER</span>
+                                </button>
+                                <button class="bg-kover text-white"><a href=""
+                                        class="text-white">Sauvegarder</a></button>
+                                <button class="bg-kover text-white"><a href="" class="text-white"
+                                        id="solidOriginalDocLink">DOC</a></button>
+                                <button class="pdf bg-kover text-white">PDF</button>
+                                <button type="button" aria-label="Imprimer">
+                                    <span class="print" aria-hidden="true" data-print="0">IMPRIMER</span>
+                                </button>
+                            </span>
+                            <span class="d-flex flex-row align-items-baseline">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </span>
                         </div>
                         <div class="modal-body" id="solidVersion1ModalBody" name="solidVersion1ModalBody">
                         </div>

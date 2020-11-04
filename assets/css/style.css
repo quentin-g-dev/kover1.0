@@ -23,8 +23,12 @@ nav {
 
 
 main {
-    min-height: 68vh;
+
     background-color: #f4f4f4;
+}
+
+#koverProj {
+    min-height: 68vh;
 }
 
 .bg-kover {

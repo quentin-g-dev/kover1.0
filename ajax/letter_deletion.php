@@ -1,9 +1,7 @@
 <?php
     session_start();
 
-    $projName = $_POST["projName"];
-    $title = $_POST["versionTitle"];
-    $letter=$_POST["version"];
+    $letterId = $_POST["letter"];
     if (isset ($_SESSION['vip'])){
     
         include '../../kover1.0/php/classes/User.php';
@@ -11,11 +9,10 @@
         require '../../kover1.0/php/modules/db_connect.php';
         $vip = new User($db);
         $vipManager = new UsersManager($db);
-
         $vipManager->setUserFromSession($vip, $_SESSION['vip']);
         if ($vipManager->checkUserConnection($vip)){
-            $vipManager-> addLetter($vip, $projName, $title, $letter);
-            echo 'ok';
+            $result=$vipManager-> deleteLetter($vip, $letterId);
+            echo $vip->userId();
         } else{                      
             echo 'not ok';
         }

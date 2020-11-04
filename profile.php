@@ -82,13 +82,17 @@ if (!isset ($_GET['vip'])||!isset($_SESSION["vip"])){
             } else {
 ////////////////////////////////////////////////////////////// Si section spécifique du profil demandée 
                 if($_GET['sect'] === 'letters'){  
-?>
+                    require './php/modules/db_connect.php';
 
-<!------------------------------------------------------------------------- SECTION Mes lettres -->
 
+                    //SECTION Mes lettres
+                    include './php/parts/profile_parts/letters_view.php';
                    
-<?php 
-                } elseif ($_GET['sect']==='param'){
+                } elseif($_GET['sect']==='project'){
+                    if(isset($_GET['project'])){
+                        include './php/parts/profile_parts/project_view.php';
+                    }
+                }elseif ($_GET['sect']==='param'){
                     if (!isset($_GET['opt'])){
 
                         include './php/parts/profile_parts/profile_opt_menu.php';
@@ -105,18 +109,20 @@ if (!isset ($_GET['vip'])||!isset($_SESSION["vip"])){
                     }
 
                 } 
+                require './php/modules/db_disconnect.php';
+
             }
 ?>
-                </main>
+</main>
 <?php
                 include './php/parts/allpages_parts/footer.php'; 
 ?>
-                <script src="./assets/js/jquery-3.5.1.js"></script>
-                <script src="./assets/js/bootstrap.min.js"></script>
-                <script src="./assets/js/nav_menu.js"></script>
-                <script src="./assets/js/translations.js"></script>
-                <script src="./assets/js/languages.js"></script>
-            </body>
+<script src="./assets/js/jquery-3.5.1.js"></script>
+<script src="./assets/js/bootstrap.min.js"></script>
+<script src="./assets/js/nav_menu.js"></script>
+<script src="./assets/js/translations.js"></script>
+<script src="./assets/js/languages.js"></script>
+</body>
 
 <?php   
                
@@ -124,4 +130,3 @@ if (!isset ($_GET['vip'])||!isset($_SESSION["vip"])){
         }
     }
 ?>
-

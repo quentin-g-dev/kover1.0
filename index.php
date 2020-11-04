@@ -22,7 +22,7 @@ include './php/parts/allpages_parts/header.php';
 
 <body>
     <main
-        class="container-fluid full-container d-flex flex-column p-3 mx-auto mt-3 mb-2 text-center w-100 w-lg-75 justify-content-start align-items-baseline h-100 rounded"
+        class="container-fluid full-container d-flex flex-column p-5 mx-auto mt-3 mb-2 text-center w-100 w-lg-75 justify-content-start align-items-baseline h-100 rounded"
         id="koverProj">
     </main>
     <!-- kover_steps -->
@@ -46,9 +46,9 @@ include './php/parts/allpages_parts/header.php';
     <!--jsPDF-->
     <script src="https://unpkg.com/jspdf@latest/dist/jspdf.umd.min.js"></script>
     <!-- Internal JavaScript -->
-    <!-- <script src="./assets/js/global.js"></script> -->
     <script src="./assets/js/View.js"></script>
     <script src="./assets/js/Project.js"></script>
+    <script src="./assets/js/general.js"></script>
     <script src="./assets/js/main.js"></script>
     <script src="./assets/js/nav_menu.js"></script>
     <script src="./assets/js/translations.js"></script>

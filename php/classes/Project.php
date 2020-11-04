@@ -1,7 +1,7 @@
 <?
 
 class Project {
-    private $_projName, $_projId, $_userId, $_projVersions;
+    private $_projName, $_projId, $_userId;
     
     // GETTERS
 
@@ -17,10 +17,6 @@ class Project {
         return $this->_userId;
     }
 
-    public function projVersions(){
-        return $this->_projVersions;
-    }
-
     // SETTERS
 
     public function setProjName($name){
@@ -28,18 +24,4 @@ class Project {
         return;
     }
 
-    public function setProjId($id){
-        $this->_projId = $id;
-        return;
-    }
-
-    public function setUserId($id){
-        $this->_userId = $id;
-        return;
-    }
-
-    public function setProjVersions($versions){
-        $this->_projVersions = $versions;
-        return;
-    }
 }
