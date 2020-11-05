@@ -23,10 +23,10 @@
     <div id="lettersList" class="container">
         <div id="listHeader" class="row my-2 text-center">
             <div class="col-1"></div>
-            <div class="col-2 cursor-pointer text-kover font-weight-bold">Titre</div>
-            <div class="col-2 cursor-pointer text-kover font-weight-bold">Projet</div>
-            <div class="col-3 cursor-pointer text-kover font-weight-bold">Commentaire</div>
-            <div class="col-2 cursor-pointer text-kover font-weight-bold">Date</div>
+            <div class="col-2 cursor-pointer text-kover font-weight-bold" id="orderByTitle">Titre</div>
+            <div class="col-2 cursor-pointer text-kover font-weight-bold" id="orderByProject">Projet</div>
+            <div class="col-3 cursor-pointer text-kover font-weight-bold" id="orderByComments">Commentaire</div>
+            <div class="col-2 cursor-pointer text-kover font-weight-bold" id="orderByDate">Date</div>
             <div class="col-2  cursor-pointer text-kover font-weight-bold"></div>
 
         </div>

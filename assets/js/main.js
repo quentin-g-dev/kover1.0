@@ -122,8 +122,13 @@ function copyTool(event) {
 
 
 /////// EXECUTION
+if (window.location.href === "http://localhost/dwwm/KOVER/kover1.0/index.php" || window.location.href === "http://localhost/dwwm/KOVER/kover1.0/index.php?disc=1") {
 
-let kover = new Project();
-kover.view = new View(kover);
+    document.addEventListener("DOMContentLoaded", function () {
+        let kover = new Project();
+        kover.view = new View(kover);
 
-start(kover);
+        start(kover);
+
+    });
+}

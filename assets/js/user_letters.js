@@ -25,22 +25,20 @@ for (let i = 0; i < copyButtons.length; i++) {
 let deleteButtons = document.querySelectorAll('.deleteButton');
 for (let i = 0; i < deleteButtons.length; i++) {
     deleteButtons[i].addEventListener("click", function () {
-        let letterId = document.querySelector('#reference' + i + '').value;
-        console.log(letterId);
-        let xhr = new XMLHttpRequest();
-        xhr.onreadystatechange = function () {
-            if (this.readyState == 4 && this.status == 200) {
-                document.location.href === "./profile.php?vip=" + this.response + "&sect=letters";
-                console.log("oui ?");
-            } else {
-                alert('problem');
+            let letterId = document.querySelector('#reference' + i + '').value;
+            console.log(letterId);
+            let xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    window.location.reload();
+                }
             }
             xhr.open('POST', './ajax/letter_deletion.php', true);
             xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             xhr.send("letter=" + letterId);
         }
 
-    });
+    );
 }
 
 // Activating DOC Buttons
@@ -75,5 +73,39 @@ for (let i = 0; i < printButtons.length; i++) {
         let index = printButtons[i].dataset.letter;
         let text = document.querySelector('.modal-body[data-letter="' + index + '"]').innerHTML;
         printVersion(text);
+    });
+}
+
+// Sorting Results
+
+document.querySelector('#orderByDate').innerHTML += '<span class="indicator">&uarr;</span>';
+arrow('#orderByTitle', '&darr;');
+
+function arrow(cssSelector, darruarr) {
+    document.querySelector(cssSelector).addEventListener("click", function () {
+
+        document.querySelector('' + cssSelector + ' .indicator').innerHTML = darruarr;
+        let indicators = document.querySelectorAll('.indicator');
+        for (let i = 0; i < indicators.length; i++) {
+            if (indicators[i].parentElement != document.querySelector(cssSelector)) {
+                indicators[i].innerHTML = '';
+            }
+
+        }
+        switch (darruarr) {
+            case '&uarr;':
+                document.querySelector(cssSelector).addEventListener("click", function () {
+                    arrow(cssSelector, '&darr;');
+                });
+                break;
+            case '&darr;':
+                document.querySelector(cssSelector).addEventListener("click", function () {
+                    arrow(cssSelector, '&uarr;');
+                });
+                break;
+            default:
+                break;
+        }
+
     });
 }

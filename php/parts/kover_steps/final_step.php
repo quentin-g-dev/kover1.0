@@ -54,7 +54,7 @@
                     </div>
                     <div class="modal-body" id="registerSuccessModalBody" name="registerSuccessModalBody">
                         Vous pouvez consulter tous vos projets dans <a
-                            href="profile.php?vip=<?=$_SESSION['vip']['id']?>">votre espace personnel</a>.
+                            href="./profile.php?vip=<?=$vip->userId();?>">votre espace personnel</a>.
                     </div>
                 </div>
             </div>

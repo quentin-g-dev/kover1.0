@@ -55,6 +55,7 @@ function setSessionLang(url, langCode) {
 }
 
 //////////////////////////////////////////////////////////// EXECUTION
+
 getSessionLang();
 var lang;
 lang = (document.querySelector('#langInput').value.length > 0) ? document.querySelector('#langInput').value : getSessionLang();
