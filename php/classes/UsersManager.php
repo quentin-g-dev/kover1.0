@@ -120,8 +120,8 @@ class UsersManager {
         return $query;
     }
 
-    public function selectProject(User $user, string $projName, string $orderby, string $ascfesc){
-        $query=$this->_db->prepare('SELECT * FROM letters WHERE user_id=? AND proj_name=? SORT BY'.$orderby.' '.$ascfesc);
+    public function selectProject(User $user, string $projName, string $orderedBy, string $ASCorDESC){
+        $query=$this->_db->prepare('SELECT * FROM letters WHERE user_id=? AND proj_name=? ORDER BY '.$orderedBy.' '.$ASCorDESC.'');
         $query->execute([$user->userId(), $projName]);
         $result = $query->fetchAll();
         return $result;

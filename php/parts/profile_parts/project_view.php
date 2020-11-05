@@ -27,16 +27,26 @@ $projName = $_GET['project'];
     <div id="lettersList" class="container">
         <div id="listHeader" class="row my-2 text-center">
             <div class="col-1"></div>
-            <div class="col-3 cursor-pointer text-kover font-weight-bold">Titre</div>
-            <div class="col-3 cursor-pointer text-kover font-weight-bold">Commentaire</div>
-            <div class="col-2 cursor-pointer text-kover font-weight-bold">Date</div>
+            <div class="col-3 cursor-pointer text-kover font-weight-bold" id="orderByTitle">
+                Titre&nbsp;
+                <span class="indicator"></span>
+            </div>
+            <div class="col-3 cursor-pointer text-kover font-weight-bold" id="orderByComments">
+                Commentaire&nbsp;
+                <span class="indicator"></span>
+            </div>
+            <div class="col-2 cursor-pointer text-kover font-weight-bold" id="orderByDate">
+                Date&nbsp;
+                <span class="indicator">
+                </span>
+            </div>
             <div class="col-3  cursor-pointer text-kover font-weight-bold"></div>
 
         </div>
 
         <?php
         if (!isset($_GET['order'])){
-            $letters = $manager->selectProject($vip, $projName, 'letter_creation', 'DESC');
+            $letters = $manager->selectProject($vip, $projName, 'letter_title', 'DESC');
         } else {
             $letters = $manager->selectProject($vip, $projName, $_GET['order'], $_GET['way']);
             
@@ -47,8 +57,9 @@ $projName = $_GET['project'];
 
         <div id="" class="row my-2 d-flex align-items-center">
             <div class="col-1">
-                <input type="checkbox" name="" id="">
-                <input type="hidden" name="" id="reference<?=$i?>" value="<?=$letters[$i]['letter_id']?>">
+                <input type="checkbox" data-letter="<?=$i?>">
+                <input type="hidden" name="" id="reference<?=$i?>" data-letter="<?=$i?>" value="
+                    <?=$letters[$i]['letter_id']?>">
 
             </div>
             <div class="col-3 cursor-pointer" data-toggle="modal" data-target="#detailsLetter<?=$i?>">

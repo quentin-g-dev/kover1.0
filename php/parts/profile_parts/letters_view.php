@@ -41,8 +41,9 @@
 
         <div id="" class="row my-2 d-flex align-items-center">
             <div class="col-1">
-                <input type="checkbox" name="" id="">
-                <input type="hidden" name="" id="reference<?=$i?>" value="<?=$userLetters[$i]['letter_id']?>">
+                <input type="checkbox" data-letter="<?=$i?>">
+                <input type="hidden" name="" id="reference<?=$i?>" data-letter="<?=$i?>" value="
+                    <?=$userLetters[$i]['letter_id']?>">
             </div>
             <div class="col-2 cursor-pointer" data-toggle="modal" data-target="#detailsLetter<?=$i?>">
                 <?=$userLetters[$i]['letter_title']?></div>
@@ -57,7 +58,7 @@
                 <button class="deleteButton" aria-hidden="true" data-letter="<?=$i?>">
                     Supprimer
                 </button>
-                <button class="bg-kover text-white">=> Modèle de projet</button>
+                <button class="bg-kover text-white newProjButton" data-letter="<?=$i?>">=> Modèle de projet</button>
             </div>
 
             <!-- Modal -->

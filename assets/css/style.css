@@ -125,6 +125,11 @@ h3[data-toggle]:hover {
     border-radius: 20px;
 }
 
+.modal-dialog,
+.modal-body {
+    height: max-content !important;
+}
+
 
 @media (max-width:768px) {
 

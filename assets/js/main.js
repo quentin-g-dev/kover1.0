@@ -28,9 +28,10 @@ function srcChoice(project) {
     });
 
     document.querySelector('#templateButton').addEventListener('click', function () {
-        project = new Project('MyTemplate', 'MyText');
+        project = new Project(document.querySelector('#templateTitle').innerHTML, document.querySelector('#templateText').innerHTML);
         project.view = new View(project);
         project.view.project = project;
+        project.view.textEditor();
         textEditor(project);
     });
 }
@@ -122,13 +123,20 @@ function copyTool(event) {
 
 
 /////// EXECUTION
-if (window.location.href === "http://localhost/dwwm/KOVER/kover1.0/index.php" || window.location.href === "http://localhost/dwwm/KOVER/kover1.0/index.php?disc=1") {
 
-    document.addEventListener("DOMContentLoaded", function () {
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    if (document.querySelector('#userTemplate').innerHTML === '') {
         let kover = new Project();
         kover.view = new View(kover);
-
         start(kover);
+    } else {
+        project = new Project('', document.querySelector('#userTemplate').innerHTML);
+        project.view = new View(project);
+        project.view.project = project;
+        project.view.textEditor();
+        textEditor(project);
+    }
 
-    });
-}
+});

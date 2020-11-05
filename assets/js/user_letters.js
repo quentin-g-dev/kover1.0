@@ -1,3 +1,104 @@
+// Selecting/Unselecting all results
+
+function checkAllVersions() {
+    let checkBoxes = document.querySelectorAll('input[type="checkbox"]');
+    if (document.querySelector("#selectAll").dataset.status === "selectAll") {
+        document.querySelector("#selectAll").innerHTML = "Tout Désélectionner";
+        document.querySelector("#selectAll").dataset.status = "unselectAll";
+        for (let i = 0; i < checkBoxes.length; i++) {
+            checkBoxes[i].checked = true;
+            checkBoxes[i].addEventListener('change', function () {
+                document.querySelector("#selectAll").innerHTML = "Tout Sélectionner";
+                document.querySelector("#selectAll").dataset.status = "selectAll"
+                for (let j = 0; j < checkBoxes.length; j++) {
+                    if (checkBoxes[j].checked === false) {
+                        return;
+                    }
+                    document.querySelector("#selectAll").innerHTML = "Tout Sélectionner";
+                    document.querySelector("#selectAll").dataset.status = "selectAll";
+                }
+            });
+        }
+        return;
+    } else {
+        document.querySelector("#selectAll").innerHTML = "Tout Sélectionner";
+        document.querySelector("#selectAll").dataset.status = "selectAll";
+        for (let i = 0; i < checkBoxes.length; i++) {
+            checkBoxes[i].checked = false;
+            checkBoxes[i].addEventListener('change', function () {
+                for (let j = 0; j < checkBoxes.length; j++) {
+                    if (checkBoxes[j].checked === false) {
+                        return;
+                    }
+                    document.querySelector("#selectAll").innerHTML = "Tout Désélectionner";
+                    document.querySelector("#selectAll").dataset.status = "unselectAll";
+                }
+            });
+        }
+        return;
+    }
+}
+
+document.querySelector('#selectAll').addEventListener("click", checkAllVersions);
+
+// Multiple DOC Exports
+
+document.querySelector('#docExportSelected').addEventListener("click", function () {
+    let checkBoxes = document.querySelectorAll('input[type="checkbox"]');
+    let urlList = [];
+    for (let i = 0; i < checkBoxes.length; i++) {
+        if (checkBoxes[i].checked === true) {
+            let index = checkBoxes[i].dataset.letter;
+            let myText = document.querySelector('.modal-body[data-letter="' + index + '"').innerHTML;
+            let myURL = generateDOC(myText);
+            urlList.push(myURL);
+        }
+    }
+    for (let i = 0; i < urlList.length; i++) {
+        window.open(urlList[i]);
+    }
+});
+
+// Multiple PDF Exports
+
+document.querySelector('#pdfExportSelected').addEventListener("click", function () {
+    let checkBoxes = document.querySelectorAll('input[type="checkbox"]');
+    for (let i = 0; i < checkBoxes.length; i++) {
+        if (checkBoxes[i].checked === true) {
+            let index = checkBoxes[i].dataset.letter;
+            let myText = document.querySelector('.modal-body[data-letter="' + index + '"').innerHTML;
+            let myTitle = document.querySelector('.modal-title[data-letter="' + index + '"').innerHTML.trim();
+            console.log(myText, myTitle);
+            generatePDF(myText, myTitle);
+        }
+    }
+});
+
+
+// Multiple Deleting
+document.querySelector('#deleteSelected').addEventListener("click", function () {
+    let checkBoxes = document.querySelectorAll('input[type="checkbox"]');
+    for (let i = 0; i < checkBoxes.length; i++) {
+        if (checkBoxes[i].checked === true) {
+            let index = checkBoxes[i].dataset.letter;
+            let letterId = document.querySelector('input[type="hidden"][data-letter="' + index + '"]').value;
+            console.log(letterId);
+            let xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    window.location.reload();
+                }
+            }
+            xhr.open('POST', './ajax/letter_deletion.php', true);
+            xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhr.send("letter=" + letterId);
+        }
+    }
+});
+
+
+
+
 // Activating COPY Buttons
 
 let copyButtons = document.querySelectorAll('.details .copyButton');
@@ -25,20 +126,18 @@ for (let i = 0; i < copyButtons.length; i++) {
 let deleteButtons = document.querySelectorAll('.deleteButton');
 for (let i = 0; i < deleteButtons.length; i++) {
     deleteButtons[i].addEventListener("click", function () {
-            let letterId = document.querySelector('#reference' + i + '').value;
-            console.log(letterId);
-            let xhr = new XMLHttpRequest();
-            xhr.onreadystatechange = function () {
-                if (this.readyState == 4 && this.status == 200) {
-                    window.location.reload();
-                }
+        let letterId = document.querySelector('#reference' + i + '').value;
+        console.log(letterId);
+        let xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                window.location.reload();
             }
-            xhr.open('POST', './ajax/letter_deletion.php', true);
-            xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            xhr.send("letter=" + letterId);
         }
-
-    );
+        xhr.open('POST', './ajax/letter_deletion.php', true);
+        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhr.send("letter=" + letterId);
+    });
 }
 
 // Activating DOC Buttons
@@ -76,36 +175,21 @@ for (let i = 0; i < printButtons.length; i++) {
     });
 }
 
-// Sorting Results
+// Activating NEW PROJECT Buttons
 
-document.querySelector('#orderByDate').innerHTML += '<span class="indicator">&uarr;</span>';
-arrow('#orderByTitle', '&darr;');
-
-function arrow(cssSelector, darruarr) {
-    document.querySelector(cssSelector).addEventListener("click", function () {
-
-        document.querySelector('' + cssSelector + ' .indicator').innerHTML = darruarr;
-        let indicators = document.querySelectorAll('.indicator');
-        for (let i = 0; i < indicators.length; i++) {
-            if (indicators[i].parentElement != document.querySelector(cssSelector)) {
-                indicators[i].innerHTML = '';
+let newProjButtons = document.querySelectorAll('.newProjButton');
+for (let i = 0; i < newProjButtons.length; i++) {
+    newProjButtons[i].addEventListener("click", function () {
+        let index = newProjButtons[i].dataset.letter;
+        let text = document.querySelector('.modal-body[data-letter="' + index + '"').innerHTML;
+        let xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                window.open("./index.php");
             }
-
         }
-        switch (darruarr) {
-            case '&uarr;':
-                document.querySelector(cssSelector).addEventListener("click", function () {
-                    arrow(cssSelector, '&darr;');
-                });
-                break;
-            case '&darr;':
-                document.querySelector(cssSelector).addEventListener("click", function () {
-                    arrow(cssSelector, '&uarr;');
-                });
-                break;
-            default:
-                break;
-        }
-
+        xhr.open('POST', './ajax/newproject_oldLetter.php', true);
+        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhr.send("text=" + text);
     });
 }

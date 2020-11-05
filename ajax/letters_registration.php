@@ -14,8 +14,9 @@
 
         $vipManager->setUserFromSession($vip, $_SESSION['vip']);
         if ($vipManager->checkUserConnection($vip)){
-            $vipManager-> addLetter($vip, $projName, $title, $letter);
-            echo 'ok';
+            $result=$vipManager-> addLetter($vip, $projName, $title, $letter);
+            var_dump($vip, $projName, $title, $letter);
+            //echo 'ok';
         } else{                      
             echo 'not ok';
         }
