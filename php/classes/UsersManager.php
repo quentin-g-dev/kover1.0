@@ -13,8 +13,8 @@ class UsersManager {
 ////////////////////////////////////////////////////////////////////CRUD FUNCTIONS
 ////////////////////////////////////////////////////////////////////CRUD : CREATE
     public function addUser (User $user){
-        $query = $this -> _db -> prepare('INSERT INTO users (user_name, passwd, creation_date) VALUES (?,?,?)');
-        $result=$query -> execute([$user-> userName(), $user-> userHashedPassword(),  $user-> userCreationDate()]);
+        $query = $this -> _db -> prepare('INSERT INTO users (user_name, passwd, lang_code, creation_date) VALUES (?,?,?,?)');
+        $result=$query -> execute([$user-> userName(), $user-> userHashedPassword(), $user->userLangCode(),  $user-> userCreationDate()]);
         return ($result);
     }
 
@@ -56,13 +56,13 @@ class UsersManager {
 ////////////////////////////////////////////////////////////////////CRUD : UPDATE
 
     public function updateUser(User $user) {
-        $query = $this->_db-> prepare('UPDATE users SET user_name=?, passwd=? WHERE id=?');
-        $query->execute([$user->userName(),$user-> userHashedPassword(),$user-> userId()]);
+        $query = $this->_db-> prepare('UPDATE users SET user_name=?, passwd=?, lang_code=? WHERE id=?');
+        $query->execute([$user->userName(),$user-> userHashedPassword(),$user->userLangCode(), $user-> userId()]);
     }
 //////////////////////////////////////////////////////////////////// CRUD : DELETE
 
     public function deleteUser (User $user){
-        $this -> _db -> exec('DELETE FROM users WHERE userId = '.$user ->id());
+        $this -> _db -> exec('DELETE FROM users WHERE id = '.$user ->userId().'');
     }
 
 ////////////////////////////////////////////////////////////////////// NO-CRUD FUNCTIONS
@@ -105,6 +105,13 @@ class UsersManager {
         $request->execute();
         $result = $request->fetch();
         return $result['howMany'];
+    }
+
+    public function doesProjectExist(User $user, string $projName){
+        $request = $this->_db->prepare ('SELECT proj_name FROM letters WHERE user_id=? AND proj_name=?');
+        $request->execute([$user->userId(), $projName]);
+        $result =$request->fetch();
+        return isset($result["proj_name"]);    
     }
 
     public function selectLetters(User $user){

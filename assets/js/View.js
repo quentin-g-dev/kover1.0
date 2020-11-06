@@ -12,10 +12,6 @@ class View {
         document.querySelector('#koverProj').innerHTML = document.querySelector('#sourceChoice').innerHTML;
     }
 
-    uploader() {
-        document.querySelector('#koverProj').innerHTML = '<div class="mx-auto"><form name="uploader" id="uploader" method="post" enctype="data/multipart" action="file_upload.php"><label for="upload">Téléversez un fichier PDF, DOC, TXT...</label><br><input type="file"><input type="submit" value="OK"></button></div>';
-    }
-
     textEditor() {
         document.querySelector('#koverProj').innerHTML = document.querySelector('#textEdition').innerHTML;
         document.querySelector("#userText").focus();
@@ -23,16 +19,34 @@ class View {
         document.querySelector('#userText').innerHTML = this.project.originalText;
     }
 
+    projNameEditor() {
+        document.querySelector("#projNameBadge").addEventListener("click", function () {
+            document.querySelector("#projNameBadge").classList.add('d-none');
+            document.querySelector("#projName").classList.add('d-none');
+            document.querySelector("#projNameEditor").classList.remove('d-none');
+            document.querySelector("#projNameEditor").placeholder = document.querySelector("#projName").innerHTML;
+            document.querySelector("#projNameEditor").addEventListener("focusout", function () {
+                document.querySelector("#projNameBadge").classList.remove('d-none');
+                document.querySelector("#projName").classList.remove('d-none');
+                document.querySelector("#projNameEditor").classList.add('d-none');
+                if (document.querySelector("#projNameEditor").value.length > 0) {
+                    document.querySelector("#projName").innerHTML = document.querySelector("#projNameEditor").value;
+                } else {
+                    document.querySelector("#projName").innerHTML = document.querySelector("#projNameEditor").placeholder;
+                }
+                document.querySelector("#projNameBadge").addEventListener("click", projNameEditor);
+            });
+        });
+    }
     textSelector() {
         document.querySelector('#koverProj').innerHTML = document.querySelector('#selectionStep').innerHTML;
-        document.querySelector("#projName").innerHTML = this.project.projName;
+        if (document.querySelector('#projectName').value.length > 0) {
+            document.querySelector("#projName").innerHTML = document.querySelector('#projectName').value;
+        } else {
+            document.querySelector("#projName").innerHTML = document.querySelector('#projectName').placeholder;
+        }
+        this.projNameEditor();
         document.querySelector("#originalUserText").innerHTML = this.project.originalText;
-        // Activation du bouton ADD SECTION 
-        document.querySelector("#originalUserText").addEventListener("click", function () {
-            if (window.getSelection().toString().length > 0) {
-                document.getElementById("addSectionButton").removeAttribute('disabled');
-            }
-        });
     }
 
     versionsEditor(numberOfVersions, originalText, preparedText) {
@@ -64,7 +78,8 @@ class View {
             let buttons = document.querySelectorAll("button[data-button]");
             buttons[i].addEventListener("click", function () {
                 let index = buttons[i].dataset.button;
-                document.querySelector('#currentVersion').innerHTML = document.querySelector("#version" + (i + 1) + "Title").outerHTML;
+                document.querySelector('#currentVersion').innerHTML = '<div class="versionTitleBlock" data-version="' + (i + 2) + '"><h3 id="version' + (i + 2) + 'Title" class="mt-3">Version ' + (i + 2) + '</h3><button class="badge versionTitleBadge" data-version="' + (i + 2) + '">Modifier</button></div>';
+
                 document.querySelector('#currentVersion').innerHTML += document.querySelector('#version' + (i + 1) + 'Content').outerHTML;
 
                 if (i > 0) {
@@ -82,7 +97,7 @@ class View {
     }
 
     finalRenderVersion(index, title, letter, urlDoc) {
-        document.querySelector('#versionsGroup').innerHTML += '<div id="solidVersion' + index + '" class="row my-2 text-center"></div>';
+        document.querySelector('#versionsGroup').innerHTML += '<div id="solidVersion' + index + '" class="row my-2"></div>';
         document.querySelector('#solidVersion' + index).innerHTML = '<div class="col-1 rowspan-md-2"  id="solidVersion' + index + 'InputCol"></div>';
         document.querySelector('#solidVersion' + index + 'InputCol').innerHTML += '<input type = "checkbox" name = "solidVersion' + index + 'Checker" id = "solidVersion' + index + 'Checker" > ';
         document.querySelector('#solidVersion' + index).innerHTML += '<h3 class ="col-11 col-md-5 cursor-pointer" data-toggle="modal" data-target="#solidVersion' + index + 'Modal">' + title + '</h3>';

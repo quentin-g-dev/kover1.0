@@ -25,10 +25,11 @@ include './php/parts/allpages_parts/header.php';
 ?>
 
 <body>
-
+    <?php if(isset($_SESSION['template'])){?>
     <div class="d-none" id="userTemplate">
-        <?php if(isset($_SESSION['template'])){echo $_SESSION['template'];}?>
+        <?php echo $_SESSION['template']; $_SESSION['template']=null;?>
     </div>
+    <?php }?>
 
     <main
         class="container-fluid full-container d-flex flex-column p-5 mx-auto mt-3 mb-2 w-100 w-lg-75 justify-content-start align-items-baseline h-100 rounded"

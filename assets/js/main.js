@@ -23,10 +23,6 @@ function srcChoice(project) {
         textEditor(project);
     });
 
-    document.querySelector('#uploadFileButton').addEventListener('click', function () {
-        project.view.uploader();
-    });
-
     document.querySelector('#templateButton').addEventListener('click', function () {
         project = new Project(document.querySelector('#templateTitle').innerHTML, document.querySelector('#templateText').innerHTML);
         project.view = new View(project);
@@ -56,7 +52,11 @@ function textSelector(project) {
     project.projName = document.querySelector('#projectName').value;
     project.originalText = document.querySelector('#userText').innerHTML;
     project.view.textSelector();
-    document.querySelector('#addSectionButton').addEventListener("click", project.selecting);
+    document.querySelector("#originalUserText").addEventListener("click", function () {
+        if (window.getSelection().toString().length > 0) {
+            project.selecting();
+        }
+    });
 
     document.querySelector('#textEditSubmit').addEventListener("click", function () {
         let inputVersion = document.querySelector('#lastSteps #originalUserText').innerHTML;
@@ -127,12 +127,13 @@ function copyTool(event) {
 
 document.addEventListener("DOMContentLoaded", function () {
 
-    if (document.querySelector('#userTemplate').innerHTML === '') {
+    if (!document.querySelector('#userTemplate')) {
         let kover = new Project();
         kover.view = new View(kover);
         start(kover);
     } else {
         project = new Project('', document.querySelector('#userTemplate').innerHTML);
+        document.getElementById('userTemplate').remove();
         project.view = new View(project);
         project.view.project = project;
         project.view.textEditor();

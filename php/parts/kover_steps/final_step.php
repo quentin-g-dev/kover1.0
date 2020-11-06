@@ -64,7 +64,7 @@
     <div id="fixedVersions" class="d-none"></div>
 
     <div id="versionsGroup" class="container">
-        <div id="solidOriginal" class="row my-2 text-center">
+        <div id="solidOriginal" class="row my-2">
             <div class="col-1 rowspan-md-2">
                 <input type="checkbox" name="solidOriginalChecker" id="solidOriginalChecker">
             </div>

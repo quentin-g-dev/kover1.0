@@ -8,5 +8,8 @@
         <a href="profile.php?vip=<?echo $vip->userId();?>&sect=param&opt=change_password">
             <h3>Changer mon mot de passe</h3>
         </a>
+        <a href="profile.php?vip=<?echo $vip->userId();?>&sect=param&opt=delete_account" onclick="confirm">
+            <p>Supprimer mon compte</p>
+        </a>
     </div>
 </main

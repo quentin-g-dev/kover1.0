@@ -28,7 +28,7 @@ if (isset ($vip)){
             header ("Location:./profile.php?vip=".$newUser->userId());
         } else {
             session_destroy();
-            header ("Location:./profile.php?vip=".$newUser->userId());
+            header ("Location:./sign_in.php");
         }
     } 
 

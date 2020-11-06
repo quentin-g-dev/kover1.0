@@ -127,15 +127,13 @@ class Project {
                 });
             }
             window.getSelection().removeAllRanges(); // Déselection du texte 
-            document.getElementById('addSectionButton').disabled = true; // ADD A SECTION désactivé sans sélection courante
-            document.getElementById('goToEditionButton').disabled = false; // Activation GO TO EDITION 
             this.editCounter++;
         }
     }
 
     fixVersion() {
         document.querySelector('#versionsButtons').addEventListener("click", function () {
-            let validButtons = document.querySelectorAll('#currentVersion button');
+            let validButtons = document.querySelectorAll('#currentVersion button[data-valid]');
             for (let i = 0; i < validButtons.length; i++) {
                 validButtons[i].addEventListener("click", function () {
                     let inputs = document.querySelectorAll('#currentVersion input');

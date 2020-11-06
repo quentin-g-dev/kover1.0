@@ -90,8 +90,13 @@ if (!isset ($_GET['vip'])||!isset($_SESSION["vip"])){
                    
                 } elseif($_GET['sect']==='project'){
                     if(isset($_GET['project'])){
-                        include './php/parts/profile_parts/project_view.php';
+                        if ($manager->doesProjectExist($vip, $_GET['project'])){
+                            include './php/parts/profile_parts/project_view.php';
+                        } else {
+                            header('Location:./profile.php?vip='.$vip->userId().'&sect=letters');
+                        }
                     }
+                
                 }elseif ($_GET['sect']==='param'){
                     if (!isset($_GET['opt'])){
 
@@ -105,6 +110,9 @@ if (!isset ($_GET['vip'])||!isset($_SESSION["vip"])){
                         } elseif ($_GET['opt']==='change_password'){
 //////////////////////////////////////////////////////////////// Formulaire Changer le mot de passe
                             include './php/parts/forms/change_password_form.php';
+                        } elseif ($_GET['opt']==='delete_account'){
+//////////////////////////////////////////////////////////////// Suppression du compte
+                            include './php/parts/forms/delete_account.php';
                         }
                     }
 
