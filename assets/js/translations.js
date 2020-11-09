@@ -67,7 +67,7 @@ let translations = [
         spanish: "Hace mas con su carta de presentación&nbsp;!"
     },
     {
-        french: "Adaptez-là à vos destinataires",
+        french: "Adaptez-la à vos destinataires",
         english: "Make it fit to your recipients",
         spanish: "Adáptela a sus destinatarios"
     },

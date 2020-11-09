@@ -8,27 +8,76 @@
     src: url('../fonts/Open_Sans/OpenSans-Regular.ttf');
 }
 
+* {
+    box-sizing: border-box;
+}
+
 body {
     font-family: 'raleway', Helvetica;
+    padding: 0px 2vw;
 }
+
+nav {
+    height: 7vh;
+}
+
 
 main {
-    min-height: 50vh;
+
+    background-color: #f4f4f4;
 }
 
-a:hover,
-a:active {
+#koverProj {
+    min-height: 68vh;
+}
+
+.bg-kover {
+    background: rgb(2, 63, 98);
+    background: -moz-radial-gradient(circle, rgba(2, 63, 98, 1) 0%, rgba(3, 105, 163, 1) 78%);
+    background: -webkit-radial-gradient(circle, rgba(2, 63, 98, 1) 0%, rgba(3, 105, 163, 1) 78%);
+    background: radial-gradient(circle, rgba(2, 63, 98, 1) 0%, rgba(3, 105, 163, 1) 78%);
+}
+
+.text-kover {
+    color: rgba(2, 63, 98, 1);
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+nav a:hover {
+    border: 1px solid #f4f4f4;
+    border-radius: 15px;
     text-decoration: none;
 }
 
-div#userText {
-    height: max-content;
-    padding: 10px;
+nav a {
+    border: 1px solid transparent;
+    padding: 2px 8px;
+}
+
+a,
+a:active,
+a:hover {
+    text-decoration: none;
 }
 
 #getUserText {
     line-height: initial;
-    min-height: 40vh;
+    min-height: 20vh;
+}
+
+#originalUserText {
+    line-height: initial;
+    min-height: 50vh;
+}
+
+
+#userText {
+    min-height: 20vh;
+    padding: 10px;
+    text-align: left;
 }
 
 .full-container {
@@ -44,7 +93,8 @@ select {
 }
 
 span.toEdit {
-    background-color: yellowgreen;
+    background-color: rgb(2, 63, 98);
+    color: white;
 }
 
 .card-body {
@@ -52,8 +102,8 @@ span.toEdit {
 }
 
 .hamburger {
-    font-size: 5rem;
     cursor: pointer;
+    display: none;
 }
 
 .conditions-container {
@@ -66,6 +116,28 @@ p.conditions {
     height: 30vh;
 }
 
-.hidden {
-    visibility: hidden;
+h3[data-toggle]:hover {
+    background: rgb(2, 63, 98);
+    background: -moz-radial-gradient(circle, rgba(2, 63, 98, 1) 0%, rgba(3, 105, 163, 1) 78%);
+    background: -webkit-radial-gradient(circle, rgba(2, 63, 98, 1) 0%, rgba(3, 105, 163, 1) 78%);
+    background: radial-gradient(circle, rgba(2, 63, 98, 1) 0%, rgba(3, 105, 163, 1) 78%);
+    color: #f4f4f4;
+    border-radius: 20px;
+}
+
+.modal-dialog,
+.modal-body {
+    height: max-content !important;
+}
+
+
+@media (max-width:768px) {
+
+    #originalUserText {
+        min-height: 30vh;
+    }
+
+    nav {
+        height: 90vh;
+    }
 }

@@ -1,31 +1,48 @@
 <!--SECTIONS-->
-<main
-    class="container full-container  d-flex flex-column flex-no-wrap flex-lg-wrap p-3 mx-auto mt-3 mb-2 text-center w-100 w-lg-75 justify-content-around align-items-center h-100 rounded"
-    id="sections">
-    <h2 class="text-info mx-auto  my-3 font-weight-bold">
-        <span class="text-info p-1  w-3" data-to-step="choice">&larr;</span>
-        <span>Choisissez les portions de texte à adapter</span>
-    </h2>
-    <div class="container full-container  d-flex my-3  align-items-start">
-        <div class="px-2  bg-light w-75 w-lg-50 mr-3 border text-left" id="getUserText"></div>
-        <div
-            class="w-25 w-lg-50 d-flex flex-column flex-wrap justify-content-center align-items-start align-items-center">
-            <p class="text-dark">
-                <span class="font-italic">
-                    Sélectionnez une portion de texte à modifier puis cliquez ci-dessous
-                </span></p>
-            <button class="btn btn-info rounded mx-auto mt-4 h1 " disabled id="addSectionButton">
-                AJOUTER
-            </button>
-            <ul class="p-2 list-unstyled" id="toModify"></ul>
-            <p class="text-dark">
-                <span class="font-italic">
+<div id="selectionStep" class="d-none">
+    <div class="d-flex align-items-center justify-content-center mx-auto" id="ProjNameBlock">
+        <input type="text" name="" id="projNameEditor" class="d-none">
+        <h2 class="display-5 ml-3" id="projName"></h2>
+        <button class="badge badge-secondary mx-2 my-4" id="projNameBadge">Modifier</button>
+    </div>
+    <div id="lastSteps" class="container my-0">
+        <div class="row my-3">
+            <div class="col-12 col-md-8  px-2 bg-light  border text-left" id="originalUserText"></div>
+            <div class="col-12 col-md-3">
+                <p class="font-weight-bold mx-auto">
+                    Sélectionnez chaque portion de texte que vous souhaitez adapter.
+                </p>
+                <ul class="mx-3 p-2 list-unstyled w-100" id="toModify"></ul>
+                <p class="font-weight-bold mx-auto">
                     Lorsque chaque élément à adapter figure dans la liste, cliquez ci-dessous
-                </span>
-            </p>
-            <button class="btn btn-success rounded mx-auto mt-4 h1" disabled id="goToEditionButton">
-                EDITER LES SELECTIONS
-            </button>
+                </p>
+                <button class="btn text-kover align-self-end font-weight-bold border rounded mt-4 h1 w-100"
+                    data-toggle="modal" data-target="#howManyVersions" id="goToEditionButton">
+                    EDITER LES SELECTIONS
+                </button>
+            </div>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade bd-example-modal-lg details" id="howManyVersions" tabindex="-1" role="dialog"
+            aria-labelledby="howManyTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-kover" id="howManyTitle">
+                            Nombre de versions
+                        </h5>
+                    </div>
+                    <div class="modal-body">
+                        <p>Combien de versions différentes souhaitez-vous générer ?</p>
+                        <input type="number" name="howManyLetters" id="howManyLetters" placeholder="1" min="1" max="5"
+                            value="1" step="1" class="my-3">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button bg-kover" class="btn btn-primary" id="textEditSubmit"
+                            data-dismiss="modal">Continuer</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-</main>
+</div>

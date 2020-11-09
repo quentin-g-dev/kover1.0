@@ -55,10 +55,10 @@ function setSessionLang(url, langCode) {
 }
 
 //////////////////////////////////////////////////////////// EXECUTION
+
 getSessionLang();
 var lang;
 lang = (document.querySelector('#langInput').value.length > 0) ? document.querySelector('#langInput').value : getSessionLang();
-console.log(typeof lang);
 translateTo(lang);
 document.querySelector(".selectLang").addEventListener("change", function () {
     lang = document.querySelector(".selectLang").value;
