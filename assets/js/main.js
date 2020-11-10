@@ -19,7 +19,6 @@ function srcChoice(project) {
         project = new Project();
         project.view = new View(project);
         project.view.project = project;
-        project.view.textEditor();
         textEditor(project);
     });
 
@@ -27,7 +26,6 @@ function srcChoice(project) {
         project = new Project(document.querySelector('#templateTitle').innerHTML, document.querySelector('#templateText').innerHTML);
         project.view = new View(project);
         project.view.project = project;
-        project.view.textEditor();
         textEditor(project);
     });
 }
@@ -37,8 +35,9 @@ function srcChoice(project) {
  * @param {object} project 
  */
 function textEditor(project) {
-    project.view.textEditor(project.projName, project.originalText);
-    project.textEditorListener();
+    project.view.textEditor();
+    document.querySelector('#userText').addEventListener("click", project.textEditorListener);
+    //project.textEditorListener();
     document.querySelector('#submitText').addEventListener("click", function () {
         textSelector(project);
     });
@@ -123,7 +122,6 @@ function copyTool(event) {
 
 
 /////// EXECUTION
-
 
 document.addEventListener("DOMContentLoaded", function () {
 

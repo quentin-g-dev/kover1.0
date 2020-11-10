@@ -8,16 +8,25 @@
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="stylesheet" href="./assets/css/fonts.css">
 
+
     <?php  // App Core scripts
         if ($_SERVER['REQUEST_URI']==='/dwwm/KOVER/kover1.0/index.php'){
     ?>
     <script src="./assets/js/general.js"></script>
+    <!--jsPDF-->
+    <script src="https://unpkg.com/jspdf@latest/dist/jspdf.umd.min.js"></script>
     <script src="./assets/js/View.js"></script>
     <script src="./assets/js/Project.js"></script>
     <script src="./assets/js/main.js"></script>
+
+    <!-- jQuery - Bootstrap -->
+    <script src="./assets/js/jquery-3.5.1.js"></script>
+    <script src="./assets/js/bootstrap.min.js"></script>
+
     <?php 
         }
     ?>
+
     <title>
         <?echo $pageTitle;?>
     </title>

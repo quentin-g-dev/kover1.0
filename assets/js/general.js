@@ -19,9 +19,14 @@ function generatePDF(text, title) {
         jsPDF
     } = window.jspdf;
     var doc = new jsPDF();
-    doc.text(text, 10, 10);
+    text = text.replace("<br>", "\n");
+    // Il faudrait utiliser la fonction PHP utf8_decode sinon le PDF sort mal. => AJAX !
+    doc.setFont("times", "normal"); // set font (attention, 14 ou 16 fonts disponibles avec JSPDF. Pas réussi à en ajouter d'autres.)
+
+    doc.text(text, 6, 6);
     doc.save("" + title + ".pdf");
 }
+
 
 /**
  * PRINTING THE TEXT (& OPENING A DOC FILE CONTAINING IT)

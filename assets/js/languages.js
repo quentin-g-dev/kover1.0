@@ -34,8 +34,11 @@ function getSessionLang() {
     var call = new XMLHttpRequest();
     call.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            console.log('lang to mermorize is :', this.responseText);
-            return this.response;
+            console.log('lang to mermorize is :', this.response);
+            document.querySelector('option[value="' + this.response + '"]').selected = "true";
+            translateTo(this.response);
+
+            return (this.response);
         }
     };
     call.open("GET", "./ajax/session_lang.php?whichlang=1", true);
@@ -43,26 +46,23 @@ function getSessionLang() {
 }
 
 
-function setSessionLang(url, langCode) {
+function setSessionLang(langCode) {
     var call = new XMLHttpRequest();
     call.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             console.log('session lang set to :', this.responseText);
         }
     };
-    call.open('GET', url, true);
+    call.open('GET', "./ajax/session_lang.php?lang=" + lang + "", true);
     call.send("lang=" + langCode);
 }
 
 //////////////////////////////////////////////////////////// EXECUTION
-
 getSessionLang();
-var lang;
-lang = (document.querySelector('#langInput').value.length > 0) ? document.querySelector('#langInput').value : getSessionLang();
-translateTo(lang);
+
 document.querySelector(".selectLang").addEventListener("change", function () {
     lang = document.querySelector(".selectLang").value;
     console.log(lang);
     translateTo(lang);
-    setSessionLang("./ajax/session_lang.php?lang=" + lang + "", lang);
+    setSessionLang(lang);
 });

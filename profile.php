@@ -2,9 +2,6 @@
 
 session_start();
 
-if(isset($_COOKIE['LangCookie'])){
-    car_dump($_COOKIE['LangCookie']);
-}
 
 /////////////////////////////////////////// VERIFICATION DE SESSION EN COURS EVENTUELLE
 include './php/modules/check_vip_session.php';

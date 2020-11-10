@@ -24,6 +24,8 @@ class UsersManager {
         $query->execute([$user->userName(),$user->userHashedPassword()]);
         $result = $query->fetch();
         $user->setUserId($result['id']);
+        $user->setUserHashedPassword($result['passwd']);
+        $user->setLangCode($result['lang_code']);
         $user->setUserCreationDate($result['creation_date']);
         return $user;
     }

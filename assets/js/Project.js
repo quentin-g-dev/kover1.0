@@ -31,7 +31,10 @@ class Project {
     }
 
     textEditorListener() {
-        let ctrlButtons = document.querySelectorAll('.controlButton');
+        console.log('listener');
+
+        let ctrlButtons = document.querySelectorAll('main .controlButton');
+        console.log(ctrlButtons.length);
         if (window.getSelection().toString().length > 0) {
             for (let i = 0; i < ctrlButtons.length; i++) {
                 ctrlButtons[i].addEventListener("click", function (e) {
@@ -93,12 +96,47 @@ class Project {
                                 newNode = document.createElement('div');
                                 newNode.style.textAlign = "justify";
                                 break;
+                            case "fz10":
+                                newNode = document.createElement('span');
+                                newNode.style.fontSize = "10px";
+                                break;
+                            case "fz11":
+                                newNode = document.createElement('span');
+                                newNode.style.fontSize = "11px";
+                                break;
+                            case "fz12":
+                                newNode = document.createElement('span');
+                                newNode.style.fontSize = "12px";
+                                break;
+                            case "fz13":
+                                newNode = document.createElement('span');
+                                newNode.style.fontSize = "13px";
+                                break;
+                            case "fz14":
+                                newNode = document.createElement('span');
+                                newNode.style.fontSize = "14px";
+                                break;
+                            case "fz16":
+                                newNode = document.createElement('span');
+                                newNode.style.fontSize = "16px";
+                                break;
+                            case "fz18":
+                                newNode = document.createElement('span');
+                                newNode.style.fontSize = "18px";
+                                break;
+                            case "fz20":
+                                newNode = document.createElement('span');
+                                newNode.style.fontSize = "20px";
+                                break;
                         }
+
+
                         range.surroundContents(newNode);
+                        range = undefined;
+
                     }
                     // Déselection du texte 
                     window.getSelection().removeAllRanges();
-                    range = undefined;
                 });
             }
         }
@@ -153,7 +191,7 @@ class Project {
                         }
                         inputs[i].outerHTML = inputs[i].value;
                         validVersion += document.querySelector('#currentVersion  h3').outerHTML;
-                        validVersion += document.querySelector('#currentVersion  div').outerHTML;
+                        validVersion += document.querySelector('#currentVersion  .versionContent').outerHTML;
                     }
                     document.querySelector("#fixedVersions").innerHTML += '<div id="version' + index + 'Fixed">' + validVersion + '</div>';
                     document.querySelector('#currentVersion button').classList.add('d-none');
@@ -163,7 +201,7 @@ class Project {
     }
 
     checkAllVersions() {
-        let checkBoxes = document.querySelectorAll('#versionsGroup input[type="checkbox"]');
+        let checkBoxes = document.querySelectorAll('main #versionsGroup input[type="checkbox"]');
         if (document.querySelector("#selectAll").dataset.status === "selectAll") {
             document.querySelector("#selectAll").innerHTML = "Tout Désélectionner";
             document.querySelector("#selectAll").dataset.status = "unselectAll";
@@ -202,9 +240,17 @@ class Project {
     }
 
     finalInteractions() {
-        for (let i = 0; i < document.querySelectorAll('.pdf').length; i++) {
-            document.querySelectorAll('.pdf')[i].addEventListener("click", function () {
+        // PDF / PRINT :
+        for (let i = 0; i < document.querySelectorAll('.solidVersion .pdf').length; i++) {
+            document.querySelectorAll('.solidVersion .pdf')[i].addEventListener("click", function () {
+                let pureVersion = document.querySelector('#solidVersion' + (i + 1) + 'ModalBody').innerHTML;
+                document.querySelector('#solidVersion' + (i + 1) + 'ModalBody').innerHTML.replace("<br>", "");
+                let elements = document.querySelectorAll('#solidVersion' + (i + 1) + 'ModalBody *');
+                for (let j = 0; j < elements.length; j++) {
+                    elements[j].outerHTML = elements[j].innerHTML;
+                }
                 let myText = document.querySelector('#solidVersion' + (i + 1) + 'ModalBody').innerHTML;
+                document.querySelector('#solidVersion' + (i + 1) + 'ModalBody').innerHTML = pureVersion;
                 let myTitle = document.querySelector('#solidVersion' + (i + 1) + 'ModalTitle').innerHTML;
                 generatePDF(myText, myTitle);
             });
@@ -212,18 +258,23 @@ class Project {
                 printVersion(document.querySelector('#solidVersion' + (i + 1) + 'ModalBody').innerHTML);
             });
         }
-        document.querySelector('#selectAll').addEventListener("click", this.checkAllVersions);
 
+        // COPY :
         let copyButtons = document.querySelectorAll("[data-copy]");
         for (let i = 0; i < copyButtons.length; i++) {
             copyButtons[i].addEventListener("click", copyTool);
         }
+
+        // SELECT ALL :
+        document.querySelector('#selectAll').addEventListener("click", this.checkAllVersions);
+
+        // MULTIPLE DOC :
         document.querySelector('#docExportSelected').addEventListener("click", function () {
             let checkBoxes = document.querySelectorAll('#versionsGroup input[type="checkbox"]');
             let urlList = [];
             for (let i = 0; i < checkBoxes.length; i++) {
                 if (checkBoxes[i].checked === true) {
-                    let myText = document.querySelector('#solidVersion' + (i + 1) + 'ModalBody').innerHTML;
+                    let myText = document.querySelector('#versionsGroup #solidVersion' + (i + 1) + 'ModalBody').innerHTML;
                     let myURL = generateDOC(myText);
                     urlList.push(myURL);
                 }
@@ -232,16 +283,21 @@ class Project {
                 window.open(urlList[i]);
             }
         });
+
+        // MULTIPLE PDF :
         document.querySelector('#pdfExportSelected').addEventListener("click", function () {
             let checkBoxes = document.querySelectorAll('#versionsGroup input[type="checkbox"]');
             for (let i = 0; i < checkBoxes.length; i++) {
                 if (checkBoxes[i].checked === true) {
-                    let myText = document.querySelector('#solidVersion' + (i + 1) + 'ModalBody').innerHTML;
-                    let myTitle = document.querySelector('#solidVersion' + (i + 1) + 'ModalTitle').innerHTML.trim();
+                    let myText = document.querySelector('#versionsGroup #solidVersion' + (i + 1) + 'ModalBody').innerHTML;
+                    console.log(myText);
+                    let myTitle = document.querySelector('#versionsGroup #solidVersion' + (i + 1) + 'ModalTitle').innerHTML.trim();
                     generatePDF(myText, myTitle);
                 }
             }
         });
+
+        // MULTIPLE SAVE :
         document.querySelector('#saveSelected').addEventListener("click", function () {
             console.log('clik');
 

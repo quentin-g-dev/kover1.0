@@ -26,8 +26,14 @@
         </span>
         <span class="p-2 m-2">
             <select name="fontSize" id="fontSize">
-                <option value="12" selected>12</option>
-                <option value="10">10</option>
+                <option value="10" id="fz10" class="controlButton">10</option>
+                <option value="11" id="fz11" class="controlButton">11</option>
+                <option value="12" id="fz12" selected class="controlButton">12</option>
+                <option value="13" id="fz13" class="controlButton">13</option>
+                <option value="14" id="fz14" class="controlButton">14</option>
+                <option value="16" id="fz16" class="controlButton">16</option>
+                <option value="18" id="fz18" class="controlButton">18</option>
+                <option value="20" id="fz20" class="controlButton">22</option>
             </select>
         </span>
         <fieldset class="m-2 d-flex justify-content-center align-items-center flex-wrap">

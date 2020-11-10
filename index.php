@@ -50,17 +50,13 @@ include './php/parts/allpages_parts/header.php';
         include './php/parts/allpages_parts/footer.php';
     ?>
 
-    <!-- jQuery - Bootstrap -->
-    <script src="./assets/js/jquery-3.5.1.js"></script>
-    <script src="./assets/js/bootstrap.min.js"></script>
 
-    <!--jsPDF-->
-    <script src="https://unpkg.com/jspdf@latest/dist/jspdf.umd.min.js"></script>
+
     <!-- Internal JavaScript -->
     <script src="./assets/js/nav_menu.js"></script>
-
     <script src="./assets/js/translations.js"></script>
     <script src="./assets/js/languages.js"></script>
+
 </body>
 
 </html>
