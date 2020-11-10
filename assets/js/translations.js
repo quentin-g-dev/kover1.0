@@ -94,9 +94,9 @@ let translations = [
         spanish: "Escribir/pegar una carta de presentación"
     },
     {
-        french: "Utiliser un fichier existant",
-        english: "Use an existing file",
-        spanish: "Usar un archivo existente"
+        french: "Commencer avec un modèle",
+        english: "Use a template",
+        spanish: " "
     },
 
     /////////////////////////// TEXT EDIT STEP ///////////////
@@ -104,6 +104,11 @@ let translations = [
         french: "Saisir/coller un texte",
         english: "Type/paste a text",
         spanish: "Escribir/pegar uno texto"
+    },
+    {
+        french: "Choisissez un nom pour votre projet",
+        english: "Choose a name for your project",
+        spanish: " "
     },
     {
         french: "COLLER",
@@ -148,9 +153,14 @@ let translations = [
 
     /////////////////////////// SELECTION STEP ////////////
     {
-        french: "Choisissez les portions de texte à adapter",
-        english: "Choose which parts of text you want to adapt",
+        french: "Sélectionnez chaque portion de texte que vous souhaitez adapter. ",
+        english: "Select eachch of the text that you want to adapt",
         spanish: "Elige qué pasajes del texto desea cambiar"
+    },
+    {
+        french: "Modifier",
+        english: "Modify",
+        spanish: "Cambiar"
     },
     {
         french: "Sélectionnez une portion de texte à modifier puis cliquez ci-dessous",
@@ -184,12 +194,23 @@ let translations = [
         english: "( max. 5 )",
         spanish: "(máximo, 5)"
     },
+    {
+        french: "Nombre de versions",
+        english: "Number of versions",
+        spanish: "Cuántas variaciones"
+    },
+    {
+        french: "Continuer",
+        english: "Go on",
+        spanish: "Continuar"
+    },
+
 
     /////////////////////////// SET VERSIONS STEP ///////////
     {
-        french: "Adaptez",
-        english: "Set",
-        spanish: "Edit"
+        french: "Cliquez sur une version pour l’afficher et l’éditer",
+        english: "Click on a version to view and edit it",
+        spanish: " "
     },
     {
         french: "nouvelle(s) version(s)",
@@ -202,6 +223,16 @@ let translations = [
         english: "Original version",
         spanish: "Versión Original"
     },
+    {
+        french: "Valider cette version",
+        english: "Validate this version",
+        spanish: "OK"
+    },
+    {
+        french: "Terminer",
+        english: "Finish",
+        spanish: " "
+    },
     /////////////////////////// FINAL STEP //////////////////
     {
         french: "Terminé !",
@@ -212,6 +243,20 @@ let translations = [
         french: "IMPRIMER",
         english: "PRINT",
         spanish: "IMPRIMIR"
+    },
+    {
+        french: "Tout Sélectionner",
+        english: "Select All",
+        spanish: " "
+    },
+    {
+        french: "Tout Déselectionner",
+        english: "Unselect All",
+        spanish: " "
+    }, {
+        french: "Exporter en :",
+        english: "Export to :",
+        spanish: " "
     },
 
     {
@@ -230,11 +275,6 @@ let translations = [
         french: "Votre mot de passe",
         english: "Your password",
         spanish: "Su contraseña"
-    },
-    {
-        french: "CONNEXION",
-        english: "CONNECT",
-        spanish: "Conexión"
     },
     /*************************************** SIGN UP ************************************/
     {

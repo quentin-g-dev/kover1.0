@@ -50,7 +50,7 @@ function setSessionLang(langCode) {
     var call = new XMLHttpRequest();
     call.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            console.log('session lang set to :', this.responseText);
+            console.log('session lang set to :', this.response);
         }
     };
     call.open('GET', "./ajax/session_lang.php?lang=" + lang + "", true);
@@ -58,11 +58,14 @@ function setSessionLang(langCode) {
 }
 
 //////////////////////////////////////////////////////////// EXECUTION
-getSessionLang();
+document.addEventListener("DOMContentLoaded", function () {
 
-document.querySelector(".selectLang").addEventListener("change", function () {
-    lang = document.querySelector(".selectLang").value;
-    console.log(lang);
-    translateTo(lang);
-    setSessionLang(lang);
+    getSessionLang();
+    console.log("here");
+    document.querySelector(".selectLang").addEventListener("change", function () {
+        lang = document.querySelector(".selectLang").value;
+        console.log(lang);
+        translateTo(lang);
+        setSessionLang(lang);
+    });
 });

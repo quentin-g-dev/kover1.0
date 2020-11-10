@@ -52,10 +52,6 @@ include './php/parts/allpages_parts/header.php';
 
 
 
-    <!-- Internal JavaScript -->
-    <script src="./assets/js/nav_menu.js"></script>
-    <script src="./assets/js/translations.js"></script>
-    <script src="./assets/js/languages.js"></script>
 
 </body>
 

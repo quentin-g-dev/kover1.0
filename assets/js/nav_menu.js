@@ -6,4 +6,8 @@ function toggleMenu() {
     }
 }
 
-document.querySelector(".hamburger").addEventListener("click", toggleMenu);
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    document.querySelector(".hamburger").addEventListener("click", toggleMenu);
+});

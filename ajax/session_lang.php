@@ -6,14 +6,13 @@
      if (isset($_SESSION['vip'])){
         $code = $_SESSION['vip']["langCode"];
         $_SESSION["langCode"] = $_SESSION['vip']["langCode"];
-
-        echo $code;
-        return ($code);
-     }else {
+     }else if (isset ($_SESSION['langCode'])){
         $code = $_SESSION['langCode'];
-        echo $code;
-        return $code;
+     } else {
+        $code = 'FR';
      }
+     echo $code;
+     return ($code);
 }
 
 //////////////////////////////////////////////////////////////////////// setLangCode
@@ -38,8 +37,6 @@ if(isset($_GET['lang'])){
         // Déconnexion de la BDD
         include '../php/modules/db_disconnect.php';
     
-    } else {
-        echo 'no';
     }
     echo $_SESSION['langCode'];
     return $_SESSION['langCode'];

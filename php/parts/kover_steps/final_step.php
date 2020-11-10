@@ -91,7 +91,8 @@
                     </button>
                 </div>
                 <div class="modal-body" id="pleaseConnectModalBody" name="pleaseConnectModalBody">
-                    Merci de <a href="./sign_in.php" target="_blank">vous connecter</a>.<br>
+                    Merci de <a href="./sign_in.php" target="_blank">vous connecter</a>, puis de cliquer à nouveau sur
+                    Sauvegarder.<br>
                     Vous n'avez pas encore de compte&nbsp;? Il suffit de <a href="./sign_up.php">vous inscrire</a>.
                 </div>
             </div>
@@ -112,7 +113,7 @@
                     </button>
                 </div>
                 <div class="modal-body" id="registerSuccessModalBody" name="registerSuccessModalBody">
-                    Vous pouvez consulter tous vos projets dans <a href="./profile.php?vip=<?=$vip->userId();?>">votre
+                    Vous pouvez consulter tous vos projets dans <a href="./profile.php?vip=<?= $vip->userId(); ?>">votre
                         espace personnel</a>.
                 </div>
             </div>

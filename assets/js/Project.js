@@ -315,8 +315,7 @@ class Project {
                     xhr.onreadystatechange = function () {
                         if (this.readyState == 4 && this.status == 200) {
                             if (this.response != "ok") {
-                                //document.querySelector('#pleaseConnect').click();
-                                console.log(this.response);
+                                document.querySelector('#pleaseConnect').click();
                             } else {
                                 document.querySelector('#registerSuccess').click();
                             }
