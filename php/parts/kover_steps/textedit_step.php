@@ -67,8 +67,28 @@
     <div class="bg-light w-100 mx-auto my-0 text-left rounded-bottom border" contenteditable="true" id="userText">
     </div>
 
-    <button class="btn bg-kover mw-100 rounded mx-auto mt-4 h3 text-white font-weight-bold" id="submitText">
+    <button class="btn bg-kover mw-100 rounded mx-auto mt-4 h3 text-white font-weight-bold" id="submitText"
+        data-toggle="modal" data-target="#singleOrMultiple">
         OK
     </button>
+    <div class="modal fade modal-lg" id="singleOrMultiple" tabindex="-1" role="dialog"
+        aria-labelledby="singleOrMultipleTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-kover" id="singleOrMultipleTitle">
+                        Souhaitez-vous générer plusieurs versions de cette lettre ?
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="singleOrMultipleModalBody" name="singleOrMultipleModalBody">
+                    <button id="multiple" data-dismiss="modal">Oui</button>
+                    <button id="single" data-dismiss="modal">Non</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div>

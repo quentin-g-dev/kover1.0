@@ -42,6 +42,8 @@ include './php/parts/allpages_parts/header.php';
         include './php/parts/kover_steps/letter_template.php';
         include './php/parts/kover_steps/textedit_step.php';
         include './php/parts/kover_steps/selection_step.php';
+        include './php/parts/kover_steps/single_render_step.php';
+
     ?>
     <div id="inputSetter" class="d-none"></div>
     <?php

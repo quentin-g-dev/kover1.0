@@ -13,7 +13,7 @@
         ?>
     </p>
     <div id="groupOptions"
-        class="w-100 my-2 rounded-top textControls bg-kover d-flex justify-content-center align-items-baseline flex-wrap flex-md-nowrap center mx-auto">
+        class="w-100 my-2 rounded-top textControls bg-kover d-flex justify-content-center align-items-baseline flex-wrap flex-md-nowrap mx-auto">
         <button class="btn btn-light rounded  m-2 h3" id="selectAll" data-status="selectAll">
             Tout Sélectionner
         </button>
@@ -34,11 +34,10 @@
     <div id="lettersList" class="container">
         <div id="listHeader" class="row my-2 text-center">
             <div class="col-1"></div>
-            <div class="col-2 cursor-pointer text-kover font-weight-bold" id="orderByTitle">Titre</div>
-            <div class="col-2 cursor-pointer text-kover font-weight-bold" id="orderByProject">Projet</div>
-            <div class="col-3 cursor-pointer text-kover font-weight-bold" id="orderByComments">Commentaire</div>
+            <div class="col-3 cursor-pointer text-kover font-weight-bold" id="orderByTitle">Titre</div>
+            <div class="col-3 cursor-pointer text-kover font-weight-bold" id="orderByProject">Projet</div>
             <div class="col-2 cursor-pointer text-kover font-weight-bold" id="orderByDate">Date</div>
-            <div class="col-2  cursor-pointer text-kover font-weight-bold"></div>
+            <div class="col-3  cursor-pointer text-kover font-weight-bold"></div>
 
         </div>
 
@@ -49,21 +48,22 @@
 
 
         <div id="" class="row my-2 d-flex align-items-center">
-            <div class="col-1">
+            <div class="col-1 d-flex justify-content-center align-items-baseline">
                 <input type="checkbox" data-letter="<?=$i?>">
                 <input type="hidden" name="" id="reference<?=$i?>" data-letter="<?=$i?>" value="
                     <?=$userLetters[$i]['letter_id']?>">
             </div>
-            <div class="col-2 cursor-pointer" data-toggle="modal" data-target="#detailsLetter<?=$i?>">
+            <div class="col-3 cursor-pointer d-flex justify-content-center align-items-baseline" data-toggle="modal"
+                data-target="#detailsLetter<?=$i?>">
                 <?=$userLetters[$i]['letter_title']?></div>
-            <div class="col-2 cursor-pointer">
+            <div class="col-3 cursor-pointer d-flex justify-content-center align-items-baseline">
                 <a href="./profile.php?vip=<?=$vip->userId()?>&sect=project&project=<?=$userLetters[$i]['proj_name']?>">
-                    [<?=$userLetters[$i]['proj_name']?>]
+                    <?=$userLetters[$i]['proj_name']?>
                 </a>
             </div>
-            <div class="col-3"></div>
-            <div class="col-2"><?=$userLetters[$i]['letter_creation']?></div>
-            <div class="col-2">
+            <div class="col-2 d-flex justify-content-center align-items-baseline">
+                <?=$userLetters[$i]['letter_creation']?></div>
+            <div class="col-3 d-flex justify-content-center align-items-baseline">
                 <button class="deleteButton" aria-hidden="true" data-letter="<?=$i?>">
                     Supprimer
                 </button>

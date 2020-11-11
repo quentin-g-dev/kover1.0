@@ -266,51 +266,53 @@ class Project {
         }
 
         // SELECT ALL :
-        document.querySelector('#selectAll').addEventListener("click", this.checkAllVersions);
-
+        if (document.querySelector('#selectAll')) {
+            document.querySelector('#selectAll').addEventListener("click", this.checkAllVersions);
+        }
         // MULTIPLE DOC :
-        document.querySelector('#docExportSelected').addEventListener("click", function () {
-            let checkBoxes = document.querySelectorAll('#versionsGroup input[type="checkbox"]');
-            let urlList = [];
-            for (let i = 0; i < checkBoxes.length; i++) {
-                if (checkBoxes[i].checked === true) {
-                    let myText = document.querySelector('#versionsGroup #solidVersion' + (i + 1) + 'ModalBody').innerHTML;
-                    let myURL = generateDOC(myText);
-                    urlList.push(myURL);
+        if (document.querySelector('#docExportSelected')) {
+
+            document.querySelector('#docExportSelected').addEventListener("click", function () {
+                let checkBoxes = document.querySelectorAll('#versionsGroup input[type="checkbox"]');
+                let urlList = [];
+                for (let i = 0; i < checkBoxes.length; i++) {
+                    if (checkBoxes[i].checked === true) {
+                        let myText = document.querySelector('#versionsGroup #solidVersion' + (i + 1) + 'ModalBody').innerHTML;
+                        let myURL = generateDOC(myText);
+                        urlList.push(myURL);
+                    }
                 }
-            }
-            for (let i = 0; i < urlList.length; i++) {
-                window.open(urlList[i]);
-            }
-        });
+                for (let i = 0; i < urlList.length; i++) {
+                    window.open(urlList[i]);
+                }
+            });
+        }
 
         // MULTIPLE PDF :
-        document.querySelector('#pdfExportSelected').addEventListener("click", function () {
-            let checkBoxes = document.querySelectorAll('#versionsGroup input[type="checkbox"]');
-            for (let i = 0; i < checkBoxes.length; i++) {
-                if (checkBoxes[i].checked === true) {
-                    let myText = document.querySelector('#versionsGroup #solidVersion' + (i + 1) + 'ModalBody').innerHTML;
-                    console.log(myText);
-                    let myTitle = document.querySelector('#versionsGroup #solidVersion' + (i + 1) + 'ModalTitle').innerHTML.trim();
-                    generatePDF(myText, myTitle);
+        if (document.querySelector('#pdfExportSelected')) {
+
+            document.querySelector('#pdfExportSelected').addEventListener("click", function () {
+                let checkBoxes = document.querySelectorAll('#versionsGroup input[type="checkbox"]');
+                for (let i = 0; i < checkBoxes.length; i++) {
+                    if (checkBoxes[i].checked === true) {
+                        let myText = document.querySelector('#versionsGroup #solidVersion' + (i + 1) + 'ModalBody').innerHTML;
+                        console.log(myText);
+                        let myTitle = document.querySelector('#versionsGroup #solidVersion' + (i + 1) + 'ModalTitle').innerHTML.trim();
+                        generatePDF(myText, myTitle);
+                    }
                 }
-            }
-        });
+            });
+        }
 
         // MULTIPLE SAVE :
         document.querySelector('#saveSelected').addEventListener("click", function () {
-            console.log('clik');
-
-            let checkBoxes = document.querySelectorAll('#lastSteps input[type="checkbox"]');
+            let checkBoxes = document.querySelectorAll('main input[type="checkbox"]');
             console.log(checkBoxes.length);
             for (let i = 0; i < checkBoxes.length; i++) {
                 if (checkBoxes[i].checked === true) {
-                    console.log('à enregistrer');
                     let myText = document.querySelector('#solidVersion' + (i + 1) + 'ModalBody').innerHTML;
-                    console.log(myText);
                     let myTitle = document.querySelector('#solidVersion' + (i + 1) + 'ModalTitle').innerHTML.trim();
                     let myProjName = document.querySelector('#projName').innerHTML.trim();
-
                     let xhr = new XMLHttpRequest();
                     xhr.onreadystatechange = function () {
                         if (this.readyState == 4 && this.status == 200) {

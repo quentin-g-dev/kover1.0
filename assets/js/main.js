@@ -38,8 +38,16 @@ function textEditor(project) {
     project.view.textEditor();
     document.querySelector('#userText').addEventListener("click", project.textEditorListener);
     //project.textEditorListener();
-    document.querySelector('#submitText').addEventListener("click", function () {
+    document.querySelector('#multiple').addEventListener("click", function () {
         textSelector(project);
+    });
+    document.querySelector('#single').addEventListener("click", function () {
+        project.originalText = document.querySelector('#userText').innerHTML;
+        project.projName = document.querySelector('#projectName').value;
+        let urlDoc = generateDOC(project.originalText);
+        project.view.singleRender(urlDoc);
+        project.finalInteractions();
+
     });
 }
 
@@ -101,8 +109,9 @@ function finalRender(project) {
  */
 function copyTool(event) {
     let id = Number(event.target.dataset.copy);
-    let versions = document.querySelectorAll('#versionsGroup .modal .modal-body');
+    let versions = document.querySelectorAll('main #versionsGroup .version .version-body');
     let currentVersion = versions[id].innerHTML;
+    console.log(currentVersion);
     currentVersion = currentVersion.replace("<br>", "\n");
     navigator.clipboard.writeText(currentVersion).then(function () {
         event.target.innerHTML = 'Copié !';
@@ -112,7 +121,7 @@ function copyTool(event) {
             event.target.style.color = "initial";
         }, 2500);
         event.target.addEventListener('click', function () {
-            this.copyTool(event);
+            copyTool(event);
         });
     }, function () {
         alert('Problem !');

@@ -43,7 +43,7 @@
             </div>
 -->
             <!-- Modal -->
-            <div class="modal fade bd-example-modal-lg" id="solidVersion1Modal" tabindex="-1" role="dialog"
+            <div class="modal fade bd-example-modal-lg version" id="solidVersion1Modal" tabindex="-1" role="dialog"
                 aria-labelledby="solidVersion1ModalTitle" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered modal-lg h-100" role="document">
                     <div class="modal-content h-100">
@@ -68,7 +68,7 @@
                                 </button>
                             </span>
                         </div>
-                        <div class="modal-body" id="solidVersion1ModalBody" name="solidVersion1ModalBody"
+                        <div class="modal-body version-body" id="solidVersion1ModalBody" name="solidVersion1ModalBody"
                             class="solidVersion">
                         </div>
                     </div>
