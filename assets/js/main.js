@@ -47,6 +47,11 @@ function textEditor(project) {
         let urlDoc = generateDOC(project.originalText);
         project.view.singleRender(urlDoc);
         project.finalInteractions();
+        document.querySelector('main #saveSelected').addEventListener("click", function () {
+            window.addEventListener("click", function () {
+                $("#nav").load("./index.php #nav");
+            });
+        });
 
     });
 }
@@ -98,8 +103,14 @@ function finalRender(project) {
         let currentLetter = document.querySelector('#fixedVersions #version' + index + 'Fixed > div').innerHTML;
         let urlDoc = generateDOC(currentLetter);
         project.view.finalRenderVersion(index, currentTitle, currentLetter, urlDoc);
+
     }
     project.finalInteractions();
+    document.querySelector('main #saveSelected').addEventListener("click", function () {
+        console.log('watcher');
+
+        document.querySelector("#nav").load("./index.php #nav");
+    });
 }
 
 
@@ -130,6 +141,7 @@ function copyTool(event) {
 }
 
 
+
 /////// EXECUTION
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -145,6 +157,19 @@ document.addEventListener("DOMContentLoaded", function () {
         project.view.project = project;
         project.view.textEditor();
         textEditor(project);
+    }
+    for (let i = 0; i < document.querySelectorAll('button').length; i++) {
+        document.querySelectorAll('button')[i].addEventListener("mouseenter", function () {
+            console.log('salut');
+            if (document.querySelector('main #saveSelected')) {
+                document.querySelector('main #saveSelected').addEventListener("click", function () {
+                    window.addEventListener("click", function () {
+                        $("#nav").load("./index.php #nav");
+                    });
+                });
+
+            }
+        });
     }
 
 });

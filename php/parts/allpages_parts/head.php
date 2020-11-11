@@ -10,7 +10,9 @@
 
     <!-- jQuery - Bootstrap -->
     <script src="./assets/js/jquery-3.5.1.js"></script>
+
     <script src="./assets/js/bootstrap.min.js"></script>
+
     <?php  // App Core scripts
         if ($_SERVER['REQUEST_URI']==='/dwwm/KOVER/kover1.0/index.php'){
     ?>

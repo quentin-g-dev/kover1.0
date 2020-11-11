@@ -23,7 +23,7 @@ class View {
     singleRender(urlDoc) {
         let name = '';
         if (document.querySelector("#projectName").value.length > 0) {
-            name = document.querySelector("projectName").value;
+            name = document.querySelector("#projectName").value;
         } else {
             name = document.querySelector("#projectName").placeholder;
         }

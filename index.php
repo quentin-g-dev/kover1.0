@@ -54,7 +54,6 @@ include './php/parts/allpages_parts/header.php';
 
 
 
-
 </body>
 
 </html>

@@ -28,6 +28,7 @@ function translateTo(langCode) {
             }
         }
     }
+
 }
 
 function getSessionLang() {
@@ -60,12 +61,18 @@ function setSessionLang(langCode) {
 //////////////////////////////////////////////////////////// EXECUTION
 document.addEventListener("DOMContentLoaded", function () {
 
-    getSessionLang();
-    console.log("here");
+    lang = getSessionLang();
+    if (lang === undefined) {
+        lang = "FR";
+    }
+    translateTo(lang);
+    setSessionLang(lang);
     document.querySelector(".selectLang").addEventListener("change", function () {
         lang = document.querySelector(".selectLang").value;
-        console.log(lang);
         translateTo(lang);
         setSessionLang(lang);
+        if (document.querySelectorAll("#userLang")) {
+            $('#userLang').load("./profile.php?vip=7 #userLang");
+        }
     });
 });
