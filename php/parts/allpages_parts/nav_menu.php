@@ -2,7 +2,7 @@
     class="d-none d-md-flex mt-2 mb-3 flex-column flex-md-row flex-no-wrap border-white justify-content-center align-items-center">
     <select name="selectLang" id="selectLang" class="selectLang my-3 my-lg-3">
         <option value="">
-            <?if(isset($_SESSION['langCode'])){echo $_SESSION['langCode'];} else {echo'FR';}?>
+            <?if(isset($_SESSION['vip']['langCode'])){echo $_SESSION['vip']['langCode'];}else if(isset($_SESSION['langCode'])){echo $_SESSION['langCode'];} else {echo'FR';}?>
         </option>
         <option value="FR">Français</option>
         <option value="ES">Espagnol</option>
@@ -40,7 +40,7 @@
 ?>
 
     <a href="./index.php" class="mx-5 my-3 my-lg-3 display-5 font-weight-bold text-white">Nouveau projet</a>
-    <a href="./sign_in.php" class="mx-5 my-3 my-lg-3 display-5 font-weight-bold text-white">Connexion</a>
+    <a href="./sign_in.php" class="mx-5 my-3 my-lg-3 display-5 font-weight-bold text-white" id="connect">Connexion</a>
     <a href="./sign_up.php" class="mx-5 my-3 my-lg-3 display-5 font-weight-bold text-white">Inscription</a>
 
     <?php 

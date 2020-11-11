@@ -20,6 +20,13 @@ class View {
         document.querySelector('#userText').innerHTML = this.project.originalText;
     }
 
+    singleRender(urlDoc) {
+        document.querySelector('main').innerHTML = document.querySelector('#singleRender').innerHTML;
+        document.querySelector('#koverProj #versionsGroup #solidVersion1ModalTitle').innerHTML = this.project.projName;
+        document.querySelector('#koverProj #versionsGroup #solidVersion1ModalBody').innerHTML = this.project.originalText;
+        document.querySelector('#koverProj #versionsGroup #solidOriginalDocLink').href = urlDoc;
+    }
+
     projNameEditor() {
         document.querySelector("#projNameBadge").addEventListener("click", function () {
             document.querySelector("#projNameBadge").classList.add('d-none');
@@ -113,13 +120,13 @@ class View {
         document.querySelector('#solidVersion' + index + 'ButtonsCol').innerHTML += '<button type="button" aria-label="Imprimer"><span class="print" aria-hidden="true" data-print="0">IMPRIMER</span></button>';
         */
         // MODAL
-        document.querySelector('#solidVersion' + index).innerHTML += '<div class="modal fade bd-example-modal-lg" id="solidVersion' + index + 'Modal" tabindex="-1" role="dialog" aria-labelledby="solidVersion' + index + 'Title" aria-hidden="true"></div>';
+        document.querySelector('#solidVersion' + index).innerHTML += '<div class="modal fade bd-example-modal-lg version" id="solidVersion' + index + 'Modal" tabindex="-1" role="dialog" aria-labelledby="solidVersion' + index + 'Title" aria-hidden="true"></div>';
         document.querySelector('#solidVersion' + index + 'Modal').innerHTML += '<div class="modal-dialog modal-dialog-centered modal-lg  h-100" role="document" id="solidVersion' + index + 'ModalInner"></div>';
         document.querySelector('#solidVersion' + index + 'ModalInner').innerHTML += '<div  class="modal-content h-100" id="solidVersion' + index + 'ModalContent"></div>';
         document.querySelector('#solidVersion' + index + 'ModalContent').innerHTML += '<div class="modal-header  d-flex justify-content-between align-items-baseline"><h5 class="modal-title text-kover" id="solidVersion' + index + 'ModalTitle">' + title + '</h5></div >';
         document.querySelector('#solidVersion' + index + 'ModalContent .modal-header').innerHTML += '<span class="d-flex flex-row align-items-baseline"><button type="button" aria-label="Copier"> <span class="fa fa-clipboard" aria-hidden="true" data-copy="' + (index - 1) + '">COPIER</span></button><button class = "bg-kover text-white" id="exportDocVersion' + index + '"><a href="' + urlDoc + '" class="text-white ">DOC</a></button><button class = "pdf bg-kover text-white" id="exportPdfVersion' + index + '">PDF</button><button type="button" aria-label="Imprimer"><span class="print" aria-hidden="true" data-print="0">IMPRIMER</span></button></span>';
         document.querySelector('#solidVersion' + index + 'ModalContent .modal-header').innerHTML += '<span class="d-flex flex-row align-items-baseline"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden ="true">&times;</span></button></span>';
-        document.querySelector('#solidVersion' + index + 'ModalContent').innerHTML += '<div class="modal-body" id="solidVersion' + index + 'ModalBody" name="solidVersion' + index + 'ModalContent">' + letter + '</div>';
+        document.querySelector('#solidVersion' + index + 'ModalContent').innerHTML += '<div class="modal-body version-body" id="solidVersion' + index + 'ModalBody" name="solidVersion' + index + 'ModalContent">' + letter + '</div>';
     }
 
 }
