@@ -8,7 +8,7 @@
         </a></h2>
     <div class="profile-top">
         <div class="border mw-75 mb-5">
-            <div>Inscrit(e) depuis le <span><?= $vip->userCreationDate();?></span></div>
-            <div>Langue : <span><?= $vip->userLangCode();?></span></div>
+            <div><span>Inscrit(e) depuis le </span><span><?= $vip->userCreationDate();?></span></div>
+            <div><span>Langue : </span><span id="userLang"><?= $vip->userLangCode();?></span></div>
         </div>
     </div>
