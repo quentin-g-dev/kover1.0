@@ -21,8 +21,16 @@ class View {
     }
 
     singleRender(urlDoc) {
-        document.querySelector('main').innerHTML = document.querySelector('#singleRender').innerHTML;
-        document.querySelector('#koverProj #versionsGroup #solidVersion1ModalTitle').innerHTML = this.project.projName;
+        let name = '';
+        if (document.querySelector("#projectName").value.length > 0) {
+            name = document.querySelector("projectName").value;
+        } else {
+            name = document.querySelector("#projectName").placeholder;
+        }
+        document.querySelector('#koverProj').innerHTML = document.querySelector("#singleRender").innerHTML;
+        document.querySelector('#koverProj #versionsGroup #solidVersion1ModalTitle').innerHTML = name;
+
+
         document.querySelector('#koverProj #versionsGroup #solidVersion1ModalBody').innerHTML = this.project.originalText;
         document.querySelector('#koverProj #versionsGroup #solidOriginalDocLink').href = urlDoc;
     }
@@ -49,7 +57,7 @@ class View {
     textSelector() {
         document.querySelector('#koverProj').innerHTML = document.querySelector('#selectionStep').innerHTML;
         if (document.querySelector('#projectName').value.length > 0) {
-            document.querySelector("#projName").innerHTML = document.querySelector('#projectName').value;
+            document.querySelector("#projName").innerHTML = this.project.projName;
         } else {
             document.querySelector("#projName").innerHTML = document.querySelector('#projectName').placeholder;
         }

@@ -23,7 +23,7 @@ function srcChoice(project) {
     });
 
     document.querySelector('#templateButton').addEventListener('click', function () {
-        project = new Project(document.querySelector('#templateTitle').innerHTML, document.querySelector('#templateText').innerHTML);
+        project = new Project('', document.querySelector('#templateText').innerHTML);
         project.view = new View(project);
         project.view.project = project;
         textEditor(project);
