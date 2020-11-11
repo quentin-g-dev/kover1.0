@@ -4,11 +4,11 @@
     <p class="text-center m-auto">
         <?php
         if( $manager-> countLetters($vip)===0){
-            echo 'Aucune lettre enregistrée';
+            echo '<span>Aucune lettre enregistrée</span>';
         } else if( $manager-> countLetters($vip)===1){
-            echo '1 lettre enregistrée';
+            echo '1 <span>lettre enregistrée</span>';
         } else if( $manager-> countLetters($vip)>1){
-            echo ''.$manager-> countLetters($vip).' lettres enregistrées</p>';
+            echo ''.$manager-> countLetters($vip).' <span>lettres enregistrées</span></p>';
         } 
         ?>
     </p>
@@ -67,7 +67,8 @@
                 <button class="deleteButton" aria-hidden="true" data-letter="<?=$i?>">
                     Supprimer
                 </button>
-                <button class="bg-kover text-white newProjButton" data-letter="<?=$i?>">=> Modèle de projet</button>
+                <button class="bg-kover text-white newProjButton" data-letter="<?=$i?>">=> <span>Modèle de
+                        projet</span></button>
             </div>
 
             <!-- Modal -->

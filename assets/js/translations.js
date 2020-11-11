@@ -96,7 +96,7 @@ let translations = [
     {
         french: "Commencer avec un modèle",
         english: "Use a template",
-        spanish: " "
+        spanish: "Comenzar con un modelo"
     },
 
     /////////////////////////// TEXT EDIT STEP ///////////////
@@ -108,7 +108,7 @@ let translations = [
     {
         french: "Choisissez un nom pour votre projet",
         english: "Choose a name for your project",
-        spanish: " "
+        spanish: "Elija un nombre para su proyecto"
     },
     {
         french: "COLLER",
@@ -155,7 +155,7 @@ let translations = [
     {
         french: "Sélectionnez chaque portion de texte que vous souhaitez adapter. ",
         english: "Select eachch of the text that you want to adapt",
-        spanish: "Elige qué pasajes del texto desea cambiar"
+        spanish: "Elija qué pasajes del texto desea cambiar"
     },
     {
         french: "Modifier",
@@ -197,7 +197,7 @@ let translations = [
     {
         french: "Nombre de versions",
         english: "Number of versions",
-        spanish: "Cuántas variaciones"
+        spanish: "Número de versiones"
     },
     {
         french: "Continuer",
@@ -210,12 +210,12 @@ let translations = [
     {
         french: "Cliquez sur une version pour l’afficher et l’éditer",
         english: "Click on a version to view and edit it",
-        spanish: " "
+        spanish: "Haga clic en una versión para verla y editarla"
     },
     {
         french: "nouvelle(s) version(s)",
         english: "new version(s)",
-        spanish: "nueva(s) versione(s)"
+        spanish: "nueva(s) version(es)"
     },
 
     {
@@ -226,12 +226,12 @@ let translations = [
     {
         french: "Valider cette version",
         english: "Validate this version",
-        spanish: "OK"
+        spanish: "Validar esta versión"
     },
     {
         french: "Terminer",
         english: "Finish",
-        spanish: " "
+        spanish: "Terminar"
     },
     /////////////////////////// FINAL STEP //////////////////
     {
@@ -247,16 +247,16 @@ let translations = [
     {
         french: "Tout Sélectionner",
         english: "Select All",
-        spanish: " "
+        spanish: "Seleccionar todo"
     },
     {
-        french: "Tout Déselectionner",
+        french: "Tout Désélectionner",
         english: "Unselect All",
-        spanish: " "
+        spanish: "Borrar todo"
     }, {
         french: "Exporter en :",
         english: "Export to :",
-        spanish: " "
+        spanish: "Exportar a :"
     },
 
     {
@@ -285,7 +285,7 @@ let translations = [
     {
         french: "Choisissez un mot de passe",
         english: "Choose a password",
-        spanish: "Elige una contraseña"
+        spanish: "Elija una contraseña"
     },
     {
         french: "Confirmez le mot de passe",
@@ -320,11 +320,15 @@ let translations = [
         french: "Statut : ",
         english: "Status : ",
         spanish: "Estatuto : "
+    }, {
+        french: "Langue : ",
+        english: "Language : ",
+        spanish: "Lengua : "
     },
     {
         french: "Mes lettres",
         english: "My letters",
-        spanish: "Mi cartas"
+        spanish: "Mis cartas"
     },
     {
         french: "Gérer mon compte",
@@ -342,6 +346,11 @@ let translations = [
         french: "Changer mon mot de passe",
         english: "Change my password",
         spanish: "Cambiar mi contraseña"
+    },
+    {
+        french: "Supprimer mon compte",
+        english: "Delete my account",
+        spanish: "Eliminar mi cuenta"
     },
     {
         french: "Votre nouveau nom d'utilisateur",
@@ -363,4 +372,44 @@ let translations = [
         english: "CONFIRM",
         spanish: "CONFIRMIR"
     },
+    //////////////////// MY LETTERS //////////
+    {
+        french: "Supprimer",
+        english: "Delete",
+        spanish: "Eliminar"
+    },
+    {
+        french: "lettres enregistrées",
+        english: "saved letters",
+        spanish: "cartas registradas"
+    },
+    {
+        french: "Titre",
+        english: "Title",
+        spanish: "Titulo"
+    }, {
+        french: "Projet",
+        english: "Project",
+        spanish: "Proyecto"
+    }, {
+        french: "Commentaire",
+        english: "Comment",
+        spanish: "Comentario"
+    }, {
+        french: "Date",
+        english: "Date",
+        spanish: "Fecha"
+    }, {
+        french: "lettre enregistrée",
+        english: "saved letter",
+        spanish: "carta registrada"
+    }, {
+        french: "Aucune lettre enregistrée",
+        english: "No saved letter",
+        spanish: "No carta registrada"
+    }, {
+        french: "Modèle de projet",
+        english: "Project template",
+        spanish: "Modelo de proyecto"
+    }
 ];
