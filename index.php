@@ -37,6 +37,8 @@ include './php/parts/allpages_parts/header.php';
     </main>
     <!-- kover_steps -->
     <?php
+        include './php/parts/forms/connection_form.php';
+        include './php/parts/forms/subscription_form.php';
         include './php/parts/kover_steps/start_step.php';
         include './php/parts/kover_steps/choice_step.php';
         include './php/parts/kover_steps/letter_template.php';
