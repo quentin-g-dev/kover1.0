@@ -22,28 +22,6 @@
         </div>
     </div>
 
-    <!-- Modal for Unconnected Users who want to register a project -->
-    <button id="pleaseConnect" class="d-none" data-toggle="modal" data-target="#pleaseConnectModal"></button>
-    <div class="modal fade modal-lg" id="pleaseConnectModal" tabindex="-1" role="dialog"
-        aria-labelledby="pleaseConnectModalTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title text-kover" id="pleaseConnectModalTitle">
-                        Cette fonctionnalité requiert un compte actif.
-                    </h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body" id="pleaseConnectModalBody" name="pleaseConnectModalBody">
-                    Merci de <a href="./sign_in.php" target="_blank">vous connecter</a>, puis de cliquer à nouveau sur
-                    Sauvegarder.<br>
-                    Vous n'avez pas encore de compte&nbsp;? Il suffit de <a href="./sign_up.php">vous inscrire</a>.
-                </div>
-            </div>
-        </div>
-    </div>
     <!-- Modal for Connected Users who successed registering a project -->
     <button id="registerSuccess" class="d-none" data-toggle="modal" data-target="#registerSuccessModal"></button>
     <div class="modal fade modal-lg" id="registerSuccessModal" tabindex="-1" role="dialog"
@@ -59,7 +37,8 @@
                     </button>
                 </div>
                 <div class="modal-body" id="registerSuccessModalBody" name="registerSuccessModalBody">
-                    Vous pouvez consulter tous vos projets dans <a href="./profile.php?vip=<?= $vip->userId(); ?>">votre
+                    Vous pouvez consulter tous vos projets dans <a
+                        href="./profile.php?vip=<?= $_SESSION['vip']['userId'];?>">votre
                         espace personnel</a>.
                 </div>
             </div>

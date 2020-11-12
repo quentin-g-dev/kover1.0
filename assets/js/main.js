@@ -106,11 +106,11 @@ function finalRender(project) {
 
     }
     project.finalInteractions();
-    document.querySelector('main #saveSelected').addEventListener("click", function () {
+    /*document.querySelector('main #saveSelected').addEventListener("click", function () {
         console.log('watcher');
 
         document.querySelector("#nav").load("./index.php #nav");
-    });
+    });*/
 }
 
 
@@ -142,6 +142,7 @@ function copyTool(event) {
 
 
 
+
 /////// EXECUTION
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -158,9 +159,8 @@ document.addEventListener("DOMContentLoaded", function () {
         project.view.textEditor();
         textEditor(project);
     }
-    for (let i = 0; i < document.querySelectorAll('button').length; i++) {
+    /*for (let i = 0; i < document.querySelectorAll('button').length; i++) {
         document.querySelectorAll('button')[i].addEventListener("mouseenter", function () {
-            console.log('salut');
             if (document.querySelector('main #saveSelected')) {
                 document.querySelector('main #saveSelected').addEventListener("click", function () {
                     window.addEventListener("click", function () {
@@ -170,6 +170,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
             }
         });
-    }
+    }*/
+
+
 
 });
