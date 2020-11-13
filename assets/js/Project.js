@@ -31,10 +31,7 @@ class Project {
     }
 
     textEditorListener() {
-        console.log('listener');
-
         let ctrlButtons = document.querySelectorAll('main .controlButton');
-        console.log(ctrlButtons.length);
         if (window.getSelection().toString().length > 0) {
             for (let i = 0; i < ctrlButtons.length; i++) {
                 ctrlButtons[i].addEventListener("click", function (e) {
@@ -170,34 +167,33 @@ class Project {
     }
 
     fixVersion() {
-        document.querySelector('#versionsButtons').addEventListener("click", function () {
-            let validButtons = document.querySelectorAll('#currentVersion button[data-valid]');
-            for (let i = 0; i < validButtons.length; i++) {
-                validButtons[i].addEventListener("click", function () {
-                    let inputs = document.querySelectorAll('#currentVersion input');
-                    let index = validButtons[i].dataset.valid;
-                    let validVersion = '';
-                    for (let i = 0; i < inputs.length; i++) {
-                        let emptyInputs = 0;
-                        if (inputs[i].value.length < 1) {
-                            emptyInputs++;
-                        }
-                        console.log(emptyInputs);
-                        if (emptyInputs === 1) {
-                            alert('Un champ est vide. Pour le compléter, appuyez sur ESC.');
-                        } else if (emptyInputs > 1) {
-                            alert('' + emptyInputs + ' champs sont vides. Pour les compléter, appuyez sur <kbd>ESC</kbd>');
+        /*     document.querySelector('#versionsButtons').addEventListener("click", function () {
+                 let validButtons = document.querySelectorAll('#currentVersion button[data-valid]');
+                 for (let i = 0; i < validButtons.length; i++) {
+                     validButtons[i].addEventListener("click", function () {
+                         let inputs = document.querySelectorAll('#currentVersion input');
+                         let index = validButtons[i].dataset.valid;
+                         let validVersion = '';
+                         for (let i = 0; i < inputs.length; i++) {
+                             let emptyInputs = 0;
+                             if (inputs[i].value.length < 1) {
+                                 emptyInputs++;
+                             }
+                             if (emptyInputs === 1) {
+                                 alert('Un champ est vide. Pour le compléter, appuyez sur ESC.');
+                             } else if (emptyInputs > 1) {
+                                 alert('' + emptyInputs + ' champs sont vides. Pour les compléter, appuyez sur <kbd>ESC</kbd>');
 
-                        }
-                        inputs[i].outerHTML = inputs[i].value;
-                        validVersion += document.querySelector('#currentVersion  h3').outerHTML;
-                        validVersion += document.querySelector('#currentVersion  .versionContent').outerHTML;
-                    }
-                    document.querySelector("#fixedVersions").innerHTML += '<div id="version' + index + 'Fixed">' + validVersion + '</div>';
-                    document.querySelector('#currentVersion button').classList.add('d-none');
-                });
-            }
-        });
+                             }
+                             inputs[i].outerHTML = inputs[i].value;
+                             validVersion += document.querySelector('#currentVersion  h3').outerHTML;
+                             validVersion += document.querySelector('#currentVersion  .versionContent').outerHTML;
+                         }
+                         document.querySelector("#fixedVersions").innerHTML += '<div id="version' + index + 'Fixed">' + validVersion + '</div>';
+                         document.querySelector('#currentVersion button').classList.add('d-none');
+                     });
+                 }
+             });*/
     }
 
     checkAllVersions() {
@@ -241,21 +237,23 @@ class Project {
 
     finalInteractions() {
         // PDF / PRINT :
-        for (let i = 0; i < document.querySelectorAll('.solidVersion .pdf').length; i++) {
-            document.querySelectorAll('.solidVersion .pdf')[i].addEventListener("click", function () {
-                let pureVersion = document.querySelector('#solidVersion' + (i + 1) + 'ModalBody').innerHTML;
-                document.querySelector('#solidVersion' + (i + 1) + 'ModalBody').innerHTML.replace("<br>", "");
-                let elements = document.querySelectorAll('#solidVersion' + (i + 1) + 'ModalBody *');
-                for (let j = 0; j < elements.length; j++) {
-                    elements[j].outerHTML = elements[j].innerHTML;
+        for (let i = 0; i < document.querySelectorAll('#versionsGroup .pdf').length; i++) {
+            document.querySelectorAll('#versionsGroup .pdf')[i].addEventListener("click", function () {
+                let pureVersion = document.querySelector('.body[data-content="' + i + '"]').innerHTML;
+                document.querySelector('.body[data-content="' + i + '"]').innerHTML.replace("<br>", "");
+                let elements = document.querySelectorAll('.body[data-content="' + i + '"] *');
+                while (document.querySelector('.body[data-content="' + i + '"]>*')) {
+                    for (let j = 0; j < elements.length; j++) {
+                        elements[j].outerHTML = elements[j].innerHTML;
+                    }
                 }
-                let myText = document.querySelector('#solidVersion' + (i + 1) + 'ModalBody').innerHTML;
-                document.querySelector('#solidVersion' + (i + 1) + 'ModalBody').innerHTML = pureVersion;
-                let myTitle = document.querySelector('#solidVersion' + (i + 1) + 'ModalTitle').innerHTML;
+                let myText = document.querySelector('.body[data-content="' + i + '"]').innerHTML;
+                document.querySelector('.body[data-content="' + i + '"]').innerHTML = pureVersion;
+                let myTitle = document.querySelector('#heading' + i + '').innerHTML;
                 generatePDF(myText, myTitle);
             });
             document.querySelectorAll('.print')[i].addEventListener('click', function () {
-                printVersion(document.querySelector('#solidVersion' + (i + 1) + 'ModalBody').innerHTML);
+                printVersion(document.querySelector('.body[data-content="' + i + '"]').innerHTML);
             });
         }
 
@@ -273,17 +271,22 @@ class Project {
         if (document.querySelector('#docExportSelected')) {
 
             document.querySelector('#docExportSelected').addEventListener("click", function () {
-                let checkBoxes = document.querySelectorAll('#versionsGroup input[type="checkbox"]');
+                let checkCounter = 0;
+                let checkBoxes = document.querySelectorAll('#accordion input[type="checkbox"]');
                 let urlList = [];
                 for (let i = 0; i < checkBoxes.length; i++) {
                     if (checkBoxes[i].checked === true) {
-                        let myText = document.querySelector('#versionsGroup #solidVersion' + (i + 1) + 'ModalBody').innerHTML;
+                        checkCounter++;
+                        let myText = document.querySelector('.body[data-content="' + i + '"]').innerHTML;
                         let myURL = generateDOC(myText);
                         urlList.push(myURL);
                     }
                 }
                 for (let i = 0; i < urlList.length; i++) {
                     window.open(urlList[i]);
+                }
+                if (checkCounter === 0) {
+                    alert('Aucune lettre sélectionnée !');
                 }
             });
         }
@@ -292,26 +295,40 @@ class Project {
         if (document.querySelector('#pdfExportSelected')) {
 
             document.querySelector('#pdfExportSelected').addEventListener("click", function () {
-                let checkBoxes = document.querySelectorAll('#versionsGroup input[type="checkbox"]');
+                let checkCounter = 0;
+                let checkBoxes = document.querySelectorAll('#accordion input[type="checkbox"]');
                 for (let i = 0; i < checkBoxes.length; i++) {
                     if (checkBoxes[i].checked === true) {
-                        let myText = document.querySelector('#versionsGroup #solidVersion' + (i + 1) + 'ModalBody').innerHTML;
-                        console.log(myText);
-                        let myTitle = document.querySelector('#versionsGroup #solidVersion' + (i + 1) + 'ModalTitle').innerHTML.trim();
+                        checkCounter++;
+                        let pureVersion = document.querySelector('.body[data-content="' + i + '"]').innerHTML;
+                        document.querySelector('.body[data-content="' + i + '"]').innerHTML.replace("<br>", "");
+                        let elements = document.querySelectorAll('.body[data-content="' + i + '"] *');
+                        while (document.querySelector('.body[data-content="' + i + '"]>*')) {
+                            for (let j = 0; j < elements.length; j++) {
+                                elements[j].outerHTML = elements[j].innerHTML;
+                            }
+                        }
+                        let myText = document.querySelector('.body[data-content="' + i + '"]').innerHTML;
+                        document.querySelector('.body[data-content="' + i + '"]').innerHTML = pureVersion;
+                        let myTitle = document.querySelector('#heading' + i + '').innerHTML;
                         generatePDF(myText, myTitle);
                     }
+                }
+                if (checkCounter === 0) {
+                    alert('Aucune lettre sélectionnée !');
                 }
             });
         }
 
         // MULTIPLE SAVE :
         document.querySelector('#saveSelected').addEventListener("click", function () {
+            let checkCounter = 0;
             let checkBoxes = document.querySelectorAll('main input[type="checkbox"]');
-            console.log(checkBoxes.length);
             for (let i = 0; i < checkBoxes.length; i++) {
                 if (checkBoxes[i].checked === true) {
-                    let myText = document.querySelector('#solidVersion' + (i + 1) + 'ModalBody').innerHTML;
-                    let myTitle = document.querySelector('#solidVersion' + (i + 1) + 'ModalTitle').innerHTML.trim();
+                    checkCounter++;
+                    let myText = document.querySelector('.body[data-content="' + i + '"]').innerHTML;
+                    let myTitle = document.querySelector('#heading' + i + '').innerHTML.trim();
                     let myProjName = document.querySelector('#projName').innerHTML.trim();
                     let xhr = new XMLHttpRequest();
                     xhr.onreadystatechange = function () {
@@ -327,6 +344,9 @@ class Project {
                     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
                     xhr.send("projName=" + myProjName + "&versionTitle=" + myTitle + "&version=" + myText);
                 }
+            }
+            if (checkCounter === 0) {
+                alert('Aucune lettre sélectionnée !');
             }
         });
     }

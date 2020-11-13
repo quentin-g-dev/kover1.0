@@ -1,9 +1,9 @@
 <div id="singleRender" class="d-none">
 
     <div id="versionsGroup"><input type="checkbox" checked class="d-none">
-        <div class="version">
+        <div class="version" id="accordion">
             <div class="solidVersion d-flex justify-content-between align-items-baseline" id="solidVersion1">
-                <h5 class="modal-title text-kover" id="solidVersion1ModalTitle"></h5>
+                <h5 class="modal-title text-kover" id="heading0"></h5>
                 <span class="d-flex flex-row align-items-baseline">
                     <button class="bg-kover text-white" id="saveSelected">SAUVEGARDER</button>
                     <button type="button" aria-label="Copier">
@@ -18,7 +18,7 @@
                     </button>
                 </span>
             </div>
-            <div class="version-body" id="solidVersion1ModalBody"></div>
+            <div class="version-body body" data-content="0" id="solidVersion1ModalBody"></div>
         </div>
     </div>
 

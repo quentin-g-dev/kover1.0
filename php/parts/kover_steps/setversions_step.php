@@ -1,4 +1,4 @@
-<div id="setVersions" class="d-none">
+<!--<div id="setVersions" class="d-none">
     <div class="row">
         <div class="col-12 row">
             <div id="stockVersions" class="d-none">
@@ -24,4 +24,17 @@
             </div>
         </div>
     </div>
+</div>
+-->
+<div id="setVersions" class="d-none">
+    <div class="col-12">
+        <div id="letterVersions" class="d-flex flex-column flex-wrap mx-auto my-3">
+            <div id="accordion" class=" accordion justify-content-around align-items-center">
+
+            </div>
+        </div>
+        <div id="elementH"></div>
+    </div>
+
+    <button class="w-25 btn bg-kover text-white rounded mx-auto mt-4 h1 mx-2" id="finishButton">OK</button>
 </div>
