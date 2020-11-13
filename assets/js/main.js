@@ -11,7 +11,7 @@ function start(project) {
 }
 
 /**
- * CHOOSING A SOURCE (empty|template|file)
+ * CHOOSING A SOURCE (empty|template)
  * @param {object} project 
  */
 function srcChoice(project) {
@@ -84,7 +84,8 @@ function textSelector(project) {
 function versionsSetting(project) {
     project.numberOfVersions = document.querySelector('#howManyLetters').value;
     project.view.versionsEditor(project.numberOfVersions, project.originalText, project.preparedText);
-    project.fixVersion();
+    $('#heading1+button').click();
+    /*project.fixVersion();*/
     document.querySelector('#finishButton').addEventListener("click", function () {
         finalRender(project);
     });
@@ -95,22 +96,8 @@ function versionsSetting(project) {
  * @param {object} project 
  */
 function finalRender(project) {
-    let originalUrlDoc = generateDOC(project.originalText);
-    project.view.finalRenderOriginal(originalUrlDoc);
-    for (let i = 0; i < project.numberOfVersions; i++) {
-        let index = (i + 2);
-        let currentTitle = document.querySelector('#fixedVersions #version' + index + 'Fixed > h3').innerHTML;
-        let currentLetter = document.querySelector('#fixedVersions #version' + index + 'Fixed > div').innerHTML;
-        let urlDoc = generateDOC(currentLetter);
-        project.view.finalRenderVersion(index, currentTitle, currentLetter, urlDoc);
-
-    }
+    project.view.generateVersions();
     project.finalInteractions();
-    /*document.querySelector('main #saveSelected').addEventListener("click", function () {
-        console.log('watcher');
-
-        document.querySelector("#nav").load("./index.php #nav");
-    });*/
 }
 
 
@@ -120,9 +107,8 @@ function finalRender(project) {
  */
 function copyTool(event) {
     let id = Number(event.target.dataset.copy);
-    let versions = document.querySelectorAll('main #versionsGroup .version .version-body');
+    let versions = document.querySelectorAll('main .body');
     let currentVersion = versions[id].innerHTML;
-    console.log(currentVersion);
     currentVersion = currentVersion.replace("<br>", "\n");
     navigator.clipboard.writeText(currentVersion).then(function () {
         event.target.innerHTML = 'Copié !';
@@ -159,19 +145,4 @@ document.addEventListener("DOMContentLoaded", function () {
         project.view.textEditor();
         textEditor(project);
     }
-    /*for (let i = 0; i < document.querySelectorAll('button').length; i++) {
-        document.querySelectorAll('button')[i].addEventListener("mouseenter", function () {
-            if (document.querySelector('main #saveSelected')) {
-                document.querySelector('main #saveSelected').addEventListener("click", function () {
-                    window.addEventListener("click", function () {
-                        $("#nav").load("./index.php #nav");
-                    });
-                });
-
-            }
-        });
-    }*/
-
-
-
 });

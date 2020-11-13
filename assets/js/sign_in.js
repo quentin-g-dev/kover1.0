@@ -22,6 +22,7 @@ document.querySelector("#signInSubmit").addEventListener("click", function () {
                     console.log(this.response);
                     document.querySelector("#connectModal .modal-body").innerHTML = "Connexion réussie !";
                     $("#nav").load("./index.php #nav");
+                    getSessionLang();
                     document.querySelector("#connectModal .modal-footer").remove();
                 } else {
                     document.querySelector("#connectModal .modal-body").innerHTML += "Un problème est survenu, merci de réessayer plus tard.";

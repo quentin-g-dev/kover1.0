@@ -16,16 +16,9 @@
     <?php  // App Core scripts
         if ($_SERVER['REQUEST_URI']==='/dwwm/KOVER/kover1.0/index.php'){
     ?>
-    <script src="./assets/js/general.js"></script>
-    <!--jsPDF-->
-    <script src="https://unpkg.com/jspdf@latest/dist/jspdf.umd.min.js"></script>
-    <script src="./assets/js/View.js"></script>
-    <script src="./assets/js/Project.js"></script>
-    <script src="./assets/js/main.js"></script>
+
     <!-- Internal JavaScript -->
-    <script src="./assets/js/translations.js"></script>
-    <script src="./assets/js/languages.js"></script>
-    <script src="./assets/js/nav_menu.js"></script>
+
 
 
 

@@ -2,21 +2,10 @@
     class="d-none d-md-flex mt-2 mb-3 flex-column flex-md-row flex-no-wrap border-white justify-content-center align-items-center">
     <select name="selectLang" id="selectLang" class="selectLang my-3 my-lg-3">
 
-        <option value="">
-            <?php if(isset($_SESSION['vip']['langCode'])){
-                echo $_SESSION['vip']['langCode'];
-            }else if(isset($_SESSION['langCode'])){
-                echo $_SESSION['langCode'];
-            } else {
-                echo'FR';
-            } ?>
-        </option>
-
         <option value="FR">FR</option>
         <option value="ES">ES</option>
         <option value="EN">EN</option>
     </select>
-    <input type="hidden" name="langInput" id="langInput" value="<?= $_SESSION['langCode'];?>">
 
     <?php
 if (isset ($_SESSION['vip'])){

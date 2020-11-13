@@ -44,10 +44,12 @@ document.querySelector('#selectAll').addEventListener("click", checkAllVersions)
 // Multiple DOC Exports
 
 document.querySelector('#docExportSelected').addEventListener("click", function () {
+    let checkCounter = 0;
     let checkBoxes = document.querySelectorAll('input[type="checkbox"]');
     let urlList = [];
     for (let i = 0; i < checkBoxes.length; i++) {
         if (checkBoxes[i].checked === true) {
+            checkCounter++;
             let index = checkBoxes[i].dataset.letter;
             let myText = document.querySelector('.modal-body[data-letter="' + index + '"').innerHTML;
             let myURL = generateDOC(myText);
@@ -57,14 +59,19 @@ document.querySelector('#docExportSelected').addEventListener("click", function 
     for (let i = 0; i < urlList.length; i++) {
         window.open(urlList[i]);
     }
+    if (checkCounter === 0) {
+        alert('Aucune lettre sélectionnée !');
+    }
 });
 
 // Multiple PDF Exports
 
 document.querySelector('#pdfExportSelected').addEventListener("click", function () {
+    let checkCounter = 0;
     let checkBoxes = document.querySelectorAll('input[type="checkbox"]');
     for (let i = 0; i < checkBoxes.length; i++) {
         if (checkBoxes[i].checked === true) {
+            checkCounter++;
             let index = checkBoxes[i].dataset.letter;
             let myText = document.querySelector('.modal-body[data-letter="' + index + '"').innerHTML;
             let myTitle = document.querySelector('.modal-title[data-letter="' + index + '"').innerHTML.trim();
@@ -72,14 +79,19 @@ document.querySelector('#pdfExportSelected').addEventListener("click", function 
             generatePDF(myText, myTitle);
         }
     }
+    if (checkCounter === 0) {
+        alert('Aucune lettre sélectionnée !');
+    }
 });
 
 
 // Multiple Deleting
 document.querySelector('#deleteSelected').addEventListener("click", function () {
+    let checkCounter = 0;
     let checkBoxes = document.querySelectorAll('input[type="checkbox"]');
     for (let i = 0; i < checkBoxes.length; i++) {
         if (checkBoxes[i].checked === true) {
+            checkCounter++;
             let index = checkBoxes[i].dataset.letter;
             let letterId = document.querySelector('input[type="hidden"][data-letter="' + index + '"]').value;
             console.log(letterId);
@@ -93,6 +105,9 @@ document.querySelector('#deleteSelected').addEventListener("click", function () 
             xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             xhr.send("letter=" + letterId);
         }
+    }
+    if (checkCounter === 0) {
+        alert('Aucune lettre sélectionnée !');
     }
 });
 
