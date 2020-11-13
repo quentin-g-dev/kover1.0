@@ -1,9 +1,9 @@
 <?php
 session_start();
 if(isset($_POST["projName"])&& isset($_POST["versionTitle"])&&isset($_POST["version"])){
-    $projName = $_POST["projName"];
-    $title = $_POST["versionTitle"];
-    $letter=$_POST["version"];
+    $projName = htmlspecialchars($_POST["projName"]);
+    $title = htmlspecialchars($_POST["versionTitle"]);
+    $letter=htmlspecialchars($_POST["version"]);
     if (isset ($_SESSION['vip'])){
     
         include '../../kover1.0/php/classes/User.php';
