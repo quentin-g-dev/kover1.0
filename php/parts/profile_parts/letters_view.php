@@ -110,7 +110,7 @@
                         </div>
                         <div class="modal-body" id="solidVersion1ModalBody" name="solidVersion1ModalBody"
                             data-letter="<?=$i?>">
-                            <?=$userLetters[$i]['letter_content']?>
+                            <?=htmlspecialchars_decode($userLetters[$i]['letter_content'])?>
                         </div>
                     </div>
                 </div>
