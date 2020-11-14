@@ -1,10 +1,10 @@
 <!--TEXTAREA-->
 <div id="textEdition" class="d-none">
     <!--Input Nom du projet-->
-    <div class="row mx-auto align-items-baseline">
-        <input type="text" class="projectName col-12 col-md-6 mx-auto" name="projectName" id="projectName" size="25"
-            placeholder="<?php echo'PROJ'.date("Ymdhmi").'' ?>">
-        <label class="mx-auto col-12 col-md-6" for="projectName">Choisissez un nom pour votre projet</label>
+    <div class="d-flex align-items-center justify-content-center mx-auto" id="ProjNameBlock">
+        <input type="text" name="" id="projNameEditor" class="d-none">
+        <h2 class="display-5 ml-3" id="projName"></h2>
+        <button class="badge badge-secondary mx-2 my-4" id="projNameBadge">Modifier</button>
     </div>
     <!--Outils d'édition de texte-->
     <div

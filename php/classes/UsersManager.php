@@ -116,6 +116,13 @@ class UsersManager {
         return isset($result["proj_name"]);    
     }
 
+    public function doesLetterExist(User $user, string $letterTitle, string $projName){
+        $request = $this->_db->prepare ('SELECT letter_title FROM letters WHERE user_id=? AND proj_name=? AND letter_title=?');
+        $request->execute([$user->userId(), $projName, $letterTitle]);
+        $result =$request->fetch();
+        return isset($result["letter_title"]);    
+    }
+
     public function selectLetters(User $user){
         $query=$this->_db->prepare('SELECT * FROM letters WHERE user_id=?');
         $query->execute([$user->userId()]);

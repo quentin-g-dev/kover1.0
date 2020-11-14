@@ -1,5 +1,9 @@
 <div id="singleRender" class="d-none">
-
+    <div class="d-flex align-items-center justify-content-center mx-auto" id="ProjNameBlock">
+        <input type="text" name="" id="projNameEditor" class="d-none">
+        <h2 class="display-5 ml-3" id="projName"></h2>
+        <button class="badge badge-secondary mx-2 my-4" id="projNameBadge">Modifier</button>
+    </div>
     <div id="versionsGroup"><input type="checkbox" checked class="d-none">
         <div class="version" id="accordion">
             <div class="solidVersion d-flex justify-content-between align-items-baseline" id="solidVersion1">

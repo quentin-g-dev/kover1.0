@@ -29,14 +29,12 @@ function srcChoice(project) {
     document.querySelector('#newTextButton').addEventListener('click', function () {
         project = new Project();
         project.view = new View(project);
-        project.view.project = project;
         textEditor(project);
     });
 
     document.querySelector('#templateButton').addEventListener('click', function () {
-        project = new Project('', document.querySelector('#templateText').innerHTML);
+        project = new Project(Date.now(), document.querySelector('#templateText').innerHTML);
         project.view = new View(project);
-        project.view.project = project;
         textEditor(project);
     });
 }
@@ -47,6 +45,8 @@ function srcChoice(project) {
  */
 function textEditor(project) {
     project.view.textEditor();
+    project.projNameEditor();
+
     document.querySelector('#userText').addEventListener("click", project.textEditorListener);
     document.querySelector('#multiple').addEventListener("click", function () {
         textSelector(project);
@@ -64,6 +64,7 @@ function textEditor(project) {
         });
 
     });
+
 }
 
 /**
@@ -72,9 +73,10 @@ function textEditor(project) {
  */
 function textSelector(project) {
 
-    project.projName = document.querySelector('#projectName').value;
     project.originalText = document.querySelector('#userText').innerHTML;
     project.view.textSelector();
+    project.projNameEditor();
+
     document.querySelector("#originalUserText").addEventListener("click", function () {
         if (window.getSelection().toString().length > 0) {
             project.selecting();
@@ -98,9 +100,30 @@ function textSelector(project) {
 function versionsSetting(project) {
     project.numberOfVersions = document.querySelector('#howManyLetters').value;
     project.view.versionsEditor(project.numberOfVersions, project.originalText, project.preparedText);
+    project.projNameEditor();
+
     $('#heading1+button').click();
     /*project.fixVersion();*/
-    document.querySelector('#finishButton').addEventListener("click", function () {
+    document.querySelector('#finishButton').addEventListener("click", function (e) {
+        let versions = document.querySelectorAll("div.versionBlock");
+        let emptyCounter = 0;
+        for (let i = 0; i < versions.length; i++) {
+            let inputs = document.querySelectorAll("div[data-content='" + (i + 1) + "'] input");
+
+            let editZones = document.querySelectorAll('div#collapse' + (i + 1) + ' span.toEdit');
+            for (let j = 0; j < editZones.length; j++) {
+                if (inputs[j].value.length == 0) {
+                    editZones[j].style.borderColor = 'red';
+                    emptyCounter++;
+                }
+            }
+        }
+        if (emptyCounter > 0) {
+            if (confirm('Certains champs n\'ont pas été remplis. Pour les remplir, cliquez sur Cancel. Pour les laisser vides, cliquez sur OK.') == false) {
+                e.preventDefault();
+                return;
+            }
+        }
         finalRender(project);
     });
     document.querySelector('#backToSelect').addEventListener("click", function () {
@@ -115,6 +138,8 @@ function versionsSetting(project) {
  */
 function finalRender(project) {
     project.view.generateVersions();
+    project.projNameEditor();
+
     project.finalInteractions();
     document.querySelector('#backToVersionsEdit').addEventListener("click", function () {
         versionsSetting(project);
