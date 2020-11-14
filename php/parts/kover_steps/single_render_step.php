@@ -1,9 +1,12 @@
 <div id="singleRender" class="d-none">
-
+    <div class="d-flex align-items-center justify-content-center mx-auto letterNameBlock" data-version="1">
+        <input type="text" data-version="1" class="d-none letterNameEditor">
+        <h2 class="display-5 ml-3 modal-title text-kover letterName" id="heading0" data-version="1"></h2>
+        <button class="badge badge-secondary mx-2 my-4 letterNameBadge" data-version="1">Modifier</button>
+    </div>
     <div id="versionsGroup"><input type="checkbox" checked class="d-none">
         <div class="version" id="accordion">
             <div class="solidVersion d-flex justify-content-between align-items-baseline" id="solidVersion1">
-                <h5 class="modal-title text-kover" id="heading0"></h5>
                 <span class="d-flex flex-row align-items-baseline">
                     <button class="bg-kover text-white" id="saveSelected">SAUVEGARDER</button>
                     <button type="button" aria-label="Copier">

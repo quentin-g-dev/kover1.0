@@ -8,7 +8,7 @@ class Project {
      * @param {array} versions 
      * @param {number} editCounter 
      */
-    constructor(projName = '', originalText = '', preparedText = '', versions = [], editCounter = 0) {
+    constructor(projName = Date.now(), originalText = '', preparedText = '', versions = [], editCounter = 0) {
         this.dateTime = new Date();
         this.projName = projName;
         this.originalText = originalText;
@@ -16,18 +16,6 @@ class Project {
         this.versions = [];
         this.numberOfVersions = versions.length;
         this.editCounter = editCounter;
-    }
-
-    setNumberOfVersions(number) {
-        this.numberOfVersions = number;
-    }
-
-    desc() {
-        console.log('projet : ', this.projName, '///', 'date de création : ', this.dateTime, '///', 'version originale : ', this.originalText, '<///>', 'nb de versions : ', this.numberOfVersions);
-        for (let i = 0; i < this.numberOfVersions.length; i++) {
-            console.log('version ', (i + 1), ' : ', this.versions[i].title);
-            console.log('version ', (i + 1), ' : ', this.versions[i].text);
-        }
     }
 
     textEditorListener() {
@@ -297,27 +285,69 @@ class Project {
             for (let i = 0; i < checkBoxes.length; i++) {
                 if (checkBoxes[i].checked === true) {
                     checkCounter++;
-                    let myText = document.querySelector('.body[data-content="' + i + '"]').innerHTML;
-                    let myTitle = document.querySelector('#heading' + i + '').innerHTML.trim();
-                    let myProjName = document.querySelector('#projName').innerHTML.trim();
-                    let xhr = new XMLHttpRequest();
-                    xhr.onreadystatechange = function () {
-                        if (this.readyState == 4 && this.status == 200) {
-                            if (this.response != "ok") {
-                                document.querySelector('#connectionButton').click();
-                            } else {
-                                document.querySelector('#registerSuccess').click();
-                            }
-                        }
-                    };
-                    xhr.open('POST', './ajax/letters_registration.php', true);
-                    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-                    xhr.send("projName=" + myProjName + "&versionTitle=" + myTitle + "&version=" + myText);
                 }
             }
             if (checkCounter === 0) {
                 alert('Aucune lettre sélectionnée !');
+            } else {
+                let myProjName = document.querySelector('#projName').innerHTML.trim();
+                let xhr = new XMLHttpRequest();
+
+                xhr.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        if (this.response == "true") {
+                            let newProjName = prompt('Un de vos projets s\'appelle déjà ' + myProjName + ' : souhaitez-vous conserver le même nom ?', '' + myProjName);
+                            if (newProjName == false) {
+                                document.querySelector('#projNameBadge').click();
+                                return;
+                            } else {
+                                myProjName = newProjName.trim();
+                                document.querySelector('#projName').innerHTML = newProjName;
+                            }
+                        }
+                    }
+                };
+                xhr.open('POST', './ajax/letters_registration.php', true);
+                xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xhr.send("proj=" + myProjName);
+                for (let i = 0; i < checkBoxes.length; i++) {
+                    if (checkBoxes[i].checked === true) {
+
+                        let myText = document.querySelector('.body[data-content="' + i + '"]').innerHTML;
+                        let myTitle = document.querySelector('#heading' + i + '').innerHTML.trim();
+                        let xhr2 = new XMLHttpRequest();
+                        xhr2.onreadystatechange = function () {
+                            if (this.readyState == 4 && this.status == 200) {
+                                if (this.response == "ok") {
+                                    document.querySelector('#registerSuccess').click();
+
+                                } else if (this.response == "changeLetterName") {
+                                    let newTitle = prompt('Vous avez déjà enregistré une lettre intitulée ' + myProjName + ' ' + myTitle + '. Merci de choisir un nouveau nom : ', '' + myTitle + '[new]');
+                                    if (newTitle == false) {
+                                        alert('L\'enregistrement a été abandonné');
+                                        return;
+                                    } else {
+                                        xhr2.open('POST', './ajax/letters_registration.php', true);
+                                        xhr2.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                                        xhr2.send("projName=" + myProjName + "&versionTitle=" + newTitle.trim() + "&version=" + myText + "&projName=" + myProjName + "&forced=1");
+                                        document.querySelector('#heading' + i + '').innerHTML = newTitle;
+                                    }
+                                } else {
+                                    console.log(this.response);
+                                    if (document.querySelector('#connectionButton')) {
+                                        document.querySelector('#connectionButton').click();
+                                    }
+                                    return;
+                                }
+                            }
+                        };
+                        xhr2.open('POST', './ajax/letters_registration.php', true);
+                        xhr2.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                        xhr2.send("projName=" + myProjName + "&versionTitle=" + myTitle + "&version=" + myText + "&projName=" + myProjName);
+                    }
+                }
             }
+
         });
     }
 }
