@@ -73,7 +73,6 @@ class View {
         for (let i = 0; i < editions.length; i++) {
             editions[i].outerHTML = editions[i].innerHTML;
         }
-        console.log(numberOfVersions);
         // Injection de chaque nouvelle version avec des inputs texte pré-remplis par les valeurs d'origine:
         for (let i = 0; i < numberOfVersions; i++) {
             document.getElementById('accordion').innerHTML += '<div id="version' + (i + 2) + '" class="versionBlock my-3 card d-flex flex-row justify-content-around align-items-center bg-kover text-white"><div><input class="d-none" type = "checkbox" name = "solidVersion' + (i + 2) + 'Checker" id = "solidVersion' + (i + 2) + 'Checker" ><h3 class="d-inline card-header" id="heading' + (i + 1) + '">' + this.project.projName + ' [Version ' + (i + 2) + ']</h3><button class="text-white btn bg-kover text-whiteborder-light" data-toggle="collapse" data-target="#collapse' + (i + 1) + '">&darr;</button></div></div><div id="collapse' + (i + 1) + '" class="collapse" data-parent="#accordion" aria-labelledby="heading' + i + '"><div class="card-body body p-5  border border-info rounded-bottom" data-content="' + (i + 1) + '">' + preparedText + '</div></div>';
