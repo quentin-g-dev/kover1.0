@@ -1,5 +1,6 @@
 <!--DONE-->
 <div id="finishing" class="d-none">
+    <button id="backToVersionsEdit" class="text-kover bg-light">&larr; Retour à l'édition des versions</button>
 
     <div id="groupOptions"
         class="w-100 my-2 rounded-top textControls bg-kover d-flex justify-content-center align-items-baseline flex-wrap flex-md-nowrap center mx-auto">

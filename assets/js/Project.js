@@ -166,36 +166,6 @@ class Project {
         }
     }
 
-    fixVersion() {
-        /*     document.querySelector('#versionsButtons').addEventListener("click", function () {
-                 let validButtons = document.querySelectorAll('#currentVersion button[data-valid]');
-                 for (let i = 0; i < validButtons.length; i++) {
-                     validButtons[i].addEventListener("click", function () {
-                         let inputs = document.querySelectorAll('#currentVersion input');
-                         let index = validButtons[i].dataset.valid;
-                         let validVersion = '';
-                         for (let i = 0; i < inputs.length; i++) {
-                             let emptyInputs = 0;
-                             if (inputs[i].value.length < 1) {
-                                 emptyInputs++;
-                             }
-                             if (emptyInputs === 1) {
-                                 alert('Un champ est vide. Pour le compléter, appuyez sur ESC.');
-                             } else if (emptyInputs > 1) {
-                                 alert('' + emptyInputs + ' champs sont vides. Pour les compléter, appuyez sur <kbd>ESC</kbd>');
-
-                             }
-                             inputs[i].outerHTML = inputs[i].value;
-                             validVersion += document.querySelector('#currentVersion  h3').outerHTML;
-                             validVersion += document.querySelector('#currentVersion  .versionContent').outerHTML;
-                         }
-                         document.querySelector("#fixedVersions").innerHTML += '<div id="version' + index + 'Fixed">' + validVersion + '</div>';
-                         document.querySelector('#currentVersion button').classList.add('d-none');
-                     });
-                 }
-             });*/
-    }
-
     checkAllVersions() {
         let checkBoxes = document.querySelectorAll('main #versionsGroup input[type="checkbox"]');
         if (document.querySelector("#selectAll").dataset.status === "selectAll") {

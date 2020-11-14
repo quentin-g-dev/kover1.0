@@ -1,5 +1,6 @@
 <!--SECTIONS-->
 <div id="selectionStep" class="d-none">
+    <button id="backToTextEdit" class="text-kover bg-light">&larr; Retour à la composition</button>
     <div class="d-flex align-items-center justify-content-center mx-auto" id="ProjNameBlock">
         <input type="text" name="" id="projNameEditor" class="d-none">
         <h2 class="display-5 ml-3" id="projName"></h2>

@@ -7,6 +7,17 @@ function start(project) {
     document.querySelector('#startButton').addEventListener('click', function () {
         project.view.srcChoice();
         srcChoice(project);
+        let links = document.querySelectorAll('a');
+        for (let i = 0; i < links.length; i++) {
+            if (links[i].target != "_blank") {
+                links[i].addEventListener("click", function (e) {
+                    if (confirm("Votre projet ne pourra pas être enregistré ! Cliquez sur OK pour confirmer.") == false) {
+                        e.preventDefault(e);
+                    };
+                })
+
+            }
+        }
     });
 }
 
@@ -37,7 +48,6 @@ function srcChoice(project) {
 function textEditor(project) {
     project.view.textEditor();
     document.querySelector('#userText').addEventListener("click", project.textEditorListener);
-    //project.textEditorListener();
     document.querySelector('#multiple').addEventListener("click", function () {
         textSelector(project);
     });
@@ -61,6 +71,7 @@ function textEditor(project) {
  * @param {object} project 
  */
 function textSelector(project) {
+
     project.projName = document.querySelector('#projectName').value;
     project.originalText = document.querySelector('#userText').innerHTML;
     project.view.textSelector();
@@ -74,6 +85,9 @@ function textSelector(project) {
         let inputVersion = document.querySelector('#lastSteps #originalUserText').innerHTML;
         project.preparedText = inputVersion;
         versionsSetting(project);
+    });
+    document.querySelector('#backToTextEdit').addEventListener("click", function () {
+        textEditor(project);
     });
 }
 
@@ -89,6 +103,10 @@ function versionsSetting(project) {
     document.querySelector('#finishButton').addEventListener("click", function () {
         finalRender(project);
     });
+    document.querySelector('#backToSelect').addEventListener("click", function () {
+        textEditor(project);
+        textSelector(project);
+    });
 }
 
 /**
@@ -98,6 +116,9 @@ function versionsSetting(project) {
 function finalRender(project) {
     project.view.generateVersions();
     project.finalInteractions();
+    document.querySelector('#backToVersionsEdit').addEventListener("click", function () {
+        versionsSetting(project);
+    });
 }
 
 
