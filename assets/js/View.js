@@ -20,11 +20,10 @@ class View {
         document.querySelector('#userText').innerHTML = this.project.originalText;
     }
 
-    singleRender(urlDoc) {
+    singleRender(urlDoc, name) {
         window.scrollTo(0, 0);
-        let name = '';
         document.querySelector('#koverProj').innerHTML = document.querySelector("#singleRender").innerHTML;
-        document.querySelector('#koverProj #versionsGroup #heading0').innerHTML = name;
+        document.querySelector('#koverProj #heading0').innerHTML = name;
         document.querySelector('#koverProj #versionsGroup #solidVersion1ModalBody').innerHTML = this.project.originalText;
         document.querySelector('#koverProj #versionsGroup #solidOriginalDocLink').href = urlDoc;
     }
@@ -40,15 +39,16 @@ class View {
         window.scrollTo(0, 0);
         document.querySelector('#koverProj').innerHTML = document.querySelector('#setVersions').innerHTML;
         // Injection et nettoyage de l'original
-        document.getElementById("accordion").innerHTML += '<div class=" my-3 card d-flex flex-row justify-content-around align-items-center bg-kover text-white"><div><input class="d-none" type = "checkbox" name = "solidVersion1Checker" id = "solidVersion1Checker" ><h3 class="d-inline card-header" id="heading0">' + this.project.projName + ' [Original]</h3><button class="btn text-white bg-kover text-white border-light" data-toggle="collapse" data-target="#collapse0">&darr;</button></div></div>';
+
         document.getElementById("accordion").innerHTML += '<div id="collapse0" class="collapse" data-parent="#accordion" aria-labelledby="heading0"><div class="original card-body body p-5 border border-info rounded-bottom" data-content="0">' + originalText + '</div></div>';
         let editions = document.querySelectorAll('div.original span.toEdit');
         for (let i = 0; i < editions.length; i++) {
             editions[i].outerHTML = editions[i].innerHTML;
         }
         // Injection de chaque nouvelle version avec des inputs texte pré-remplis par les valeurs d'origine:
+
         for (let i = 0; i < numberOfVersions; i++) {
-            document.getElementById('accordion').innerHTML += '<div id="version' + (i + 2) + '" class="versionBlock my-3 card d-flex flex-row justify-content-around align-items-center bg-kover text-white"><div><input class="d-none" type = "checkbox" name = "solidVersion' + (i + 2) + 'Checker" id = "solidVersion' + (i + 2) + 'Checker" ><h3 class="d-inline card-header" id="heading' + (i + 1) + '">' + this.project.projName + ' [Version ' + (i + 2) + ']</h3><button class="text-white btn bg-kover text-whiteborder-light" data-toggle="collapse" data-target="#collapse' + (i + 1) + '">&darr;</button></div></div><div id="collapse' + (i + 1) + '" class="collapse" data-parent="#accordion" aria-labelledby="heading' + i + '"><div class="card-body body p-5  border border-info rounded-bottom" data-content="' + (i + 1) + '">' + preparedText + '</div></div>';
+            document.getElementById('accordion').innerHTML += '<div id="version' + (i + 2) + '" class="versionBlock my-3 card bg-kover text-white"><div class="d-flex flex-row justify-content-start align-items-center "><input class="d-none" type = "checkbox" name = "solidVersion' + (i + 2) + 'Checker" id = "solidVersion' + (i + 2) + 'Checker" ><div class="card-header d-flex align-items-baseline justify-content-start letterNameBlock" data-version="' + (i + 2) + '"><input type="text" data-version="' + (i + 2) + '" class="d-none letterNameEditor"><h3 class="modal-title text-white letterName d-inline" id="heading' + (i + 1) + '" data-version="' + (i + 2) + '">Version' + (i + 2) + '</h3><button class="badge badge-secondary mx-2 my-4 letterNameBadge" data-version="' + (i + 2) + '">Modifier</button></div><button class="text-kover btn bg-white border-light" data-toggle="collapse" data-target="#collapse' + (i + 1) + '">&darr;</button></div></div><div id="collapse' + (i + 1) + '" class="collapse" data-parent="#accordion" aria-labelledby="heading' + i + '"><div class="card-body body p-5  border border-info rounded-bottom" data-content="' + (i + 1) + '">' + preparedText + '</div></div>';
             let editZones = document.querySelectorAll('div#collapse' + (i + 1) + ' span.toEdit');
             for (let j = 0; j < editZones.length; j++) {
                 let placeholder = editZones[j].innerHTML;

@@ -13,6 +13,9 @@ if (isset ($_SESSION['vip'])){
 
 if(isset($_POST["proj"])){
     $projName = htmlspecialchars($_POST["proj"]);
+    if($projName== ''){
+        echo 'false';
+    }
     if (isset ($_SESSION['vip'])){
         if ($vipManager->checkUserConnection($vip)){
             if($vipManager->doesProjectExist($vip, $projName)){
