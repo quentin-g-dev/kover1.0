@@ -14,17 +14,17 @@ class View {
 
     textEditor() {
         window.scrollTo(0, 0);
-        document.querySelector('#koverProj').innerHTML = document.querySelector('#textEdition').innerHTML;
+        document.querySelector('#koverProj').innerHTML = document.querySelector('#textEdition').innerHTML.replace('<script>', '').replace('</script>', '');
         document.querySelector("#userText").focus();
         document.querySelector("#userText").style.fontSize = "12px";
-        document.querySelector('#userText').innerHTML = this.project.originalText;
+        document.querySelector('#userText').innerHTML.replace('<script>', '').replace('</script>', '') = this.project.originalText;
     }
 
     singleRender(urlDoc, name) {
         window.scrollTo(0, 0);
         document.querySelector('#koverProj').innerHTML = document.querySelector("#singleRender").innerHTML;
         document.querySelector('#koverProj #heading0').innerHTML = name;
-        document.querySelector('#koverProj #versionsGroup #solidVersion1ModalBody').innerHTML = this.project.originalText;
+        document.querySelector('#koverProj #versionsGroup #solidVersion1ModalBody').innerHTML = this.project.originalText.replace('<script>', '').replace('</script>', '');
         document.querySelector('#koverProj #versionsGroup #solidOriginalDocLink').href = urlDoc;
     }
 
@@ -32,7 +32,7 @@ class View {
     textSelector() {
         window.scrollTo(0, 0);
         document.querySelector('#koverProj').innerHTML = document.querySelector('#selectionStep').innerHTML;
-        document.querySelector("#originalUserText").innerHTML = this.project.originalText;
+        document.querySelector("#originalUserText").innerHTML = this.project.originalText.replace('<script>', '').replace('</script>', '');
     }
 
     versionsEditor(numberOfVersions, originalText, preparedText) {
@@ -66,7 +66,7 @@ class View {
             let editZones = document.querySelectorAll('div#collapse' + (i + 1) + ' span.toEdit');
             for (let j = 0; j < editZones.length; j++) {
                 if (inputs[j].value.length > 0) {
-                    editZones[j].innerHTML = inputs[j].value;
+                    editZones[j].innerHTML = sanitizeHTML(inputs[j].value);
                     editZones[j].outerHTML = editZones[j].innerHTML;
                 } else {
                     editZones[j].innerHTML = '';

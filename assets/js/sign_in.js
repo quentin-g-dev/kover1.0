@@ -2,7 +2,6 @@ function evalSignInForm() {
     if (document.querySelector("#signInName").value.toString().length === 0 || document.querySelector("#signInPass")
         .value.toString().length === 0) {
         alert("Vous n'avez pas rempli tous les champs de connexion.");
-        console.log($("#signInName").value);
         return false;
     } else {
         return true;
@@ -13,8 +12,8 @@ function evalSignInForm() {
 document.querySelector("#signInSubmit").addEventListener("click", function () {
     evalSignInForm();
     if (evalSignInForm() == true) {
-        let name = document.querySelector("#signInName").value;
-        let password = document.querySelector("#signInPass").value;
+        let name = sanitizeHTML(document.querySelector("#signInName").value);
+        let password = sanitizeHTML(document.querySelector("#signInPass").value);
         let xhr = new XMLHttpRequest();
         xhr.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {

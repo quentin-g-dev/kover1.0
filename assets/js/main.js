@@ -51,13 +51,12 @@ function projNameEditor(project) {
             document.querySelector("main #projName").classList.remove('d-none');
             document.querySelector("main #projNameEditor").classList.add('d-none');
             if (document.querySelector("main #projNameEditor").value.length > 0) {
-                document.querySelector("main #projName").innerHTML = document.querySelector("main #projNameEditor").value;
+                document.querySelector("main #projName").innerHTML = sanitizeHTML(document.querySelector("main #projNameEditor").value);
             } else {
                 document.querySelector("main #projName").innerHTML = document.querySelector("main #projNameEditor").placeholder;
             }
-            project.projName = document.querySelector("main #projNameEditor").value;
+            project.projName = sanitizeHTML(document.querySelector("main #projNameEditor").value);
             document.querySelector("main #projNameBadge").addEventListener("click", projNameEditor);
-            console.log(project.projName);
         });
     });
 }
@@ -80,7 +79,7 @@ function letterNamesEditor() {
                 letterNames[i].classList.replace('d-none', 'd-inline');
                 editor.classList.add('d-none');
                 if (editor.value.length > 0) {
-                    letterNames[i].innerHTML = editor.value;
+                    letterNames[i].innerHTML = sanitizeHTML(editor.value);
                 } else {
                     letterNames[i].innerHTML = editor.placeholder;
                 }
@@ -104,7 +103,7 @@ function textEditor(project) {
 
     });
     document.querySelector('#single').addEventListener("click", function () {
-        project.originalText = document.querySelector('#userText').innerHTML;
+        project.originalText = document.querySelector('#userText').innerHTML.replace('<script>', '').replace('</script>', '');
 
 
         let urlDoc = generateDOC(project.originalText);
@@ -129,7 +128,7 @@ function textEditor(project) {
  */
 function textSelector(project) {
 
-    project.originalText = document.querySelector('#userText').innerHTML;
+    project.originalText = document.querySelector('#userText').innerHTML.replace('<script>', '').replace('</script>', '');
     project.view.textSelector();
     projNameEditor(project);
 
@@ -140,7 +139,7 @@ function textSelector(project) {
     });
 
     document.querySelector('#textEditSubmit').addEventListener("click", function () {
-        let inputVersion = document.querySelector('#lastSteps #originalUserText').innerHTML;
+        let inputVersion = sanitizeHTML(document.querySelector('#lastSteps #originalUserText').innerHTML);
         project.preparedText = inputVersion;
         versionsSetting(project);
     });
@@ -154,7 +153,7 @@ function textSelector(project) {
  * @param {object} project 
  */
 function versionsSetting(project) {
-    project.numberOfVersions = document.querySelector('#howManyLetters').value;
+    project.numberOfVersions = sanitizeHTML(document.querySelector('#howManyLetters').value);
     project.view.versionsEditor(project.numberOfVersions, project.originalText, project.preparedText);
     projNameEditor(project);
     letterNamesEditor();

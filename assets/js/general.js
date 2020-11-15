@@ -1,4 +1,17 @@
 /**
+ * Sanitize and encode all HTML in a user-submitted string
+ * @param  {String} str  The user-submitted string
+ * @return {String} The sanitized string
+ * * https://portswigger.net/web-security/cross-site-scripting/preventing
+ */
+var sanitizeHTML = function (str) {
+    return str.replace(/[^\w. ]/gi, function (c) {
+        return '&#' + c.charCodeAt(0) + ';';
+    });
+};
+
+
+/**
  * CREATING A DOWNLOADABLE .DOC FILE CONTAINING TEXT
  * @param {string} text 
  */

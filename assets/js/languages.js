@@ -70,7 +70,7 @@ var lang = getSessionLang();
 
 document.querySelector("#selectLang").addEventListener("change", function () {
     console.log("change");
-    lang = document.querySelector(".selectLang").value;
+    lang = sanitizeHTML(document.querySelector(".selectLang").value);
     console.log(lang);
     translateTo(lang);
     setSessionLang(lang);
