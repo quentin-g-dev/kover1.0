@@ -93,7 +93,7 @@ document.querySelector('#deleteSelected').addEventListener("click", function () 
         if (checkBoxes[i].checked === true) {
             checkCounter++;
             let index = checkBoxes[i].dataset.letter;
-            let letterId = document.querySelector('input[type="hidden"][data-letter="' + index + '"]').value;
+            let letterId = sanitizeHTML(document.querySelector('input[type="hidden"][data-letter="' + index + '"]').value);
             console.log(letterId);
             let xhr = new XMLHttpRequest();
             xhr.onreadystatechange = function () {

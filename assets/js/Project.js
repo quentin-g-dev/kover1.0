@@ -290,13 +290,13 @@ class Project {
             if (checkCounter === 0) {
                 alert('Aucune lettre sélectionnée !');
             } else {
-                let myProjName = document.querySelector('#projName').innerHTML.trim();
+                let myProjName = sanitizeHTML(document.querySelector('#projName').innerHTML.trim());
                 let xhr = new XMLHttpRequest();
 
                 xhr.onreadystatechange = function () {
                     if (this.readyState == 4 && this.status == 200) {
                         if (this.response == "true") {
-                            let newProjName = prompt('Un de vos projets s\'appelle déjà ' + myProjName + ' : souhaitez-vous conserver le même nom ?', '' + myProjName);
+                            let newProjName = sanitizeHTML(prompt('Un de vos projets s\'appelle déjà ' + myProjName + ' : souhaitez-vous conserver le même nom ?', '' + myProjName));
                             if (newProjName == false) {
                                 document.querySelector('#projNameBadge').click();
                                 return;
@@ -322,7 +322,7 @@ class Project {
                                     document.querySelector('#registerSuccess').click();
 
                                 } else if (this.response == "changeLetterName") {
-                                    let newTitle = prompt('Vous avez déjà enregistré une lettre intitulée ' + myProjName + ' ' + myTitle + '. Merci de choisir un nouveau nom : ', '' + myTitle + '[new]');
+                                    let newTitle = sanitizeHTML(prompt('Vous avez déjà enregistré une lettre intitulée ' + myProjName + ' ' + myTitle + '. Merci de choisir un nouveau nom : ', '' + myTitle + '[new]'));
                                     if (newTitle == false) {
                                         alert('L\'enregistrement a été abandonné');
                                         return;

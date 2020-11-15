@@ -80,15 +80,15 @@ document.querySelector("#signUpSubmit").addEventListener("click", function () {
     //    evalSignUpForm();
     if (evalSignUpForm()) {
 
-        let name = document.querySelector("#userName").value;
-        let password = document.querySelector("#userPassword").value;
+        let name = sanitizeHTML(document.querySelector("#userName").value);
+        let password = sanitizeHTML(document.querySelector("#userPassword").value);
         let xhr = new XMLHttpRequest();
         xhr.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
                 if (this.response == "true") {
                     console.log(this.response);
 
-                    document.querySelector("#subscriptionModal .modal-body").innerHTML = "Inscription réussie ! Merci pour votre confiance";
+                    document.querySelector("#subscriptionModal .modal-body").innerHTML = "Inscription réussie !";
                     $("#nav").load("./index.php #nav");
 
                 } else {
