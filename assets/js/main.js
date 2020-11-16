@@ -4,7 +4,6 @@
  */
 function start(project) {
     document.querySelector('#startButton').addEventListener('click', function () {
-        project.view.srcChoice();
         srcChoice(project);
     });
 }
@@ -14,27 +13,20 @@ function start(project) {
  * @param {object} project 
  */
 function srcChoice(project) {
-    let links = document.querySelectorAll('a');
-    for (let i = 0; i < links.length; i++) {
-        if (links[i].target != "_blank") {
-            links[i].addEventListener("click", function (e) {
-                if (confirm("Votre projet ne pourra pas être enregistré ! Cliquez sur OK pour confirmer.") == false) {
-                    e.preventDefault(e);
-                };
-            })
-
-        }
-    }
     document.querySelector('#newTextButton').addEventListener('click', function () {
+        document.querySelector('#srcChoiceModal button.close').click();
         project = new Project();
         project.view = new View(project);
         textEditor(project);
+
     });
 
     document.querySelector('#templateButton').addEventListener('click', function () {
+        document.querySelector('#srcChoiceModal button.close').click();
         project = new Project(Date.now(), document.querySelector('#templateText').innerHTML);
         project.view = new View(project);
         textEditor(project);
+
     });
 }
 
@@ -93,6 +85,17 @@ function letterNamesEditor() {
  * @param {object} project 
  */
 function textEditor(project) {
+    let links = document.querySelectorAll('a');
+    for (let i = 0; i < links.length; i++) {
+        if (links[i].target != "_blank") {
+            links[i].addEventListener("click", function (e) {
+                if (confirm("Votre projet ne pourra pas être enregistré ! Cliquez sur OK pour confirmer.") == false) {
+                    e.preventDefault(e);
+                };
+            })
+
+        }
+    }
     project.view.textEditor();
     projNameEditor(project);
 
@@ -118,6 +121,7 @@ function textEditor(project) {
         });
 
     });
+    return true;
 
 }
 

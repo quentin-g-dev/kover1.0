@@ -50,7 +50,7 @@ include './php/parts/allpages_parts/header.php';
                         Composez vos lettres&nbsp;de&nbsp;motivation en&nbsp;quelques&nbsp;clics
                     </p>
                     <button class="btn bg-kover p-3 h-100 rounded mx-auto mt-4 h1 text-white font-weight-bold"
-                        id="startButton">
+                        id="startButton" data-toggle="modal" data-target="#srcChoiceModal">
                         COMMENCER
                     </button>
                 </div>
@@ -76,16 +76,13 @@ include './php/parts/allpages_parts/header.php';
 
         <?php } else {
 ?>
-        <div class="d-flex flex-column flex-lg-row mx-auto  my-3">
-            <button
-                class="srcChoice btn bg-kover text-white font-weight-bold w-100 w-lg-75 rounded mx-auto mx-lg-5 mt-4 h3 p-2"
-                id="newTextButton">
-                Saisir/coller une lettre de motivation
-            </button>
-            <button
-                class="srcChoice btn bg-kover text-white font-weight-bold w-100 w-lg-75 rounded mx-auto mx-lg-5 mt-4 h3 p-2"
-                id="templateButton">
-                Commencer avec un modèle
+        <div class="h-100 d-flex  flex-column flex-no-wrap m-auto p-md-4">
+            <p class="mx-auto my-3 p-md-2 h3 rounded text-center w-75">
+                Composez vos lettres&nbsp;de&nbsp;motivation en&nbsp;quelques&nbsp;clics
+            </p>
+            <button class="btn bg-kover p-3 h-100 rounded mx-auto mt-4 h1 text-white font-weight-bold" id="startButton"
+                data-toggle="modal" data-target="#srcChoiceModal">
+                COMMENCER
             </button>
         </div>
         <?php

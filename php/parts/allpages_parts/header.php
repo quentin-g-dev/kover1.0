@@ -26,7 +26,8 @@
                 <span
                     class="userMenu d-md-flex md-row flex-md-row flex-column w-md-auto w-100 justify-content-md-end justify-content-center align-items-md-center align-items-center h-100 d-flex">
                     <a href="./index.php"
-                        class="my-3  w-100 my-lg-3 display-5 font-weight-bold text-white mx-auto text-center">
+                        class="my-3  w-100 my-lg-3 display-5 font-weight-bold text-white mx-auto text-center"
+                        data-toggle="modal" data-target="#srcChoiceModal">
                         Nouveau projet
                     </a>
                     <span class="avatar d-none d-md-inline">
