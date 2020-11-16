@@ -3,21 +3,9 @@
  * @param {object} project 
  */
 function start(project) {
-    project.view.start();
     document.querySelector('#startButton').addEventListener('click', function () {
         project.view.srcChoice();
         srcChoice(project);
-        let links = document.querySelectorAll('a');
-        for (let i = 0; i < links.length; i++) {
-            if (links[i].target != "_blank") {
-                links[i].addEventListener("click", function (e) {
-                    if (confirm("Votre projet ne pourra pas être enregistré ! Cliquez sur OK pour confirmer.") == false) {
-                        e.preventDefault(e);
-                    };
-                })
-
-            }
-        }
     });
 }
 
@@ -26,6 +14,17 @@ function start(project) {
  * @param {object} project 
  */
 function srcChoice(project) {
+    let links = document.querySelectorAll('a');
+    for (let i = 0; i < links.length; i++) {
+        if (links[i].target != "_blank") {
+            links[i].addEventListener("click", function (e) {
+                if (confirm("Votre projet ne pourra pas être enregistré ! Cliquez sur OK pour confirmer.") == false) {
+                    e.preventDefault(e);
+                };
+            })
+
+        }
+    }
     document.querySelector('#newTextButton').addEventListener('click', function () {
         project = new Project();
         project.view = new View(project);
@@ -139,7 +138,7 @@ function textSelector(project) {
     });
 
     document.querySelector('#textEditSubmit').addEventListener("click", function () {
-        let inputVersion = sanitizeHTML(document.querySelector('#lastSteps #originalUserText').innerHTML);
+        let inputVersion = document.querySelector('#lastSteps #originalUserText').innerHTML.replace('<script>', '').replace('</script>', '');
         project.preparedText = inputVersion;
         versionsSetting(project);
     });
@@ -153,7 +152,7 @@ function textSelector(project) {
  * @param {object} project 
  */
 function versionsSetting(project) {
-    project.numberOfVersions = sanitizeHTML(document.querySelector('#howManyLetters').value);
+    project.numberOfVersions = document.querySelector('#howManyLetters').value;
     project.view.versionsEditor(project.numberOfVersions, project.originalText, project.preparedText);
     projNameEditor(project);
     letterNamesEditor();
@@ -236,14 +235,20 @@ function copyTool(event) {
 document.addEventListener("DOMContentLoaded", function () {
 
     if (!document.querySelector('#userTemplate')) {
-        let kover = new Project();
-        kover.view = new View(kover);
-        start(kover);
+        if (document.querySelector('#startButton')) {
+            let kover = new Project();
+            kover.view = new View(kover);
+            start(kover);
+        } else {
+            let kover = new Project();
+            kover.view = new View(kover);
+            kover.view.srcChoice();
+            srcChoice(kover);
+        }
     } else {
         project = new Project('', document.querySelector('#userTemplate').innerHTML);
         document.getElementById('userTemplate').remove();
         project.view = new View(project);
-        project.view.project = project;
         project.view.textEditor();
         textEditor(project);
     }

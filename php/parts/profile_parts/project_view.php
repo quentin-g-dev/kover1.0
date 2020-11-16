@@ -3,7 +3,7 @@ $projName = $_GET['project'];
 ?>
 
 <main
-    class="container-fluid full-container d-flex flex-column p-5 mx-auto mt-3 mb-2 w-100 w-lg-75 justify-content-start align-items-baseline mh-75 rounded">
+    class="container-fluid full-container d-flex flex-column p-md-5 mx-auto mt-3 mb-2 w-100 w-lg-75 justify-content-start align-items-baseline mh-75 rounded">
     <a class="m-auto text-danger" id="deleteProject">X Supprimer le projet</a>
     <h1 class="m-auto">Mon projet [<?=$projName;?>]</h1>
     <a class="m-auto" href="./profile.php?vip=<?=$vip->userId();?>&sect=letters">&larr; Mes Lettres</a>

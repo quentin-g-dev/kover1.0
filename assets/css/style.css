@@ -17,8 +17,12 @@ body {
     padding: 0px 2vw;
 }
 
-nav {
+header {
     height: 7vh;
+}
+
+h1 {
+    font-family: 'open-sans', Impact !important;
 }
 
 
@@ -46,6 +50,20 @@ main {
     cursor: pointer;
 }
 
+nav {
+    height: 7vh;
+}
+
+nav select {
+    border-radius: 5px;
+}
+
+nav option {
+    background-color: rgb(2, 63, 98) !important;
+    color: #fff;
+    text-align: center;
+}
+
 nav a:hover {
     border: 1px solid #f4f4f4;
     border-radius: 15px;
@@ -55,6 +73,19 @@ nav a:hover {
 nav a {
     border: 1px solid transparent;
     padding: 2px 8px;
+}
+
+nav .avatar {
+    cursor: pointer;
+}
+
+nav .userOptions {
+    position: absolute;
+    top: 6vh;
+    right: 2vw;
+    border: 2px solid rgb(2, 63, 98);
+    border-radius: 15px;
+    background-color: #ffdb10;
 }
 
 a,
@@ -137,7 +168,23 @@ h3[data-toggle]:hover {
         min-height: 30vh;
     }
 
+    header {
+        height: auto;
+    }
+
     nav {
-        height: 90vh;
+        height: 85vh;
+        border: 2px solid white;
+        border-radius: 15px;
+    }
+
+    nav .userOptions {
+        right: auto;
+        position: static;
+        top: auto;
+        border: none;
+        border-radius: 0px;
+        background-color: inherit;
+
     }
 }

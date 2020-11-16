@@ -4,10 +4,6 @@ class View {
         this.project = project;
     }
 
-    start() {
-        document.querySelector('#koverProj').innerHTML = document.querySelector('#startView').innerHTML;
-    }
-
     srcChoice() {
         document.querySelector('#koverProj').innerHTML = document.querySelector('#sourceChoice').innerHTML;
     }
@@ -17,7 +13,7 @@ class View {
         document.querySelector('#koverProj').innerHTML = document.querySelector('#textEdition').innerHTML.replace('<script>', '').replace('</script>', '');
         document.querySelector("#userText").focus();
         document.querySelector("#userText").style.fontSize = "12px";
-        document.querySelector('#userText').innerHTML.replace('<script>', '').replace('</script>', '') = this.project.originalText;
+        document.querySelector('#userText').innerHTML = this.project.originalText.replace('<script>', '').replace('</script>', '');
     }
 
     singleRender(urlDoc, name) {

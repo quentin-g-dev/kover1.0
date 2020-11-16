@@ -1,5 +1,5 @@
 <main
-    class="container-fluid full-container d-flex flex-column p-5 mx-auto mt-3 mb-2 w-100 w-lg-75 justify-content-start align-items-baseline mh-75 rounded">
+    class="container-fluid full-container d-flex flex-column p-md-5 p-1 mx-auto mt-3 mb-2 w-100 w-lg-75 justify-content-start align-items-baseline mh-75 rounded">
     <h1 class="m-auto">Mes Lettres</h1>
     <p class="text-center m-auto">
         <?php

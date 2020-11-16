@@ -34,14 +34,70 @@ include './php/parts/allpages_parts/header.php';
     <?php }?>
 
     <main
-        class="container-fluid full-container d-flex flex-column p-5 mx-auto mt-3 mb-2 w-100 w-lg-75 justify-content-start align-items-baseline h-100 rounded"
+        class="container-fluid full-container d-flex flex-column p-md-5 p-1 mx-auto mt-3 mb-2 w-100 w-lg-75 justify-content-start align-items-baseline h-100 rounded"
         id="koverProj">
+
+        <?php if (!isset($vip)){?>
+
+        <div class="mx-auto">
+            <h1 class="text-center text-kover mx-auto my-md-5 my-4 font-weight-bold">Gérez
+                efficacement
+                vos&nbsp;candidatures
+            </h1>
+            <div class="row mt-md-5 h-100 ">
+                <div class="d-flex  flex-column flex-no-wrap mx-auto col-md-6 my-3 my-md-4 p-md-4">
+                    <p class="mx-auto my-3 p-md-2 h3 rounded text-center w-75">
+                        Composez vos lettres&nbsp;de&nbsp;motivation en&nbsp;quelques&nbsp;clics
+                    </p>
+                    <button class="btn bg-kover p-3 h-100 rounded mx-auto mt-4 h1 text-white font-weight-bold"
+                        id="startButton">
+                        COMMENCER
+                    </button>
+                </div>
+                <div
+                    class="d-flex flex-column flex-no-wrap col-md-5 border-kover border p-md-4 my-md-5 my-4 w-75 mx-auto">
+                    <h2 class="text-center m-auto">Mon Espace</h2>
+                    <p class="text-center m-auto mt-4">Retrouvez ici toutes vos lettres&nbsp;de&nbsp;candidature</p>
+                    <button type="button"
+                        class="btn bg-kover my-5 my-md-3 display-5 font-weight-bold text-white w-75 w-md-50"
+                        data-toggle="modal" data-target="#connectModal" id="">
+                        Connexion
+                    </button>
+                    <button type="button"
+                        class="btn bg-kover my-3 my-lg-3 display-5 font-weight-bold text-white w-75 w-md-50"
+                        data-toggle="modal" data-target="#subscriptionModal" id="">
+                        Inscription
+                    </button>
+                </div>
+                <span class="col-md-1">
+                </span>
+            </div>
+        </div>
+
+        <?php } else {
+?>
+        <div class="d-flex flex-column flex-lg-row mx-auto  my-3">
+            <button
+                class="srcChoice btn bg-kover text-white font-weight-bold w-100 w-lg-75 rounded mx-auto mx-lg-5 mt-4 h3 p-2"
+                id="newTextButton">
+                Saisir/coller une lettre de motivation
+            </button>
+            <button
+                class="srcChoice btn bg-kover text-white font-weight-bold w-100 w-lg-75 rounded mx-auto mx-lg-5 mt-4 h3 p-2"
+                id="templateButton">
+                Commencer avec un modèle
+            </button>
+        </div>
+        <?php
+        }
+?>
     </main>
+
+
     <!-- kover_steps -->
     <?php
         include './php/parts/forms/connection_form.php';
         include './php/parts/forms/subscription_form.php';
-        include './php/parts/kover_steps/start_step.php';
         include './php/parts/kover_steps/choice_step.php';
         include './php/parts/kover_steps/letter_template.php';
         include './php/parts/kover_steps/textedit_step.php';

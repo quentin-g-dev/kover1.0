@@ -9,11 +9,11 @@
     <!--Outils d'édition de texte-->
     <div
         class="w-100 rounded-top textControls bg-kover d-flex justify-content-center align-items-baseline flex-wrap center mx-auto mt-3">
-        <button class="btn btn-light rounded  m-2 h3" id="pasteText">
+        <button class="btn btn-light rounded  m-1 m-md-2 h3" id="pasteText">
             COLLER
         </button>
 
-        <span class="p-2 m-2">
+        <span class="p-1 p-md-2 m-1 m-md-2">
             <select name="fontFamily" id="fontFamily">
                 <option id="raleway" value="Raleway" class="controlButton" selected>Raleway</option>
                 <option id="playfairDisplay" value="Playfair Display" class="controlButton">Playfair Display</option>
@@ -24,7 +24,7 @@
                 <option id="piazzolla" value="Piazzolla" class="controlButton">Piazzolla</option>
             </select>
         </span>
-        <span class="p-2 m-2">
+        <span class="p-1 p-md-2 m-1 m-md-2">
             <select name="fontSize" id="fontSize">
                 <option value="10" id="fz10" class="controlButton">10</option>
                 <option value="11" id="fz11" class="controlButton">11</option>
@@ -36,19 +36,19 @@
                 <option value="20" id="fz20" class="controlButton">22</option>
             </select>
         </span>
-        <fieldset class="m-2 d-flex justify-content-center align-items-center flex-wrap">
-            <span class="p-2">
+        <fieldset class="m-1 m-md-2 d-flex justify-content-center align-items-center flex-wrap">
+            <span class="p-1 p-md-2">
                 <button id="bold" class="controlButton"><span class="font-weight-bold">G</span></button>
             </span>
-            <span class="p-2 ">
+            <span class="p-1 p-md-2 ">
                 <button id="italic" class="controlButton"><span class="font-italic">I</span></button>
             </span>
-            <span class="p-2">
+            <span class="p-1 p-md-2">
                 <button id="underline" class="controlButton"><span class="font-weight-bold"><u>S</u></span></button>
             </span>
         </fieldset>
 
-        <fieldset class="m-2 d-flex justify-content-center align-items-center flex-wrap">
+        <fieldset class="m-1 m-md-2 d-flex justify-content-center align-items-center flex-wrap">
             <button id="left" class="controlButton">
                 Gauche
             </button>
