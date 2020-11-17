@@ -334,8 +334,8 @@ class Project {
                                     }
                                 } else {
                                     console.log(this.response);
-                                    if (document.querySelector('#connectionButton')) {
-                                        document.querySelector('#connectionButton').click();
+                                    if (document.querySelector('#signInButton')) {
+                                        document.querySelector('#signInButton').click();
                                     }
                                     return;
                                 }

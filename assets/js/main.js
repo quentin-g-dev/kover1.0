@@ -101,10 +101,14 @@ function textEditor(project) {
 
     document.querySelector('#userText').addEventListener("click", project.textEditorListener);
     document.querySelector('#multiple').addEventListener("click", function () {
+        document.querySelector('#singleOrMultiple button.close').click();
+
         textSelector(project);
 
     });
     document.querySelector('#single').addEventListener("click", function () {
+        document.querySelector('#singleOrMultiple button.close').click();
+
         project.originalText = document.querySelector('#userText').innerHTML.replace('<script>', '').replace('</script>', '');
 
 

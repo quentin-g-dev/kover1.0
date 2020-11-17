@@ -29,28 +29,17 @@
                         class="my-3  w-100 my-lg-3 display-5 font-weight-bold text-snow mx-auto text-center"
                         data-toggle="modal" data-target="#srcChoiceModal">
                         <span class="mr-3">
-                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-file-earmark-plus-fill"
-                                fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd"
-                                    d="M2 2a2 2 0 0 1 2-2h5.293A1 1 0 0 1 10 .293L13.707 4a1 1 0 0 1 .293.707V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm7.5 1.5v-2l3 3h-2a1 1 0 0 1-1-1zM8.5 7a.5.5 0 0 0-1 0v1.5H6a.5.5 0 0 0 0 1h1.5V11a.5.5 0 0 0 1 0V9.5H10a.5.5 0 0 0 0-1H8.5V7z" />
-                            </svg>
+
                         </span>
                         <span>Nouveau projet</span>
 
                     </a>
                     <span class="avatar d-none d-md-inline">
-                        <svg width="3em" height="3em" viewBox="0 0 16 16" class="bi bi-person-circle"
-                            fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M13.468 12.37C12.758 11.226 11.195 10 8 10s-4.757 1.225-5.468 2.37A6.987 6.987 0 0 0 8 15a6.987 6.987 0 0 0 5.468-2.63z" />
-                            <path fill-rule="evenodd" d="M8 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
-                            <path fill-rule="evenodd"
-                                d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z" />
-                        </svg>
+                        <img src="./assets/icons/userprofile.svg" alt="edit">
                     </span>
                     <div class="userOptions d-flex d-md-none flex-column text-snow">
                         <select name="selectLang" id="selectLang"
-                            class="w-25 text-center d-flex justify-content-center align-items-center  selectLang my-5 my-md-3 mx-auto">
+                            class="custom-select selectLang col-md-2   text-center d-flex justify-content-center align-items-center ">
                             <option value="FR">FR</option>
                             <option value="ES">ES</option>
                             <option value="EN">EN</option>
@@ -85,12 +74,14 @@
 
                 <span
                     class="userMenu d-md-flex md-row flex-md-row flex-column w-md-auto w-100 justify-content-md-end justify-content-center align-items-md-center align-items-center  d-flex">
+
                     <select name="selectLang" id="selectLang"
-                        class="w-25 text-center d-flex justify-content-center align-items-center col-md-2 selectLang my-5 my-md-3">
+                        class="custom-select selectLang col-md-2   text-center d-flex justify-content-center align-items-center ">
                         <option value="FR">FR</option>
                         <option value="ES">ES</option>
                         <option value="EN">EN</option>
                     </select>
+
                     <span class="col-md-2"></span>
 
                     <a href="./index.php"
@@ -117,21 +108,23 @@
                         </svg>
                     </span>
 
-                    <div class="userOptions d-flex d-md-none flex-column bg-marigold">
-                        <button type="button" class="btn bg-snow my-5 my-md-3 display-5 font-weight-bold text-kover"
-                            data-toggle="modal" data-target="#connectModal" id="connectionButton">
-                            <span class="mr-1">
-                                <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-key-fill"
+                    <div
+                        class="userOptions rounded px-3 py-1 d-flex d-md-none flex-column justify-content-center align-items-center bg-transparent">
+                        <button type="button" class="btn bg-marigold text-snow d-flex my-5 my-md-3  font-weight-bold  "
+                            data-toggle="modal" data-target="#connectModal" id="signInButton">
+                            <span class="mr-3">
+                                <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-key-fill"
                                     fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd"
                                         d="M3.5 11.5a3.5 3.5 0 1 1 3.163-5H14L15.5 8 14 9.5l-1-1-1 1-1-1-1 1-1-1-1 1H6.663a3.5 3.5 0 0 1-3.163 2zM2.5 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
                                 </svg>
                             </span>
                             <span>Connexion</span>
+
                         </button>
-                        <button type="button" class="btn bg-snow my-3 my-lg-3 display-5 font-weight-bold text-kover"
-                            data-toggle="modal" data-target="#subscriptionModal" id="subscriptionButton">
-                            <span class="mr-1"><svg width="2em" height="2em" viewBox="0 0 16 16"
+                        <button type="button" class="btn bg-marigold text-snow d-flex my-5 my-md-3  font-weight-bold "
+                            data-toggle="modal" data-target="#subscriptionModal" id="signUpButton">
+                            <span class="mr-3"><svg width="1.5em" height="1.5em" viewBox="0 0 16 16"
                                     class="bi bi-person-plus-fill" fill="currentColor"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd"

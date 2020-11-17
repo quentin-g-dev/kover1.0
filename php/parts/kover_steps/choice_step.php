@@ -1,19 +1,13 @@
-<div class="modal fade modal-lg" id="srcChoiceModal" tabindex="-1" role="dialog" aria-labelledby="srcChoiceTitle"
-    aria-hidden="true" onl>
+<div class="modal fade" id="srcChoiceModal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true" onl>
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
-            <div class="modal-header ">
-                <h5 class="mx-auto modal-title text-kover" id="srcChoiceTitle">
-                    Que voulez-vous faire ?
-                </h5>
+            <div class="modal-body d-flex justify-content-center align-items-center flex-column" id="srcChoiceBody"
+                name="srcChoiceBody">
                 <button type="button" class="close p-0" data-dismiss="modal" aria-label="">
                     <span aria-hidden="true"></span>
                 </button>
-            </div>
-            <div class="modal-body d-flex justify-content-center align-items-center flex-column" id="srcChoiceBody"
-                name="srcChoiceBody">
                 <button
-                    class="d-flex justify-content-start align-items-center srcChoice btn bg-kover text-white font-weight-bold rounded mx-auto mx-md-5 mt-4 p-2 p-md-5 mb-2 w-75 w-md-50"
+                    class="d-flex flex-column flex-sm-row justify-content-start align-items-center srcChoice text-snow btn bg-blue bg-hover-snow  font-weight-bold rounded mx-auto mx-md-5 mt-4 p-2 p-md-5 mb-2 w-75 w-md-50"
                     id="newTextButton">
                     <span class="mr-3">
                         <svg width="3em" height="3em" viewBox="0 0 16 16" class="bi bi-file-earmark" fill="currentColor"
@@ -27,7 +21,7 @@
 
                 </button>
                 <button
-                    class="d-flex justify-content-start align-items-center srcChoice btn bg-kover text-white font-weight-bold rounded mx-auto mx-md-5 mt-4 p-2 p-md-5 mb-2 w-75 w-md-50"
+                    class="d-flex justify-content-start flex-column flex-sm-row align-items-center srcChoice btn bg-blue text-snow bg-hover-snow  font-weight-bold rounded mx-auto mx-md-5 mt-4 p-2 p-md-5 mb-2 w-75 w-md-50"
                     id="templateButton">
                     <span class="mr-3">
                         <svg width="3em" height="3em" viewBox="0 0 16 16" class="bi bi-file-earmark-text"

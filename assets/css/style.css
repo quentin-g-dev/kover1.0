@@ -36,6 +36,20 @@ main {
     background-color: #fcf7f9;
 }
 
+.modal-content {
+    background-color: transparent !important;
+    border: none !important;
+}
+
+.modal-content:hover {
+    color: initial !important;
+}
+
+.modal-backdrop.show {
+    opacity: 0.9 !important;
+    background-color: #010101;
+}
+
 #koverProj {
     min-height: 68vh;
 }
@@ -48,8 +62,18 @@ main {
 }
 
 .bg-blue {
-    background-color: #035a8c;
-    border: 2px solid #035a8c;
+    background-color: #023f62;
+    border: 2px solid #023f62;
+}
+
+.bg-hover-blue:hover {
+    background-color: #023f62;
+    border-color: #023f62;
+    color: #fcf7f8;
+}
+
+.text-blue {
+    color: #023f62;
 }
 
 .bg-greensheen {
@@ -104,12 +128,6 @@ nav option {
     text-align: center;
 }
 
-nav a:hover {
-    border: 1px solid #000;
-    border-radius: 15px;
-    text-decoration: none;
-    color: #000;
-}
 
 nav a {
     border: 1px solid transparent;
@@ -123,9 +141,11 @@ nav .avatar {
 nav .userOptions {
     position: absolute;
     top: 6vh;
-    right: 2vw;
-    border: 2px solid rgb(2, 63, 98);
-    border-radius: 15px;
+    right: 0.5vw;
+}
+
+nav a:hover {
+    color: #fcf7f9;
 }
 
 a,
@@ -164,8 +184,8 @@ select {
 }
 
 span.toEdit {
-    background-color: rgb(2, 63, 98);
-    color: white;
+    background-color: #eca400;
+    color: #023f62;
 }
 
 .card-body {
@@ -201,11 +221,23 @@ h3[data-toggle]:hover {
     height: max-content !important;
 }
 
-button.bg-blue.text-snow:hover {
-    color: #023f62;
+.bg-blue {
     border: 2px solid #023f62;
-    background-color: #fcf7f8;
+    background-color: #023f62;
 }
+
+.bg-hover-marigold:hover {
+    color: #023f62;
+    background-color: #eca400;
+    border-color: #023f62;
+}
+
+.bg-hover-snow:hover {
+    color: #023f62;
+    background-color: #fcf7f8;
+    border-color: #023f62;
+}
+
 
 @media (max-width:768px) {
 
@@ -218,7 +250,7 @@ button.bg-blue.text-snow:hover {
     }
 
     nav {
-        height: 85vh;
+        height: 86vh;
         border: 2px solid white;
         border-radius: 15px;
     }
