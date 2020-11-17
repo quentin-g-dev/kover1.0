@@ -1,14 +1,14 @@
 <body class="bg-kover">
     <header
-        class="md-row container full-container flex-column flex-md-row text-white d-flex justify-content-between justify-content-md-between align-items-center p-0 mt-2 mb-3">
+        class="md-row container full-container flex-column flex-md-row text-snow d-flex justify-content-between justify-content-md-between align-items-center p-0 mt-2 mb-3">
         <div class="siteHeader d-flex justify-content-between align-items-baseline col-md-6 col-lg-8">
             <a href="./index.php">
-                <p class="col-md-6 d-inline text-white display-5 font-weight-bold display-4">
+                <p class="col-md-6 d-inline text-snow display-5 font-weight-bold display-4">
                     KOVER
                 </p>
             </a>
             <!--Hamburger-->
-            <span class="text-white  hamburger d-flex d-md-none display-4">
+            <span class="text-snow  hamburger d-flex d-md-none display-4">
                 &#9776;
             </span>
         </div>
@@ -26,9 +26,17 @@
                 <span
                     class="userMenu d-md-flex md-row flex-md-row flex-column w-md-auto w-100 justify-content-md-end justify-content-center align-items-md-center align-items-center h-100 d-flex">
                     <a href="./index.php"
-                        class="my-3  w-100 my-lg-3 display-5 font-weight-bold text-white mx-auto text-center"
+                        class="my-3  w-100 my-lg-3 display-5 font-weight-bold text-snow mx-auto text-center"
                         data-toggle="modal" data-target="#srcChoiceModal">
-                        Nouveau projet
+                        <span class="mr-3">
+                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-file-earmark-plus-fill"
+                                fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M2 2a2 2 0 0 1 2-2h5.293A1 1 0 0 1 10 .293L13.707 4a1 1 0 0 1 .293.707V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm7.5 1.5v-2l3 3h-2a1 1 0 0 1-1-1zM8.5 7a.5.5 0 0 0-1 0v1.5H6a.5.5 0 0 0 0 1h1.5V11a.5.5 0 0 0 1 0V9.5H10a.5.5 0 0 0 0-1H8.5V7z" />
+                            </svg>
+                        </span>
+                        <span>Nouveau projet</span>
+
                     </a>
                     <span class="avatar d-none d-md-inline">
                         <svg width="3em" height="3em" viewBox="0 0 16 16" class="bi bi-person-circle"
@@ -40,7 +48,7 @@
                                 d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z" />
                         </svg>
                     </span>
-                    <div class="userOptions d-flex d-md-none flex-column text-white">
+                    <div class="userOptions d-flex d-md-none flex-column text-snow">
                         <select name="selectLang" id="selectLang"
                             class="w-25 text-center d-flex justify-content-center align-items-center  selectLang my-5 my-md-3 mx-auto">
                             <option value="FR">FR</option>
@@ -48,18 +56,18 @@
                             <option value="EN">EN</option>
                         </select>
                         <a href="./profile.php?vip=<?= $vip->userId();?>"
-                            class="mx-auto my-3 my-lg-3  display-5 text-white">
+                            class="mx-auto my-3 my-lg-3  display-5 text-snow">
                             Mon Espace
                         </a>
                         <a href="./profile.php?vip=<?= $vip->userId();?>&sect=letters"
-                            class="mx-auto  my-3 my-lg-3  display-5 text-white">
+                            class="mx-auto  my-3 my-lg-3  display-5 text-snow">
                             Mes Lettres
                         </a>
                         <a href="./profile.php?vip=<?= $vip->userId();?>&sect=param"
-                            class="mx-auto  my-3 my-lg-3  display-5 text-white">
+                            class="mx-auto  my-3 my-lg-3  display-5 text-snow">
                             Mes Paramètres
                         </a>
-                        <a href="./index.php?disc=1" class="disconnect mx-auto my-3 my-lg-3 display-5 text-white">
+                        <a href="./index.php?disc=1" class="disconnect mx-auto my-3 my-lg-3 display-5 text-snow">
                             Déconnexion
                         </a>
                     </div>
@@ -83,13 +91,21 @@
                         <option value="ES">ES</option>
                         <option value="EN">EN</option>
                     </select>
-                    <span class="col-lg-4"></span>
+                    <span class="col-md-2"></span>
 
                     <a href="./index.php"
-                        class="d-flex justify-content-center col-md-5 text-center my-5 my-md-3 display-5 font-weight-bold text-white row col-md-4 w-auto">
-                        Nouveau
-                        projet
+                        class="d-flex flex-column justify-content-center align-items-center col-md-5 text-center my-5 my-md-3 display-5 font-weight-bold text-snow row col-md-4 w-auto">
+                        <span class="mr-3 mb-1">
+                            <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-file-earmark-plus-fill"
+                                fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M2 2a2 2 0 0 1 2-2h5.293A1 1 0 0 1 10 .293L13.707 4a1 1 0 0 1 .293.707V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm7.5 1.5v-2l3 3h-2a1 1 0 0 1-1-1zM8.5 7a.5.5 0 0 0-1 0v1.5H6a.5.5 0 0 0 0 1h1.5V11a.5.5 0 0 0 1 0V9.5H10a.5.5 0 0 0 0-1H8.5V7z" />
+                            </svg>
+                        </span>
+                        <span>Nouveau projet</span>
                     </a>
+                    <span class="col-md-2"></span>
+
                     <span class="avatar col-md-3 d-none d-md-flex justify-content-center my-5 my-md-3">
                         <svg width="3em" height="3em" viewBox="0 0 16 16" class="bi bi-person-circle"
                             fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -101,14 +117,28 @@
                         </svg>
                     </span>
 
-                    <div class="userOptions d-flex d-md-none flex-column">
-                        <button type="button" class="btn bg-light my-5 my-md-3 display-5 font-weight-bold text-kover"
+                    <div class="userOptions d-flex d-md-none flex-column bg-marigold">
+                        <button type="button" class="btn bg-snow my-5 my-md-3 display-5 font-weight-bold text-kover"
                             data-toggle="modal" data-target="#connectModal" id="connectionButton">
-                            Connexion
+                            <span class="mr-1">
+                                <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-key-fill"
+                                    fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd"
+                                        d="M3.5 11.5a3.5 3.5 0 1 1 3.163-5H14L15.5 8 14 9.5l-1-1-1 1-1-1-1 1-1-1-1 1H6.663a3.5 3.5 0 0 1-3.163 2zM2.5 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
+                                </svg>
+                            </span>
+                            <span>Connexion</span>
                         </button>
-                        <button type="button" class="btn bg-light my-3 my-lg-3 display-5 font-weight-bold text-kover"
+                        <button type="button" class="btn bg-snow my-3 my-lg-3 display-5 font-weight-bold text-kover"
                             data-toggle="modal" data-target="#subscriptionModal" id="subscriptionButton">
-                            Inscription
+                            <span class="mr-1"><svg width="2em" height="2em" viewBox="0 0 16 16"
+                                    class="bi bi-person-plus-fill" fill="currentColor"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd"
+                                        d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm7.5-3a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z" />
+                                </svg>
+                            </span>
+                            <span>Inscription</span>
                         </button>
                     </div>
                 </span>

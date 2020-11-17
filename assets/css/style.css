@@ -8,6 +8,11 @@
     src: url('../fonts/Open_Sans/OpenSans-Regular.ttf');
 }
 
+@font-face {
+    font-family: 'raleway-bold';
+    src: url('../fonts/Raleway/static/Raleway-Bold.ttf');
+}
+
 * {
     box-sizing: border-box;
 }
@@ -22,13 +27,13 @@ header {
 }
 
 h1 {
-    font-family: 'open-sans', Impact !important;
+    font-family: 'raleway-bold', Impact !important;
 }
 
 
 main {
 
-    background-color: #f4f4f4;
+    background-color: #fcf7f9;
 }
 
 #koverProj {
@@ -42,8 +47,45 @@ main {
     background: radial-gradient(circle, rgba(2, 63, 98, 1) 0%, rgba(3, 105, 163, 1) 78%);
 }
 
+.bg-blue {
+    background-color: #035a8c;
+    border: 2px solid #035a8c;
+}
+
+.bg-greensheen {
+    background: #7eb09b;
+}
+
+.text-greensheen {
+    color: #7eb09b;
+}
+
+.bg-marigold {
+    background: #eca400;
+}
+
+.text-marigold {
+    color: #eca400;
+}
+
+.bg-snow {
+    background: #fcf7f9;
+}
+
+.text-snow {
+    color: #fcf7f9;
+}
+
+.bg-darkred {
+    background: #8d0801;
+}
+
+.text-darkred {
+    color: #8d0801;
+}
+
 .text-kover {
-    color: rgba(2, 63, 98, 1);
+    color: #035a8c;
 }
 
 .cursor-pointer {
@@ -54,9 +96,7 @@ nav {
     height: 7vh;
 }
 
-nav select {
-    border-radius: 5px;
-}
+
 
 nav option {
     background-color: rgb(2, 63, 98) !important;
@@ -65,9 +105,10 @@ nav option {
 }
 
 nav a:hover {
-    border: 1px solid #f4f4f4;
+    border: 1px solid #000;
     border-radius: 15px;
     text-decoration: none;
+    color: #000;
 }
 
 nav a {
@@ -85,7 +126,6 @@ nav .userOptions {
     right: 2vw;
     border: 2px solid rgb(2, 63, 98);
     border-radius: 15px;
-    background-color: #ffdb10;
 }
 
 a,
@@ -161,6 +201,11 @@ h3[data-toggle]:hover {
     height: max-content !important;
 }
 
+button.bg-blue.text-snow:hover {
+    color: #023f62;
+    border: 2px solid #023f62;
+    background-color: #fcf7f8;
+}
 
 @media (max-width:768px) {
 
