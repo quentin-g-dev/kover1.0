@@ -161,6 +161,7 @@ nav .userOptions {
     position: absolute;
     top: 6vh;
     right: 0.5vw;
+    z-index: +3;
 }
 
 nav a:hover {

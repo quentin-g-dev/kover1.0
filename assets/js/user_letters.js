@@ -1,44 +1,75 @@
+// mark selected letters
+
+
+let checkBoxes = document.querySelectorAll('input[type="checkbox"]');
+for (let i = 0; i < checkBoxes.length; i++) {
+    checkBoxes[i].addEventListener('change', function () {
+        if (checkBoxes[i].checked === true) {
+            checkBoxes[i].parentElement.parentElement.classList.add('bg-marigold');
+        } else {
+            checkBoxes[i].parentElement.parentElement.classList.remove('bg-marigold');
+
+        }
+    });
+
+}
+
+
+
 // Selecting/Unselecting all results
+
+function selectAll() {
+    document.querySelector("#selectButtonText").className = "d-none d-sm-none px-3";
+    document.querySelector("#unselectButtonText").className = "d-none d-sm-flex px-3";
+    document.querySelector("#selectIcon").className = "d-none";
+    document.querySelector("#unselectIcon").className = "";
+    document.querySelector("#selectAll").dataset.status = "unselectAll";
+}
+
+function unselectAll() {
+    document.querySelector("#selectButtonText").className = "d-none d-sm-flex px-3";
+    document.querySelector("#unselectButtonText").className = "d-none d-sm-none px-3";
+    document.querySelector("#selectIcon").className = "";
+    document.querySelector("#unselectIcon").className = "d-none";
+    document.querySelector("#selectAll").dataset.status = "selectAll";
+}
 
 function checkAllVersions() {
     let checkBoxes = document.querySelectorAll('input[type="checkbox"]');
     if (document.querySelector("#selectAll").dataset.status === "selectAll") {
-        document.querySelector("#selectAll").innerHTML = "Tout Désélectionner";
-        document.querySelector("#selectAll").dataset.status = "unselectAll";
+        selectAll();
         for (let i = 0; i < checkBoxes.length; i++) {
             checkBoxes[i].checked = true;
+            checkBoxes[i].parentElement.parentElement.classList.add('bg-marigold');
             checkBoxes[i].addEventListener('change', function () {
-                document.querySelector("#selectAll").innerHTML = "Tout Sélectionner";
-                document.querySelector("#selectAll").dataset.status = "selectAll"
+                unselectAll();
                 for (let j = 0; j < checkBoxes.length; j++) {
                     if (checkBoxes[j].checked === false) {
                         return;
                     }
-                    document.querySelector("#selectAll").innerHTML = "Tout Sélectionner";
-                    document.querySelector("#selectAll").dataset.status = "selectAll";
+                    unselectAll();
                 }
             });
         }
         return;
     } else {
-        document.querySelector("#selectAll").innerHTML = "Tout Sélectionner";
-        document.querySelector("#selectAll").dataset.status = "selectAll";
+        unselectAll();
         for (let i = 0; i < checkBoxes.length; i++) {
             checkBoxes[i].checked = false;
+            checkBoxes[i].parentElement.parentElement.classList.remove('bg-marigold');
+
             checkBoxes[i].addEventListener('change', function () {
                 for (let j = 0; j < checkBoxes.length; j++) {
                     if (checkBoxes[j].checked === false) {
                         return;
                     }
-                    document.querySelector("#selectAll").innerHTML = "Tout Désélectionner";
-                    document.querySelector("#selectAll").dataset.status = "unselectAll";
+                    unselectAll();
                 }
             });
         }
         return;
     }
 }
-
 document.querySelector('#selectAll').addEventListener("click", checkAllVersions);
 
 // Multiple DOC Exports
