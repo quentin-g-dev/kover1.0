@@ -6,7 +6,7 @@
         <span>Retour aux sélections</span>
     </button>
     <div class="col-12">
-        <div class="d-flex align-items-center justify-content-center mx-auto" id="ProjNameBlock">
+        <div class="d-flex align-items-baseline justify-content-center mx-auto" id="ProjNameBlock">
             <input type="text" name="" id="projNameEditor" class="d-none">
             <h5 class="display-5 ml-3" id="projName"></h5>
             <button class="badge bg-snow mx-2 my-4" id="projNameBadge">
@@ -16,9 +16,10 @@
         <div id="letterVersions" class="d-flex flex-column flex-wrap mx-auto my-3">
             <div id="accordion" class=" accordion justify-content-around align-items-center">
                 <div id="version1" class=" my-3 card ">
-                    <div class="d-flex flex-row justify-content-start bg-blue text-snow align-items-center">
-                        <input class="d-none" type="checkbox" name="solidVersion1Checker" id="solidVersion1Checker">
-                        <div class="card-header d-flex align-items-baseline justify-content-start letterNameBlock"
+                    <div class="d-flex flex-row justify-content-center bg-blue text-snow align-items-baseline">
+                        <input class="d-none mr-2" type="checkbox" name="solidVersion1Checker"
+                            id="solidVersion1Checker">
+                        <div class="p-0 d-flex align-items-baseline justify-content-start letterNameBlock"
                             data-version="1">
                             <input type="text" data-version="1" class="d-none letterNameEditor">
                             <h3 class="modal-title text-white letterName d-inline" id="heading0" data-version="1">
@@ -29,18 +30,19 @@
                                 </span>
                             </button>
                         </div>
-                        <button class="btn text-kover bg-white border-light" data-toggle="collapse"
+                        <button class="btn text-kover bg-white border-light ml-5" data-toggle="collapse"
                             data-target="#collapse0">&darr;</button>
                     </div>
                 </div>
             </div>
         </div>
         <div id="elementH"></div>
+        <button
+            class="btn bg-blue w-100 rounded mx-auto mt-2 d-flex justify-content-center align-items-center text-snow font-weight-bold bg-hover-snow"
+            id="finishButton">
+            OK
+        </button>
     </div>
 
-    <button
-        class="btn bg-blue w-100 rounded mx-auto mt-4 d-flex justify-content-center align-items-center text-snow font-weight-bold bg-hover-snow"
-        id="finishButton">
-        OK
-    </button>
+
 </div>

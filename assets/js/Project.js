@@ -157,7 +157,7 @@ class Project {
     checkAllVersions() {
         let checkBoxes = document.querySelectorAll('main #versionsGroup input[type="checkbox"]');
         if (document.querySelector("#selectAll").dataset.status === "selectAll") {
-            document.querySelector("#selectAll").innerHTML = "Tout Désélectionner";
+            document.querySelector("#selectAll").innerHTML = '<span><svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-list-task mr-2" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M2 2.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5V3a.5.5 0 0 0-.5-.5H2zM3 3H2v1h1V3z"/><path d="M5 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM5.5 7a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9zm0 4a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9z"/><path fill-rule="evenodd" d="M1.5 7a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H2a.5.5 0 0 1-.5-.5V7zM2 7h1v1H2V7zm0 3.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5H2zm1 .5H2v1h1v-1z"/></svg></span><span>Tout Désélectionner</span>';
             document.querySelector("#selectAll").dataset.status = "unselectAll";
             for (let i = 0; i < checkBoxes.length; i++) {
                 checkBoxes[i].checked = true;
@@ -168,7 +168,7 @@ class Project {
                         if (checkBoxes[j].checked === false) {
                             return;
                         }
-                        document.querySelector("#selectAll").innerHTML = "Tout Sélectionner";
+                        document.querySelector("#selectAll").innerHTML = '<span><svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-list-check mr-2" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3.854 2.146a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708L2 3.293l1.146-1.147a.5.5 0 0 1 .708 0zm0 4a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708L2 7.293l1.146-1.147a.5.5 0 0 1 .708 0zm0 4a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 0 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0z" /></svg></span><span>Tout Sélectionner</span>';
                         document.querySelector("#selectAll").dataset.status = "selectAll";
                     }
                 });

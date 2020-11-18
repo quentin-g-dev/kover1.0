@@ -1,9 +1,9 @@
 <body class="bg-kover">
     <header
         class="md-row container full-container flex-column flex-md-row text-snow d-flex justify-content-between justify-content-md-between align-items-center p-0 mt-2 mb-3">
-        <div class="siteHeader d-flex justify-content-between align-items-baseline col-md-6 col-lg-8">
+        <div class="siteHeader p-0 d-flex justify-content-between align-items-baseline col-md-6 col-lg-8">
             <a href="./index.php">
-                <p class="col-md-6 d-inline text-snow display-5 font-weight-bold display-4">
+                <p class="col-md-6 p-0 d-inline text-snow display-5 font-weight-bold display-4">
                     KOVER
                 </p>
             </a>
@@ -14,7 +14,7 @@
         </div>
         <!--NAV MENU -->
         <nav id="nav"
-            class="d-md-flex md-row w-md-25 mt-3 my-md-0 flex-column flex-md-row justify-content-md-end justify-content-start align-items-md-center align-items-start d-none col-md-6 col-lg-4">
+            class="d-md-flex md-row w-md-25 mt-3 my-md-0 flex-column flex-md-row justify-content-md-end justify-content-start align-items-md-center align-items-start d-none col-md-6 col-lg-4 px-0">
 
             <?php
             if (isset ($_SESSION['vip'])){
@@ -24,7 +24,7 @@
                 class="w-100 d-flex h-100 flex-column flex-md-row  justify-content-md-end align-items-md-center justify-content-around align-items-center">
 
                 <span
-                    class="userMenu d-md-flex md-row flex-md-row flex-column w-md-auto w-100 justify-content-md-end justify-content-center align-items-md-center align-items-center h-100 d-flex">
+                    class="userMenu  md-row flex-md-row flex-column w-md-auto w-100 justify-content-md-end justify-content-center align-items-md-center align-items-center h-100 d-flex">
                     <a href="./index.php"
                         class="my-3  w-100 my-lg-3 display-5 font-weight-bold text-snow mx-auto text-center"
                         data-toggle="modal" data-target="#srcChoiceModal">
@@ -34,31 +34,40 @@
                         <span>Nouveau projet</span>
 
                     </a>
-                    <span class="avatar d-none d-md-inline">
-                        <img src="./assets/icons/userprofile.svg" alt="edit">
+                    <span class="avatar d-none d-md-inline p-0">
+                        <img src="./assets/icons/userprofile.svg" alt="user">
                     </span>
-                    <div class="userOptions d-flex d-md-none flex-column text-snow">
-                        <select name="selectLang" id="selectLang"
-                            class="custom-select selectLang col-md-2   text-center d-flex justify-content-center align-items-center ">
-                            <option value="FR">FR</option>
-                            <option value="ES">ES</option>
-                            <option value="EN">EN</option>
-                        </select>
-                        <a href="./profile.php?vip=<?= $vip->userId();?>"
-                            class="mx-auto my-3 my-lg-3  display-5 text-snow">
-                            Mon Espace
-                        </a>
-                        <a href="./profile.php?vip=<?= $vip->userId();?>&sect=letters"
-                            class="mx-auto  my-3 my-lg-3  display-5 text-snow">
-                            Mes Lettres
-                        </a>
-                        <a href="./profile.php?vip=<?= $vip->userId();?>&sect=param"
-                            class="mx-auto  my-3 my-lg-3  display-5 text-snow">
-                            Mes Paramètres
-                        </a>
-                        <a href="./index.php?disc=1" class="disconnect mx-auto my-3 my-lg-3 display-5 text-snow">
-                            Déconnexion
-                        </a>
+                    <div class="userOptions d-flex d-md-none flex-column bg-transparent text-snow">
+
+                        <button type="button" class="btn bg-marigold text-snow d-flex my-2  font-weight-bold  ">
+                            <a href="./profile.php?vip=<?= $vip->userId();?>" class="display-5">
+                                Mon Espace
+                            </a>
+                        </button>
+                        <button type="button" class="btn bg-marigold text-snow d-flex my-2  font-weight-bold  ">
+                            <a href="./profile.php?vip=<?= $vip->userId();?>&sect=letters" class="display-5">
+                                Mes Lettres
+                            </a>
+                        </button>
+                        <button type="button" class="btn bg-marigold text-snow d-flex my-2  font-weight-bold  ">
+                            <a href="./profile.php?vip=<?= $vip->userId();?>&sect=param" class="display-5">
+                                Mes Paramètres
+                            </a>
+                        </button>
+
+                        <button type="button" class="btn bg-marigold text-snow d-flex my-2  font-weight-bold  ">
+                            <a href="./index.php?disc=1" class="disconnect display-5">
+                                Déconnexion
+                            </a>
+                        </button>
+                        <div class="bg-blue py-1 px-2 rounded">
+                            <select name="selectLang text-snow" id="selectLang"
+                                class="custom-select selectLang  my-2 text-center d-flex justify-content-center align-items-center ">
+                                <option value="FR">FR</option>
+                                <option value="ES">ES</option>
+                                <option value="EN">EN</option>
+                            </select>
+                        </div>
                     </div>
                 </span>
 
@@ -76,16 +85,16 @@
                     class="userMenu d-md-flex md-row flex-md-row flex-column w-md-auto w-100 justify-content-md-end justify-content-center align-items-md-center align-items-center  d-flex">
 
                     <select name="selectLang" id="selectLang"
-                        class="custom-select selectLang col-md-2   text-center d-flex justify-content-center align-items-center ">
+                        class="custom-select selectLang col-md-3 col-lg-3 text-center d-flex justify-content-center align-items-center ">
                         <option value="FR">FR</option>
                         <option value="ES">ES</option>
                         <option value="EN">EN</option>
                     </select>
 
-                    <span class="col-md-2"></span>
+                    <span class="col-lg-1"></span>
 
                     <a href="./index.php"
-                        class="d-flex flex-column justify-content-center align-items-center col-md-5 text-center my-5 my-md-3 display-5 font-weight-bold text-snow row col-md-4 w-auto">
+                        class="d-flex flex-column justify-content-center align-items-center col-md-6 text-center my-5 my-md-3 display-5 font-weight-bold text-snow row col-md-4 w-auto px-0">
                         <span class="mr-3 mb-1">
                             <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-file-earmark-plus-fill"
                                 fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -95,9 +104,8 @@
                         </span>
                         <span>Nouveau projet</span>
                     </a>
-                    <span class="col-md-2"></span>
 
-                    <span class="avatar col-md-3 d-none d-md-flex justify-content-center my-5 my-md-3">
+                    <span class="avatar col-md-3 d-none d-md-flex justify-content-center my-5 my-md-3 p-0">
                         <svg width="3em" height="3em" viewBox="0 0 16 16" class="bi bi-person-circle"
                             fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -110,7 +118,7 @@
 
                     <div
                         class="userOptions rounded px-3 py-1 d-flex d-md-none flex-column justify-content-center align-items-center bg-transparent">
-                        <button type="button" class="btn bg-marigold text-snow d-flex my-5 my-md-3  font-weight-bold  "
+                        <button type="button" class="btn bg-marigold text-snow d-flex my-2  font-weight-bold  "
                             data-toggle="modal" data-target="#connectModal" id="signInButton">
                             <span class="mr-3">
                                 <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-key-fill"
@@ -122,7 +130,7 @@
                             <span>Connexion</span>
 
                         </button>
-                        <button type="button" class="btn bg-marigold text-snow d-flex my-5 my-md-3  font-weight-bold "
+                        <button type="button" class="btn bg-marigold text-snow d-flex my-2  font-weight-bold "
                             data-toggle="modal" data-target="#subscriptionModal" id="signUpButton">
                             <span class="mr-3"><svg width="1.5em" height="1.5em" viewBox="0 0 16 16"
                                     class="bi bi-person-plus-fill" fill="currentColor"

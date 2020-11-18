@@ -120,7 +120,7 @@ function textEditor(project) {
         project.finalInteractions();
         document.querySelector('main #saveSelected').addEventListener("click", function () {
             window.addEventListener("click", function () {
-                $("#nav").load("./index.php #nav");
+                $("header").load("./index.php header");
             });
         });
 
@@ -164,7 +164,10 @@ function versionsSetting(project) {
     project.view.versionsEditor(project.numberOfVersions, project.originalText, project.preparedText);
     projNameEditor(project);
     letterNamesEditor();
-
+    document.querySelector('#backToSelect').addEventListener("click", function () {
+        textEditor(project);
+        textSelector(project);
+    });
     $('.card-header[data-version="2"]+button').click();
     /*project.fixVersion();*/
     document.querySelector('#finishButton').addEventListener("click", function (e) {
@@ -189,10 +192,7 @@ function versionsSetting(project) {
         }
         finalRender(project);
     });
-    document.querySelector('#backToSelect').addEventListener("click", function () {
-        textEditor(project);
-        textSelector(project);
-    });
+
 }
 
 /**

@@ -1,6 +1,6 @@
 <!-- Modal -->
-<div class="modal fade" id="subscriptionModal" tabindex="-1" role="dialog" aria-labelledby="subscriptionModalTitle"
-    aria-hidden="true">
+<div class="modal fade bg-blue text-snow" id="subscriptionModal" tabindex="-1" role="dialog"
+    aria-labelledby="subscriptionModalTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -53,7 +53,7 @@
                     </fieldset>
 
                 </fieldset>
-                <button class="btn text-info border-info mt-3 " type="submit" id="signUpSubmit">CONFIRMER
+                <button class=" text-info border-info mt-3 " type="submit" id="signUpSubmit">CONFIRMER
                     L'INSCRIPTION</button>
             </div>
             <div class="modal-footer">
