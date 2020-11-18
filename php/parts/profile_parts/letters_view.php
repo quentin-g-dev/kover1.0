@@ -12,23 +12,50 @@
         } 
         ?>
     </p>
-    <div id="groupOptions"
-        class="w-100 my-2 rounded-top textControls bg-kover d-flex justify-content-center align-items-baseline flex-wrap flex-md-nowrap mx-auto">
-        <button class="btn btn-light rounded  m-2 h3" id="selectAll" data-status="selectAll">
-            Tout Sélectionner
+
+    <div id="groupOptions container"
+        class="w-100 my-1 rounded-top textControls bg-blue d-flex justify-content-center align-items-center flex-wrap flex-md-nowrap center mx-auto">
+        <button class="btn btn-light rounded  m-1 m-md-2 h3" id="selectAll" data-status="selectAll">
+            <span>
+                <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-list-check mr-2" fill="currentColor"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                        d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3.854 2.146a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708L2 3.293l1.146-1.147a.5.5 0 0 1 .708 0zm0 4a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708L2 7.293l1.146-1.147a.5.5 0 0 1 .708 0zm0 4a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 0 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0z" />
+                </svg>
+            </span>
+            <span>Tout Sélectionner</span>
         </button>
-        <button class="btn btn-light rounded  m-2 h3" id="deleteSelected">
-            Supprimer
-        </button>
-        <span class="text-white font-weight-bold" for="">Exporter en :</span>
-        <button class="btn btn-light rounded  m-2 h3" id="docExportSelected">
-            DOC
-        </button>
-        <button class="btn btn-light rounded  m-2 h3" id="pdfExportSelected">
-            PDF
+        <div class="d-flex align-items-center">
+            <span class="text-white font-weight-bold m-1 m-md-2 d-none d-md-flex" for="">Exporter en :</span>
+            <button class="btn btn-light rounded d-flex justify-content-center align-items-center m-1 m-md-2 h3"
+                id="docExportSelected">
+                <span class="mr-2">
+                    <img src="./assets/icons/docfile.svg" alt="doc file">
+                </span>
+                <span>DOC</span>
+            </button>
+            <button class="btn btn-light rounded d-flex justify-content-center align-items-center m-1 m-md-2 h3"
+                id="pdfExportSelected">
+                <span class="mr-2">
+                    <img src="./assets/icons/pdffile.svg" alt="pdf file">
+                </span>
+                <span>PDF</span>
+            </button>
+        </div>
+        <button class="btn btn-light rounded m-1 m-md-2 h3 d-flex justify-content-center align-items-center"
+            id="deleteSelected">
+            <span class="mr-2">
+                <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-trash2-fill" fill="currentColor"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M2.037 3.225l1.684 10.104A2 2 0 0 0 5.694 15h4.612a2 2 0 0 0 1.973-1.671l1.684-10.104C13.627 4.224 11.085 5 8 5c-3.086 0-5.627-.776-5.963-1.775z" />
+                    <path fill-rule="evenodd"
+                        d="M12.9 3c-.18-.14-.497-.307-.974-.466C10.967 2.214 9.58 2 8 2s-2.968.215-3.926.534c-.477.16-.795.327-.975.466.18.14.498.307.975.466C5.032 3.786 6.42 4 8 4s2.967-.215 3.926-.534c.477-.16.795-.327.975-.466zM8 5c3.314 0 6-.895 6-2s-2.686-2-6-2-6 .895-6 2 2.686 2 6 2z" />
+                </svg>
+            </span>
+            <span>Supprimer</span>
         </button>
     </div>
-
 
 
     <div id="lettersList" class="container">

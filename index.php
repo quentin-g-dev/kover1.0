@@ -109,21 +109,25 @@ include './php/parts/allpages_parts/header.php';
 
         <?php } else {
 ?>
-        <div class="d-flex  flex-column flex-no-wrap mx-auto col-md-6 my-3 my-md-4 p-md-4">
+        <div
+            class="d-flex text-center flex-column justify-content-center align-items-center flex-no-wrap mx-auto col-md-6 my-3 my-md-4 p-md-4">
             <p class="mx-auto my-3 p-md-2 h3 w-100">
-                Composez vos lettres&nbsp;de&nbsp;motivation en&nbsp;quelques&nbsp;clic
+                Composez vos lettres&nbsp;de&nbsp;motivation en&nbsp;quelques&nbsp;clics
             </p>
-            <button class="btn bg-blue p-3  rounded w-75 w-md-50 mt-4 h1 text-snow font-weight-bold" id="startButton"
-                data-toggle="modal" data-target="#srcChoiceModal">
+            <button class="btn bg-blue bg-hover-snow p-3  rounded w-75 w-md-50 mt-4 h1 text-snow font-weight-bold"
+                id="startButton" data-toggle="modal" data-target="#srcChoiceModal">
 
                 <span>COMMENCER</span>
-                <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-arrow-right-square"
-                    fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd"
-                        d="M14 1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
-                    <path fill-rule="evenodd"
-                        d="M4 8a.5.5 0 0 0 .5.5h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5A.5.5 0 0 0 4 8z" />
-                </svg>
+                <span class="ml-2">
+                    <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-arrow-right-square"
+                        fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                            d="M14 1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+                        <path fill-rule="evenodd"
+                            d="M4 8a.5.5 0 0 0 .5.5h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5A.5.5 0 0 0 4 8z" />
+                    </svg>
+                </span>
+
                 <span class="ml-3">
 
                 </span>

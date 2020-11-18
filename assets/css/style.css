@@ -66,53 +66,73 @@ main {
 
 .bg-blue {
     background-color: #023f62;
-    border: 2px solid #023f62;
 }
 
-.bg-hover-blue:hover {
-    background-color: #023f62;
-    border-color: #023f62;
-    color: #fcf7f8;
-}
-
-.text-blue {
-    color: #023f62;
-}
 
 .bg-greensheen {
     background: #7eb09b;
-}
-
-.text-greensheen {
-    color: #7eb09b;
-}
-
-.bg-marigold {
-    background: #eca400;
-}
-
-.text-marigold {
-    color: #eca400;
 }
 
 .bg-snow {
     background: #fcf7f9;
 }
 
-.text-snow {
-    color: #fcf7f9;
-}
-
 .bg-darkred {
     background: #8d0801;
 }
 
+.bg-marigold {
+    background: #eca400;
+}
+
+.bg-hover-marigold:hover {
+    color: #023f62;
+    background-color: #eca400;
+    border-color: #023f62;
+}
+
+.bg-hover-snow:hover {
+    color: #023f62;
+    background-color: #fcf7f8;
+    border-color: #023f62;
+}
+
+
+.bg-hover-blue:hover {
+    border-color: #fcf7f8;
+    background-color: #023f62;
+    color: #fcf7f8;
+}
+
+
+.text-greensheen {
+    color: #7eb09b;
+    border-color: #7eb09b;
+}
+
+.text-marigold {
+    color: #eca400;
+    border-color: #eca400;
+}
+
+.text-blue {
+    color: #023f62;
+    border-color: #023f62;
+}
+
+.text-snow {
+    color: #fcf7f9;
+    border-color: #fcf7f9;
+}
+
 .text-darkred {
     color: #8d0801;
+    border-color: #8d0801;
 }
 
 .text-kover {
     color: #035a8c;
+    border-color: #035a8c;
 }
 
 .cursor-pointer {
@@ -132,10 +152,6 @@ nav option {
 }
 
 
-nav a {
-    border: 1px solid transparent;
-    padding: 2px 8px;
-}
 
 nav .avatar {
     cursor: pointer;
@@ -202,12 +218,11 @@ span.toEdit {
 }
 
 .conditions-container {
-    height: 40vh;
+    height: 41vh;
 }
 
 p.conditions {
     overflow: auto;
-    z-index: -1;
     height: 30vh;
 }
 
@@ -225,23 +240,13 @@ h3[data-toggle]:hover {
     height: max-content !important;
 }
 
-.bg-blue {
-    border: 2px solid #023f62;
-    background-color: #023f62;
+#ProjNameBlock {
+    height: 8vh;
 }
 
-.bg-hover-marigold:hover {
-    color: #023f62;
-    background-color: #eca400;
-    border-color: #023f62;
+.letterNameBlock {
+    height: 5vh;
 }
-
-.bg-hover-snow:hover {
-    color: #023f62;
-    background-color: #fcf7f8;
-    border-color: #023f62;
-}
-
 
 @media (max-width:768px) {
 
@@ -267,5 +272,14 @@ h3[data-toggle]:hover {
         border-radius: 0px;
         background-color: inherit;
 
+    }
+
+    .conditions-container {
+        height: 40vh;
+    }
+
+    p.conditions {
+        height: 23vh;
+        overflow: auto;
     }
 }

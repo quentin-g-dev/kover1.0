@@ -26,10 +26,14 @@
                 <span
                     class="userMenu  md-row flex-md-row flex-column w-md-auto w-100 justify-content-md-end justify-content-center align-items-md-center align-items-center h-100 d-flex">
                     <a href="./index.php"
-                        class="my-3  w-100 my-lg-3 display-5 font-weight-bold text-snow mx-auto text-center"
+                        class="my-3  w-100 my-lg-3 display-5 font-weight-bold text-snow mx-auto text-center  border-transparent w-auto px-1 py-2 rounded bg-hover-snow"
                         data-toggle="modal" data-target="#srcChoiceModal">
-                        <span class="mr-3">
-
+                        <span class="mr-1">
+                            <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-file-earmark-plus-fill"
+                                fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M2 2a2 2 0 0 1 2-2h5.293A1 1 0 0 1 10 .293L13.707 4a1 1 0 0 1 .293.707V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm7.5 1.5v-2l3 3h-2a1 1 0 0 1-1-1zM8.5 7a.5.5 0 0 0-1 0v1.5H6a.5.5 0 0 0 0 1h1.5V11a.5.5 0 0 0 1 0V9.5H10a.5.5 0 0 0 0-1H8.5V7z" />
+                            </svg>
                         </span>
                         <span>Nouveau projet</span>
 
@@ -38,7 +42,6 @@
                         <img src="./assets/icons/userprofile.svg" alt="user">
                     </span>
                     <div class="userOptions d-flex d-md-none flex-column bg-transparent text-snow">
-
                         <button type="button" class="btn bg-marigold text-snow d-flex my-2  font-weight-bold  ">
                             <a href="./profile.php?vip=<?= $vip->userId();?>" class="display-5">
                                 Mon Espace
@@ -54,15 +57,14 @@
                                 Mes Paramètres
                             </a>
                         </button>
-
                         <button type="button" class="btn bg-marigold text-snow d-flex my-2  font-weight-bold  ">
                             <a href="./index.php?disc=1" class="disconnect display-5">
                                 Déconnexion
                             </a>
                         </button>
-                        <div class="bg-blue py-1 px-2 rounded">
-                            <select name="selectLang text-snow" id="selectLang"
-                                class="custom-select selectLang  my-2 text-center d-flex justify-content-center align-items-center ">
+                        <div class="bg-marigold my-2 border text-snow p-1 rounded">
+                            <select name="selectLang" id="selectLang"
+                                class="custom-select selectLang w-md-25 text-center d-flex justify-content-center align-items-center m-auto">
                                 <option value="FR">FR</option>
                                 <option value="ES">ES</option>
                                 <option value="EN">EN</option>
@@ -85,7 +87,7 @@
                     class="userMenu d-md-flex md-row flex-md-row flex-column w-md-auto w-100 justify-content-md-end justify-content-center align-items-md-center align-items-center  d-flex">
 
                     <select name="selectLang" id="selectLang"
-                        class="custom-select selectLang col-md-3 col-lg-3 text-center d-flex justify-content-center align-items-center ">
+                        class="custom-select w-25 selectLang col-md-3 col-lg-3 text-center d-flex justify-content-center align-items-center ">
                         <option value="FR">FR</option>
                         <option value="ES">ES</option>
                         <option value="EN">EN</option>
@@ -95,7 +97,7 @@
 
                     <a href="./index.php"
                         class="d-flex flex-column justify-content-center align-items-center col-md-6 text-center my-5 my-md-3 display-5 font-weight-bold text-snow row col-md-4 w-auto px-0">
-                        <span class="mr-3 mb-1">
+                        <span class="mr-3">
                             <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-file-earmark-plus-fill"
                                 fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd"
