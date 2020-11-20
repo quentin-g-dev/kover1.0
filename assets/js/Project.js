@@ -154,29 +154,42 @@ class Project {
         }
     }
 
+
+
     checkAllVersions() {
-        let checkBoxes = document.querySelectorAll('main #versionsGroup input[type="checkbox"]');
-        if (document.querySelector("#selectAll").dataset.status === "selectAll") {
-            document.querySelector("#selectAll").innerHTML = "Tout Désélectionner";
+        function selectAll() {
+            document.querySelector("#selectButtonText").className = "d-none d-sm-none px-3";
+            document.querySelector("#unselectButtonText").className = "d-none d-sm-flex px-3";
+            document.querySelector("#selectIcon").className = "d-none";
+            document.querySelector("#unselectIcon").className = "";
             document.querySelector("#selectAll").dataset.status = "unselectAll";
+        }
+
+        function unselectAll() {
+            document.querySelector("#selectButtonText").className = "d-none d-sm-flex px-3";
+            document.querySelector("#unselectButtonText").className = "d-none d-sm-none px-3";
+            document.querySelector("#selectIcon").className = "";
+            document.querySelector("#unselectIcon").className = "d-none";
+            document.querySelector("#selectAll").dataset.status = "selectAll";
+        }
+        let checkBoxes = document.querySelectorAll('input[type="checkbox"]');
+        if (document.querySelector("#selectAll").dataset.status === "selectAll") {
+            selectAll();
             for (let i = 0; i < checkBoxes.length; i++) {
                 checkBoxes[i].checked = true;
                 checkBoxes[i].addEventListener('change', function () {
-                    document.querySelector("#selectAll").innerHTML = "Tout Sélectionner";
-                    document.querySelector("#selectAll").dataset.status = "selectAll"
+                    unselectAll();
                     for (let j = 0; j < checkBoxes.length; j++) {
                         if (checkBoxes[j].checked === false) {
                             return;
                         }
-                        document.querySelector("#selectAll").innerHTML = "Tout Sélectionner";
-                        document.querySelector("#selectAll").dataset.status = "selectAll";
+                        unselectAll();
                     }
                 });
             }
             return;
         } else {
-            document.querySelector("#selectAll").innerHTML = "Tout Sélectionner";
-            document.querySelector("#selectAll").dataset.status = "selectAll";
+            unselectAll();
             for (let i = 0; i < checkBoxes.length; i++) {
                 checkBoxes[i].checked = false;
                 checkBoxes[i].addEventListener('change', function () {
@@ -184,14 +197,14 @@ class Project {
                         if (checkBoxes[j].checked === false) {
                             return;
                         }
-                        document.querySelector("#selectAll").innerHTML = "Tout Désélectionner";
-                        document.querySelector("#selectAll").dataset.status = "unselectAll";
+                        unselectAll();
                     }
                 });
             }
             return;
         }
     }
+
 
     finalInteractions() {
         // PDF / PRINT :
@@ -244,7 +257,7 @@ class Project {
                     window.open(urlList[i]);
                 }
                 if (checkCounter === 0) {
-                    alert('Aucune lettre sélectionnée !');
+                    enableAlert('#emptySelectionAlert');
                 }
             });
         }
@@ -273,7 +286,7 @@ class Project {
                     }
                 }
                 if (checkCounter === 0) {
-                    alert('Aucune lettre sélectionnée !');
+                    enableAlert('#emptySelectionAlert');
                 }
             });
         }
@@ -288,7 +301,7 @@ class Project {
                 }
             }
             if (checkCounter === 0) {
-                alert('Aucune lettre sélectionnée !');
+                enableAlert('#emptySelectionAlert');
             } else {
                 let myProjName = sanitizeHTML(document.querySelector('#projName').innerHTML.trim());
                 let xhr = new XMLHttpRequest();
@@ -319,12 +332,11 @@ class Project {
                         xhr2.onreadystatechange = function () {
                             if (this.readyState == 4 && this.status == 200) {
                                 if (this.response == "ok") {
-                                    document.querySelector('#registerSuccess').click();
-
+                                    enableAlert('#savedAlert');
                                 } else if (this.response == "changeLetterName") {
                                     let newTitle = sanitizeHTML(prompt('Vous avez déjà enregistré une lettre intitulée ' + myProjName + ' ' + myTitle + '. Merci de choisir un nouveau nom : ', '' + myTitle + '[new]'));
                                     if (newTitle == false) {
-                                        alert('L\'enregistrement a été abandonné');
+                                        enableAlert('#saveCanceledAlert');
                                         return;
                                     } else {
                                         xhr2.open('POST', './ajax/letters_registration.php', true);
@@ -334,8 +346,8 @@ class Project {
                                     }
                                 } else {
                                     console.log(this.response);
-                                    if (document.querySelector('#connectionButton')) {
-                                        document.querySelector('#connectionButton').click();
+                                    if (document.querySelector('#signInButton')) {
+                                        document.querySelector('#signInButton').click();
                                     }
                                     return;
                                 }

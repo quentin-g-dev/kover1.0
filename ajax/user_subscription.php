@@ -14,6 +14,7 @@ if ($controler->doesUserNameAlreadyExist($vip->userName())){
     $vip->setUserHashedPassword(hash("whirlpool", htmlspecialchars($_POST['userPassword'])));
     $vip->setUserCreationDate(date('Y-m-d H:i:s'));
     $vip->setUserStatus('user');
+    $vip->setLangCode($_SESSION['langCode']);
     $adding=$controler -> addUser($vip);
     if (!$adding){
         echo 'false';

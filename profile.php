@@ -124,6 +124,7 @@ if (!isset ($_GET['vip'])||!isset($_SESSION["vip"])){
 ?>
 <script src="./assets/js/jquery-3.5.1.js"></script>
 <script src="./assets/js/bootstrap.min.js"></script>
+<script src="./assets/js/general.js"></script>
 <script src="./assets/js/nav_menu.js"></script>
 <script src="./assets/js/translations.js"></script>
 <script src="./assets/js/languages.js"></script>

@@ -10,6 +10,22 @@ var sanitizeHTML = function (str) {
     });
 };
 
+/**
+ * Enables Bootstrap alerts
+ * @param {String} alertId 
+ */
+function enableAlert(alertId) {
+    document.querySelector(alertId).classList.remove('d-none');
+    document.querySelector(alertId).classList.add('show');
+    setTimeout(function () {
+        document.querySelector(alertId).classList.add('d-none');
+        document.querySelector(alertId).classList.remove('show');
+    }, 3000);
+    $('' + alertId + ' .close').click(function () {
+        document.querySelector(alertId).classList.add('d-none');
+        document.querySelector(alertId).classList.remove('show');
+    });
+}
 
 /**
  * CREATING A DOWNLOADABLE .DOC FILE CONTAINING TEXT

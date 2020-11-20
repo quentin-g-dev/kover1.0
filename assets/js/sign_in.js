@@ -1,7 +1,7 @@
 function evalSignInForm() {
     if (document.querySelector("#signInName").value.toString().length === 0 || document.querySelector("#signInPass")
         .value.toString().length === 0) {
-        alert("Vous n'avez pas rempli tous les champs de connexion.");
+        enableAlert('#emptyInputAlert');
         return false;
     } else {
         return true;
@@ -20,7 +20,12 @@ document.querySelector("#signInSubmit").addEventListener("click", function () {
                 if (this.response == "true") {
                     console.log(this.response);
                     document.querySelector("#connectModal .modal-body").innerHTML = "Connexion réussie !";
-                    $("#nav").load("./index.php #nav");
+                    if (document.querySelector('main .startView')) {
+                        $("main").load("./index.php main");
+
+                    }
+                    $("header .userMenu").load("./index.php .userMenu");
+
                     getSessionLang();
                     document.querySelector("#connectModal .modal-footer").remove();
                 } else {

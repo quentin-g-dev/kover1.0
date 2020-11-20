@@ -8,6 +8,11 @@
     src: url('../fonts/Open_Sans/OpenSans-Regular.ttf');
 }
 
+@font-face {
+    font-family: 'raleway-bold';
+    src: url('../fonts/Raleway/static/Raleway-Bold.ttf');
+}
+
 * {
     box-sizing: border-box;
 }
@@ -17,14 +22,39 @@ body {
     padding: 0px 2vw;
 }
 
-nav {
+html {
+    min-height: 100vh;
+}
+
+header {
     height: 7vh;
+}
+
+h1 {
+    font-family: 'raleway-bold', Impact !important;
 }
 
 
 main {
 
-    background-color: #f4f4f4;
+    background-color: #fcf7f9;
+}
+
+.modal-content {
+    background-color: transparent !important;
+    border: none !important;
+}
+
+/*
+.modal-content:hover {
+    color: initial !important;
+}
+
+*/
+
+.modal-backdrop.show {
+    opacity: 0.9 !important;
+    background-color: #010101;
 }
 
 #koverProj {
@@ -33,34 +63,120 @@ main {
 
 .bg-kover {
     background: rgb(2, 63, 98);
-    background: -moz-radial-gradient(circle, rgba(2, 63, 98, 1) 0%, rgba(3, 105, 163, 1) 78%);
-    background: -webkit-radial-gradient(circle, rgba(2, 63, 98, 1) 0%, rgba(3, 105, 163, 1) 78%);
-    background: radial-gradient(circle, rgba(2, 63, 98, 1) 0%, rgba(3, 105, 163, 1) 78%);
+    background: -moz-linear-gradient(rgba(2, 63, 98, 1) 0%, rgba(3, 105, 163, 1) 78%);
+    background: -webkit-linear-gradient(rgba(2, 63, 98, 1) 0%, rgba(3, 105, 163, 1) 78%);
+    background: linear-gradient(rgba(2, 63, 98, 1) 0%, rgba(3, 105, 163, 1) 78%);
+}
+
+.bg-blue {
+    background-color: #023f62;
+}
+
+
+.bg-greensheen {
+    background: #7eb09b;
+}
+
+.bg-snow {
+    background: #fcf7f9;
+}
+
+.bg-darkred {
+    background: #8d0801;
+}
+
+.bg-marigold {
+    background: #eca400;
+}
+
+.bg-hover-marigold:hover {
+    color: #023f62;
+    background-color: #eca400;
+    border-color: #023f62;
+}
+
+.bg-hover-snow:hover {
+    color: #023f62;
+    background-color: #fcf7f8;
+    border-color: #023f62;
+}
+
+
+.bg-hover-blue:hover {
+    border-color: #fcf7f8;
+    background-color: #023f62;
+    color: #fcf7f8;
+}
+
+
+.text-greensheen {
+    color: #7eb09b;
+    border-color: #7eb09b;
+}
+
+.text-marigold {
+    color: #eca400;
+    border-color: #eca400;
+}
+
+.text-blue {
+    color: #023f62;
+    border-color: #023f62;
+}
+
+.text-snow {
+    color: #fcf7f9;
+    border-color: #fcf7f9;
+}
+
+.text-darkred {
+    color: #8d0801;
+    border-color: #8d0801;
 }
 
 .text-kover {
-    color: rgba(2, 63, 98, 1);
+    color: #035a8c;
+    border-color: #035a8c;
 }
 
 .cursor-pointer {
     cursor: pointer;
 }
 
-nav a:hover {
-    border: 1px solid #f4f4f4;
-    border-radius: 15px;
-    text-decoration: none;
+nav {
+    height: 7vh;
 }
 
-nav a {
-    border: 1px solid transparent;
-    padding: 2px 8px;
+
+
+nav option {
+    background-color: rgb(2, 63, 98) !important;
+    color: #fff;
+    text-align: center;
+}
+
+
+
+nav .avatar {
+    cursor: pointer;
+}
+
+nav .userOptions {
+    position: absolute;
+    top: 6vh;
+    right: 0.5vw;
+    z-index: +3;
+}
+
+nav a:hover {
+    color: #fcf7f9;
 }
 
 a,
 a:active,
 a:hover {
     text-decoration: none;
+    color: inherit;
 }
 
 #getUserText {
@@ -93,8 +209,8 @@ select {
 }
 
 span.toEdit {
-    background-color: rgb(2, 63, 98);
-    color: white;
+    background-color: #eca400;
+    color: #023f62;
 }
 
 .card-body {
@@ -107,12 +223,11 @@ span.toEdit {
 }
 
 .conditions-container {
-    height: 40vh;
+    height: 41vh;
 }
 
 p.conditions {
     overflow: auto;
-    z-index: -1;
     height: 30vh;
 }
 
@@ -130,6 +245,13 @@ h3[data-toggle]:hover {
     height: max-content !important;
 }
 
+#ProjNameBlock {
+    height: 8vh;
+}
+
+.letterNameBlock {
+    height: 5vh;
+}
 
 @media (max-width:768px) {
 
@@ -137,7 +259,32 @@ h3[data-toggle]:hover {
         min-height: 30vh;
     }
 
+    header {
+        height: auto;
+    }
+
     nav {
-        height: 90vh;
+        height: 86vh;
+        border: 2px solid white;
+        border-radius: 15px;
+    }
+
+    nav .userOptions {
+        right: auto;
+        position: static;
+        top: auto;
+        border: none;
+        border-radius: 0px;
+        background-color: inherit;
+
+    }
+
+    .conditions-container {
+        height: 40vh;
+    }
+
+    p.conditions {
+        height: 23vh;
+        overflow: auto;
     }
 }

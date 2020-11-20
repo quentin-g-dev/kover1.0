@@ -16,14 +16,14 @@ function evalUserName() {
             if (checkNonWordChars(document.querySelector("input#userName").value)) {
                 return true;
             } else {
-                alert('Seuls les caractères alphanumériques 0-9 - A-Z et _ sont admis.');
+                enableAlert('#acceptedCharsAlert');
             }
         } else {
-            alert('Votre nom d\'utilisateur ne peut dépasser 30 caractères. Merci de faire plus court !');
+            enableAlert('#nameTooLongAlert');
             return false;
         }
     } else {
-        alert('Vous avez oublié de choisir un nom d\'utilisateur !');
+        enableAlert('#emptyUserNameAlert');
         return false;
     }
 }
@@ -41,7 +41,7 @@ function evalUserPass() {
     if (document.querySelector("input#userPassword").value.length > 0) {
         if (document.querySelector("input#userPassword").value.length < 50) {
             if (!checkNonWordChars(document.querySelector("input#userPassword").value)) {
-                alert('Seuls les caractères alphanumériques 0-9 - A-Z et _ sont admis.');
+                enableAlert('#acceptedCharsAlert');
                 return false;
             }
             if (userPassRegEx(document.querySelector("input#userPassword").value) === true) {
@@ -49,19 +49,19 @@ function evalUserPass() {
                         "input#userPassword").value) {
                     return true;
                 } else {
-                    alert('Les deux saisies du mot de passe ne correspondent pas !');
+                    enableAlert('#passwordsDontMatchAlert')
                     return false;
                 }
             } else {
-                alert('Votre mot de passe doit être composé de 8 caractères au moins, dont au moins un chiffre, une lettre majuscule une lettre minuscule.');
+                enableAlert('#passwordPathAlert')
                 return false;
             }
         } else {
-            alert('Votre mot de passe ne peut dépasser 50 caractères. Merci de faire plus court !');
+            enableAlert('#passwordLengthAlert')
             return false;
         }
     } else {
-        alert('Vous avez oublié de choisir un mot de passe !');
+        enableAlert('#emptyPasswordAlert');
         return false;
     }
 }

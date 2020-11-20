@@ -1,5 +1,5 @@
 <main
-    class="container  full-container d-flex flex-column p-3 mx-auto mt-3 mb-2 text-center  justify-content-around align-items-center h-100 rounded"
+    class="container  full-container d-flex flex-column p-md-3 mx-auto mt-3 mb-2 text-center  justify-content-around align-items-center h-100 rounded"
     id="home">
 
     <!------------------------------------------------------------------------- EN-TÊTE DU PROFIL -->

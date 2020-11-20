@@ -3,21 +3,8 @@
  * @param {object} project 
  */
 function start(project) {
-    project.view.start();
     document.querySelector('#startButton').addEventListener('click', function () {
-        project.view.srcChoice();
         srcChoice(project);
-        let links = document.querySelectorAll('a');
-        for (let i = 0; i < links.length; i++) {
-            if (links[i].target != "_blank") {
-                links[i].addEventListener("click", function (e) {
-                    if (confirm("Votre projet ne pourra pas être enregistré ! Cliquez sur OK pour confirmer.") == false) {
-                        e.preventDefault(e);
-                    };
-                })
-
-            }
-        }
     });
 }
 
@@ -27,15 +14,19 @@ function start(project) {
  */
 function srcChoice(project) {
     document.querySelector('#newTextButton').addEventListener('click', function () {
+        document.querySelector('#srcChoiceModal button.close').click();
         project = new Project();
         project.view = new View(project);
         textEditor(project);
+
     });
 
     document.querySelector('#templateButton').addEventListener('click', function () {
+        document.querySelector('#srcChoiceModal button.close').click();
         project = new Project(Date.now(), document.querySelector('#templateText').innerHTML);
         project.view = new View(project);
         textEditor(project);
+
     });
 }
 
@@ -94,15 +85,30 @@ function letterNamesEditor() {
  * @param {object} project 
  */
 function textEditor(project) {
+    let links = document.querySelectorAll('a');
+    for (let i = 0; i < links.length; i++) {
+        if (links[i].target != "_blank") {
+            links[i].addEventListener("click", function (e) {
+                if (confirm("Votre projet ne pourra pas être enregistré ! Cliquez sur OK pour confirmer.") == false) {
+                    e.preventDefault(e);
+                };
+            })
+
+        }
+    }
     project.view.textEditor();
     projNameEditor(project);
 
     document.querySelector('#userText').addEventListener("click", project.textEditorListener);
     document.querySelector('#multiple').addEventListener("click", function () {
+        document.querySelector('#singleOrMultiple button.close').click();
+
         textSelector(project);
 
     });
     document.querySelector('#single').addEventListener("click", function () {
+        document.querySelector('#singleOrMultiple button.close').click();
+
         project.originalText = document.querySelector('#userText').innerHTML.replace('<script>', '').replace('</script>', '');
 
 
@@ -112,13 +118,8 @@ function textEditor(project) {
         project.view.singleRender(urlDoc, name);
         letterNamesEditor();
         project.finalInteractions();
-        document.querySelector('main #saveSelected').addEventListener("click", function () {
-            window.addEventListener("click", function () {
-                $("#nav").load("./index.php #nav");
-            });
-        });
-
     });
+    return true;
 
 }
 
@@ -139,7 +140,7 @@ function textSelector(project) {
     });
 
     document.querySelector('#textEditSubmit').addEventListener("click", function () {
-        let inputVersion = sanitizeHTML(document.querySelector('#lastSteps #originalUserText').innerHTML);
+        let inputVersion = document.querySelector('#lastSteps #originalUserText').innerHTML.replace('<script>', '').replace('</script>', '');
         project.preparedText = inputVersion;
         versionsSetting(project);
     });
@@ -153,12 +154,15 @@ function textSelector(project) {
  * @param {object} project 
  */
 function versionsSetting(project) {
-    project.numberOfVersions = sanitizeHTML(document.querySelector('#howManyLetters').value);
+    project.numberOfVersions = document.querySelector('#howManyLetters').value;
     project.view.versionsEditor(project.numberOfVersions, project.originalText, project.preparedText);
     projNameEditor(project);
     letterNamesEditor();
-
-    $('.card-header[data-version="2"]+button').click();
+    document.querySelector('#backToSelect').addEventListener("click", function () {
+        textEditor(project);
+        textSelector(project);
+    });
+    $('.letterNameBlock[data-version="2"]+span>span').click();
     /*project.fixVersion();*/
     document.querySelector('#finishButton').addEventListener("click", function (e) {
         let versions = document.querySelectorAll("div.versionBlock");
@@ -182,10 +186,7 @@ function versionsSetting(project) {
         }
         finalRender(project);
     });
-    document.querySelector('#backToSelect').addEventListener("click", function () {
-        textEditor(project);
-        textSelector(project);
-    });
+
 }
 
 /**
@@ -236,14 +237,20 @@ function copyTool(event) {
 document.addEventListener("DOMContentLoaded", function () {
 
     if (!document.querySelector('#userTemplate')) {
-        let kover = new Project();
-        kover.view = new View(kover);
-        start(kover);
+        if (document.querySelector('#startButton')) {
+            let kover = new Project();
+            kover.view = new View(kover);
+            start(kover);
+        } else {
+            let kover = new Project();
+            kover.view = new View(kover);
+            kover.view.srcChoice();
+            srcChoice(kover);
+        }
     } else {
         project = new Project('', document.querySelector('#userTemplate').innerHTML);
         document.getElementById('userTemplate').remove();
         project.view = new View(project);
-        project.view.project = project;
         project.view.textEditor();
         textEditor(project);
     }
