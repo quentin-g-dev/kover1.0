@@ -1,6 +1,6 @@
 <!--TEXTAREA-->
 <div id="textEdition" class="d-none">
-    <div class="px-2 px-md-1">
+    <div class="px-2 px-md-1 w-100">
         <!--Input Nom du projet-->
         <div class="d-flex align-items-center justify-content-center mx-auto" id="ProjNameBlock">
             <input type="text" name="" id="projNameEditor" class="d-none">

@@ -22,6 +22,10 @@ body {
     padding: 0px 2vw;
 }
 
+html {
+    min-height: 100vh;
+}
+
 header {
     height: 7vh;
 }
@@ -59,9 +63,9 @@ main {
 
 .bg-kover {
     background: rgb(2, 63, 98);
-    background: -moz-radial-gradient(circle, rgba(2, 63, 98, 1) 0%, rgba(3, 105, 163, 1) 78%);
-    background: -webkit-radial-gradient(circle, rgba(2, 63, 98, 1) 0%, rgba(3, 105, 163, 1) 78%);
-    background: radial-gradient(circle, rgba(2, 63, 98, 1) 0%, rgba(3, 105, 163, 1) 78%);
+    background: -moz-linear-gradient(rgba(2, 63, 98, 1) 0%, rgba(3, 105, 163, 1) 78%);
+    background: -webkit-linear-gradient(rgba(2, 63, 98, 1) 0%, rgba(3, 105, 163, 1) 78%);
+    background: linear-gradient(rgba(2, 63, 98, 1) 0%, rgba(3, 105, 163, 1) 78%);
 }
 
 .bg-blue {

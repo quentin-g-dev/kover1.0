@@ -13,19 +13,6 @@
 
     <script src="./assets/js/bootstrap.min.js"></script>
 
-    <?php  // App Core scripts
-        if ($_SERVER['REQUEST_URI']==='/dwwm/KOVER/kover1.0/index.php'){
-    ?>
-
-    <!-- Internal JavaScript -->
-
-
-
-
-    <?php 
-        }
-    ?>
-
     <title>
         <?echo $pageTitle;?>
     </title>

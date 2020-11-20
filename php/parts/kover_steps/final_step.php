@@ -1,5 +1,41 @@
 <!--DONE-->
 <div id="finishing" class="d-none">
+    <!-- Alert Message for successfull registration-->
+
+    <div class="finalStepAlerts mx-auto">
+        <div class="alert bg-greensheen border-light text-blue mx-auto alert-dismissible fade w_100" role="alert"
+            id="savedAlert">
+            <strong>Enregistrement terminé ! </strong>
+            <span>
+                Vous pouvez consulter tous vos projets dans <a
+                    href="./profile.php?vip=<?= $_SESSION['vip']['userId'];?>"><u>votre
+                        espace personnel</u></a>.
+            </span>
+            <button type="button" class="close" aria-label="Close">
+                <span aria-hidden="true" class="text-blue">&times;</span>
+            </button>
+        </div>
+
+        <!-- Alert Message for canceled registration-->
+        <div class="alert bg-darkred text-snow mx-auto alert-dismissible fade d-none w-100" role="alert"
+            id="saveCanceledAlert">
+            <strong>L'enregistrement a été abandonné</strong>
+            <button type="button" class="close text-snow" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+        <!-- Alert Message if no letter selected-->
+        <div class="alert bg-darkred text-snow mx-auto alert-dismissible fade d-none w-100" role="alert"
+            id="emptySelectionAlert">
+            <strong>Aucune lettre sélectionnée !</strong>
+            <button type="button" class="close text-snow" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    </div>
+
+
     <button id="backToVersionsEdit" class="btn bg-snow text-blue bg-hover-blue rounded ml-sm-3 ml-lg-5">
         <span>
             <img src="./assets/icons/backarrow.svg" alt="previous">
@@ -76,26 +112,5 @@
     <div id="versionsGroup" class="container mw-100 p-0">
 
     </div>
-    <!-- Modal for Connected Users who successed registering a project -->
-    <button id="registerSuccess" class="d-none" data-toggle="modal" data-target="#registerSuccessModal"></button>
-    <div class="modal fade modal-lg" id="registerSuccessModal" tabindex="-1" role="dialog"
-        aria-labelledby="registerSuccessModalTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title text-kover" id="registerSuccessModalTitle">
-                        Votre projet a bien été enregistré.
-                    </h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body" id="registerSuccessModalBody" name="registerSuccessModalBody">
-                    Vous pouvez consulter tous vos projets dans <a
-                        href="./profile.php?vip=<?= $_SESSION['vip']['userId'];?>">votre
-                        espace personnel</a>.
-                </div>
-            </div>
-        </div>
-    </div>
+
 </div>

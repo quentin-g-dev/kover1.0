@@ -39,8 +39,9 @@ include './php/parts/allpages_parts/header.php';
 
         <?php if (!isset($vip)){?>
 
-        <div class="mx-1 mx-sm-auto">
-            <h1 class="text-sm-center text-blue mx-sm-auto my-md-5 my-3 font-weight-bold mx-2 display-5 display-md-4">
+        <div class="mx-1 mx-sm-auto startView">
+            <h1
+                class="text-sm-center text-blue mx-sm-auto my-md-5 my-3 font-weight-bold mx-2 display-5 display-md-4 px-2 px-md-0">
                 <small>Gérez efficacement vos&nbsp;candidatures</small>
             </h1>
             <div class="row mt-md-5 h-100 mx-sm-auto mx-0 d-flex">
@@ -110,7 +111,7 @@ include './php/parts/allpages_parts/header.php';
         <?php } else {
 ?>
         <div
-            class="d-flex text-center flex-column justify-content-center align-items-center flex-no-wrap mx-auto col-md-6 my-3 my-md-4 p-md-4">
+            class="startView d-flex text-center flex-column justify-content-center align-items-center flex-no-wrap mx-auto col-md-6 my-3 my-md-4 p-md-4">
             <p class="mx-auto my-3 p-md-2 h3 w-100">
                 Composez vos lettres&nbsp;de&nbsp;motivation en&nbsp;quelques&nbsp;clics
             </p>
@@ -137,10 +138,10 @@ include './php/parts/allpages_parts/header.php';
         }
 ?>
     </main>
+    <div id="scripts">
 
-
-    <!-- kover_steps -->
-    <?php
+        <!-- kover_steps -->
+        <?php
         include './php/parts/forms/connection_form.php';
         include './php/parts/forms/subscription_form.php';
         include './php/parts/kover_steps/choice_step.php';
@@ -150,23 +151,24 @@ include './php/parts/allpages_parts/header.php';
         include './php/parts/kover_steps/single_render_step.php';
 
     ?>
-    <div id="inputSetter" class="d-none"></div>
-    <?php
+        <div id="inputSetter" class="d-none"></div>
+        <?php
         include './php/parts/kover_steps/setversions_step.php';
         include './php/parts/kover_steps/final_step.php';
         include './php/parts/allpages_parts/footer.php';
     ?>
 
-    <script src="./assets/js/general.js"></script>
-    <!--jsPDF-->
-    <script src="https://unpkg.com/jspdf@latest/dist/jspdf.umd.min.js"></script>
-    <script src="./assets/js/View.js"></script>
-    <script src="./assets/js/Project.js"></script>
-    <script src="./assets/js/main.js"></script>
-    <script src="./assets/js/nav_menu.js"></script>
-
-    <script src="./assets/js/translations.js"></script>
-    <script src="./assets/js/languages.js"></script>
+        <script src="./assets/js/general.js"></script>
+        <!--jsPDF-->
+        <script src="https://unpkg.com/jspdf@latest/dist/jspdf.umd.min.js"></script>
+        <script src="./assets/js/View.js"></script>
+        <script src="./assets/js/Project.js"></script>
+        <script src="./assets/js/main.js"></script>
+        <script src="./assets/js/nav_menu.js"></script>
+        <script id="signInScript" src="./assets/js/sign_in.js"></script>
+        <script src="./assets/js/translations.js"></script>
+        <script src="./assets/js/languages.js"></script>
+    </div>
 </body>
 
 </html>

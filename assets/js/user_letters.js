@@ -91,7 +91,7 @@ document.querySelector('#docExportSelected').addEventListener("click", function 
         window.open(urlList[i]);
     }
     if (checkCounter === 0) {
-        alert('Aucune lettre sélectionnée !');
+        enableAlert('#emptySelectionAlert');
     }
 });
 
@@ -111,7 +111,7 @@ document.querySelector('#pdfExportSelected').addEventListener("click", function 
         }
     }
     if (checkCounter === 0) {
-        alert('Aucune lettre sélectionnée !');
+        enableAlert('#emptySelectionAlert');
     }
 });
 
@@ -138,7 +138,7 @@ document.querySelector('#deleteSelected').addEventListener("click", function () 
         }
     }
     if (checkCounter === 0) {
-        alert('Aucune lettre sélectionnée !');
+        enableAlert('#emptySelectionAlert');
     }
 });
 

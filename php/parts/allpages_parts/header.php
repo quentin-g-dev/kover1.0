@@ -13,21 +13,21 @@
             </span>
         </div>
         <!--NAV MENU -->
-        <nav id="nav"
-            class="d-md-flex md-row w-md-25 mt-3 my-md-0 flex-column flex-md-row justify-content-md-end justify-content-start align-items-md-center align-items-start d-none col-md-6 col-lg-4 px-0">
 
-            <?php
+
+        <?php
             if (isset ($_SESSION['vip'])){
                 // FOR CONNECTED USERS :
             ?>
+        <nav id="nav"
+            class="d-md-flex md-row w-md-25 mt-3 my-md-0 flex-column flex-md-row justify-content-md-end justify-content-start align-items-md-center align-items-start d-none col-md-6 col-lg-4 px-0">
             <div
-                class="w-100 d-flex h-100 flex-column flex-md-row  justify-content-md-end align-items-md-center justify-content-around align-items-center">
+                class="w-100 d-flex h-100 flex-column flex-md-row connectedNav justify-content-md-end align-items-md-center justify-content-around align-items-center">
 
                 <span
                     class="userMenu  md-row flex-md-row flex-column w-md-auto w-100 justify-content-md-end justify-content-center align-items-md-center align-items-center h-100 d-flex">
                     <a href="./index.php"
-                        class="my-3  w-100 my-lg-3 display-5 font-weight-bold text-snow mx-auto text-center  border-transparent w-auto px-1 py-2 rounded bg-hover-snow"
-                        data-toggle="modal" data-target="#srcChoiceModal">
+                        class="my-3  w-100 my-lg-3 display-5 font-weight-bold text-snow mx-auto text-center  border-transparent w-auto px-1 py-2 rounded bg-hover-snow">
                         <span class="mr-1">
                             <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-file-earmark-plus-fill"
                                 fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -38,8 +38,8 @@
                         <span>Nouveau projet</span>
 
                     </a>
-                    <span class="avatar d-none d-md-inline p-0">
-                        <img src="./assets/icons/userprofile.svg" alt="user">
+                    <span class="avatar d-none d-md-inline p-0" onclick="toggleUserOptions();">
+                        <img src="./assets/icons/userprofile.svg" alt="user" id="connected">
                     </span>
                     <div class="userOptions d-flex d-md-none flex-column bg-transparent text-snow">
                         <button type="button" class="btn bg-marigold text-snow d-flex my-2  font-weight-bold  ">
@@ -75,11 +75,14 @@
 
             </div>
 
+        </nav>
 
-            <?php
+        <?php
             } else {
                 // FOR UNCONNECTED USERS :
             ?>
+        <nav id="nav"
+            class="d-md-flex md-row w-md-25 mt-3 my-md-0 flex-column flex-md-row justify-content-md-end justify-content-start align-items-md-center align-items-start d-none col-md-6 col-lg-4 px-0">
             <div
                 class="w-100 d-flex h-100 flex-column flex-md-row  justify-content-md-end align-items-md-center justify-content-center align-items-center h-100">
 
@@ -107,8 +110,9 @@
                         <span>Nouveau projet</span>
                     </a>
 
-                    <span class="avatar col-md-3 d-none d-md-flex justify-content-center my-5 my-md-3 p-0">
-                        <svg width="3em" height="3em" viewBox="0 0 16 16" class="bi bi-person-circle"
+                    <span class="avatar col-md-3 d-none d-md-flex justify-content-center my-5 my-md-3 p-0"
+                        onclick="toggleUserOptions();">
+                        <svg id="unconnected" width="3em" height="3em" viewBox="0 0 16 16" class="bi bi-person-circle"
                             fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                             <path
                                 d="M13.468 12.37C12.758 11.226 11.195 10 8 10s-4.757 1.225-5.468 2.37A6.987 6.987 0 0 0 8 15a6.987 6.987 0 0 0 5.468-2.63z" />
@@ -147,8 +151,9 @@
                 </span>
             </div>
 
+        </nav>
 
-            <?php
+        <?php
             } 
             ?>
 

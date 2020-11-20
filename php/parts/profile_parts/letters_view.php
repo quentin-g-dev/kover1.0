@@ -13,9 +13,18 @@
         ?>
     </p>
 
-    <div id="groupOptions container"
-        class="w-100 my-1 rounded-top textControls bg-blue d-flex justify-content-center align-items-center flex-wrap flex-md-nowrap center mx-auto">
-        <button class="bg-snow text-blue bg-hover-blue rounded m-1 m-md-2  d-flex" id="selectAll"
+    <!-- Alert Message if no letter selected-->
+    <div class="alert bg-darkred text-snow mx-auto alert-dismissible fade d-none w-100" role="alert"
+        id="emptySelectionAlert">
+        <strong>Aucune lettre sélectionnée !</strong>
+        <button type="button" class="close text-snow" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+    <div id="groupOptions"
+        class="w-100 my-1 rounded-top textControls bg-blue d-flex  justify-content-center align-items-center flex-wrap flex-md-nowrap center mx-auto">
+        <button class="bg-snow text-blue bg-hover-blue rounded m-1 m-md-2 p-1 d-flex" id="selectAll"
             data-status="selectAll">
             <span id="selectIcon">
                 <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-list-check" fill="currentColor"
@@ -39,9 +48,9 @@
             <span class="d-none d-sm-none px-3" id="unselectButtonText">Tout Désélectionner</span>
         </button>
         <div class="d-flex align-items-center">
-            <span class="text-white font-weight-bold m-1 m-md-2 d-none d-lg-flex" for="">Exporter en :</span>
+            <span class="text-white font-weight-bold m-1 m-md-2 p-1 d-none d-lg-flex" for="">Exporter en :</span>
             <button
-                class="bg-snow text-blue bg-hover-blue rounded d-flex justify-content-center align-items-center m-1 m-md-2 "
+                class="bg-snow text-blue bg-hover-blue rounded d-flex justify-content-center align-items-center m-1 m-md-2 p-1"
                 id="docExportSelected">
                 <span class="mr-0 mr-sm-2">
                     <img src="./assets/icons/docfile.svg" alt="doc file">
@@ -49,7 +58,7 @@
                 <span class="d-none d-sm-flex">DOC</span>
             </button>
             <button
-                class="bg-snow text-blue bg-hover-blue rounded d-flex justify-content-center align-items-center m-1 m-md-2 "
+                class="bg-snow text-blue bg-hover-blue rounded d-flex justify-content-center align-items-center m-1 m-md-2 p-1"
                 id="pdfExportSelected">
                 <span class="mr-0 mr-sm-2">
                     <img src="./assets/icons/pdffile.svg" alt="pdf file">
@@ -58,7 +67,7 @@
             </button>
         </div>
         <button
-            class="bg-snow text-blue bg-hover-blue rounded m-1 m-md-2  d-flex justify-content-center align-items-center"
+            class="bg-snow text-blue bg-hover-blue rounded m-1 m-md-2 p-1 d-flex justify-content-center align-items-center"
             id="deleteSelected">
             <span class="mr-0 mr-sm-2">
                 <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-trash2-fill" fill="currentColor"
@@ -81,11 +90,12 @@
             $userLetters = $manager-> selectLetters($vip);
             for ($i=0; $i<sizeOf($userLetters);$i++){
         ?>
-        <div class="d-flex flex-column  align-items-center justify-content-baseline border rounded mt-3 w-100 ">
+        <div
+            class="d-flex flex-column  align-items-center justify-content-baseline border border-dark rounded mt-3 w-100 ">
             <div class="col-12 d-flex justify-content-center align-items-center bg-secondary text-snow w-100">
                 <?=$userLetters[$i]['letter_creation']?>
             </div>
-            <div id="" class="row my-lg-2 d-flex align-items-center my-0 w-100 p-4 m-auto">
+            <div id="" class="row  d-flex align-items-center my-0 w-100 p-4 m-auto">
 
                 <div class="col-2  col-md-1 d-flex justify-content-center align-items-baseline">
                     <input type="checkbox" data-letter="<?=$i?>">
@@ -132,7 +142,7 @@
                         <span class="d-none d-lg-flex">Supprimer</span>
                     </button>
                     <button
-                        class="newProjButton btn bg-marigold text-snow  bg-hover-snow  rounded m-1 m-md-2 d-flex justify-content-center  align-items-center col-5 col-lg-12"
+                        class="newProjButton btn bg-marigold text-snow  bg-hover-snow  rounded m-1 m-md-2 p-1 d-flex justify-content-center  align-items-center col-5 col-lg-12"
                         id="deleteSelected" data-letter="<?=$i?>">
 
                         <span class="d-none d-lg-flex">Modèle de projet</span>
@@ -152,37 +162,63 @@
                 <div class="modal fade bd-example-modal-lg details bg-blue text-snow" id="detailsLetter<?=$i?>"
                     tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered modal-lg h-100" role="document">
-                        <div class="modal-content h-100">
-                            <div class="modal-header d-flex flex-column flex-md-row">
-                                <h4 class=" m-auto"><?=$userLetters[$i]['proj_name']?></h4>
-                                <div class="d-flex flex-row align-items-baseline  m-auto">
+                        <div class="modal-content">
+                            <div class="modal-header d-flex flex-column flex-lg-row p-0">
+                                <h4 class="my-auto"><?=$userLetters[$i]['proj_name']?></h4>
+                                <div class="d-flex flex-row align-items-center my-auto">
                                     <h5 class="modal-title font-weight-bold" id="" data-letter="<?=$i?>">
                                         <?=$userLetters[$i]['letter_title']?>
                                     </h5>
                                 </div>
-                                <div class="d-flex justify-content-between align-items-baseline  m-auto">
-
-                                    <span class="btn d-flex flex-row align-items-baseline">
-                                        <button aria-label="Copier" class="copyButton btn" aria-hidden="true"
+                                <div class="d-flex justify-content-between align-items-center ">
+                                    <div
+                                        class="p-2 d-flex justify-content-start justify-content-sm-between align-items-center bg-blue flex-wrap">
+                                        <button
+                                            class=" mr-1 pdf pdfButton btn bg-blue text-snow bg-hover-snow d-flex justify-content-center align-items-center"
                                             data-letter="<?=$i?>">
-                                            Copier
+                                            <span class="mr-2"><img src="./assets/icons/pdffile.svg" alt="edit"></span>
+                                            <span>PDF</span>
                                         </button>
-                                        <button class="btn bg-kover text-white docButton" data-letter="<?=$i?>">
-                                            DOC
+                                        <button
+                                            class="mr-1 btn bg-blue text-snow bg-hover-snow d-flex justify-content-center align-items-center docButton"
+                                            data-letter="<?=$i?>">
+                                            <span class="mr-2">
+                                                <img src="./assets/icons/docfile.svg" alt="edit">
+                                            </span>
+                                            <span>DOC</span>
                                         </button>
-                                        <button class="btn pdf bg-kover text-white pdfButton" data-letter="<?=$i?>">
-                                            PDF
+                                        <button data-letter="<?=$i?>"
+                                            class=" mr-1 btn bg-blue text-snow bg-hover-snow  d-flex justify-content-center align-items-center  copyButton">
+                                            <span>
+                                                <svg width="1.5em" height="1.5em" viewBox="0 0 16 16"
+                                                    class="bi bi-clipboard-plus mr-2" fill="currentColor"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path fill-rule="evenodd"
+                                                        d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
+                                                    <path fill-rule="evenodd"
+                                                        d="M9.5 1h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3zM8 7a.5.5 0 0 1 .5.5V9H10a.5.5 0 0 1 0 1H8.5v1.5a.5.5 0 0 1-1 0V10H6a.5.5 0 0 1 0-1h1.5V7.5A.5.5 0 0 1 8 7z" />
+                                                </svg>
+                                            </span>
+                                            <span>Copier</span>
                                         </button>
-                                        <button class="btn printButton" data-letter="<?=$i?>">
-                                            IMPRIMER
+                                        <button
+                                            class=" mr-1 printButton btn bg-blue text-snow bg-hover-snow  d-flex justify-content-center align-items-center"
+                                            data-letter="<?=$i?>">
+                                            <span class="mr-2">
+                                                <svg width="1.5em" height="1.5em" viewBox="0 0 16 16"
+                                                    class="bi bi-printer-fill" fill="currentColor"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M5 1a2 2 0 0 0-2 2v1h10V3a2 2 0 0 0-2-2H5z" />
+                                                    <path fill-rule="evenodd"
+                                                        d="M11 9H5a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1z" />
+                                                    <path fill-rule="evenodd"
+                                                        d="M0 7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-1v-2a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v2H2a2 2 0 0 1-2-2V7zm2.5 1a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1z" />
+                                                </svg>
+                                            </span>
+                                            <span>Imprimer</span>
                                         </button>
-                                    </span>
-                                    <span class="d-flex flex-row align-items-baseline">
-                                        <button type="button" class="close text-snow" data-dismiss="modal"
-                                            aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </span>
+                                    </div>
+
                                 </div>
                             </div>
                             <div class="modal-body bg-snow text-dark" id="" name="" data-letter="<?=$i?>">
@@ -200,9 +236,6 @@
         ?>
 
     </div>
-
-
-
 
 </main>
 <!--jsPDF-->

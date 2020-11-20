@@ -10,6 +10,16 @@
                 </button>
             </div>
             <div class="modal-body p-1">
+                <div class="signInAlerts mx-auto">
+                    <div class="alert bg-darkred border-blue text-snow mx-auto alert-dismissible fade w_100"
+                        role="alert" id="emptyInputAlert">
+                        <strong>Vous n'avez pas rempli tous les champs.</strong>
+                        <button type="button" class="close" aria-label="Close">
+                            <span aria-hidden="true" class="text-snow">&times;</span>
+                        </button>
+                    </div>
+                </div>
+
                 <div class="my-3 d-flex flex-column flex-sm-row justify-content-between">
                     <label for="signInName" class="mr-3">Votre nom d'utilisateur</label>
                     <input type="text" name="signInName" id="signInName" placeholder="login">
@@ -53,5 +63,5 @@
             </div>
         </div>
     </div>
+
 </div>
-<script src="./assets/js/sign_in.js"></script>

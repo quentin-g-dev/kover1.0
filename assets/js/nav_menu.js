@@ -10,10 +10,7 @@ function toggleMenu() {
     }
 }
 
-document.querySelector(".hamburger").addEventListener("click", toggleMenu);
 
-
-document.querySelector('nav .avatar').addEventListener("click", toggleUserOptions);
 
 function toggleUserOptions() {
     if (document.querySelector('nav .userOptions').classList.contains('d-md-none')) {
@@ -23,3 +20,5 @@ function toggleUserOptions() {
         document.querySelector('nav .userOptions').classList.add("d-md-none");
     }
 }
+
+document.querySelector('header .hamburger').addEventListener('click', toggleMenu);

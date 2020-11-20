@@ -118,12 +118,6 @@ function textEditor(project) {
         project.view.singleRender(urlDoc, name);
         letterNamesEditor();
         project.finalInteractions();
-        document.querySelector('main #saveSelected').addEventListener("click", function () {
-            window.addEventListener("click", function () {
-                $("header").load("./index.php header");
-            });
-        });
-
     });
     return true;
 
@@ -168,7 +162,7 @@ function versionsSetting(project) {
         textEditor(project);
         textSelector(project);
     });
-    $('.card-header[data-version="2"]+button').click();
+    $('.letterNameBlock[data-version="2"]+span>span').click();
     /*project.fixVersion();*/
     document.querySelector('#finishButton').addEventListener("click", function (e) {
         let versions = document.querySelectorAll("div.versionBlock");
