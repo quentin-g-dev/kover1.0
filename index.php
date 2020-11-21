@@ -1,11 +1,7 @@
 <?php
 
 session_start();
-/*
-if ($_SERVER['REQUEST_URI']==='/dwwm/KOVER/kover1.0/'){
-    header("Location:./index.php");
-}
-*/
+
 /////////////////////////////////////////////////////////////// SI DECONNEXION DEMANDEE
 if(isset($_GET['disc']) && isset($_SESSION)){
     $_SESSION=null;
@@ -138,10 +134,9 @@ include './php/parts/allpages_parts/header.php';
         }
 ?>
     </main>
-    <div id="scripts">
 
-        <!-- kover_steps -->
-        <?php
+    <!-- kover_steps -->
+    <?php
         include './php/parts/forms/connection_form.php';
         include './php/parts/forms/subscription_form.php';
         include './php/parts/kover_steps/choice_step.php';
@@ -151,24 +146,24 @@ include './php/parts/allpages_parts/header.php';
         include './php/parts/kover_steps/single_render_step.php';
 
     ?>
-        <div id="inputSetter" class="d-none"></div>
-        <?php
+    <div id="inputSetter" class="d-none"></div>
+    <?php
         include './php/parts/kover_steps/setversions_step.php';
         include './php/parts/kover_steps/final_step.php';
         include './php/parts/allpages_parts/footer.php';
     ?>
 
-        <script src="./assets/js/general.js"></script>
-        <!--jsPDF-->
-        <script src="https://unpkg.com/jspdf@latest/dist/jspdf.umd.min.js"></script>
-        <script src="./assets/js/View.js"></script>
-        <script src="./assets/js/Project.js"></script>
-        <script src="./assets/js/main.js"></script>
-        <script src="./assets/js/nav_menu.js"></script>
-        <script id="signInScript" src="./assets/js/sign_in.js"></script>
-        <script src="./assets/js/translations.js"></script>
-        <script src="./assets/js/languages.js"></script>
-    </div>
-</body>
+    <script src="./assets/js/general.js"></script>
+    <!--jsPDF-->
+    <script src="https://unpkg.com/jspdf@latest/dist/jspdf.umd.min.js"></script>
+    <script src="./assets/js/View.js"></script>
+    <script src="./assets/js/Project.js"></script>
+    <script src="./assets/js/main.js"></script>
+    <script src="./assets/js/nav_menu.js"></script>
+    <script id="signInScript" src="./assets/js/sign_in.js"></script>
+    <script src="./assets/js/translations.js"></script>
+    <script src="./assets/js/languages.js"></script>
 
-</html>
+
+
+    </html>
