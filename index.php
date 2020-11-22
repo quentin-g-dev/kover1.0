@@ -150,6 +150,7 @@ include './php/parts/allpages_parts/header.php';
     <?php
         include './php/parts/kover_steps/setversions_step.php';
         include './php/parts/kover_steps/final_step.php';
+        include './php/parts/allpages_parts/cookiesModal.php';
         include './php/parts/allpages_parts/footer.php';
     ?>
 
@@ -163,6 +164,7 @@ include './php/parts/allpages_parts/header.php';
     <script id="signInScript" src="./assets/js/sign_in.js"></script>
     <script src="./assets/js/translations.js"></script>
     <script src="./assets/js/languages.js"></script>
+    <script src="./assets/js/Cookies.js"></script>
 
 
 

@@ -2,10 +2,8 @@ var displayCookiesModal = function (cookie) {
     return (cookie === true) ? false : true;
 };
 
-var setCookie = function () {
-
-    let userChoice = confirm('Do you accept our cookies ?');
-    if (userChoice === true) {
+var setCookie = function (boolean) {
+    if (boolean === true) {
         document.cookie = "cookies=true;expires=" + Date.now() + 60 * 100 + ";path=/;Secure;";
         return true;
     } else {
@@ -38,15 +36,23 @@ var detectCookie = function (cookieName) {
     return undefined;
 }
 
-/*
-
 // Exécution:
 
 let cookie = detectCookie("cookies");
 if (displayCookiesModal(cookie) === false) {
     displayContent(cookie);
 } else {
-    cookie = setCookie();
-    window.location.href = displayContent(cookie);
+    $("#cookiesModal").modal();
+    $('#yes').click(function () {
+        setCookie(true);
+        $("#cookiesModal").modal('hide');
+        return;
+    });
+    $('#no').click(function () {
+        $("#cookiesModal").modal('hide');
+        window.location.replace(displayContent(false));
+        setCookie(false);
+
+        return;
+    });
 }
-*/
