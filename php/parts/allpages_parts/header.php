@@ -13,8 +13,6 @@
             </span>
         </div>
         <!--NAV MENU -->
-
-
         <?php
             if (isset ($_SESSION['vip'])){
                 // FOR CONNECTED USERS :

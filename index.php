@@ -33,7 +33,6 @@ include './php/parts/allpages_parts/header.php';
         class="container-fluid full-container d-flex flex-column p-md-5 p-1 mx-auto mt-3 mb-2 w-100 w-lg-75 justify-content-start align-items-baseline h-100 rounded"
         id="koverProj">
 
-        <?php if (!isset($vip)){?>
 
         <div class="mx-1 mx-sm-auto startView">
             <h1
@@ -52,13 +51,7 @@ include './php/parts/allpages_parts/header.php';
 
                         <span>COMMENCER</span>
                         <span class="ml-3">
-                            <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-arrow-right-square"
-                                fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd"
-                                    d="M14 1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
-                                <path fill-rule="evenodd"
-                                    d="M4 8a.5.5 0 0 0 .5.5h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5A.5.5 0 0 0 4 8z" />
-                            </svg>
+                            <?php include './assets/icons/startarrow.svg'; ?>
                         </span>
                     </button>
                 </div>
@@ -68,7 +61,7 @@ include './php/parts/allpages_parts/header.php';
                     class="bg-marigold rounded d-flex flex-column flex-no-wrap col-md-5  mx-2 border p-3 p-md-4 my-md-5 my-4 w-100 w-sm-75 mx-0 mx-sm-auto text-snow ">
                     <h2 class="m-auto mb-5 text-snow">
                         <span class="mr-1">
-                            <img src="./assets/icons/userprofile.svg" alt="edit">
+                        <?php include "./assets/icons/userprofile.svg"; ?>
                         </span>
                         <span>
                             Mon Espace
@@ -80,22 +73,16 @@ include './php/parts/allpages_parts/header.php';
                             class="btn bg-snow text-marigold my-3 my-lg-3 display-5 font-weight-bold w-75 w-md-50"
                             data-toggle="modal" data-target="#connectModal" id="">
                             <span class="mr-3">
-                                <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-key-fill"
-                                    fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd"
-                                        d="M3.5 11.5a3.5 3.5 0 1 1 3.163-5H14L15.5 8 14 9.5l-1-1-1 1-1-1-1 1-1-1-1 1H6.663a3.5 3.5 0 0 1-3.163 2zM2.5 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
-                                </svg> </span>
+                                <?php include "./assets/icons/connectkey.svg"; ?>
+                            </span>
                             <span>Connexion</span>
                         </button>
                         <button type="button"
                             class="btn bg-snow text-marigold my-3 my-lg-3 display-5 font-weight-bold w-75 w-md-50"
                             data-toggle="modal" data-target="#subscriptionModal" id="">
                             <span class="mr-3">
-                                <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-person-plus-fill"
-                                    fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd"
-                                        d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm7.5-3a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z" />
-                                </svg> </span>
+                                <?php include "./assets/icons/signup.svg"; ?>
+                            </span>
                             <span>Inscription</span>
                         </button>
                     </div>
@@ -104,8 +91,7 @@ include './php/parts/allpages_parts/header.php';
             </div>
         </div>
 
-        <?php } else {
-?>
+        <?php } else { ?>
         <div
             class="startView d-flex text-center flex-column justify-content-center align-items-center flex-no-wrap mx-auto col-md-6 my-3 my-md-4 p-md-4">
             <p class="mx-auto my-3 p-md-2 h3 w-100">
@@ -116,13 +102,7 @@ include './php/parts/allpages_parts/header.php';
 
                 <span>COMMENCER</span>
                 <span class="ml-2">
-                    <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-arrow-right-square"
-                        fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd"
-                            d="M14 1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
-                        <path fill-rule="evenodd"
-                            d="M4 8a.5.5 0 0 0 .5.5h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5A.5.5 0 0 0 4 8z" />
-                    </svg>
+                    <?php include './assets/icons/startarrow.svg'; ?>
                 </span>
 
                 <span class="ml-3">

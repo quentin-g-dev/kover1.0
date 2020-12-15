@@ -10,63 +10,10 @@
                 </button>
             </div>
             <div class="modal-body p-1">
-                <div class="signUpAlerts mx-auto">
-                    <div class="alert bg-marigold border-blue text-snow mx-auto alert-dismissible fade w_100"
-                        role="alert" id="nameTooLongAlert">
-                        <strong>Votre nom d\'utilisateur ne peut dépasser 30 caractères.</strong>
-                        <button type="button" class="close" aria-label="Close">
-                            <span aria-hidden="true" class="text-snow">&times;</span>
-                        </button>
-                    </div>
-                    <div class="alert bg-marigold border-blue text-snow mx-auto alert-dismissible fade w_100"
-                        role="alert" id="acceptedCharsAlert">
-                        <strong>Seuls les caractères alphanumériques 0-9 - A-Z et _ sont admis.</strong>
-                        <button type="button" class="close" aria-label="Close">
-                            <span aria-hidden="true" class="text-snow">&times;</span>
-                        </button>
-                    </div>
-                    <div class="alert bg-marigold border-blue text-snow mx-auto alert-dismissible fade w_100"
-                        role="alert" id="emptyUserNameAlert">
-                        <strong>Veuillez choisir un nom d'utilisateur.</strong>
-                        <button type="button" class="close" aria-label="Close">
-                            <span aria-hidden="true" class="text-snow">&times;</span>
-                        </button>
-                    </div>
-                    <div class="alert bg-darkred border-blue text-snow mx-auto alert-dismissible fade w_100"
-                        role="alert" id="passwordsDontMatchAlert">
-                        <strong>Les deux saisies du mot de passe ne correspondent pas.</strong>
-                        <button type="button" class="close" aria-label="Close">
-                            <span aria-hidden="true" class="text-snow">&times;</span>
-                        </button>
-                    </div>
-                    <div class="alert bg-marigold border-blue text-snow mx-auto alert-dismissible fade w_100"
-                        role="alert" id="passwordPathAlert">
-                        <strong>Les deux saisies du mot de passe ne correspondent pas.</strong>
-                        <button type="button" class="close" aria-label="Close">
-                            <span aria-hidden="true" class="text-snow">&times;</span>
-                        </button>
-                    </div>
-                    <div class="alert bg-marigold border-blue text-snow mx-auto alert-dismissible fade w_100"
-                        role="alert" id="passwordLengthAlert">
-                        <strong>Votre mot de passe ne peut dépasser 50 caractères.</strong>
-                        <button type="button" class="close" aria-label="Close">
-                            <span aria-hidden="true" class="text-snow">&times;</span>
-                        </button>
-                    </div>
-                    <div class="alert bg-marigold border-blue text-snow mx-auto alert-dismissible fade w_100"
-                        role="alert" id="emptyPasswordAlert">
-                        <strong>Veuillez choisir un mot de passe.</strong>
-                        <button type="button" class="close" aria-label="Close">
-                            <span aria-hidden="true" class="text-snow">&times;</span>
-                        </button>
-                    </div>
 
-
-
-
-
-
-                </div>
+                <!--Alertes // Prévalidation des saisies utilisateurs-->
+                <?php include './php/alerts/sign_up_alerts.php'; ?>
+                <!------------------------------------------------------>
 
                 <div class="my-3 d-flex flex-column flex-sm-row justify-content-between">
                     <label for="userName" class="mr-3">Choisissez un pseudo</label>
@@ -87,8 +34,7 @@
                         voluptates quaerat dolorem? Exercitationem, nisi quo vel facilis, tempora deleniti accusamus sed
                         doloremque Eaque porro quod repellendus asperiores distinctio. Necessitatibus esse iste delectus
                         officiis ipsa, exercitationem nemo sapiente illo eligendi numquam odit culpa reiciendis vitae!
-                        Lorem ipsum
-                        dolor sit amet consectetur adipisicing elit. Blanditiis aliquam, aut perspiciatis saepe odio
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis aliquam, aut perspiciatis saepe odio
                         eligendi
                         excepturi eos repellendus est. Voluptatem, laboriosam quidem autem consequatur dolore aliquam
                         nostrum quam
@@ -114,13 +60,8 @@
                     <button class="btn bg-marigold text-blue bg-hover-snow" type="submit" id="signUpSubmit">
                         <span>CONFIRMER L'INSCRIPTION</span>
                         <span class="ml-3">
-                            <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-arrow-right-square"
-                                fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd"
-                                    d="M14 1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
-                                <path fill-rule="evenodd"
-                                    d="M4 8a.5.5 0 0 0 .5.5h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5A.5.5 0 0 0 4 8z" />
-                            </svg>
+                            <?php include './assets/icons/startarrow.svg'; ?>
+                           
                         </span>
                     </button>
                 </div>
