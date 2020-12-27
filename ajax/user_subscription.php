@@ -1,31 +1,27 @@
 <?php 
 session_start();
 
-require '../../kover1.0/php/modules/db_connect.php';
-require '../../kover1.0/php/classes/User.php';
-require '../../kover1.0/php/classes/UsersManager.php';
-$vip = new User($db);
-$controler = new UsersManager($db);
-$vip->setUserName(htmlspecialchars(($_POST['userName'])));
-if ($controler->doesUserNameAlreadyExist($vip->userName())){
+include_once ('../php/modules/db_connect.php');
+require '../php/classes/User.php';
+require '../php/classes/UsersManager.php';
+$candidate = new User($db);
+$controller = new UsersManager($db);
+$candidate->setUserName($_POST['userName']);
+if ($controller->doesUserNameAlreadyExist($candidate->userName())){
     echo 'false';
     return false;
 } else {
-    $vip->setUserHashedPassword(hash("whirlpool", htmlspecialchars($_POST['userPassword'])));
-    $vip->setUserCreationDate(date('Y-m-d H:i:s'));
-    $vip->setUserStatus('user');
-    $vip->setLangCode($_SESSION['langCode']);
-    $adding=$controler -> addUser($vip);
-    if (!$adding){
+    $candidate->setUserHashedPassword(hash("whirlpool", htmlspecialchars($_POST['userPassword'])));
+    $candidate->setUserCreationDate(date('Y-m-d H:i:s'));
+    $candidate->setUserStatus('user');
+    $candidate->setLangCode($_SESSION['langCode']);
+    if (!$controller -> addUser($candidate)){
         echo 'false';
         return false;
     } else {
-        $controler -> setUserSession($vip);
-        $pageTitle = 'Kover - '. $vip->userName();
+        $controller -> setUserSession($candidate);
+        $pageTitle = 'Kover - '. $candidate->userName();
         echo 'true';
         return true;
     }
-}        
-include '../../kover1.0/php/modules/db_disconnect.php';
-
-?>
+}   

@@ -14,6 +14,6 @@
     <script src="./assets/js/bootstrap.min.js"></script>
 
     <title>
-        <?php echo $pageTitle;?>
+        <?= $pageTitle ?>
     </title>
 </head>

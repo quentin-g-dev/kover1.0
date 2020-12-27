@@ -14,57 +14,55 @@
                 <!--Alertes // Prévalidation des saisies utilisateurs-->
                 <?php include './php/alerts/sign_up_alerts.php'; ?>
                 <!------------------------------------------------------>
-
-                <div class="my-3 d-flex flex-column flex-sm-row justify-content-between">
-                    <label for="userName" class="mr-3">Choisissez un pseudo</label>
-                    <input type="text" name="userName" id="userName" placeholder="pseudo ou e-mail">
-                </div>
-                <div class="my-3 d-flex flex-column flex-sm-row justify-content-between">
-                    <label for="userPassword" class="mr-3">Choisissez un mot de passe</label>
-                    <input type="password" name="userPassword" id="userPassword" placeholder="********">
-                </div>
-                <div class="my-3 d-flex flex-column flex-sm-row justify-content-between">
-                    <label for="userPasswordTwice" class="mr-3">Confirmez votre mot de passe</label>
-                    <input type="password" name="userPasswordTwice" id="userPasswordTwice" placeholder="********">
-                </div>
-                <div class="my-2 conditions-container d-flex flex-column justify-content-center align-items-center">
-                    <h3 class="text-sm-center h6">CONDITIONS D'UTILISATION</h3>
-                    <p class="conditions border text-justify  mx-auto p-3">
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatibus ducimus delectus totam
-                        voluptates quaerat dolorem? Exercitationem, nisi quo vel facilis, tempora deleniti accusamus sed
-                        doloremque Eaque porro quod repellendus asperiores distinctio. Necessitatibus esse iste delectus
-                        officiis ipsa, exercitationem nemo sapiente illo eligendi numquam odit culpa reiciendis vitae!
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis aliquam, aut perspiciatis saepe odio
-                        eligendi
-                        excepturi eos repellendus est. Voluptatem, laboriosam quidem autem consequatur dolore aliquam
-                        nostrum quam
-                        maiores voluptate.
-                        Quas dolorem necessitatibus vero temporibus odio cupiditate! Quidem voluptate placeat
-                        praesentiumn repellendus quo nesciunt, quasi, assumenda vel laudantium ducimus illo
-                        reprehenderit molestias
-                        maiores atque consequatur numquam id quia inventore ipsa.
-                        Repellendus, amet dolores rerum nesciunt mollitia velit porro recusandae consequuntur sit dicta
-                        labore suscipit quo repudiandae necessitatibus reiciendis. Quidem aut officiis voluptatum
-                        maxime, rem
-                        omnis? Consequuntur, molestiae sapiente? Ab, doloremque!
-                    </p>
-                    <div class="d-flex justify-content-center align-items-md-center flex-nowrap px-1">
-                        <input required type="checkbox" name="acceptConditions" id="acceptConditions" value="accepted"
-                            class="mr-3">
-                        <label for="acceptConditions" class="">J'ai pris connaissance des conditions d'utilisation et
-                            je m'engage à les respecter.</label>
+                    <div class="my-3 d-flex flex-column flex-sm-row justify-content-between">
+                        <label for="userName" class="mr-3">Choisissez un pseudo</label>
+                        <input type="text" name="userName" id="userName" placeholder="pseudo ou e-mail">
                     </div>
+                    <div class="my-3 d-flex flex-column flex-sm-row justify-content-between">
+                        <label for="userPassword" class="mr-3">Choisissez un mot de passe</label>
+                        <input type="password" name="userPassword" id="userPassword" placeholder="********">
+                    </div>
+                    <div class="my-3 d-flex flex-column flex-sm-row justify-content-between">
+                        <label for="userPasswordTwice" class="mr-3">Confirmez votre mot de passe</label>
+                        <input type="password" name="userPasswordTwice" id="userPasswordTwice" placeholder="********">
+                    </div>
+                    <div class="my-2 conditions-container d-flex flex-column justify-content-center align-items-center">
+                        <h3 class="text-sm-center h6">CONDITIONS D'UTILISATION</h3>
+                        <p class="conditions border text-justify  mx-auto p-3">
+                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatibus ducimus delectus totam
+                            voluptates quaerat dolorem? Exercitationem, nisi quo vel facilis, tempora deleniti accusamus sed
+                            doloremque Eaque porro quod repellendus asperiores distinctio. Necessitatibus esse iste delectus
+                            officiis ipsa, exercitationem nemo sapiente illo eligendi numquam odit culpa reiciendis vitae!
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis aliquam, aut perspiciatis saepe odio
+                            eligendi
+                            excepturi eos repellendus est. Voluptatem, laboriosam quidem autem consequatur dolore aliquam
+                            nostrum quam
+                            maiores voluptate.
+                            Quas dolorem necessitatibus vero temporibus odio cupiditate! Quidem voluptate placeat
+                            praesentiumn repellendus quo nesciunt, quasi, assumenda vel laudantium ducimus illo
+                            reprehenderit molestias
+                            maiores atque consequatur numquam id quia inventore ipsa.
+                            Repellendus, amet dolores rerum nesciunt mollitia velit porro recusandae consequuntur sit dicta
+                            labore suscipit quo repudiandae necessitatibus reiciendis. Quidem aut officiis voluptatum
+                            maxime, rem
+                            omnis? Consequuntur, molestiae sapiente? Ab, doloremque!
+                        </p>
+                        <div class="d-flex justify-content-center align-items-md-center flex-nowrap px-1">
+                            <input required type="checkbox" name="acceptConditions" id="acceptConditions" value="accepted"
+                                class="mr-3">
+                            <label for="acceptConditions" class="">J'ai pris connaissance des conditions d'utilisation et
+                                je m'engage à les respecter.</label>
+                        </div>
 
-                </div>
-                <div class="d-flex justify-content-center align-items-center mb-5 p-3">
-                    <button class="btn bg-marigold text-blue bg-hover-snow" type="submit" id="signUpSubmit">
-                        <span>CONFIRMER L'INSCRIPTION</span>
-                        <span class="ml-3">
-                            <?php include './assets/icons/startarrow.svg'; ?>
-                           
-                        </span>
-                    </button>
-                </div>
+                    </div>
+                    <div class="d-flex justify-content-center align-items-center mb-5 p-3">
+                        <button class="btn bg-marigold text-blue bg-hover-snow" id="signUpSubmit">
+                            <span>CONFIRMER L'INSCRIPTION</span>
+                            <span class="ml-3">
+                                <?php include './assets/icons/startarrow.svg'; ?>
+                            </span>
+                        </button>
+                    </div>
             </div>
             <div class="modal-footer d-flex justify-content-center align-items-center">
                 <span>Vous avez déjà un compte ?</span>
@@ -84,4 +82,3 @@
         </div>
     </div>
 </div>
-<script src="./assets/js/sign_up.js"></script>

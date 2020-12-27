@@ -1,8 +1,8 @@
-<?php
-        try{
-        $db = new PDO('mysql:host=localhost;dbname=kover', 'root', '');
-         $db->exec('SET NAMES "UTF8"');
+<?php 
+    try{
+        $db = new PDO('mysql:host=localhost;port=3306;dbname=kover;charset=utf8','kover','kover');
     } catch(PDOException $e) {
         echo 'Erreur: '. $e->getMessage();
         die();
-    }?>
+    } 
+?>

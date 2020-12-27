@@ -13,8 +13,8 @@ class UsersManager {
 ////////////////////////////////////////////////////////////////////CRUD FUNCTIONS
 ////////////////////////////////////////////////////////////////////CRUD : CREATE
     public function addUser (User $user){
-        $query = $this -> _db -> prepare('INSERT INTO users (user_name, passwd, lang_code, creation_date) VALUES (?,?,?,?)');
-        $result=$query -> execute([$user-> userName(), $user-> userHashedPassword(), $user->userLangCode(),  $user-> userCreationDate()]);
+        $query = $this -> _db -> prepare('INSERT INTO users (user_name, passwd, lang_code, creation_date, user_status) VALUES (?,?,?,?,?)');
+        $result=$query -> execute([$user-> userName(), $user-> userHashedPassword(), $user->userLangCode(),  $user-> userCreationDate(), $user->userStatus()]);
         return ($result);
     }
 
@@ -49,7 +49,7 @@ class UsersManager {
     }
 
     public function getUserId($user){
-        $request = $this->_db->prepare ('SELECT user_id FROM users WHERE user_name=?');
+        $request = $this->_db->prepare ('SELECT id FROM users WHERE user_name=?');
         $request->execute([$user->$userName()]);
         $result =$request->fetch();
         return $result["user_name"];

@@ -1,4 +1,4 @@
-<?
+<?php 
 class User {
 ////////////////////////////////////////////////////////////////////////////////// Attributes
     private $_userId, $_userName, $_userHashedPassword, $_userStatus, $_db, $_userCreationDate, $_userLangCode;

@@ -3,8 +3,8 @@
     id="home">
 
     <!------------------------------------------------------------------------- EN-TÊTE DU PROFIL -->
-    <h2><a href="./profile.php?vip=<?php echo $vip->userId();?>">
-            <?echo $vip->userName();?>
+    <h2><a href="./profile.php?vip=<?= $vip->userId(); ?>">
+            <?= $vip->userName(); ?>
         </a></h2>
     <div class="profile-top">
         <div class="border mw-75 mb-5">

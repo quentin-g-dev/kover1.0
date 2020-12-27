@@ -3,7 +3,7 @@
 if (isset($_SESSION['vip'])){
 
     //Connexion à la BDD
-    include './php/modules/db_connect.php';
+    require_once './php/modules/db_connect.php';
 
     // Import des classes User et UsersManager
     include './php/classes/User.php';
@@ -21,7 +21,7 @@ if (isset($_SESSION['vip'])){
 
 
     // Déconnexion de la BDD
-    include './php/modules/db_disconnect.php';
+    require_once './php/modules/db_disconnect.php';
 }
 
 ?>

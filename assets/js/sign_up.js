@@ -80,25 +80,28 @@ document.querySelector("#signUpSubmit").addEventListener("click", function () {
     //    evalSignUpForm();
     if (evalSignUpForm()) {
 
-        let name = sanitizeHTML(document.querySelector("#userName").value);
-        let password = sanitizeHTML(document.querySelector("#userPassword").value);
-        let xhr = new XMLHttpRequest();
-        xhr.onreadystatechange = function () {
-            if (this.readyState == 4 && this.status == 200) {
-                if (this.response == "true") {
-                    console.log(this.response);
+        let uName = sanitizeHTML(document.querySelector("#userName").value);
+        let passwd = sanitizeHTML(document.querySelector("#userPassword").value);
+console.log(uName,passwd);
+        
 
-                    document.querySelector("#subscriptionModal .modal-body").innerHTML = "Inscription réussie !";
-                    $("#nav").load("./index.php #nav");
-
-                } else {
-                    document.querySelector("#subscriptionModal .modal-body").innerHTML += "Un problème est survenu, merci de réessayer plus tard.";
-
-                }
+        var call = new XMLHttpRequest();
+    call.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            if (this.response == "true") {
+                console.log(this.response);
+                document.querySelector("#subscriptionModal .modal-body").innerHTML = "Inscription réussie !";
+                document.querySelector("#subscriptionModal .modal-footer").remove();
+                $("#nav").load("./index.php #nav");
+            } else {
+                console.log(this.response);
+                document.querySelector("#subscriptionModal .modal-body").innerHTML += "Un problème est survenu, merci de réessayer plus tard.";
             }
-        };
-        xhr.open('POST', './ajax/user_subscription.php', true);
-        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        xhr.send("userName=" + name + "&userPassword=" + password);
-    }
+        }
+    };
+    call.open('POST', "./ajax/user_subscription.php", true);
+    call.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    call.send("userName=" + uName + "&userPassword="+ passwd);
+
+    } 
 });
