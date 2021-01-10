@@ -31,14 +31,14 @@ $test = new UsersManagerTest();
                     INPUT : 
                     <br>
                     <?= var_dump ($testUser); ?>
-                    <br>
-                    <br>
+                    <br><br>
                     EXPECTED :
                     <br>
                     1
                 </p>
                 <?php 
                 $addingResult = $test->testAddUser($testUser);
+
                 if($addingResult===1) { 
                 ?>
 
@@ -79,6 +79,7 @@ $test = new UsersManagerTest();
                 </p>
                 <?php 
                 $readingResult = $test->testHydrateUser($dryUser); 
+
                 if($readingResult === "test-user") { 
                 ?>
 
@@ -113,13 +114,12 @@ $test = new UsersManagerTest();
                     EXPECTED :
                     <br>
                     true
+                  
                 </p>
                 <?php 
-                $updatingResult = $test->$testUpdateUser($dryUser); 
-                var_dump($updatingResult);
-                if($updatingResult) { 
+                
+                if($test->testUpdateUser($dryUser)) { 
                 ?>
-
                 <p class="bg-success text-snow text-center">
                     OUTPUT : 
                     <br>
@@ -130,7 +130,40 @@ $test = new UsersManagerTest();
                 </p>
                 <?php } else { ?>
                 <p class="bg-alert text-snow text-center">
-                    OUTPUT : <?= var_dump($updatingResult)?> 
+                    OUTPUT : <?= var_dump($test->testUpdateUser($dryUser))?> 
+                    <br>
+                    <b>FAILED</b>
+                </p>
+                <?php  }   ?>
+        </section>
+
+         <!--testDeleteUser-->
+         <section>
+                <h2 class="bg-kover text-snow text-center">testUpdateUser</h2>
+                <p class="bg-info text-snow text-center">
+                    INPUT : 
+                    <br>
+                    <?= var_dump ($dryUser); ?>
+                    <br>
+                    EXPECTED :
+                    <br>
+                    true
+                </p>
+                <?php 
+                
+                if($test->testDeleteUser($dryUser)) { 
+                ?>
+                <p class="bg-success text-snow text-center">
+                    OUTPUT : 
+                    <br>
+                    <?= var_dump($test->testDeleteUser($dryUser))?> 
+                    <br>
+                    <br>
+                    <b>OK</b>
+                </p>
+                <?php } else { ?>
+                <p class="bg-alert text-snow text-center">
+                    OUTPUT : <?= var_dump($test->testDeleteUser($dryUser))?> 
                     <br>
                     <b>FAILED</b>
                 </p>

@@ -4,9 +4,9 @@
     $projName = $_POST["projName"];
     if (isset ($_SESSION['vip'])){
     
-        include '../../kover1.0/php/classes/User.php';
-        include '../../kover1.0/php/classes/UsersManager.php';
-        require '../../kover1.0/php/modules/db_connect.php';
+        include '../php/classes/User.php';
+        include '../php/classes/UsersManager.php';
+        require '../php/modules/db_connect.php';
         $vip = new User();
         $vipManager = new UsersManager($db);
         $vipManager->setUserFromSession($vip, $_SESSION['vip']);
@@ -16,7 +16,7 @@
         } else{                      
             echo 'not ok';
         }
-        require '../../kover1.0/php/modules/db_disconnect.php';
+        require '../php/modules/db_disconnect.php';
     }
        
 ?>

@@ -66,7 +66,8 @@ class UsersManager {
 //////////////////////////////////////////////////////////////////// CRUD : DELETE
 
     public function deleteUser (User $user){
-        $this->_db -> query('DELETE FROM users WHERE id = '.$user ->userId().'');
+        $result = $this->_db -> query('DELETE FROM users WHERE id = '.$user ->userId().'');
+        return $result;
     }
 
 ////////////////////////////////////////////////////////////////////// NO-CRUD FUNCTIONS

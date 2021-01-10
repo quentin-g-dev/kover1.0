@@ -22,6 +22,6 @@ if ($controler->checkUserConnection($vip)){
     return false;
 }
 
-require '../../kover1.0/php/modules/db_disconnect.php';
+require '../php/modules/db_disconnect.php';
 
 ?>
