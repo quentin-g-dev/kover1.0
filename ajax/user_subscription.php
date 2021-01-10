@@ -4,7 +4,7 @@ session_start();
 include_once ('../php/modules/db_connect.php');
 require '../php/classes/User.php';
 require '../php/classes/UsersManager.php';
-$candidate = new User($db);
+$candidate = new User();
 $controller = new UsersManager($db);
 $candidate->setUserName($_POST['userName']);
 if ($controller->doesUserNameAlreadyExist($candidate->userName())){
@@ -17,11 +17,15 @@ if ($controller->doesUserNameAlreadyExist($candidate->userName())){
     $candidate->setLangCode($_SESSION['langCode']);
     if (!$controller -> addUser($candidate)){
         echo 'false';
+        require '../php/modules/db_disconnect.php';
+
         return false;
     } else {
         $controller -> setUserSession($candidate);
         $pageTitle = 'Kover - '. $candidate->userName();
         echo 'true';
+        require '../php/modules/db_disconnect.php';
+
         return true;
     }
 }   

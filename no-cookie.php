@@ -73,3 +73,4 @@ include './php/parts/allpages_parts/header.php';
     <script src="./assets/js/languages.js"></script>
 
 </body>
+</html>

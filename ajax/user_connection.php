@@ -1,10 +1,10 @@
 <?php 
 session_start();
-require '../../kover1.0/php/modules/db_connect.php';
-require '../../kover1.0/php/classes/User.php';
-require '../../kover1.0/php/classes/UsersManager.php';
-$vip = new User ($db);
-$controler = new UsersManager ($db);
+include_once ('../php/modules/db_connect.php');
+require '../php/classes/User.php';
+require '../php/classes/UsersManager.php';
+$vip = new User();
+$controler = new UsersManager($db);
 $vip->setUserName(htmlspecialchars(($_POST['userName'])));
 $vip->setUserHashedPassword(hash('whirlpool',htmlspecialchars($_POST['userPassword'])));
 $controler->checkUserConnection($vip);

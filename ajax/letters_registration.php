@@ -2,10 +2,10 @@
 session_start();
 
 if (isset ($_SESSION['vip'])){
-    require '../../kover1.0/php/classes/User.php';
-    require '../../kover1.0/php/classes/UsersManager.php';
-    require '../../kover1.0/php/modules/db_connect.php';
-    $vip = new User($db);
+    include_once ('../php/modules/db_connect.php');
+    require '../php/classes/User.php';
+    require '../php/classes/UsersManager.php';
+    $vip = new User();
     $vipManager = new UsersManager($db);
     $vipManager->setUserFromSession($vip, $_SESSION['vip']);
 }
@@ -13,9 +13,9 @@ if (isset ($_SESSION['vip'])){
 
 if(isset($_POST["proj"])){
     $projName = htmlspecialchars($_POST["proj"]);
-    if($projName== ''){
+  /*  if($projName == ''){
         echo 'false';
-    }
+    }*/
     if (isset ($_SESSION['vip'])){
         if ($vipManager->checkUserConnection($vip)){
             if($vipManager->doesProjectExist($vip, $projName)){
@@ -58,5 +58,5 @@ if(isset($_POST['isUserConnected'])){
     }
 }
 
-require '../../kover1.0/php/modules/db_disconnect.php';
+require '../php/modules/db_disconnect.php';
 ?>

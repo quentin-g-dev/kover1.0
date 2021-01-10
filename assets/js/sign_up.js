@@ -77,16 +77,11 @@ function userPassRegEx(string) {
 
 
 document.querySelector("#signUpSubmit").addEventListener("click", function () {
-    //    evalSignUpForm();
     if (evalSignUpForm()) {
-
         let uName = sanitizeHTML(document.querySelector("#userName").value);
         let passwd = sanitizeHTML(document.querySelector("#userPassword").value);
-console.log(uName,passwd);
-        
-
         var call = new XMLHttpRequest();
-    call.onreadystatechange = function () {
+        call.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             if (this.response == "true") {
                 console.log(this.response);

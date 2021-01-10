@@ -33,7 +33,7 @@ if(isset($_POST['lang'])){
       include '../php/classes/UsersManager.php';
 
       // Instanciation et configuration d'une paire user / manager
-      $vip = new User($db);
+      $vip = new User();
       $vipManager = new UsersManager($db);
       $vipManager->setUserFromSession($vip, $_SESSION['vip']);
       $vipManager->updateUser($vip);

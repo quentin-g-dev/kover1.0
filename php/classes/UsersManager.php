@@ -27,6 +27,7 @@ class UsersManager {
         $user->setUserHashedPassword($result['passwd']);
         $user->setLangCode($result['lang_code']);
         $user->setUserCreationDate($result['creation_date']);
+        $user->setUserStatus($result['user_status']);
         return $user;
     }
 
@@ -58,13 +59,14 @@ class UsersManager {
 ////////////////////////////////////////////////////////////////////CRUD : UPDATE
 
     public function updateUser(User $user) {
-        $query = $this->_db-> prepare('UPDATE users SET user_name=?, passwd=?, lang_code=? WHERE id=?');
-        $query->execute([$user->userName(),$user-> userHashedPassword(),$user->userLangCode(), $user-> userId()]);
+        $query = $this->_db-> prepare('UPDATE users SET user_name=?, passwd=?, lang_code=?, user_status=?, creation_date=? WHERE id=?');
+        $result = $query->execute([$user->userName(), $user->userHashedPassword(), $user->userLangCode(), $user->userStatus(), $user->userCreationDate(), $user->userId()]);
+        return $result;
     }
 //////////////////////////////////////////////////////////////////// CRUD : DELETE
 
     public function deleteUser (User $user){
-        $this -> _db -> exec('DELETE FROM users WHERE id = '.$user ->userId().'');
+        $this->_db -> query('DELETE FROM users WHERE id = '.$user ->userId().'');
     }
 
 ////////////////////////////////////////////////////////////////////// NO-CRUD FUNCTIONS

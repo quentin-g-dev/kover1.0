@@ -1,11 +1,10 @@
 <?php 
 class User {
 ////////////////////////////////////////////////////////////////////////////////// Attributes
-    private $_userId, $_userName, $_userHashedPassword, $_userStatus, $_db, $_userCreationDate, $_userLangCode;
+    private $_userId, $_userName, $_userHashedPassword, $_userStatus,  $_userCreationDate, $_userLangCode;
 
 ////////////////////////////////////////////////////////////////////////////////// Constructor
-    public function __construct($db){
-        $this-> _db = $db;
+    public function __construct(){
     }
 
 ////////////////////////////////////////////////////////////////////////////////// Getters
@@ -30,8 +29,8 @@ class User {
     
 ////////////////////////////////////////////////////////////////////////////////////// Setters
     
-public function setUserId(int $id){
-        $this-> _userId = $id;
+    public function setUserId(int $id){
+            $this-> _userId = $id;
     }
     public function setUserName(string $name){
         if(isset($name) && strlen(htmlspecialchars($name))>0 && strlen(htmlspecialchars($name))<=30){

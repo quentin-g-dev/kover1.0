@@ -10,8 +10,7 @@ function evalSignInForm() {
 
 
 document.querySelector("#signInSubmit").addEventListener("click", function () {
-    evalSignInForm();
-    if (evalSignInForm() == true) {
+    if (evalSignInForm()) {
         let name = sanitizeHTML(document.querySelector("#signInName").value);
         let password = sanitizeHTML(document.querySelector("#signInPass").value);
         let xhr = new XMLHttpRequest();
@@ -31,14 +30,14 @@ document.querySelector("#signInSubmit").addEventListener("click", function () {
                 } else {
                     document.querySelector("#connectModal .modal-body").innerHTML += "Un problème est survenu, merci de réessayer plus tard.";
 
-                }
+                } 
+            }else {
+                console.log(this.status);
             }
         };
-        xhr.open('POST', './ajax/user_connection.php', true);
+        xhr.open('POST', "./ajax/user_connection.php", true);
         xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xhr.send("userName=" + name + "&userPassword=" + password);
 
-    } else {
-        console.log('ici');
-    }
+    } 
 });

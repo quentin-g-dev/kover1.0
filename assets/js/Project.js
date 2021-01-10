@@ -114,8 +114,6 @@ class Project {
                                 newNode.style.fontSize = "20px";
                                 break;
                         }
-
-
                         range.surroundContents(newNode);
                         range = undefined;
 
@@ -205,6 +203,7 @@ class Project {
         }
     }
 
+    
 
     finalInteractions() {
         // PDF / PRINT :
@@ -248,6 +247,7 @@ class Project {
                 for (let i = 0; i < checkBoxes.length; i++) {
                     if (checkBoxes[i].checked === true) {
                         checkCounter++;
+                        console.log(i);
                         let myText = document.querySelector('.body[data-content="' + i + '"]').innerHTML;
                         let myURL = generateDOC(myText);
                         urlList.push(myURL);
@@ -262,6 +262,7 @@ class Project {
             });
         }
 
+        
         // MULTIPLE PDF :
         if (document.querySelector('#pdfExportSelected')) {
 

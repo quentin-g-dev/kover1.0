@@ -14,7 +14,7 @@ if (!isset ($_GET['vip'])||!isset($_SESSION["vip"])){
     $_GET['vip']=htmlspecialchars($_GET['vip']);
     include './php/modules/db_connect.php';
 
-    $vip = new User($db);
+    $vip = new User();
     $manager = new UsersManager($db);
     $manager->setUserFromSession($vip, $_SESSION['vip']);
 

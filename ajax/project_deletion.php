@@ -7,7 +7,7 @@
         include '../../kover1.0/php/classes/User.php';
         include '../../kover1.0/php/classes/UsersManager.php';
         require '../../kover1.0/php/modules/db_connect.php';
-        $vip = new User($db);
+        $vip = new User();
         $vipManager = new UsersManager($db);
         $vipManager->setUserFromSession($vip, $_SESSION['vip']);
         if ($vipManager->checkUserConnection($vip)){

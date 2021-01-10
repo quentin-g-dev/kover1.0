@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 if (isset($_SESSION['vip'])){
 
     //Connexion à la BDD
@@ -10,7 +12,7 @@ if (isset($_SESSION['vip'])){
     include './php/classes/UsersManager.php';
 
     // Instanciation et configuration d'une paire user / manager
-    $vip = new User($db);
+    $vip = new User();
     $vipManager = new UsersManager($db);
 
     $vipManager->setUserFromSession($vip, $_SESSION['vip']);

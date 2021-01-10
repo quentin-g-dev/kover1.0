@@ -83,6 +83,7 @@ class View {
 
         // Injection dans la vue finale
         let accordion = document.querySelector('#accordion').outerHTML;
+        document.querySelector('#accordion').remove();
         document.querySelector('#koverProj').innerHTML = document.querySelector('#finishing').innerHTML;
         document.querySelector('#koverProj #versionsGroup').innerHTML = accordion;
         let inputs = document.querySelectorAll('#accordion input[type="checkbox"]');
