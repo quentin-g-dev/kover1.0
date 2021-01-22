@@ -86,7 +86,7 @@ function letterNamesEditor() {
  */
 function textEditor(project) {
     let links = document.querySelectorAll('a');
-    for (let i = 0; i < links.length; i++) {
+    /*for (let i = 0; i < links.length; i++) {
         if (links[i].target != "_blank") {
             links[i].addEventListener("click", function (e) {
                 if (confirm("Votre projet ne pourra pas être enregistré ! Cliquez sur OK pour confirmer.") == false) {
@@ -95,7 +95,7 @@ function textEditor(project) {
             })
 
         }
-    }
+    }*/
     project.view.textEditor();
     projNameEditor(project);
 

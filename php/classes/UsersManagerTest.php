@@ -4,21 +4,15 @@ class UsersManagerTest  {
 
     public function __construct(){
     }
-
-    /*Requête de nettoyage de la table users si besoin :  */
-    // $db->query('DELETE FROM `users` WHERE user_status = "test-user"');
-
     
     public function testAddUser(object $testUser) {
         include './php/modules/db_connect.php';
-        
         $initialNumber = $db-> query ('SELECT COUNT(*) FROM users') -> fetchColumn();
         include_once './php/classes/UsersManager.php';
         $testManager = new UsersManager($db);
         $testManager->addUser($testUser);    
         $finalNumber = $db-> query ('SELECT COUNT(*) FROM users') -> fetchColumn();
-
-        include_once './php/modules/db_disconnect.php';
+        include './php/modules/db_disconnect.php';
         return($finalNumber - $initialNumber);
     }
 
@@ -30,6 +24,16 @@ class UsersManagerTest  {
         include_once './php/modules/db_disconnect.php';
         $status =  $dryUser->userStatus();
         return $status;
+    }
+
+    public function testDoesUserNameAlreadyExist (object $user) {
+        include './php/modules/db_connect.php';
+        include_once './php/classes/UsersManager.php';
+        $testHydrater = new UsersManager($db);
+        $result = $testHydrater->doesUserNameAlreadyExist($user->userName());    
+        include_once './php/modules/db_disconnect.php';
+        return $result;
+
     }
 
     public function testUpdateUser (object $user) {
@@ -50,6 +54,8 @@ class UsersManagerTest  {
         return $deleting;
     }
 
-
   
+    /*Requête de nettoyage de la table users si besoin :  */
+    // $db->query('DELETE FROM `users` WHERE user_status = "test-user"');
+
 }

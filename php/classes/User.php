@@ -1,13 +1,10 @@
 <?php 
 class User {
-////////////////////////////////////////////////////////////////////////////////// Attributes
     private $_userId, $_userName, $_userHashedPassword, $_userStatus,  $_userCreationDate, $_userLangCode;
 
-////////////////////////////////////////////////////////////////////////////////// Constructor
     public function __construct(){
     }
 
-////////////////////////////////////////////////////////////////////////////////// Getters
     public function userId(){
         return $this-> _userId;
     }
@@ -26,8 +23,6 @@ class User {
     public function userLangCode(){
         return $this-> _userLangCode;
     }
-    
-////////////////////////////////////////////////////////////////////////////////////// Setters
     
     public function setUserId(int $id){
             $this-> _userId = $id;

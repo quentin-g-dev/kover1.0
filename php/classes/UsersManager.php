@@ -2,10 +2,8 @@
 
 class UsersManager {
 
-///////////////////////////////////////////////////////////////////////// ATTRIBUTES
     private $_db;
 
-////////////////////////////////////////////////////////////////////////  CONSTRUCTOR
     public function __construct($db){
         $this-> _db = $db;
     }
@@ -59,7 +57,7 @@ class UsersManager {
 ////////////////////////////////////////////////////////////////////CRUD : UPDATE
 
     public function updateUser(User $user) {
-        $query = $this->_db-> prepare('UPDATE users SET user_name=?, passwd=?, lang_code=?, user_status=?, creation_date=? WHERE id=?');
+        $query = $this->_db-> prepare('UPDATE users SET `user_name`=?, `passwd`=?, `lang_code`=?, `user_status`=?, `creation_date`=? WHERE `id`=?');
         $result = $query->execute([$user->userName(), $user->userHashedPassword(), $user->userLangCode(), $user->userStatus(), $user->userCreationDate(), $user->userId()]);
         return $result;
     }
@@ -78,6 +76,7 @@ class UsersManager {
             $_SESSION['vip']['userName']= $user->userName();
             $_SESSION['vip']['userHashedPassword']= $user->userHashedPassword();
             $_SESSION['vip']['userCreationDate']= $user->userCreationDate();
+            $_SESSION['vip']['userStatus']= $user->userStatus();
             $_SESSION['vip']['langCode']= $user->userLangCode();
             return $_SESSION['vip'];
         }
@@ -87,6 +86,7 @@ class UsersManager {
         $user-> setUserId (intval($sessionArray["userId"]));
         $user-> setUserName ($sessionArray['userName']);
         $user-> setUserHashedPassword ($sessionArray['userHashedPassword']);
+        $user-> setUserStatus ($sessionArray['userStatus']);
         $user-> setUserCreationDate ($sessionArray['userCreationDate']);
         if (isset($sessionArray['langCode'])){        
             $user-> setLangCode ($sessionArray['langCode']);

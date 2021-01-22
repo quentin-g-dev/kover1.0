@@ -2,11 +2,7 @@ function evalSignUpForm() {
     if (evalUserName() === false) {
         return false;
     } else {
-        if (evalUserPass() === false) {
-            return false;
-        } else {
-            return true;
-        }
+        return (evalUserPass() === false) ? false : true;
     }
 }
 
@@ -30,11 +26,7 @@ function evalUserName() {
 
 function checkNonWordChars(string) {
     let pattern = /\W/g;
-    if (string.match(pattern)) {
-        return false;
-    } else {
-        return true;
-    }
+    return (string.match(pattern)) ? false : true;
 }
 
 function evalUserPass() {
@@ -69,10 +61,7 @@ function evalUserPass() {
 function userPassRegEx(string) {
     // Le mot de passe être composé de 8 caractères au moins, dont au moins un chiffre, une lettre majuscule une lettre minuscule. 
     let pattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
-    if (string.match(pattern)) {
-        return true;
-    }
-    return false;
+    return (string.match(pattern)) ? true : false;
 }
 
 

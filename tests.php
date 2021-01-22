@@ -9,9 +9,7 @@ include './php/classes/UsersManagerTest.php';
 include './php/classes/User.php';
 
 $test = new UsersManagerTest();
-
 ?>
-
     <body>
     <h1 class="text-center text-kover">Tests  KOVER</h1>
     <main>
@@ -100,6 +98,41 @@ $test = new UsersManagerTest();
                 <?php  }   ?>
         </section>
 
+        <!--testDoesUserNameAlreadyExist-->
+        <section>
+                <h2 class="bg-kover text-snow text-center">testDoesUserNameAlreadyExist</h2>
+                <p class="bg-info text-snow text-center">
+                    INPUT : 
+                    <br>
+                    <?= var_dump ($dryUser); ?>
+                    <br>
+                    <br>
+                    EXPECTED :
+                    <br>
+                    true
+                </p>
+                <?php 
+                if($test->testDoesUserNameAlreadyExist($dryUser)) { 
+                ?>
+
+                <p class="bg-success text-snow text-center">
+                    OUTPUT : 
+                    <br>
+                    <?= var_dump($test->testDoesUserNameAlreadyExist($dryUser))?> 
+                    <br>
+                    <br>
+                    <b>OK</b>
+                </p>
+                <?php } else { ?>
+                <p class="bg-alert text-snow text-center">
+                    OUTPUT : <?= var_dump($test->testDoesUserNameAlreadyExist($dryUser))?> 
+                    <br>
+                    <b>FAILED</b>
+                </p>
+                <?php  }   ?>
+        </section>
+
+
         <!--testUpdateUser-->
         <section>
                 <h2 class="bg-kover text-snow text-center">testUpdateUser</h2>
@@ -123,7 +156,7 @@ $test = new UsersManagerTest();
                 <p class="bg-success text-snow text-center">
                     OUTPUT : 
                     <br>
-                    <?= var_dump($updatingResult)?> 
+                    <?= var_dump($test->testUpdateUser($dryUser))?> 
                     <br>
                     <br>
                     <b>OK</b>
@@ -139,7 +172,7 @@ $test = new UsersManagerTest();
 
          <!--testDeleteUser-->
          <section>
-                <h2 class="bg-kover text-snow text-center">testUpdateUser</h2>
+                <h2 class="bg-kover text-snow text-center">testDeleteUser</h2>
                 <p class="bg-info text-snow text-center">
                     INPUT : 
                     <br>
@@ -156,7 +189,7 @@ $test = new UsersManagerTest();
                 <p class="bg-success text-snow text-center">
                     OUTPUT : 
                     <br>
-                    <?= var_dump($test->testDeleteUser($dryUser))?> 
+                    <?= var_dump(true) ?> 
                     <br>
                     <br>
                     <b>OK</b>
@@ -169,8 +202,6 @@ $test = new UsersManagerTest();
                 </p>
                 <?php  }   ?>
         </section>
-            
     </main>
-  
     </body>
 </html>

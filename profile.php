@@ -39,6 +39,7 @@ if (!isset ($_GET['vip'])||!isset($_SESSION["vip"])){
             include './php/modules/db_disconnect.php';
 
             if (!isset($_GET['sect'])){ 
+                include './php/parts/profile_parts/profile_head.php';
 ////////////////////////////////////// Si aucune section spécifique du profil n'est demandée en URL
                 
                 if (isset ($_POST['changeNameSubmit']) && isset ($_POST['newName']) && isset ($_POST['confirmPass'])){
@@ -72,8 +73,8 @@ if (!isset ($_GET['vip'])||!isset($_SESSION["vip"])){
                     }
                 }
 
-                include './php/parts/profile_parts/profile_head.php';
                 include './php/parts/profile_parts/profile_main_menu.php';
+
 
 
             } else {
