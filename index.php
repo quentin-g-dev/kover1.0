@@ -55,7 +55,7 @@ include './php/parts/allpages_parts/header.php';
 
                         <span>COMMENCER</span>
                         <span class="ml-3">
-                            <?php include './assets/icons/startarrow.svg'; ?>
+                            <img src="./assets/icons/startarrow.svg" alt="start">                           
                         </span>
                     </button>
                 </div>
@@ -65,7 +65,7 @@ include './php/parts/allpages_parts/header.php';
                     class="bg-marigold rounded d-flex flex-column flex-no-wrap col-md-5  mx-2 border p-3 p-md-4 my-md-5 my-4 w-100 w-sm-75 mx-0 mx-sm-auto text-snow ">
                     <h2 class="m-auto mb-5 text-snow">
                         <span class="mr-1">
-                        <?php include "./assets/icons/userprofile.svg"; ?>
+                        <img src="./assets/icons/userprofile.svg" alt="profile">                           
                         </span>
                         <span>
                             Mon Espace
@@ -77,7 +77,7 @@ include './php/parts/allpages_parts/header.php';
                             class="btn bg-snow text-marigold my-3 my-lg-3 display-5 font-weight-bold w-75 w-md-50"
                             data-toggle="modal" data-target="#connectModal" id="">
                             <span class="mr-3">
-                                <?php include "./assets/icons/connectkey.svg"; ?>
+                                <img src="./assets/icons/connectkey.svg" alt="connect">                           
                             </span>
                             <span>Connexion</span>
                         </button>
@@ -85,7 +85,7 @@ include './php/parts/allpages_parts/header.php';
                             class="btn bg-snow text-marigold my-3 my-lg-3 display-5 font-weight-bold w-75 w-md-50"
                             data-toggle="modal" data-target="#subscriptionModal" id="">
                             <span class="mr-3">
-                                <?php include "./assets/icons/signup.svg"; ?>
+                                <img src="./assets/icons/signup.svg" alt="signup">                           
                             </span>
                             <span>Inscription</span>
                         </button>
@@ -106,7 +106,7 @@ include './php/parts/allpages_parts/header.php';
 
                 <span>COMMENCER</span>
                 <span class="ml-2">
-                    <?php include './assets/icons/startarrow.svg'; ?>
+                    <img src="./assets/icons/startarrow.svg" alt="start">                           
                 </span>
 
                 <span class="ml-3">
@@ -140,7 +140,7 @@ include './php/parts/allpages_parts/header.php';
 
     <script src="./assets/js/general.js"></script>
     <!--jsPDF-->
-    <script src="https://unpkg.com/jspdf@latest/dist/jspdf.umd.min.js"></script>
+    <script src="./assets/js/jspdf.umd.min.js"></script>
     <script src="./assets/js/View.js"></script>
     <script src="./assets/js/Project.js"></script>
     <script src="./assets/js/main.js"></script>

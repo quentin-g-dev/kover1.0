@@ -29,23 +29,11 @@ $projName = $_GET['project'];
         <button class="bg-snow text-blue bg-hover-blue rounded m-1 m-md-2 p-1 d-flex" id="selectAll"
             data-status="selectAll">
             <span id="selectIcon">
-                <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-list-check" fill="currentColor"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd"
-                        d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3.854 2.146a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708L2 3.293l1.146-1.147a.5.5 0 0 1 .708 0zm0 4a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708L2 7.293l1.146-1.147a.5.5 0 0 1 .708 0zm0 4a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 0 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0z" />
-                </svg>
+                <img src="./assets/icons/listcheck.svg" alt="all">
             </span>
             <span class="d-none d-sm-flex px-3" id="selectButtonText">Tout Sélectionner</span>
             <span class="d-none" id="unselectIcon">
-                <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-list-task" fill="currentColor"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd"
-                        d="M2 2.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5V3a.5.5 0 0 0-.5-.5H2zM3 3H2v1h1V3z" />
-                    <path
-                        d="M5 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM5.5 7a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9zm0 4a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9z" />
-                    <path fill-rule="evenodd"
-                        d="M1.5 7a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H2a.5.5 0 0 1-.5-.5V7zM2 7h1v1H2V7zm0 3.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5H2zm1 .5H2v1h1v-1z" />
-                </svg>
+                <img src="./assets/icons/listtask.svg" alt="none">
             </span>
             <span class="d-none d-sm-none px-3" id="unselectButtonText">Tout Désélectionner</span>
         </button>
@@ -53,13 +41,7 @@ $projName = $_GET['project'];
             class="bg-snow text-blue bg-hover-blue rounded m-1 m-md-2 p-1 d-flex justify-content-center align-items-center"
             id="deleteSelected">
             <span class="mr-0 mr-sm-2">
-                <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-trash2-fill" fill="currentColor"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M2.037 3.225l1.684 10.104A2 2 0 0 0 5.694 15h4.612a2 2 0 0 0 1.973-1.671l1.684-10.104C13.627 4.224 11.085 5 8 5c-3.086 0-5.627-.776-5.963-1.775z" />
-                    <path fill-rule="evenodd"
-                        d="M12.9 3c-.18-.14-.497-.307-.974-.466C10.967 2.214 9.58 2 8 2s-2.968.215-3.926.534c-.477.16-.795.327-.975.466.18.14.498.307.975.466C5.032 3.786 6.42 4 8 4s2.967-.215 3.926-.534c.477-.16.795-.327.975-.466zM8 5c3.314 0 6-.895 6-2s-2.686-2-6-2-6 .895-6 2 2.686 2 6 2z" />
-                </svg>
+                <img src="./assets/icons/trash.svg" alt="trash">
             </span>
             <span class="d-none d-sm-flex">Supprimer</span>
         </button>
@@ -245,7 +227,7 @@ $projName = $_GET['project'];
         </div>
 </main>
 <!--jsPDF-->
-<script src="https://unpkg.com/jspdf@latest/dist/jspdf.umd.min.js"></script>
+<script src="./assets/js/jspdf.umd.min.js"></script>
 <!--Internal JS-->
 <script src="./assets/js/general.js"></script>
 <script src="./assets/js/user_letters.js"></script>
